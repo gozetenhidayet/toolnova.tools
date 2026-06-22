@@ -1,19 +1,13 @@
+
 {
   "manifest_version": 3,
-  "name": "toolnova.tools — Free Online Tools",
-  "short_name": "toolnova",
+  "name": "toolnova.tools",
   "version": "1.0",
-  "description": "Quick access to free online tools: QR Code, Age Calculator, BMI, Currency Converter and more. No signup needed.",
-  "icons": {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
-  },
+  "description": "Free online tools - QR Code, Calculator, Converter and more.",
   "action": {
     "default_popup": "popup.html",
     "default_title": "toolnova.tools"
   },
-  "context_menus": true,
   "permissions": [
     "contextMenus",
     "activeTab"

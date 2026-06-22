@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Free Merge PDF — toolnova.tools</title><meta name="description" content="Merge multiple PDF files into one document online for free. No signup, no watermark, instant download."><script async src="https://www.googletagmanager.com/gtag/js?id=G-3V90PDJDP1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3V90PDJDP1');</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3359266836868361" crossorigin="anonymous"></script><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"><style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}:root{--bg:#f7f8fc;--surface:#fff;--surface2:#f0f2f8;--border:#e2e5f0;--accent:#4f63d2;--accent-light:#eef0fd;--accent2:#0ba87e;--accent2-light:#e6f8f3;--text:#1a1d2e;--muted:#6b7394;--radius:14px;}body{background:var(--bg);color:var(--text);font-family:Inter,sans-serif;font-size:15px;line-height:1.6;}nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}.logo{font-family:"Plus Jakarta Sans",sans-serif;font-size:22px;font-weight:800;color:var(--accent);text-decoration:none;}.logo span{color:var(--accent2);}.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;}.breadcrumb{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 40px;font-size:13px;color:var(--muted);}.breadcrumb a{color:var(--accent);text-decoration:none;}.tool-hero{text-align:center;padding:48px 20px 32px;background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);border-bottom:1px solid var(--border);}.tool-hero-icon{font-size:52px;margin-bottom:12px;}.tool-hero h1{font-family:"Plus Jakarta Sans",sans-serif;font-size:clamp(26px,4vw,42px);font-weight:800;margin-bottom:12px;}.tool-hero h1 em{font-style:normal;color:var(--accent);}.tool-hero p{color:var(--muted);font-size:16px;max-width:520px;margin:0 auto;}.tool-wrap{max-width:680px;margin:40px auto;padding:0 24px 64px;}.card{background:var(--surface);border:1.5px solid var(--border);border-radius:20px;padding:36px;box-shadow:0 2px 12px rgba(79,99,210,.08);}.upload-area{border:2px dashed var(--border);border-radius:14px;padding:48px 24px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:16px;background:var(--surface2);}.upload-area:hover,.upload-area.dragover{border-color:var(--accent);background:var(--accent-light);}.upload-icon{font-size:48px;margin-bottom:12px;}.upload-title{font-family:"Plus Jakarta Sans",sans-serif;font-size:18px;font-weight:700;margin-bottom:6px;}.upload-sub{color:var(--muted);font-size:13px;}.btn{width:100%;background:var(--accent);border:none;border-radius:10px;padding:13px;color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;margin-top:8px;}.btn:hover{background:#3d4fb8;}.btn:disabled{background:#9aa5d4;cursor:not-allowed;}.file-list{margin:12px 0;}.file-item{display:flex;align-items:center;gap:10px;background:var(--surface2);border-radius:8px;padding:10px 14px;margin-bottom:6px;font-size:13px;}.file-item-icon{font-size:18px;}.related{margin-top:48px;}.related h2{font-family:"Plus Jakarta Sans",sans-serif;font-size:18px;font-weight:700;margin-bottom:16px;}.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}.related-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px;text-decoration:none;display:block;transition:all .2s;}.related-card:hover{border-color:var(--accent);transform:translateY(-2px);}.related-card-icon{font-size:24px;margin-bottom:8px;}.related-card-name{font-weight:600;font-size:13px;color:var(--text);}footer{background:var(--surface);border-top:1px solid var(--border);padding:32px;text-align:center;color:var(--muted);font-size:13px;}.footer-logo{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:18px;color:var(--accent);margin-bottom:10px;}footer a{color:var(--muted);text-decoration:none;margin:0 8px;}@media(max-width:640px){nav{padding:14px 16px;}.tool-wrap{padding:0 16px 48px;}.card{padding:24px 18px;}}</style></head>
+<body>
+<nav><a href="/" class="logo">toolnova<span>.tools</span></a><div class="nav-links"><a href="/">← All Tools</a></div></nav>
+<div class="breadcrumb"><a href="/">Home</a> › Merge PDF</div>
+<div class="tool-hero"><div class="tool-hero-icon">📎</div><h1>Free <em>Merge PDF</em></h1><p>Combine multiple PDF files into one document. Drag to reorder. No signup, no watermark.</p></div>
+<div class="tool-wrap">
+  <div class="card">
+    <div class="upload-area" onclick="document.getElementById('pdf-input').click()">
+      <div class="upload-icon">📄</div>
+      <div class="upload-title">Select PDF files</div>
+      <div class="upload-sub">Select 2 or more PDF files to merge</div>
+    </div>
+    <input type="file" id="pdf-input" accept=".pdf" multiple style="display:none" onchange="handleFiles(this.files)">
+    <div class="file-list" id="file-list"></div>
+    <button class="btn" id="merge-btn" onclick="mergePDFs()" disabled>Merge PDFs</button>
+    <div id="status" style="text-align:center;color:var(--muted);font-size:13px;margin-top:12px;"></div>
+  </div>
+  <div class="related"><h2>🔧 Related Tools</h2><div class="related-grid">
+    <a class="related-card" href="/split-pdf.html"><div class="related-card-icon">✂️</div><div class="related-card-name">Split PDF</div></a>
+    <a class="related-card" href="/compress-pdf.html"><div class="related-card-icon">🗜️</div><div class="related-card-name">Compress PDF</div></a>
+    <a class="related-card" href="/pdf-to-jpg.html"><div class="related-card-icon">🖼️</div><div class="related-card-name">PDF to JPG</div></a>
+    <a class="related-card" href="/rotate-pdf.html"><div class="related-card-icon">🔃</div><div class="related-card-name">Rotate PDF</div></a>
+  </div></div>
+</div>
+<footer><div class="footer-logo">toolnova.tools</div><p><a href="/">Home</a><a href="/merge-pdf.html">Merge PDF</a><a href="/split-pdf.html">Split PDF</a><a href="/compress-pdf.html">Compress PDF</a></p><p style="margin-top:8px;">© 2026 toolnova.tools</p></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script>
+let pdfFiles=[];
+function handleFiles(fl){
+  pdfFiles=[...fl];
+  const list=document.getElementById('file-list');
+  list.innerHTML='';
+  pdfFiles.forEach((f,i)=>{
+    const div=document.createElement('div');div.className='file-item';
+    div.innerHTML=`<span class="file-item-icon">📄</span><span style="flex:1">${f.name}</span><span style="color:var(--muted)">${Math.round(f.size/1024)} KB</span>`;
+    list.appendChild(div);
+  });
+  document.getElementById('merge-btn').disabled=pdfFiles.length<2;
+}
+async function mergePDFs(){
+  const btn=document.getElementById('merge-btn');
+  btn.disabled=true;btn.textContent='Merging...';
+  document.getElementById('status').textContent='Processing...';
+  try{
+    const merged=await PDFLib.PDFDocument.create();
+    for(const f of pdfFiles){
+      const ab=await f.arrayBuffer();
+      const pdf=await PDFLib.PDFDocument.load(ab);
+      const pages=await merged.copyPages(pdf,pdf.getPageIndices());
+      pages.forEach(p=>merged.addPage(p));
+    }
+    const bytes=await merged.save();
+    const blob=new Blob([bytes],{type:'application/pdf'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='merged.pdf';a.click();
+    document.getElementById('status').textContent='✅ Merged PDF downloaded!';
+    btn.textContent='Merge Again';btn.disabled=false;
+  }catch(e){document.getElementById('status').textContent='❌ Error: '+e.message;btn.textContent='Try Again';btn.disabled=false;}
+}
+</script></body></html>

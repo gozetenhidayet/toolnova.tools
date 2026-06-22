@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>toolnova.tools — Free Online Tools for Everyone</title>
+<meta name="description" content="Free online tools: QR code generator, image compressor, age calculator, unit converter, word counter and more. No signup needed.">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6LLJHKZQXD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6LLJHKZQXD');
+</script>
+<!-- End Google Analytics -->
+
+<!-- Google Translate -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'tr,es,fr,de,ar,hi,pt,ja,ko,zh-CN,ru,it,nl,pl,sv',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+
+// Auto-detect browser language and translate
+window.addEventListener('load', function() {
+  const browserLang = navigator.language || navigator.userLanguage;
+  const langCode = browserLang.split('-')[0];
+  const supportedLangs = ['tr','es','fr','de','ar','hi','pt','ja','ko','zh','ru','it','nl','pl','sv'];
+  
+  if (langCode !== 'en' && supportedLangs.includes(langCode)) {
+    setTimeout(function() {
+      const selectEl = document.querySelector('.goog-te-combo');
+      if (selectEl) {
+        const targetLang = langCode === 'zh' ? 'zh-CN' : langCode;
+        selectEl.value = targetLang;
+        selectEl.dispatchEvent(new Event('change'));
+      }
+    }, 1500);
+  }
+});
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<style>
+/* Translate Widget Styles */
+#google_translate_element {
+  display: inline-flex;
+  align-items: center;
+}
+.goog-te-gadget {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0 !important;
+}
+.goog-te-gadget .goog-te-combo {
+  background: var(--surface2);
+  border: 1.5px solid var(--border);
+  border-radius: 99px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  cursor: pointer;
+  outline: none;
+  margin: 0 !important;
+}
+.goog-te-banner-frame { display: none !important; }
+body { top: 0 !important; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+<!-- ================================================
+     ADSENSE — Replace CA-PUB-XXXXXXXXXX with your ID
+     after Google approves your site (2-3 weeks)
+================================================ -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3359266836868361" crossorigin="anonymous"></script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#f7f8fc;
+  --surface:#ffffff;
+  --surface2:#f0f2f8;
+  --border:#e2e5f0;
+  --accent:#4f63d2;
+  --accent-light:#eef0fd;
+  --accent2:#0ba87e;
+  --accent2-light:#e6f8f3;
+  --text:#1a1d2e;
+  --muted:#6b7394;
+  --radius:14px;
+  --shadow:0 2px 12px rgba(79,99,210,0.08);
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,0.06);}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--accent);text-decoration:none;letter-spacing:-.5px;}
+.logo span{color:var(--accent2);}
+.nav-links{display:flex;align-items:center;gap:24px;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-pro{background:var(--accent);color:#fff!important;padding:7px 16px;border-radius:99px;font-weight:600!important;transition:background .2s!important;}
+.nav-pro:hover{background:#3d4fb8!important;}
+
+/* HERO */
+.hero{text-align:center;padding:64px 20px 48px;background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);border-bottom:1px solid var(--border);}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);color:var(--accent);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 14px;border-radius:99px;margin-bottom:20px;border:1px solid rgba(79,99,210,0.2);}
+.hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(32px,5vw,56px);font-weight:800;line-height:1.15;margin-bottom:16px;color:var(--text);}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero p{color:var(--muted);font-size:17px;max-width:480px;margin:0 auto 32px;}
+.search-wrap{max-width:460px;margin:0 auto;position:relative;}
+.search-wrap input{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:99px;padding:14px 20px 14px 48px;color:var(--text);font-size:15px;outline:none;transition:border-color .2s;box-shadow:var(--shadow);}
+.search-wrap input:focus{border-color:var(--accent);}
+.search-wrap input::placeholder{color:var(--muted);}
+.search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:17px;}
+
+/* STATS */
+.stats{display:flex;justify-content:center;gap:48px;padding:32px 20px;background:var(--surface);border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;font-weight:800;color:var(--accent);}
+.stat-label{color:var(--muted);font-size:13px;margin-top:2px;}
+
+/* AD BANNER — top */
+.ad-banner{max-width:728px;margin:24px auto;padding:0 24px;text-align:center;}
+.ad-placeholder{background:var(--surface);border:1.5px dashed var(--border);border-radius:var(--radius);padding:20px;color:var(--muted);font-size:13px;}
+
+/* SECTION */
+.section{max-width:1100px;margin:0 auto;padding:0 24px 64px;}
+.section-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:700;margin:40px 0 20px;color:var(--text);display:flex;align-items:center;gap:10px;}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.section-badge{background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:600;padding:2px 10px;border-radius:99px;text-transform:uppercase;letter-spacing:.06em;}
+
+/* TOOL GRID */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;}
+.tool-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px 18px;cursor:pointer;transition:all .2s;text-decoration:none;display:block;position:relative;}
+.tool-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(79,99,210,0.12);transform:translateY(-2px);}
+.tool-icon{font-size:28px;margin-bottom:12px;display:block;}
+.tool-name{font-weight:600;font-size:14px;margin-bottom:4px;color:var(--text);}
+.tool-desc{color:var(--muted);font-size:12px;line-height:1.5;}
+.tool-badge{position:absolute;top:10px;right:10px;background:var(--accent2-light);color:var(--accent2);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px;}
+.tool-badge.hot{background:#fff3e6;color:#e07a20;}
+.tool-badge.pro{background:var(--accent-light);color:var(--accent);}
+
+/* PRO BANNER */
+.pro-banner{background:linear-gradient(135deg,var(--accent) 0%,#3d4fb8 100%);border-radius:20px;padding:36px 40px;margin:40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.pro-banner h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:#fff;margin-bottom:6px;}
+.pro-banner p{color:rgba(255,255,255,0.8);font-size:14px;max-width:420px;}
+.pro-banner ul{list-style:none;margin-top:12px;}
+.pro-banner ul li{color:rgba(255,255,255,0.9);font-size:13px;margin-bottom:4px;}
+.pro-banner ul li::before{content:'✓ ';color:#7dffda;}
+.btn-pro{background:#fff;color:var(--accent);font-weight:700;padding:13px 28px;border-radius:10px;border:none;cursor:pointer;font-size:15px;font-family:inherit;white-space:nowrap;transition:transform .2s,box-shadow .2s;}
+.btn-pro:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.15);}
+
+/* AFFILIATE SECTION */
+.affiliate-section{background:var(--surface);border:1.5px solid var(--border);border-radius:20px;padding:32px;margin:24px 0;}
+.affiliate-section h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px;}
+.affiliate-section p{color:var(--muted);font-size:14px;margin-bottom:20px;}
+.affiliate-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.aff-card{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px;text-decoration:none;display:block;transition:all .2s;}
+.aff-card:hover{border-color:var(--accent2);transform:translateY(-2px);}
+.aff-card-icon{font-size:22px;margin-bottom:8px;}
+.aff-card-name{font-weight:600;font-size:13px;color:var(--text);margin-bottom:2px;}
+.aff-card-desc{font-size:12px;color:var(--muted);}
+.aff-earn{font-size:11px;font-weight:600;color:var(--accent2);margin-top:6px;}
+
+/* MODAL */
+.overlay{display:none;position:fixed;inset:0;background:rgba(26,29,46,0.5);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center;padding:20px;}
+.overlay.active{display:flex;}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;width:100%;max-width:540px;max-height:90vh;overflow-y:auto;padding:36px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.15);}
+.modal-close{position:absolute;top:14px;right:14px;background:var(--surface2);border:none;color:var(--muted);width:32px;height:32px;border-radius:99px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.modal-close:hover{background:var(--border);color:var(--text);}
+.modal h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:21px;font-weight:700;margin-bottom:4px;}
+.modal-sub{color:var(--muted);font-size:13px;margin-bottom:24px;}
+
+/* AD INSIDE MODAL */
+.modal-ad{background:var(--bg);border:1px dashed var(--border);border-radius:10px;padding:14px;text-align:center;color:var(--muted);font-size:12px;margin-top:20px;}
+
+/* FORM */
+label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;}
+input[type="text"],input[type="number"],input[type="date"],select,textarea{width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;margin-bottom:16px;}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);}
+.btn{width:100%;background:var(--accent);border:none;border-radius:10px;padding:13px;color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;}
+.btn:hover{background:#3d4fb8;transform:translateY(-1px);}
+.btn-sec{background:var(--surface2);color:var(--text);border:1.5px solid var(--border);margin-top:8px;}
+.btn-sec:hover{background:var(--border);transform:translateY(-1px);}
+.result-box{background:var(--accent-light);border:1.5px solid rgba(79,99,210,0.2);border-radius:12px;padding:20px;margin-top:20px;}
+.result-box.green{background:var(--accent2-light);border-color:rgba(11,168,126,0.2);}
+.result-label{color:var(--muted);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+.result-value{font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:800;color:var(--accent);}
+.result-value.green{color:var(--accent2);}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:40px;text-align:center;color:var(--muted);font-size:13px;}
+footer a{color:var(--muted);text-decoration:none;margin:0 8px;}
+footer a:hover{color:var(--text);}
+.footer-logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;color:var(--accent);margin-bottom:12px;}
+
+@media(max-width:640px){
+  nav{padding:14px 16px;}
+  .nav-links .nav-links-hide{display:none;}
+  .hero{padding:40px 16px 32px;}
+  .section{padding:0 16px 48px;}
+  .pro-banner{padding:24px 20px;}
+  .modal{padding:24px 18px;}
+  .row{grid-template-columns:1fr;}
+  .result-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">toolnova<span>.tools</span></a>
+  <div class="nav-links">
+    <a href="#tools" class="nav-links-hide">Tools</a>
+    <a href="#recommended" class="nav-links-hide">Recommended</a>
+    <div id="google_translate_element"></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">⚡ 100% Free · No signup · Instant results</div>
+  <h1>Every tool you need,<br><em>right here.</em></h1>
+  <p>Free online tools used by millions. QR codes, calculators, converters, games — no account, no clutter.</p>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search tools... (QR, age, unit, word...)" oninput="filterTools(this.value)">
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">14</div><div class="stat-label">Free Tools</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">Signups Required</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Runs In Your Browser</div></div>
+  <div class="stat"><div class="stat-num">Private</div><div class="stat-label">We Never Store Your Data</div></div>
+</div>
+
+<!-- TOP AD BANNER -->
+<div class="ad-banner">
+  <!-- ADSENSE: replace this div with your AdSense unit code -->
+  <div class="ad-placeholder">📢 Advertisement — Google AdSense will appear here after approval</div>
+</div>
+
+<!-- TOOLS -->
+<div class="section" id="tools">
+
+  <div class="section-title">🔧 Generators <span class="section-badge">Popular</span></div>
+  <div class="tool-grid">
+    <a class="tool-card" href="#" onclick="openTool('qr');return false;">
+      <span class="tool-icon">📱</span>
+      <div class="tool-name">QR Code Generator</div>
+      <div class="tool-desc">Turn any URL or text into a QR code. Download as PNG instantly.</div>
+      <span class="tool-badge">Hot</span>
+    </a>
+    <a class="tool-card" href="#" onclick="openTool('password');return false;">
+      <span class="tool-icon">🔐</span>
+      <div class="tool-name">Password Generator</div>
+      <div class="tool-desc">Strong, secure passwords of any length. Symbols, numbers, uppercase.</div>
+    </a>
+    <a class="tool-card" href="#" onclick="openTool('color');return false;">
+      <span class="tool-icon">🎨</span>
+      <div class="tool-name">Color Code Converter</div>
+      <div class="tool-desc">Convert between HEX, RGB, and HSL color formats instantly.</div>
+    </a>
+    <a class="tool-card" href="#" onclick="openTool('hash');return false;">
+      <span class="tool-icon">🔑</span>
+      <div class="tool-name">Lorem Ipsum Generator</div>
+      <div class="tool-desc">Generate placeholder text for designs and prototypes.</div>
+    </a>
+  </div>
+
+  <div class="section-title">🧮 Calculators</div>
+  <div class="tool-grid">
+    <a class="tool-card" href="#" onclick="openTool('age');return false;">
+      <span class="tool-icon">🎂</span>
+      <div class="tool-name">Age Calculator</div>
+      <div class="tool-desc">Your exact age in years, months, days and hours.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" href="#" onclick="openTool('bmi');return false;">
+      <span class="tool-icon">⚖️</span>
+      <div class="tool-name">BMI Calculator</div>
+      <div class="tool-desc">Body Mass Index with US Imperial and Metric support.</div>
+    </a>
+    <a class="tool-card" href="#" onclick="openTool('tip');return false;">
+      <span class="tool-icon">🍽️</span>
+      <div class="tool-name">Tip Calculator</div>
+      <div class="tool-desc">Split the bill and calculate tips for any group size.</div>
+    </a>
+    <a class="tool-card" href="#" onclick="openTool('discount');return false;">
+      <span class="tool-icon">🏷️</span>
+      <div class="tool-name">Discount Calculator</div>
+      <div class="tool-desc">Final price after any percentage discount. Quick math.</div>
+    </a>
+    <a class="tool-card" href="#" onclick="openTool('loan');return false;">
+      <span class="tool-icon">🏦</span>
+      <div class="tool-name">Loan Calculator</div>
+      <div class="tool-desc">Monthly payment, total interest on any loan. US-style.</div>
+
+    </a>
+  </div>
+
+  <div class="section-title">🔄 Converters</div>
+  <div class="tool-grid">
+    <a class="tool-card" href="#" onclick="openTool('unit');return false;">
+      <span class="tool-icon">📏</span>
+      <div class="tool-name">Unit Converter</div>
+      <div class="tool-desc">Length, weight, temperature, speed, volume — all units.</div>
+    </a>
+    <a class="tool-card" href="#" onclick="openTool('currency');return false;">
+      <span class="tool-icon">💱</span>
+      <div class="tool-name">Currency Converter</div>
+      <div class="tool-desc">Convert between 15 major world currencies instantly.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" href="#" onclick="openTool('case');return false;">
+      <span class="tool-icon">🔤</span>
+      <div class="tool-name">Text Case Converter</div>
+      <div class="tool-desc">UPPER, lower, Title Case, camelCase in one click.</div>
+    </a>
+    <a class="tool-card" href="#" onclick="openTool('wordcount');return false;">
+      <span class="tool-icon">📝</span>
+      <div class="tool-name">Word Counter</div>
+      <div class="tool-desc">Words, characters, sentences, and reading time — live.</div>
+    </a>
+  </div>
+
+  <div class="section-title">🎮 Games & Quizzes</div>
+  <div class="tool-grid">
+    <a class="tool-card" href="#" onclick="openTool('quiz');return false;">
+      <span class="tool-icon">🧠</span>
+      <div class="tool-name">General Knowledge Quiz</div>
+      <div class="tool-desc">10 questions from around the world. How many can you get?</div>
+      <span class="tool-badge">New</span>
+    </a>
+    <a class="tool-card" href="#" onclick="openTool('memory');return false;">
+      <span class="tool-icon">🃏</span>
+      <div class="tool-name">Memory Card Game</div>
+      <div class="tool-desc">Find all matching pairs. Train your short-term memory.</div>
+    </a>
+  </div>
+
+  <!-- MID AD -->
+  <div style="text-align:center;margin:32px 0;">
+    <!-- ADSENSE: replace with your mid-content ad unit -->
+    <div class="ad-placeholder" style="border:1.5px dashed var(--border);border-radius:var(--radius);padding:20px;color:var(--muted);font-size:13px;background:var(--surface);">📢 Advertisement — Google AdSense mid-content unit</div>
+  </div>
+
+  <!-- AFFILIATE SECTION -->
+  <div class="affiliate-section" id="recommended">
+    <h3>🤝 Tools We Recommend</h3>
+    <p>Trusted tools used by our community. We may earn a small commission at no extra cost to you.</p>
+    <div class="affiliate-grid">
+      <a class="aff-card" href="https://namecheap.com" target="_blank">
+        <div class="aff-card-icon">🌐</div>
+        <div class="aff-card-name">Namecheap</div>
+        <div class="aff-card-desc">Best domain registrar. Cheap, reliable, easy to use.</div>
+        <div class="aff-earn">★ Recommended</div>
+      </a>
+      <a class="aff-card" href="https://canva.com" target="_blank">
+        <div class="aff-card-icon">🎨</div>
+        <div class="aff-card-name">Canva Pro</div>
+        <div class="aff-card-desc">Design anything beautifully. Free plan available.</div>
+        <div class="aff-earn">★ Recommended</div>
+      </a>
+      <a class="aff-card" href="https://grammarly.com" target="_blank">
+        <div class="aff-card-icon">✍️</div>
+        <div class="aff-card-name">Grammarly</div>
+        <div class="aff-card-desc">Write better emails, essays and messages instantly.</div>
+        <div class="aff-earn">★ Recommended</div>
+      </a>
+      <a class="aff-card" href="https://nordvpn.com" target="_blank">
+        <div class="aff-card-icon">🔒</div>
+        <div class="aff-card-name">NordVPN</div>
+        <div class="aff-card-desc">Stay private online. #1 rated VPN worldwide.</div>
+        <div class="aff-earn">★ Recommended</div>
+      </a>
+    </div>
+  </div>
+
+</div><!-- end .section -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">toolnova.tools</div>
+  <p style="margin-bottom:14px;">
+    <a href="#">Home</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+    <a href="#">Contact</a>
+
+  </p>
+  <p>© 2025 toolnova.tools — All tools run in your browser. We never store your data.</p>
+  <p style="margin-top:6px;font-size:11px;">Some links on this page are affiliate links. We may earn a commission if you sign up.</p>
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="closeIfOutside(event)">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+// ── MODAL ENGINE ──────────────────────────────────────────────────────────────
+function openTool(key){
+  const tool=TOOLS[key];if(!tool)return;
+  document.getElementById('modal-content').innerHTML=`
+    <button class="modal-close" onclick="closeTool()">✕</button>
+    <h2>${tool.title}</h2>
+    <div class="modal-sub">${tool.sub}</div>
+    ${tool.render()}
+    <div class="modal-ad">📢 Advertisement — AdSense unit here</div>
+  `;
+  document.getElementById('overlay').classList.add('active');
+  document.body.style.overflow='hidden';
+  if(tool.init)tool.init();
+}
+function closeTool(){document.getElementById('overlay').classList.remove('active');document.body.style.overflow='';}
+function closeIfOutside(e){if(e.target===document.getElementById('overlay'))closeTool();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeTool();});
+
+// ── SEARCH ────────────────────────────────────────────────────────────────────
+function filterTools(q){
+  q=q.toLowerCase();
+  document.querySelectorAll('.tool-card').forEach(c=>{c.style.display=c.textContent.toLowerCase().includes(q)?'':'none';});
+}
+
+// ── TOOL DEFINITIONS ──────────────────────────────────────────────────────────
+const TOOLS={
+
+  qr:{
+    title:'📱 QR Code Generator',sub:'Enter any URL or text — download instantly',
+    render:()=>`
+      <label>URL or Text</label>
+      <input type="text" id="qr-input" placeholder="https://toolnova.tools" />
+      <div class="row">
+        <div><label>Size</label>
+          <select id="qr-size"><option value="128">Small</option><option value="200" selected>Medium</option><option value="300">Large</option></select>
+        </div>
+        <div><label>Color</label>
+          <select id="qr-color"><option value="#1a1d2e">Black</option><option value="#4f63d2">Blue</option><option value="#0ba87e">Green</option></select>
+        </div>
+      </div>
+      <button class="btn" onclick="generateQR()">Generate QR Code</button>
+      <div id="qr-out" style="text-align:center;margin-top:16px;"></div>`,
+    init(){}
+  },
+
+  password:{
+    title:'🔐 Password Generator',sub:'Secure, random passwords in one click',
+    render:()=>`
+      <label>Length: <span id="pw-lv">16</span></label>
+      <input type="range" id="pw-len" min="6" max="64" value="16" oninput="document.getElementById('pw-lv').textContent=this.value" style="width:100%;margin-bottom:16px;accent-color:var(--accent);">
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
+        <label style="text-transform:none;letter-spacing:0;font-size:14px;display:flex;align-items:center;gap:6px;color:var(--text);"><input type="checkbox" id="pw-u" checked> Uppercase</label>
+        <label style="text-transform:none;letter-spacing:0;font-size:14px;display:flex;align-items:center;gap:6px;color:var(--text);"><input type="checkbox" id="pw-n" checked> Numbers</label>
+        <label style="text-transform:none;letter-spacing:0;font-size:14px;display:flex;align-items:center;gap:6px;color:var(--text);"><input type="checkbox" id="pw-s" checked> Symbols</label>
+      </div>
+      <button class="btn" onclick="generatePW()">Generate Password</button>
+      <div id="pw-out"></div>`,
+    init(){}
+  },
+
+  color:{
+    title:'🎨 Color Code Converter',sub:'HEX ↔ RGB ↔ HSL',
+    render:()=>`
+      <label>Pick or type a color</label>
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:16px;">
+        <input type="color" id="cpick" value="#4f63d2" oninput="colorPick()" style="width:48px;height:44px;border:none;border-radius:8px;cursor:pointer;padding:2px;">
+        <input type="text" id="hex-in" value="#4f63d2" placeholder="#4f63d2" style="margin-bottom:0;flex:1;" oninput="convertColor()">
+      </div>
+      <button class="btn" onclick="convertColor()">Convert</button>
+      <div id="color-out"></div>`,
+    init(){convertColor();}
+  },
+
+  hash:{
+    title:'📄 Lorem Ipsum Generator',sub:'Placeholder text for any project',
+    render:()=>`
+      <label>Number of paragraphs</label>
+      <select id="lorem-n"><option>1</option><option selected>2</option><option>3</option><option>5</option></select>
+      <button class="btn" onclick="genLorem()">Generate</button>
+      <div id="lorem-out"></div>`,
+    init(){}
+  },
+
+  age:{
+    title:'🎂 Age Calculator',sub:'Your exact age down to the hour',
+    render:()=>`
+      <label>Date of Birth</label>
+      <input type="date" id="dob" max="${new Date().toISOString().split('T')[0]}" />
+      <button class="btn" onclick="calcAge()">Calculate Age</button>
+      <div id="age-out"></div>`,
+    init(){}
+  },
+
+  bmi:{
+    title:'⚖️ BMI Calculator',sub:'Works with US Imperial and Metric',
+    render:()=>`
+      <label>Units</label>
+      <select id="bmi-u" onchange="toggleBMI()"><option value="metric">Metric (kg/cm)</option><option value="imperial">Imperial (lb/ft)</option></select>
+      <div id="bmi-met"><div class="row"><div><label>Weight kg</label><input type="number" id="wkg" placeholder="70"></div><div><label>Height cm</label><input type="number" id="hcm" placeholder="175"></div></div></div>
+      <div id="bmi-imp" style="display:none"><div class="row"><div><label>Weight lb</label><input type="number" id="wlb" placeholder="154"></div><div><label>Height ft</label><input type="number" id="hft" placeholder="5"></div></div><label>Inches</label><input type="number" id="hin" placeholder="9"></div>
+      <button class="btn" onclick="calcBMI()">Calculate BMI</button>
+      <div id="bmi-out"></div>`,
+    init(){}
+  },
+
+  tip:{
+    title:'🍽️ Tip Calculator',sub:'Split the bill for any group',
+    render:()=>`
+      <label>Bill Amount ($)</label><input type="number" id="bill" placeholder="85.00">
+      <div class="row"><div><label>Tip %</label><input type="number" id="tpct" value="18" placeholder="18"></div><div><label>People</label><input type="number" id="split" value="1" placeholder="1"></div></div>
+      <button class="btn" onclick="calcTip()">Calculate</button>
+      <div id="tip-out"></div>`,
+    init(){}
+  },
+
+  discount:{
+    title:'🏷️ Discount Calculator',sub:'Final price after any discount',
+    render:()=>`
+      <label>Original Price ($)</label><input type="number" id="oprice" placeholder="120">
+      <label>Discount (%)</label><input type="number" id="dpct" placeholder="20">
+      <button class="btn" onclick="calcDiscount()">Calculate</button>
+      <div id="disc-out"></div>`,
+    init(){}
+  },
+
+  loan:{
+    title:'🏦 Loan Calculator',sub:'Monthly payment & total interest',
+    render:()=>`
+      <label>Loan Amount ($)</label><input type="number" id="lamt" placeholder="20000">
+      <div class="row"><div><label>Interest Rate %</label><input type="number" id="lrate" placeholder="6.5"></div><div><label>Term (years)</label><input type="number" id="lterm" placeholder="5"></div></div>
+      <button class="btn" onclick="calcLoan()">Calculate</button>
+      <div id="loan-out"></div>`,
+    init(){}
+  },
+
+  unit:{
+    title:'📏 Unit Converter',sub:'Length, weight, temperature, speed & more',
+    render:()=>`
+      <label>Category</label>
+      <select id="ucat" onchange="renderUnitOpts()"><option value="length">Length</option><option value="weight">Weight</option><option value="temp">Temperature</option><option value="speed">Speed</option></select>
+      <label>Value</label><input type="number" id="uval" placeholder="Enter value">
+      <div class="row"><div><label>From</label><select id="ufrom"></select></div><div><label>To</label><select id="uto"></select></div></div>
+      <button class="btn" onclick="convertUnit()">Convert</button>
+      <div id="unit-out"></div>`,
+    init(){renderUnitOpts();}
+  },
+
+  currency:{
+    title:'💱 Currency Converter',sub:'15 major world currencies',
+    render:()=>{
+      const cc=['USD','EUR','GBP','JPY','CAD','AUD','CHF','CNY','INR','MXN','BRL','KRW','TRY','SAR','AED'];
+      const o=cc.map(c=>`<option value="${c}">${c}</option>`).join('');
+      return`<label>Amount</label><input type="number" id="camt" value="100" placeholder="100">
+      <div class="row"><div><label>From</label><select id="cfrom">${o}</select></div><div><label>To</label><select id="cto">${o.replace('value="EUR"','value="EUR" selected')}</select></div></div>
+      <button class="btn" onclick="convertCurr()">Convert</button>
+      <div id="curr-out"></div>
+      <p style="color:var(--muted);font-size:11px;margin-top:10px;">* Approximate rates. Check your bank for exact figures.</p>`;
+    },
+    init(){}
+  },
+
+  case:{
+    title:'🔤 Text Case Converter',sub:'Transform text in one click',
+    render:()=>`
+      <label>Your Text</label>
+      <textarea id="case-in" rows="4" placeholder="Type or paste text here..."></textarea>
+      <div class="row" style="gap:8px;"><button class="btn" onclick="doCase('upper')">UPPERCASE</button><button class="btn" onclick="doCase('lower')">lowercase</button></div>
+      <div class="row" style="gap:8px;margin-top:8px;"><button class="btn" onclick="doCase('title')">Title Case</button><button class="btn" onclick="doCase('camel')">camelCase</button></div>
+      <div id="case-out"></div>`,
+    init(){}
+  },
+
+  wordcount:{
+    title:'📝 Word Counter',sub:'Live count — words, characters, reading time',
+    render:()=>`
+      <label>Your Text</label>
+      <textarea id="wc-in" rows="6" placeholder="Paste your text here..." oninput="liveWC()"></textarea>
+      <div class="result-grid result-box" id="wc-out" style="margin-top:16px;">
+        <div><div class="result-label">Words</div><div class="result-value" id="wc-w">0</div></div>
+        <div><div class="result-label">Characters</div><div class="result-value" id="wc-c">0</div></div>
+        <div><div class="result-label">Sentences</div><div class="result-value" id="wc-s">0</div></div>
+        <div><div class="result-label">Read time</div><div class="result-value" id="wc-t">0 min</div></div>
+      </div>`,
+    init(){}
+  },
+
+  quiz:{
+    title:'🧠 General Knowledge Quiz',sub:'10 questions — how many can you get right?',
+    render:()=>`<div id="quiz-wrap"><button class="btn" onclick="startQuiz()">Start Quiz</button></div>`,
+    init(){}
+  },
+
+  memory:{
+    title:'🃏 Memory Card Game',sub:'Find all matching pairs',
+    render:()=>`<div id="mem-wrap"><button class="btn" onclick="startMemory()">Start Game</button></div>`,
+    init(){}
+  },
+
+};
+
+// ── QR ────────────────────────────────────────────────────────────────────────
+function generateQR(){
+  const txt=document.getElementById('qr-input').value.trim();
+  const sz=+document.getElementById('qr-size').value;
+  const cl=document.getElementById('qr-color').value;
+  if(!txt){alert('Please enter a URL or text.');return;}
+  const out=document.getElementById('qr-out');
+  out.innerHTML='';
+  const d=document.createElement('div');
+  out.appendChild(d);
+  new QRCode(d,{text:txt,width:sz,height:sz,colorDark:cl,colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
+  setTimeout(()=>{
+    const cv=d.querySelector('canvas');
+    if(cv){const btn=document.createElement('button');btn.className='btn btn-sec';btn.style.marginTop='12px';btn.textContent='⬇ Download PNG';btn.onclick=()=>{const a=document.createElement('a');a.download='qr.png';a.href=cv.toDataURL();a.click();};out.appendChild(btn);}
+  },300);
+}
+
+// ── PASSWORD ──────────────────────────────────────────────────────────────────
+function generatePW(){
+  const len=+document.getElementById('pw-len').value;
+  let chars='abcdefghijklmnopqrstuvwxyz';
+  if(document.getElementById('pw-u').checked)chars+='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  if(document.getElementById('pw-n').checked)chars+='0123456789';
+  if(document.getElementById('pw-s').checked)chars+='!@#$%^&*()_+-=[]{}|;:,.?';
+  let pw='';for(let i=0;i<len;i++)pw+=chars[Math.floor(Math.random()*chars.length)];
+  document.getElementById('pw-out').innerHTML=`<div class="result-box" style="margin-top:16px;font-family:monospace;font-size:15px;word-break:break-all;"><div class="result-label">Password</div><div style="color:var(--accent);font-weight:700;margin:6px 0;">${pw}</div><button class="btn btn-sec" onclick="navigator.clipboard.writeText('${pw}');this.textContent='✓ Copied!'">Copy</button></div>`;
+}
+
+// ── COLOR ─────────────────────────────────────────────────────────────────────
+function colorPick(){document.getElementById('hex-in').value=document.getElementById('cpick').value;convertColor();}
+function convertColor(){
+  let hex=document.getElementById('hex-in').value.trim();
+  if(!hex.startsWith('#'))hex='#'+hex;
+  if(!/^#[0-9A-Fa-f]{6}$/.test(hex)){document.getElementById('color-out').innerHTML='<div class="result-box" style="margin-top:12px;color:#c0392b;">Invalid hex color.</div>';return;}
+  document.getElementById('cpick').value=hex;
+  const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  const max=Math.max(r,g,b)/255,min=Math.min(r,g,b)/255,l=(max+min)/2,d=max-min;
+  const s=d?d/(1-Math.abs(2*l-1)):0;
+  let h=0;if(d){const sg=max===r/255?(g/255-b/255)/d:max===g/255?2+(b/255-r/255)/d:4+(r/255-g/255)/d;h=Math.round(sg*60);if(h<0)h+=360;}
+  document.getElementById('color-out').innerHTML=`<div class="result-box green" style="margin-top:14px;"><div style="width:100%;height:50px;border-radius:8px;background:${hex};margin-bottom:12px;"></div><div style="display:grid;gap:6px;font-size:14px;"><div><span style="color:var(--muted);">HEX</span> <strong>${hex.toUpperCase()}</strong></div><div><span style="color:var(--muted);">RGB</span> <strong>rgb(${r}, ${g}, ${b})</strong></div><div><span style="color:var(--muted);">HSL</span> <strong>hsl(${h}, ${Math.round(s*100)}%, ${Math.round(l*100)}%)</strong></div></div></div>`;
+}
+
+// ── LOREM ─────────────────────────────────────────────────────────────────────
+function genLorem(){
+  const n=+document.getElementById('lorem-n').value;
+  const p='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.';
+  const p2='Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.';
+  const p3='Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis molestie dictum semper, quam quam congue eros, sit amet interdum nisi quam in magna.';
+  const paras=[p,p2,p3,p,p2];
+  const text=paras.slice(0,n).join('\n\n');
+  document.getElementById('lorem-out').innerHTML=`<div class="result-box" style="margin-top:14px;font-size:13px;line-height:1.7;white-space:pre-wrap;">${text}<br><br><button class="btn btn-sec" style="margin-top:8px;" onclick="navigator.clipboard.writeText(\`${text.replace(/`/g,'')}\`);this.textContent='✓ Copied!'">Copy</button></div>`;
+}
+
+// ── AGE ───────────────────────────────────────────────────────────────────────
+function calcAge(){
+  const dob=new Date(document.getElementById('dob').value);
+  if(!dob||isNaN(dob)){alert('Please select your date of birth.');return;}
+  const now=new Date();
+  let y=now.getFullYear()-dob.getFullYear(),m=now.getMonth()-dob.getMonth(),d=now.getDate()-dob.getDate();
+  if(d<0){m--;d+=new Date(now.getFullYear(),now.getMonth(),0).getDate();}
+  if(m<0){y--;m+=12;}
+  const td=Math.floor((now-dob)/86400000);
+  document.getElementById('age-out').innerHTML=`<div class="result-grid result-box green" style="margin-top:16px;"><div><div class="result-label">Years</div><div class="result-value green">${y}</div></div><div><div class="result-label">Months</div><div class="result-value green">${m}</div></div><div><div class="result-label">Days left</div><div class="result-value green">${d}</div></div><div><div class="result-label">Total Days</div><div class="result-value green">${td.toLocaleString()}</div></div></div>`;
+}
+
+// ── BMI ───────────────────────────────────────────────────────────────────────
+function toggleBMI(){const u=document.getElementById('bmi-u').value;document.getElementById('bmi-met').style.display=u==='metric'?'':'none';document.getElementById('bmi-imp').style.display=u==='imperial'?'':'none';}
+function calcBMI(){
+  const u=document.getElementById('bmi-u').value;let bmi;
+  if(u==='metric'){const w=+document.getElementById('wkg').value,h=+document.getElementById('hcm').value/100;if(!w||!h){alert('Fill in weight and height.');return;}bmi=w/(h*h);}
+  else{const lb=+document.getElementById('wlb').value,ft=+document.getElementById('hft').value,i=+document.getElementById('hin').value||0,ti=ft*12+i;if(!lb||!ti){alert('Fill in weight and height.');return;}bmi=(lb/(ti*ti))*703;}
+  const cat=bmi<18.5?'Underweight':bmi<25?'Normal weight':bmi<30?'Overweight':'Obese';
+  const col=bmi<18.5?'#2980b9':bmi<25?'#0ba87e':bmi<30?'#e07a20':'#c0392b';
+  document.getElementById('bmi-out').innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">Your BMI</div><div class="result-value green">${bmi.toFixed(1)}</div><div style="font-weight:600;color:${col};margin-top:6px;">${cat}</div></div>`;
+}
+
+// ── TIP ───────────────────────────────────────────────────────────────────────
+function calcTip(){
+  const b=+document.getElementById('bill').value,p=+document.getElementById('tpct').value,s=+document.getElementById('split').value||1;
+  if(!b){alert('Enter bill amount.');return;}
+  const tip=b*p/100,total=b+tip;
+  document.getElementById('tip-out').innerHTML=`<div class="result-grid result-box green" style="margin-top:16px;"><div><div class="result-label">Tip</div><div class="result-value green">$${tip.toFixed(2)}</div></div><div><div class="result-label">Total</div><div class="result-value green">$${total.toFixed(2)}</div></div><div><div class="result-label">Per Person</div><div class="result-value green">$${(total/s).toFixed(2)}</div></div><div><div class="result-label">Tip/Person</div><div class="result-value green">$${(tip/s).toFixed(2)}</div></div></div>`;
+}
+
+// ── DISCOUNT ──────────────────────────────────────────────────────────────────
+function calcDiscount(){
+  const o=+document.getElementById('oprice').value,p=+document.getElementById('dpct').value;
+  if(!o||!p){alert('Fill in both fields.');return;}
+  const saved=o*p/100,final=o-saved;
+  document.getElementById('disc-out').innerHTML=`<div class="result-grid result-box green" style="margin-top:16px;"><div><div class="result-label">You Save</div><div class="result-value green">$${saved.toFixed(2)}</div></div><div><div class="result-label">Final Price</div><div class="result-value green">$${final.toFixed(2)}</div></div></div>`;
+}
+
+// ── LOAN ──────────────────────────────────────────────────────────────────────
+function calcLoan(){
+  const P=+document.getElementById('lamt').value,r=+document.getElementById('lrate').value/100/12,n=+document.getElementById('lterm').value*12;
+  if(!P||!r||!n){alert('Fill in all fields.');return;}
+  const monthly=P*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);
+  const totalPay=monthly*n,totalInt=totalPay-P;
+  document.getElementById('loan-out').innerHTML=`<div class="result-grid result-box" style="margin-top:16px;"><div><div class="result-label">Monthly Payment</div><div class="result-value">$${monthly.toFixed(2)}</div></div><div><div class="result-label">Total Interest</div><div class="result-value">$${totalInt.toFixed(2)}</div></div><div><div class="result-label">Total Paid</div><div class="result-value">$${totalPay.toFixed(2)}</div></div><div><div class="result-label">Principal</div><div class="result-value">$${P.toLocaleString()}</div></div></div>`;
+}
+
+// ── UNIT ──────────────────────────────────────────────────────────────────────
+const UDB={length:{meter:1,kilometer:0.001,mile:0.000621371,foot:3.28084,inch:39.3701,centimeter:100,yard:1.09361},weight:{kilogram:1,gram:1000,pound:2.20462,ounce:35.274,ton:0.001},temp:{celsius:1,fahrenheit:1,kelvin:1},speed:{'km/h':1,'mph':0.621371,'knot':0.539957,'m/s':0.277778}};
+function renderUnitOpts(){const cat=document.getElementById('ucat').value,keys=Object.keys(UDB[cat]),opts=keys.map(k=>`<option value="${k}">${k}</option>`).join('');document.getElementById('ufrom').innerHTML=opts;document.getElementById('uto').innerHTML=opts;if(document.getElementById('uto').options.length>1)document.getElementById('uto').selectedIndex=1;}
+function convertUnit(){
+  const cat=document.getElementById('ucat').value,val=+document.getElementById('uval').value,from=document.getElementById('ufrom').value,to=document.getElementById('uto').value;
+  if(isNaN(val)){alert('Enter a number.');return;}
+  let res;
+  if(cat==='temp'){let c=from==='celsius'?val:from==='fahrenheit'?(val-32)*5/9:val-273.15;res=to==='celsius'?c:to==='fahrenheit'?c*9/5+32:c+273.15;}
+  else{res=(val/UDB[cat][from])*UDB[cat][to];}
+  document.getElementById('unit-out').innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">Result</div><div class="result-value green">${res.toLocaleString(undefined,{maximumFractionDigits:6})} ${to}</div></div>`;
+}
+
+// ── CURRENCY ──────────────────────────────────────────────────────────────────
+const RATES={USD:1,EUR:0.92,GBP:0.79,JPY:149.5,CAD:1.36,AUD:1.53,CHF:0.89,CNY:7.24,INR:83.1,MXN:17.2,BRL:4.97,KRW:1325,TRY:32.1,SAR:3.75,AED:3.67};
+function convertCurr(){
+  const a=+document.getElementById('camt').value,f=document.getElementById('cfrom').value,t=document.getElementById('cto').value;
+  const res=(a/RATES[f])*RATES[t];
+  document.getElementById('curr-out').innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">${a} ${f} =</div><div class="result-value green">${res.toLocaleString(undefined,{maximumFractionDigits:2})} ${t}</div></div>`;
+}
+
+// ── TEXT CASE ─────────────────────────────────────────────────────────────────
+function doCase(type){
+  let t=document.getElementById('case-in').value;if(!t){alert('Enter some text.');return;}
+  if(type==='upper')t=t.toUpperCase();
+  else if(type==='lower')t=t.toLowerCase();
+  else if(type==='title')t=t.replace(/\w\S*/g,w=>w[0].toUpperCase()+w.slice(1).toLowerCase());
+  else if(type==='camel')t=t.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g,(_,c)=>c.toUpperCase());
+  document.getElementById('case-out').innerHTML=`<div class="result-box" style="margin-top:14px;"><div class="result-label">Result</div><div style="font-size:14px;color:var(--text);margin:6px 0;word-break:break-word;">${t}</div><button class="btn btn-sec" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='✓ Copied!'">Copy</button></div>`;
+}
+
+// ── WORD COUNT ────────────────────────────────────────────────────────────────
+function liveWC(){
+  const t=document.getElementById('wc-in').value;
+  const w=t.trim()?t.trim().split(/\s+/).length:0;
+  document.getElementById('wc-w').textContent=w.toLocaleString();
+  document.getElementById('wc-c').textContent=t.length.toLocaleString();
+  document.getElementById('wc-s').textContent=t.split(/[.!?]+/).filter(s=>s.trim()).length;
+  const min=Math.ceil(w/200);
+  document.getElementById('wc-t').textContent=min<1?'< 1 min':min+' min';
+}
+
+// ── QUIZ ──────────────────────────────────────────────────────────────────────
+const QS=[
+  {q:"What is the capital of Australia?",a:"Canberra",o:["Sydney","Melbourne","Canberra","Brisbane"]},
+  {q:"How many sides does a hexagon have?",a:"6",o:["5","6","7","8"]},
+  {q:"Which planet is closest to the Sun?",a:"Mercury",o:["Venus","Earth","Mercury","Mars"]},
+  {q:"Which language has the most native speakers?",a:"Mandarin Chinese",o:["English","Spanish","Hindi","Mandarin Chinese"]},
+  {q:"What is 15% of 200?",a:"30",o:["25","30","35","40"]},
+  {q:"Who painted the Mona Lisa?",a:"Leonardo da Vinci",o:["Michelangelo","Raphael","Leonardo da Vinci","Picasso"]},
+  {q:"What year did World War II end?",a:"1945",o:["1943","1944","1945","1946"]},
+  {q:"What is the chemical symbol for gold?",a:"Au",o:["Go","Gd","Au","Ag"]},
+  {q:"How many bones are in the adult human body?",a:"206",o:["186","196","206","216"]},
+  {q:"What is the largest ocean?",a:"Pacific",o:["Atlantic","Indian","Pacific","Arctic"]},
+];
+let qi=0,qs=0;
+function startQuiz(){qi=0;qs=0;renderQ();}
+function renderQ(){
+  const w=document.getElementById('quiz-wrap');
+  if(qi>=QS.length){w.innerHTML=`<div class="result-box green" style="text-align:center;"><div class="result-label">Final Score</div><div class="result-value green">${qs} / ${QS.length}</div><div style="margin-top:6px;color:var(--muted);">${qs>=8?'🏆 Excellent!':qs>=5?'👍 Good job!':'📚 Keep learning!'}</div><button class="btn" style="margin-top:14px;" onclick="startQuiz()">Play Again</button></div>`;return;}
+  const q=QS[qi];
+  w.innerHTML=`<div style="color:var(--muted);font-size:12px;margin-bottom:8px;">Question ${qi+1} of ${QS.length} · Score: ${qs}</div><div style="font-size:16px;font-weight:600;margin-bottom:18px;">${q.q}</div>${q.o.map(o=>`<button class="btn btn-sec" style="margin-bottom:8px;text-align:left;" onclick="ansQ('${o.replace(/'/g,"\\'")}','${q.a.replace(/'/g,"\\'")}',this)">${o}</button>`).join('')}`;
+}
+function ansQ(ch,co,btn){
+  document.querySelectorAll('#quiz-wrap button').forEach(b=>b.disabled=true);
+  if(ch===co){qs++;btn.style.borderColor='var(--accent2)';btn.style.color='var(--accent2)';}
+  else{btn.style.borderColor='#c0392b';btn.style.color='#c0392b';}
+  setTimeout(()=>{qi++;renderQ();},900);
+}
+
+// ── MEMORY ────────────────────────────────────────────────────────────────────
+const EM=['🐶','🐱','🦊','🐻','🐼','🦁','🐯','🦄'];
+let mc=[],mf=[],ms=0,ml=false,mm=0;
+function startMemory(){mc=[...EM,...EM].sort(()=>Math.random()-.5);mf=new Array(16).fill(false);ms=0;ml=false;mm=0;renderMem();}
+function renderMem(){
+  document.getElementById('mem-wrap').innerHTML=`<div style="text-align:right;color:var(--muted);font-size:13px;margin-bottom:10px;">Moves: <span id="mm">${mm}</span></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">${mc.map((e,i)=>`<button onclick="flipMem(${i})" id="mc${i}" style="aspect-ratio:1;font-size:22px;background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;">${mf[i]?e:'?'}</button>`).join('')}</div>`;
+}
+function flipMem(i){
+  if(ml||mf[i])return;
+  mf[i]=true;
+  document.getElementById('mc'+i).textContent=mc[i];
+  const op=mf.map((f,j)=>f&&!document.getElementById('mc'+j)?.dataset.solved?j:-1).filter(j=>j>=0);
+  if(op.length===2){
+    ml=true;mm++;document.getElementById('mm').textContent=mm;
+    if(mc[op[0]]===mc[op[1]]){
+      op.forEach(j=>{const b=document.getElementById('mc'+j);if(b){b.dataset.solved='1';b.style.borderColor='var(--accent2)';}});
+      ms++;
+      if(ms===8){setTimeout(()=>{document.getElementById('mem-wrap').innerHTML=`<div class="result-box green" style="text-align:center;"><div class="result-label">🎉 You Win!</div><div class="result-value green">${mm} moves</div><button class="btn" style="margin-top:14px;" onclick="startMemory()">Play Again</button></div>`;},400);}
+      ml=false;
+    }else{setTimeout(()=>{op.forEach(j=>{mf[j]=false;const b=document.getElementById('mc'+j);if(b)b.textContent='?';});ml=false;},800);}
+  }
+}
+</script>
+</body>
+</html>

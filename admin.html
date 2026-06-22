@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — toolnova.tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#f7f8fc;--surface:#fff;--surface2:#f0f2f8;--border:#e2e5f0;--accent:#4f63d2;--accent-light:#eef0fd;--accent2:#0ba87e;--accent2-light:#e6f8f3;--text:#1a1d2e;--muted:#6b7394;--radius:14px;}
+body{background:var(--bg);color:var(--text);font-family:Inter,sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
+
+/* LOGIN */
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#4f63d2 0%,#3d4fb8 100%);}
+.login-card{background:#fff;border-radius:20px;padding:48px 40px;width:100%;max-width:400px;box-shadow:0 20px 60px rgba(0,0,0,0.2);text-align:center;}
+.login-logo{font-family:"Plus Jakarta Sans",sans-serif;font-size:24px;font-weight:800;color:var(--accent);margin-bottom:4px;}
+.login-logo span{color:var(--accent2);}
+.login-sub{color:var(--muted);font-size:13px;margin-bottom:32px;}
+.login-card input{width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;padding:13px 16px;font-size:15px;font-family:inherit;outline:none;margin-bottom:16px;color:var(--text);text-align:center;letter-spacing:2px;}
+.login-card input:focus{border-color:var(--accent);}
+.login-btn{width:100%;background:var(--accent);border:none;border-radius:10px;padding:14px;color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;}
+.login-btn:hover{background:#3d4fb8;}
+.login-error{color:#e74c3c;font-size:13px;margin-top:12px;display:none;}
+
+/* DASHBOARD */
+#dashboard{display:none;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+.logo{font-family:"Plus Jakarta Sans",sans-serif;font-size:20px;font-weight:800;color:var(--accent);}
+.logo span{color:var(--accent2);}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.badge{background:var(--accent-light);color:var(--accent);font-size:12px;font-weight:600;padding:4px 12px;border-radius:99px;}
+.logout-btn{background:none;border:1.5px solid var(--border);border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;color:var(--muted);font-family:inherit;}
+
+.wrap{max-width:1100px;margin:0 auto;padding:32px 24px 64px;}
+.page-title{font-family:"Plus Jakarta Sans",sans-serif;font-size:24px;font-weight:800;margin-bottom:6px;}
+.page-sub{color:var(--muted);font-size:14px;margin-bottom:32px;}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:32px;}
+.stat-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px;}
+.stat-icon{font-size:28px;margin-bottom:12px;}
+.stat-label{color:var(--muted);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
+.stat-value{font-family:"Plus Jakarta Sans",sans-serif;font-size:28px;font-weight:800;color:var(--accent);}
+.stat-value.green{color:var(--accent2);}
+.stat-change{font-size:12px;color:var(--muted);margin-top:4px;}
+
+/* SECTIONS */
+.section-title{font-family:"Plus Jakarta Sans",sans-serif;font-size:18px;font-weight:700;margin:32px 0 16px;display:flex;align-items:center;gap:10px;}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* INCOME TABLE */
+.income-table{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.income-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:16px 20px;border-bottom:1px solid var(--border);align-items:center;}
+.income-row:last-child{border-bottom:none;}
+.income-row.header{background:var(--surface2);font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+.income-source{font-weight:600;font-size:14px;}
+.income-status{font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;display:inline-block;}
+.status-pending{background:#fff3e6;color:#e07a20;}
+.status-active{background:var(--accent2-light);color:var(--accent2);}
+.status-waiting{background:var(--accent-light);color:var(--accent);}
+.income-amount{font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;font-size:15px;}
+
+/* LINKS */
+.links-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.link-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px;text-decoration:none;display:block;transition:all .2s;}
+.link-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.link-icon{font-size:22px;margin-bottom:8px;}
+.link-name{font-weight:600;font-size:14px;color:var(--text);}
+.link-desc{font-size:12px;color:var(--muted);margin-top:2px;}
+
+/* CHECKLIST */
+.checklist{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px;}
+.check-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.check-item:last-child{border-bottom:none;}
+.check-icon{font-size:18px;width:24px;text-align:center;}
+.check-text{flex:1;font-size:14px;}
+.check-status{font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;}
+
+@media(max-width:640px){nav{padding:14px 16px;}.wrap{padding:24px 16px 48px;}.income-row{grid-template-columns:1fr 1fr;gap:8px;}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">toolnova<span>.tools</span></div>
+    <div class="login-sub">🔒 Admin Panel — Private Access Only</div>
+    <input type="password" id="pw-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')tryLogin()">
+    <button class="login-btn" onclick="tryLogin()">Login</button>
+    <div class="login-error" id="login-error">❌ Wrong password. Try again.</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <nav>
+    <div class="logo">toolnova<span>.tools</span> <span style="font-size:13px;font-weight:400;color:var(--muted);margin-left:8px;">Admin</span></div>
+    <div class="nav-right">
+      <span class="badge">🔒 Private</span>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <div class="page-title">💰 Revenue Dashboard</div>
+    <div class="page-sub" id="last-updated">Last updated: —</div>
+
+    <!-- STATS -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📺</div>
+        <div class="stat-label">AdSense Today</div>
+        <div class="stat-value">$0.00</div>
+        <div class="stat-change">⏳ Pending approval (2-4 weeks)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🤝</div>
+        <div class="stat-label">Affiliate This Month</div>
+        <div class="stat-value green">$0.00</div>
+        <div class="stat-change">⏳ Namecheap approval pending</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div class="stat-label">Site Visitors Today</div>
+        <div class="stat-value" id="visitors-today">—</div>
+        <div class="stat-change">📊 Check Google Analytics</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🌍</div>
+        <div class="stat-label">Total Pages</div>
+        <div class="stat-value">14</div>
+        <div class="stat-change">✅ All indexed in Google</div>
+      </div>
+    </div>
+
+    <!-- INCOME SOURCES -->
+    <div class="section-title">💵 Income Sources</div>
+    <div class="income-table">
+      <div class="income-row header">
+        <div>Source</div>
+        <div>Status</div>
+        <div>This Month</div>
+        <div>Potential</div>
+      </div>
+      <div class="income-row">
+        <div>
+          <div class="income-source">📺 Google AdSense</div>
+          <div style="font-size:12px;color:var(--muted);">Ads on all pages</div>
+        </div>
+        <div><span class="income-status status-pending">Pending</span></div>
+        <div class="income-amount">$0.00</div>
+        <div style="font-size:13px;color:var(--muted);">$50-500/mo</div>
+      </div>
+      <div class="income-row">
+        <div>
+          <div class="income-source">🌐 Namecheap Affiliate</div>
+          <div style="font-size:12px;color:var(--muted);">Domain registrar</div>
+        </div>
+        <div><span class="income-status status-waiting">Review</span></div>
+        <div class="income-amount">$0.00</div>
+        <div style="font-size:13px;color:var(--muted);">$5-20/sale</div>
+      </div>
+      <div class="income-row">
+        <div>
+          <div class="income-source">🔒 NordVPN Affiliate</div>
+          <div style="font-size:12px;color:var(--muted);">VPN service</div>
+        </div>
+        <div><span class="income-status status-waiting">Not joined</span></div>
+        <div class="income-amount">$0.00</div>
+        <div style="font-size:13px;color:var(--muted);">$30-100/sale</div>
+      </div>
+      <div class="income-row">
+        <div>
+          <div class="income-source">🎨 Canva Affiliate</div>
+          <div style="font-size:12px;color:var(--muted);">Design tool</div>
+        </div>
+        <div><span class="income-status status-waiting">Not joined</span></div>
+        <div class="income-amount">$0.00</div>
+        <div style="font-size:13px;color:var(--muted);">80% first month</div>
+      </div>
+      <div class="income-row">
+        <div>
+          <div class="income-source">✍️ Grammarly Affiliate</div>
+          <div style="font-size:12px;color:var(--muted);">Writing assistant</div>
+        </div>
+        <div><span class="income-status status-waiting">Not joined</span></div>
+        <div class="income-amount">$0.00</div>
+        <div style="font-size:13px;color:var(--muted);">$20/pro signup</div>
+      </div>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="section-title">🔗 Quick Links</div>
+    <div class="links-grid">
+      <a class="link-card" href="https://adsense.google.com" target="_blank">
+        <div class="link-icon">📺</div>
+        <div class="link-name">Google AdSense</div>
+        <div class="link-desc">Check ad revenue</div>
+      </a>
+      <a class="link-card" href="https://analytics.google.com" target="_blank">
+        <div class="link-icon">📊</div>
+        <div class="link-name">Google Analytics</div>
+        <div class="link-desc">Visitor stats</div>
+      </a>
+      <a class="link-card" href="https://app.impact.com" target="_blank">
+        <div class="link-icon">🤝</div>
+        <div class="link-name">Impact (Namecheap)</div>
+        <div class="link-desc">Affiliate earnings</div>
+      </a>
+      <a class="link-card" href="https://search.google.com/search-console" target="_blank">
+        <div class="link-icon">🔍</div>
+        <div class="link-name">Search Console</div>
+        <div class="link-desc">SEO performance</div>
+      </a>
+      <a class="link-card" href="https://github.com/gozetenhidayet/toolnova.tools" target="_blank">
+        <div class="link-icon">💻</div>
+        <div class="link-name">GitHub Repo</div>
+        <div class="link-desc">Update site files</div>
+      </a>
+      <a class="link-card" href="https://toolnova.tools" target="_blank">
+        <div class="link-icon">🌐</div>
+        <div class="link-name">toolnova.tools</div>
+        <div class="link-desc">View live site</div>
+      </a>
+    </div>
+
+    <!-- CHECKLIST -->
+    <div class="section-title">✅ Setup Checklist</div>
+    <div class="checklist">
+      <div class="check-item"><div class="check-icon">✅</div><div class="check-text">Site yayında — toolnova.tools</div><span class="check-status" style="background:var(--accent2-light);color:var(--accent2);">Done</span></div>
+      <div class="check-item"><div class="check-icon">✅</div><div class="check-text">Google Analytics bağlandı</div><span class="check-status" style="background:var(--accent2-light);color:var(--accent2);">Done</span></div>
+      <div class="check-item"><div class="check-icon">✅</div><div class="check-text">Google AdSense kodu eklendi</div><span class="check-status" style="background:var(--accent2-light);color:var(--accent2);">Done</span></div>
+      <div class="check-item"><div class="check-icon">✅</div><div class="check-text">ads.txt yüklendi</div><span class="check-status" style="background:var(--accent2-light);color:var(--accent2);">Done</span></div>
+      <div class="check-item"><div class="check-icon">✅</div><div class="check-text">13 tool sayfası (SEO)</div><span class="check-status" style="background:var(--accent2-light);color:var(--accent2);">Done</span></div>
+      <div class="check-item"><div class="check-icon">✅</div><div class="check-text">Sitemap eklendi</div><span class="check-status" style="background:var(--accent2-light);color:var(--accent2);">Done</span></div>
+      <div class="check-item"><div class="check-icon">✅</div><div class="check-text">Chrome Extension gönderildi</div><span class="check-status" style="background:var(--accent2-light);color:var(--accent2);">Done</span></div>
+      <div class="check-item"><div class="check-icon">⏳</div><div class="check-text">AdSense onayı</div><span class="check-status status-pending">2-4 hafta</span></div>
+      <div class="check-item"><div class="check-icon">⏳</div><div class="check-text">Chrome Web Store onayı</div><span class="check-status status-pending">1-3 gün</span></div>
+      <div class="check-item"><div class="check-icon">⏳</div><div class="check-text">Affiliate linkleri güncelle</div><span class="check-status status-pending">Bekliyor</span></div>
+      <div class="check-item"><div class="check-icon">⏳</div><div class="check-text">HTTPS aktif et</div><span class="check-status status-pending">DNS bekliyor</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const PASSWORD = '2026@toolnova.tools';
+
+function tryLogin() {
+  const input = document.getElementById('pw-input').value;
+  if (input === PASSWORD) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    document.getElementById('last-updated').textContent = 'Last updated: ' + new Date().toLocaleString();
+    sessionStorage.setItem('tn_auth', '1');
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('pw-input').value = '';
+    document.getElementById('pw-input').focus();
+  }
+}
+
+function logout() {
+  sessionStorage.removeItem('tn_auth');
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('pw-input').value = '';
+}
+
+// Auto-login if session exists
+if (sessionStorage.getItem('tn_auth') === '1') {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  document.getElementById('last-updated').textContent = 'Last updated: ' + new Date().toLocaleString();
+}
+</script>
+</body>
+</html>

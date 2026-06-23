@@ -287,26 +287,34 @@ footer a:hover{color:var(--text);}
 
 <!-- CATEGORY BANNER -->
 <style>
-.cat-banner{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 20px;}
-.cat-inner{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;}
-.cat-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border:1.5px solid var(--border);border-radius:99px;background:var(--surface);transition:color .22s,border-color .22s,background .22s,transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .22s;white-space:nowrap;}
-.cat-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-light);transform:translateY(-3px) scale(1.06);box-shadow:0 6px 18px rgba(79,99,210,0.18);}
-.cat-btn .ce{display:inline-block;transition:transform .35s cubic-bezier(.34,1.56,.64,1);}
-.cat-btn:hover .ce{transform:rotate(-12deg) scale(1.18);}
+.cat-banner{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 20px;position:sticky;top:57px;z-index:99;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.cat-inner{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;}
+.cat-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 15px;text-decoration:none;font-size:13px;font-weight:600;border:1.5px solid transparent;border-radius:99px;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .22s,filter .2s;white-space:nowrap;}
+.cat-btn:hover{transform:translateY(-3px) scale(1.07);box-shadow:0 6px 18px rgba(0,0,0,0.15);filter:brightness(1.08);}
+.cat-btn .ce{display:inline-block;transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+.cat-btn:hover .ce{transform:rotate(-12deg) scale(1.2);}
+/* Per-category soft colors */
+.cat-btn-pdf{background:#fff0f0;color:#d63031;border-color:#ffc9c9;}
+.cat-btn-ocr{background:#f0f7ff;color:#2d6cdf;border-color:#c0d8ff;}
+.cat-btn-edit{background:#f5f0ff;color:#7048e8;border-color:#d8ccff;}
+.cat-btn-gen{background:#fff8f0;color:#e07a20;border-color:#ffddb0;}
+.cat-btn-calc{background:#f0fff8;color:#0b9e5a;border-color:#b0f0d8;}
+.cat-btn-conv{background:#f0fbff;color:#0891b2;border-color:#b0e4f5;}
 @media(max-width:540px){
   .cat-inner{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding-bottom:2px;-webkit-overflow-scrolling:touch;}
   .cat-inner::-webkit-scrollbar{height:3px;}
   .cat-inner::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px;}
+  .cat-banner{top:53px;}
 }
 </style>
 <div class="cat-banner">
   <div class="cat-inner">
-    <a href="#pdf-converter" class="cat-btn"><span class="ce">📄</span> PDF Converter</a>
-    <a href="#ocr-tools"     class="cat-btn"><span class="ce">🔍</span> OCR Tools</a>
-    <a href="#edit-pdf"      class="cat-btn"><span class="ce">✂️</span> Edit PDF</a>
-    <a href="#generators"    class="cat-btn"><span class="ce">🔧</span> Generators</a>
-    <a href="#calculators"   class="cat-btn"><span class="ce">🧮</span> Calculators</a>
-    <a href="#converters"    class="cat-btn"><span class="ce">🔄</span> Converters</a>
+    <a href="#pdf-converter" class="cat-btn cat-btn-pdf"><span class="ce">📄</span> PDF Converter</a>
+    <a href="#ocr-tools"     class="cat-btn cat-btn-ocr"><span class="ce">🔍</span> OCR Tools</a>
+    <a href="#edit-pdf"      class="cat-btn cat-btn-edit"><span class="ce">✂️</span> Edit PDF</a>
+    <a href="#generators"    class="cat-btn cat-btn-gen"><span class="ce">🔧</span> Generators</a>
+    <a href="#calculators"   class="cat-btn cat-btn-calc"><span class="ce">🧮</span> Calculators</a>
+    <a href="#converters"    class="cat-btn cat-btn-conv"><span class="ce">🔄</span> Converters</a>
   </div>
 </div>
 
@@ -518,13 +526,6 @@ footer a:hover{color:var(--text);}
     </a>
   </div>
 
-  <!-- GAMES BANNER -->
-  <div style="background:linear-gradient(135deg,#0ba87e 0%,#089168 100%);border-radius:20px;padding:32px;margin-bottom:32px;text-align:center;color:#fff;">
-    <div style="font-size:40px;margin-bottom:10px;">🎮</div>
-    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;margin-bottom:8px;">Games & Quizzes</div>
-    <div style="opacity:.85;font-size:15px;margin-bottom:20px;">Play 20+ free games — Quiz, Memory, Puzzle, Word and more!</div>
-    <a href="/games.html" style="display:inline-block;background:#fff;color:#0ba87e;text-decoration:none;padding:12px 32px;border-radius:10px;font-weight:700;font-size:15px;">Play Now →</a>
-  </div>
 
   <!-- MID AD - AdSense auto -->
   <div style="margin:24px 0;"></div>

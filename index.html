@@ -278,13 +278,26 @@ footer a:hover{color:var(--text);}
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="logo">toolnova<span>.tools</span></a>
+  <a href="/" class="logo">toolnova<span>.tools</span></a>
   <div class="nav-links">
     <a href="#tools" class="nav-links-hide">Tools</a>
-    <a href="#recommended" class="nav-links-hide">Recommended</a>
+    <a href="https://games.toolnova.tools" class="nav-links-hide" style="color:var(--accent2);font-weight:600;">🎮 Games</a>
     <div id="google_translate_element"></div>
   </div>
 </nav>
+
+<!-- CATEGORY BANNER -->
+<div style="background:var(--surface);border-bottom:1px solid var(--border);padding:0;overflow-x:auto;white-space:nowrap;">
+  <div style="display:inline-flex;gap:0;min-width:100%;">
+    <a href="#pdf-converter" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">📄 PDF Converter</a>
+    <a href="#ocr-tools" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">🔍 OCR Tools</a>
+    <a href="#edit-pdf" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">✂️ Edit PDF</a>
+    <a href="#generators" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">🔧 Generators</a>
+    <a href="#calculators" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">🧮 Calculators</a>
+    <a href="#converters" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">🔄 Converters</a>
+    <a href="https://games.toolnova.tools" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--accent2);font-size:13px;font-weight:700;transition:all .2s;white-space:nowrap;background:var(--accent2-light);" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">🎮 Games</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -311,7 +324,7 @@ footer a:hover{color:var(--text);}
 <!-- TOOLS -->
 <div class="section" id="tools">
 
-  <div class="section-title">📄 PDF Converter <span class="section-badge">Most Popular</span></div>
+  <div class="section-title" id="pdf-converter">📄 PDF Converter <span class="section-badge">Most Popular</span></div>
   <div class="tool-grid">
     <a class="tool-card" href="/pdf-to-word.html">
       <span class="tool-icon">📄</span>
@@ -357,7 +370,7 @@ footer a:hover{color:var(--text);}
     </a>
   </div>
 
-  <div class="section-title">🔍 OCR Tools <span class="section-badge">New</span></div>
+  <div class="section-title" id="ocr-tools">🔍 OCR Tools <span class="section-badge">New</span></div>
   <div class="tool-grid">
     <a class="tool-card" href="/image-to-text.html">
       <span class="tool-icon">🔍</span>
@@ -372,7 +385,7 @@ footer a:hover{color:var(--text);}
     </a>
   </div>
 
-  <div class="section-title">✂️ Edit PDF</div>
+  <div class="section-title" id="edit-pdf">✂️ Edit PDF</div>
   <div class="tool-grid">
     <a class="tool-card" href="/merge-pdf.html">
       <span class="tool-icon">📎</span>
@@ -414,7 +427,7 @@ footer a:hover{color:var(--text);}
     </a>
   </div>
 
-  <div class="section-title">🔧 Generators <span class="section-badge">Popular</span></div>
+  <div class="section-title" id="generators">🔧 Generators <span class="section-badge">Popular</span></div>
   <div class="tool-grid">
     <a class="tool-card" href="/qr-code-generator.html">
       <span class="tool-icon">📱</span>
@@ -439,7 +452,7 @@ footer a:hover{color:var(--text);}
     </a>
   </div>
 
-  <div class="section-title">🧮 Calculators</div>
+  <div class="section-title" id="calculators">🧮 Calculators</div>
   <div class="tool-grid">
     <a class="tool-card" href="/age-calculator.html">
       <span class="tool-icon">🎂</span>
@@ -469,7 +482,7 @@ footer a:hover{color:var(--text);}
     </a>
   </div>
 
-  <div class="section-title">🔄 Converters</div>
+  <div class="section-title" id="converters">🔄 Converters</div>
   <div class="tool-grid">
     <a class="tool-card" href="/unit-converter.html">
       <span class="tool-icon">📏</span>
@@ -494,19 +507,12 @@ footer a:hover{color:var(--text);}
     </a>
   </div>
 
-  <div class="section-title">🎮 Games & Quizzes</div>
-  <div class="tool-grid">
-    <a class="tool-card" href="/general-knowledge-quiz.html">
-      <span class="tool-icon">🧠</span>
-      <div class="tool-name">General Knowledge Quiz</div>
-      <div class="tool-desc">10 questions from around the world. How many can you get?</div>
-      <span class="tool-badge">New</span>
-    </a>
-    <a class="tool-card" href="/memory-card-game.html">
-      <span class="tool-icon">🃏</span>
-      <div class="tool-name">Memory Card Game</div>
-      <div class="tool-desc">Find all matching pairs. Train your short-term memory.</div>
-    </a>
+  <!-- GAMES BANNER -->
+  <div style="background:linear-gradient(135deg,#0ba87e 0%,#089168 100%);border-radius:20px;padding:32px;margin-bottom:32px;text-align:center;color:#fff;">
+    <div style="font-size:40px;margin-bottom:10px;">🎮</div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;margin-bottom:8px;">Games & Quizzes</div>
+    <div style="opacity:.85;font-size:15px;margin-bottom:20px;">Play 20+ free games — Quiz, Memory, Puzzle, Word and more!</div>
+    <a href="/games.html" style="display:inline-block;background:#fff;color:#0ba87e;text-decoration:none;padding:12px 32px;border-radius:10px;font-weight:700;font-size:15px;">Play Now →</a>
   </div>
 
   <!-- MID AD - AdSense auto -->

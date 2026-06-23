@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Free Online Games — toolnova.tools Games</title>
+<meta name="description" content="Play 20+ free online games: Quiz, Memory, Word, Puzzle, Math and more. No signup, instant play!">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://toolnova.tools/games.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V90PDJDP1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3V90PDJDP1');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3359266836868361" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#0f1117;--surface:#1a1d2e;--surface2:#222538;--border:#2d3154;--accent:#4f63d2;--accent-light:rgba(79,99,210,0.2);--accent2:#0ba87e;--accent2-light:rgba(11,168,126,0.2);--text:#e8eaf6;--muted:#8b90b8;--radius:16px;}
+body{background:var(--bg);color:var(--text);font-family:Inter,sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;}
+.logo{font-family:"Plus Jakarta Sans",sans-serif;font-size:22px;font-weight:800;color:var(--accent);text-decoration:none;}
+.logo span{color:var(--accent2);}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.nav-right a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;}
+.nav-right a:hover{color:var(--text);}
+.hero{text-align:center;padding:56px 20px 40px;background:linear-gradient(135deg,#1a1d2e 0%,#0f1117 100%);}
+.hero h1{font-family:"Plus Jakarta Sans",sans-serif;font-size:clamp(32px,5vw,56px);font-weight:800;margin-bottom:12px;background:linear-gradient(135deg,#fff 0%,#7dffda 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{color:var(--muted);font-size:16px;max-width:500px;margin:0 auto 24px;}
+.hero-badges{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+.badge{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:99px;padding:6px 14px;font-size:13px;font-weight:600;color:#fff;}
+
+/* GAME GRID */
+.section{max-width:1200px;margin:0 auto;padding:40px 24px 80px;}
+.section-title{font-family:"Plus Jakarta Sans",sans-serif;font-size:18px;font-weight:800;margin-bottom:20px;color:var(--text);display:flex;align-items:center;gap:10px;}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:40px;}
+.game-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;text-align:center;transition:all .2s;user-select:none;}
+.game-card:hover{border-color:var(--accent2);transform:translateY(-3px);box-shadow:0 8px 24px rgba(11,168,126,0.15);}
+.game-icon{font-size:40px;margin-bottom:10px;}
+.game-name{font-weight:700;font-size:14px;color:var(--text);margin-bottom:4px;}
+.game-desc{font-size:12px;color:var(--muted);}
+.game-badge{display:inline-block;background:var(--accent2-light);color:var(--accent2);font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;margin-top:6px;}
+
+/* MODAL */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:1000;align-items:center;justify-content:center;padding:16px;}
+.overlay.active{display:flex;}
+.modal{background:var(--surface);border:1.5px solid var(--border);border-radius:20px;padding:32px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;position:relative;}
+.modal-close{position:absolute;top:16px;right:16px;background:var(--surface2);border:none;color:var(--muted);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;}
+.modal h2{font-family:"Plus Jakarta Sans",sans-serif;font-size:22px;font-weight:800;margin-bottom:4px;color:var(--text);}
+.modal-sub{color:var(--muted);font-size:13px;margin-bottom:24px;}
+.btn{width:100%;background:var(--accent);border:none;border-radius:10px;padding:12px;color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;margin-bottom:8px;}
+.btn:hover{background:#3d4fb8;}
+.btn-green{background:var(--accent2);}
+.btn-green:hover{background:#089168;}
+.btn-sec{background:var(--surface2);color:var(--text);border:1.5px solid var(--border);}
+.result-box{background:var(--accent2-light);border:1.5px solid rgba(11,168,126,.3);border-radius:12px;padding:20px;text-align:center;margin-top:12px;}
+.result-value{font-family:"Plus Jakarta Sans",sans-serif;font-size:36px;font-weight:800;color:var(--accent2);}
+.result-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+input[type=text],input[type=number]{width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-size:15px;font-family:inherit;outline:none;margin-bottom:12px;}
+input:focus{border-color:var(--accent2);}
+
+footer{background:var(--surface);border-top:1px solid var(--border);padding:32px;text-align:center;color:var(--muted);font-size:13px;}
+.footer-logo{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:18px;color:var(--accent);margin-bottom:10px;}
+footer a{color:var(--muted);text-decoration:none;margin:0 8px;}
+@media(max-width:640px){nav{padding:14px 16px;}.section{padding:24px 16px 60px;}.game-grid{grid-template-columns:1fr 1fr;}.modal{padding:24px 18px;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">toolnova<span>.tools</span></a>
+  <div class="nav-right">
+    <a href="/">🔧 Tools</a>
+    <a href="/" style="color:var(--accent2);font-weight:700;">🎮 Games</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>🎮 Free Online Games</h1>
+  <p>20+ brain games, quizzes and puzzles. No signup, play instantly!</p>
+  <div class="hero-badges">
+    <span class="badge">🧠 Brain Games</span>
+    <span class="badge">🎯 Quiz</span>
+    <span class="badge">🔤 Word Games</span>
+    <span class="badge">🔢 Math</span>
+    <span class="badge">🃏 Memory</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">🧠 Quiz Games</div>
+  <div class="game-grid">
+    <div class="game-card" onclick="openGame('quiz')"><div class="game-icon">🌍</div><div class="game-name">General Knowledge</div><div class="game-desc">10 questions from around the world</div><div class="game-badge">Popular</div></div>
+    <div class="game-card" onclick="openGame('mathquiz')"><div class="game-icon">🔢</div><div class="game-name">Math Quiz</div><div class="game-desc">Test your arithmetic skills</div></div>
+    <div class="game-card" onclick="openGame('flagquiz')"><div class="game-icon">🏳️</div><div class="game-name">Flag Quiz</div><div class="game-desc">Guess the country flag</div><div class="game-badge">New</div></div>
+    <div class="game-card" onclick="openGame('typingquiz')"><div class="game-icon">⌨️</div><div class="game-name">Typing Speed</div><div class="game-desc">How fast can you type?</div></div>
+  </div>
+
+  <div class="section-title">🔤 Word Games</div>
+  <div class="game-grid">
+    <div class="game-card" onclick="openGame('wordle')"><div class="game-icon">🟩</div><div class="game-name">Word Guess</div><div class="game-desc">Guess the 5-letter word in 6 tries</div><div class="game-badge">Hot</div></div>
+    <div class="game-card" onclick="openGame('hangman')"><div class="game-icon">🪢</div><div class="game-name">Hangman</div><div class="game-desc">Classic word guessing game</div></div>
+    <div class="game-card" onclick="openGame('scramble')"><div class="game-icon">🔀</div><div class="game-name">Word Scramble</div><div class="game-desc">Unscramble the jumbled word</div></div>
+    <div class="game-card" onclick="openGame('anagram')"><div class="game-icon">🔡</div><div class="game-name">Anagram</div><div class="game-desc">Rearrange letters to form a word</div></div>
+  </div>
+
+  <div class="section-title">🃏 Memory & Puzzle</div>
+  <div class="game-grid">
+    <div class="game-card" onclick="openGame('memory')"><div class="game-icon">🃏</div><div class="game-name">Memory Cards</div><div class="game-desc">Find all matching pairs</div><div class="game-badge">Popular</div></div>
+    <div class="game-card" onclick="openGame('simon')"><div class="game-icon">🔵</div><div class="game-name">Simon Says</div><div class="game-desc">Repeat the color sequence</div></div>
+    <div class="game-card" onclick="openGame('2048')"><div class="game-icon">🟨</div><div class="game-name">2048</div><div class="game-desc">Merge tiles to reach 2048</div><div class="game-badge">Hot</div></div>
+    <div class="game-card" onclick="openGame('numguess')"><div class="game-icon">🎯</div><div class="game-name">Number Guess</div><div class="game-desc">Guess the secret number 1-100</div></div>
+  </div>
+
+  <div class="section-title">🎲 Classic Games</div>
+  <div class="game-grid">
+    <div class="game-card" onclick="openGame('tictactoe')"><div class="game-icon">❌</div><div class="game-name">Tic Tac Toe</div><div class="game-desc">Play vs computer or a friend</div></div>
+    <div class="game-card" onclick="openGame('rps')"><div class="game-icon">✊</div><div class="game-name">Rock Paper Scissors</div><div class="game-desc">Play vs the computer</div></div>
+    <div class="game-card" onclick="openGame('dice')"><div class="game-icon">🎲</div><div class="game-name">Dice Roller</div><div class="game-desc">Roll up to 6 dice at once</div></div>
+    <div class="game-card" onclick="openGame('coinflip')"><div class="game-icon">🪙</div><div class="game-name">Coin Flip</div><div class="game-desc">Heads or tails — flip a coin</div></div>
+  </div>
+
+  <div class="section-title">🧩 Brain Teasers</div>
+  <div class="game-grid">
+    <div class="game-card" onclick="openGame('reaction')"><div class="game-icon">⚡</div><div class="game-name">Reaction Time</div><div class="game-desc">Test your reaction speed</div></div>
+    <div class="game-card" onclick="openGame('colortest')"><div class="game-icon">🎨</div><div class="game-name">Color Test</div><div class="game-desc">Match the color name to the color</div></div>
+    <div class="game-card" onclick="openGame('mathpractice')"><div class="game-icon">➕</div><div class="game-name">Math Practice</div><div class="game-desc">Solve math problems fast</div></div>
+    <div class="game-card" onclick="openGame('riddles')"><div class="game-icon">🤔</div><div class="game-name">Riddles</div><div class="game-desc">Can you solve these riddles?</div></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="closeIfOutside(event)">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<footer>
+  <div class="footer-logo">toolnova<span style="color:var(--accent2)">.tools</span></div>
+  <p><a href="/">🔧 All Tools</a><a href="/qr-code-generator.html">QR Code</a><a href="/pdf-to-jpg.html">PDF to JPG</a><a href="/age-calculator.html">Age Calculator</a></p>
+  <p style="margin-top:8px;">© 2026 toolnova.tools — Free games, no signup needed.</p>
+</footer>
+
+<script>
+// ── MODAL ENGINE ──────────────────────────────────────────────────────────────
+function openGame(key){
+  const g=GAMES[key];if(!g)return;
+  document.getElementById('modal-content').innerHTML=`<button class="modal-close" onclick="closeGame()">✕</button><h2>${g.title}</h2><div class="modal-sub">${g.sub}</div>${g.render()}`;
+  document.getElementById('overlay').classList.add('active');
+  document.body.style.overflow='hidden';
+  if(g.init)g.init();
+}
+function closeGame(){document.getElementById('overlay').classList.remove('active');document.body.style.overflow='';}
+function closeIfOutside(e){if(e.target===document.getElementById('overlay'))closeGame();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeGame();});
+
+// ── GAMES ─────────────────────────────────────────────────────────────────────
+const GAMES={
+
+  // GENERAL KNOWLEDGE QUIZ
+  quiz:{
+    title:'🌍 General Knowledge Quiz',sub:'10 questions — how many can you get right?',
+    render:()=>`<div id="qw"><button class="btn btn-green" onclick="startQuiz()">Start Quiz</button></div>`,
+    init(){}
+  },
+
+  // MATH QUIZ
+  mathquiz:{
+    title:'🔢 Math Quiz',sub:'10 math questions — solve as fast as you can!',
+    render:()=>`<div id="mq-wrap"><button class="btn btn-green" onclick="startMathQuiz()">Start</button></div>`,
+    init(){}
+  },
+
+  // FLAG QUIZ
+  flagquiz:{
+    title:'🏳️ Flag Quiz',sub:'Guess the country from its flag emoji!',
+    render:()=>`<div id="fq-wrap"><button class="btn btn-green" onclick="startFlagQuiz()">Start</button></div>`,
+    init(){}
+  },
+
+  // TYPING SPEED
+  typingquiz:{
+    title:'⌨️ Typing Speed Test',sub:'Type the sentence as fast as you can!',
+    render:()=>`
+      <div id="typing-sentence" style="background:var(--surface2);border-radius:10px;padding:16px;font-size:16px;line-height:1.6;margin-bottom:14px;color:var(--text);">Click Start to begin</div>
+      <input type="text" id="typing-input" placeholder="Type here..." disabled oninput="checkTyping()">
+      <div id="typing-stats" style="display:none">
+        <div class="result-box"><div class="result-label">WPM</div><div class="result-value" id="typing-wpm">0</div></div>
+      </div>
+      <button class="btn btn-green" onclick="startTyping()">Start</button>`,
+    init(){}
+  },
+
+  // WORD GUESS (Wordle-like)
+  wordle:{
+    title:'🟩 Word Guess',sub:'Guess the 5-letter word in 6 tries!',
+    render:()=>`
+      <div id="wordle-board" style="display:grid;gap:6px;margin-bottom:16px;"></div>
+      <div id="wordle-keyboard" style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:14px;justify-content:center;"></div>
+      <div id="wordle-msg" style="text-align:center;color:var(--accent2);font-weight:600;min-height:24px;"></div>
+      <button class="btn btn-sec" onclick="initWordle()" style="margin-top:10px;">New Game</button>`,
+    init(){initWordle();}
+  },
+
+  // HANGMAN
+  hangman:{
+    title:'🪢 Hangman',sub:'Guess the word before you run out of tries!',
+    render:()=>`<div id="hm-wrap"><button class="btn btn-green" onclick="startHangman()">Start Game</button></div>`,
+    init(){}
+  },
+
+  // WORD SCRAMBLE
+  scramble:{
+    title:'🔀 Word Scramble',sub:'Unscramble the jumbled word!',
+    render:()=>`<div id="sc-wrap"><button class="btn btn-green" onclick="startScramble()">Start Game</button></div>`,
+    init(){}
+  },
+
+  // ANAGRAM
+  anagram:{
+    title:'🔡 Anagram',sub:'Rearrange the letters to form a valid word!',
+    render:()=>`<div id="ag-wrap"><button class="btn btn-green" onclick="startAnagram()">Start Game</button></div>`,
+    init(){}
+  },
+
+  // MEMORY CARDS
+  memory:{
+    title:'🃏 Memory Cards',sub:'Find all matching pairs!',
+    render:()=>`<div style="text-align:right;margin-bottom:10px;font-size:13px;color:var(--muted);">Moves: <span id="mm" style="font-weight:700;color:var(--text)">0</span></div><div id="mem-wrap"><button class="btn btn-green" onclick="startMem()">Start Game</button></div>`,
+    init(){}
+  },
+
+  // SIMON SAYS
+  simon:{
+    title:'🔵 Simon Says',sub:'Repeat the color sequence — how far can you go?',
+    render:()=>`
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
+        <button id="s-red" onclick="simonPress('red')" style="height:80px;background:#e74c3c;border:none;border-radius:10px;cursor:pointer;opacity:.6;transition:.2s;font-size:20px;">🔴</button>
+        <button id="s-blue" onclick="simonPress('blue')" style="height:80px;background:#3498db;border:none;border-radius:10px;cursor:pointer;opacity:.6;transition:.2s;font-size:20px;">🔵</button>
+        <button id="s-green" onclick="simonPress('green')" style="height:80px;background:#2ecc71;border:none;border-radius:10px;cursor:pointer;opacity:.6;transition:.2s;font-size:20px;">🟢</button>
+        <button id="s-yellow" onclick="simonPress('yellow')" style="height:80px;background:#f39c12;border:none;border-radius:10px;cursor:pointer;opacity:.6;transition:.2s;font-size:20px;">🟡</button>
+      </div>
+      <div id="simon-msg" style="text-align:center;font-weight:600;margin-bottom:12px;color:var(--muted);">Press Start to play</div>
+      <div style="text-align:center;font-size:13px;color:var(--muted);margin-bottom:10px;">Level: <span id="simon-level" style="font-weight:700;color:var(--text)">0</span></div>
+      <button class="btn btn-green" onclick="startSimon()">Start</button>`,
+    init(){}
+  },
+
+  // 2048
+  '2048':{
+    title:'🟨 2048',sub:'Merge tiles with arrow keys or swipe to reach 2048!',
+    render:()=>`
+      <div style="display:flex;justify-content:space-between;margin-bottom:12px;"><div>Score: <span id="g-score" style="font-weight:700">0</span></div><button onclick="init2048()" style="background:var(--surface2);border:1.5px solid var(--border);border-radius:8px;padding:4px 12px;cursor:pointer;font-family:inherit;color:var(--text);font-size:13px;">New Game</button></div>
+      <div id="g2048" style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;background:var(--surface2);padding:8px;border-radius:12px;"></div>
+      <div style="text-align:center;margin-top:12px;font-size:12px;color:var(--muted);">Use Arrow Keys or WASD to move tiles</div>`,
+    init(){init2048();}
+  },
+
+  // NUMBER GUESS
+  numguess:{
+    title:'🎯 Number Guess',sub:'Guess the secret number between 1 and 100!',
+    render:()=>`
+      <div id="ng-wrap">
+        <div id="ng-hint" style="text-align:center;font-size:32px;margin-bottom:16px;">🤔</div>
+        <div id="ng-msg" style="text-align:center;color:var(--muted);margin-bottom:16px;">I'm thinking of a number 1-100...</div>
+        <input type="number" id="ng-input" placeholder="Your guess..." min="1" max="100">
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-green" onclick="guessNum()" style="flex:2">Guess!</button>
+          <button class="btn btn-sec" onclick="startNumGuess()" style="flex:1">New Game</button>
+        </div>
+        <div style="margin-top:12px;text-align:center;font-size:13px;color:var(--muted);">Attempts: <span id="ng-attempts" style="font-weight:700;color:var(--text)">0</span></div>
+      </div>`,
+    init(){startNumGuess();}
+  },
+
+  // TIC TAC TOE
+  tictactoe:{
+    title:'❌ Tic Tac Toe',sub:'Play against the computer. You are X!',
+    render:()=>`
+      <div id="ttt-status" style="text-align:center;font-weight:600;margin-bottom:14px;color:var(--accent2)">Your turn (X)</div>
+      <div id="ttt-board" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;"></div>
+      <button class="btn btn-sec" onclick="initTTT()">New Game</button>`,
+    init(){initTTT();}
+  },
+
+  // ROCK PAPER SCISSORS
+  rps:{
+    title:'✊ Rock Paper Scissors',sub:'Play best of 5 against the computer!',
+    render:()=>`
+      <div style="text-align:center;margin-bottom:20px;">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">Score: <span id="rps-ws" style="color:var(--accent2);font-weight:700">0</span> - <span id="rps-ls" style="color:#e74c3c;font-weight:700">0</span></div>
+        <div style="display:flex;gap:12px;justify-content:center;">
+          <button onclick="playRPS('rock')" style="font-size:36px;background:var(--surface2);border:1.5px solid var(--border);border-radius:12px;padding:16px 20px;cursor:pointer;">✊</button>
+          <button onclick="playRPS('paper')" style="font-size:36px;background:var(--surface2);border:1.5px solid var(--border);border-radius:12px;padding:16px 20px;cursor:pointer;">✋</button>
+          <button onclick="playRPS('scissors')" style="font-size:36px;background:var(--surface2);border:1.5px solid var(--border);border-radius:12px;padding:16px 20px;cursor:pointer;">✌️</button>
+        </div>
+      </div>
+      <div id="rps-result" style="text-align:center;min-height:60px;font-size:15px;"></div>`,
+    init(){}
+  },
+
+  // DICE ROLLER
+  dice:{
+    title:'🎲 Dice Roller',sub:'Roll up to 6 dice at once!',
+    render:()=>`
+      <div style="text-align:center;margin-bottom:20px;">
+        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:8px;">Number of dice:</label>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+          ${[1,2,3,4,5,6].map(n=>`<button onclick="rollDice(${n})" style="background:var(--surface2);border:1.5px solid var(--border);border-radius:8px;padding:8px 16px;cursor:pointer;font-size:14px;font-weight:600;color:var(--text);">${n}</button>`).join('')}
+        </div>
+      </div>
+      <div id="dice-result" style="text-align:center;font-size:48px;min-height:60px;margin-bottom:16px;"></div>
+      <div id="dice-total" style="text-align:center;color:var(--muted);font-size:14px;"></div>`,
+    init(){}
+  },
+
+  // COIN FLIP
+  coinflip:{
+    title:'🪙 Coin Flip',sub:'Heads or tails — flip a coin!',
+    render:()=>`
+      <div style="text-align:center;">
+        <div id="coin-result" style="font-size:80px;margin:20px 0;min-height:100px;display:flex;align-items:center;justify-content:center;">🪙</div>
+        <div id="coin-text" style="font-size:18px;font-weight:700;margin-bottom:20px;color:var(--muted);">Click to flip!</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:20px;">Heads: <span id="cf-h" style="font-weight:700;color:var(--text)">0</span> · Tails: <span id="cf-t" style="font-weight:700;color:var(--text)">0</span></div>
+        <button class="btn btn-green" onclick="flipCoin()">Flip Coin!</button>
+      </div>`,
+    init(){}
+  },
+
+  // REACTION TIME
+  reaction:{
+    title:'⚡ Reaction Time Test',sub:'Click as fast as you can when the screen turns green!',
+    render:()=>`
+      <div id="reaction-box" onclick="reactionClick()" style="height:160px;background:var(--surface2);border:1.5px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;font-weight:600;margin-bottom:14px;color:var(--muted);transition:all .1s;">
+        Click to Start
+      </div>
+      <div id="reaction-results" style="text-align:center;"></div>`,
+    init(){}
+  },
+
+  // COLOR TEST (Stroop)
+  colortest:{
+    title:'🎨 Color Test',sub:'Click the color that matches the TEXT (not the ink color)!',
+    render:()=>`
+      <div style="text-align:center;margin-bottom:16px;">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:8px;">Score: <span id="ct-score" style="font-weight:700;color:var(--text)">0</span> · Time: <span id="ct-time" style="font-weight:700;color:var(--text)">30</span>s</div>
+        <div id="ct-word" style="font-size:42px;font-weight:800;margin-bottom:20px;height:60px;display:flex;align-items:center;justify-content:center;"></div>
+        <div id="ct-buttons" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;"></div>
+      </div>
+      <button class="btn btn-green" onclick="startColorTest()" id="ct-start">Start</button>`,
+    init(){}
+  },
+
+  // MATH PRACTICE
+  mathpractice:{
+    title:'➕ Math Practice',sub:'Solve 10 math problems as fast as you can!',
+    render:()=>`<div id="mp-wrap"><button class="btn btn-green" onclick="startMathPractice()">Start</button></div>`,
+    init(){}
+  },
+
+  // RIDDLES
+  riddles:{
+    title:'🤔 Riddles',sub:'Can you solve these 10 riddles?',
+    render:()=>`<div id="rd-wrap"><button class="btn btn-green" onclick="startRiddles()">Start Riddles</button></div>`,
+    init(){}
+  },
+};
+
+// ── QUIZ ──────────────────────────────────────────────────────────────────────
+const QS=[
+  {q:"What is the capital of Australia?",a:"Canberra",o:["Sydney","Melbourne","Canberra","Brisbane"]},
+  {q:"How many sides does a hexagon have?",a:"6",o:["5","6","7","8"]},
+  {q:"Which planet is closest to the Sun?",a:"Mercury",o:["Venus","Earth","Mercury","Mars"]},
+  {q:"Who painted the Mona Lisa?",a:"Leonardo da Vinci",o:["Michelangelo","Raphael","Leonardo da Vinci","Picasso"]},
+  {q:"What is 15% of 200?",a:"30",o:["25","30","35","40"]},
+  {q:"What year did World War II end?",a:"1945",o:["1943","1944","1945","1946"]},
+  {q:"What is the chemical symbol for gold?",a:"Au",o:["Go","Gd","Au","Ag"]},
+  {q:"How many bones are in the adult human body?",a:"206",o:["186","196","206","216"]},
+  {q:"What is the largest ocean?",a:"Pacific",o:["Atlantic","Indian","Pacific","Arctic"]},
+  {q:"Which language has the most native speakers?",a:"Mandarin Chinese",o:["English","Spanish","Hindi","Mandarin Chinese"]},
+];
+let qi=0,qs=0;
+function startQuiz(){qi=0;qs=0;renderQ();}
+function renderQ(){
+  const w=document.getElementById('qw');if(!w)return;
+  if(qi>=QS.length){w.innerHTML=`<div class="result-box"><div class="result-label">Score</div><div class="result-value">${qs}/${QS.length}</div><div style="margin-top:8px;font-size:16px">${qs>=8?'🏆 Excellent!':qs>=5?'👍 Good!':'📚 Keep learning!'}</div><button class="btn btn-green" style="margin-top:14px" onclick="startQuiz()">Play Again</button></div>`;return;}
+  const q=QS[qi];
+  w.innerHTML=`<div style="font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:600">Q ${qi+1}/${QS.length} · Score: ${qs}</div><div style="font-size:16px;font-weight:700;margin-bottom:18px;color:var(--text)">${q.q}</div>${q.o.map(o=>`<button class="btn btn-sec" style="margin-bottom:8px;text-align:left" onclick="ansQ('${o.replace(/'/g,"\\'")}','${q.a.replace(/'/g,"\\'")}',this)">${o}</button>`).join('')}`;
+}
+function ansQ(ch,co,btn){
+  document.querySelectorAll('#qw button').forEach(b=>b.disabled=true);
+  if(ch===co){qs++;btn.style.background='rgba(11,168,126,.3)';btn.style.borderColor='var(--accent2)';}
+  else{btn.style.background='rgba(231,76,60,.2)';btn.style.borderColor='#e74c3c';}
+  setTimeout(()=>{qi++;renderQ();},900);
+}
+
+// ── MATH QUIZ ─────────────────────────────────────────────────────────────────
+let mqi=0,mqs=0,mqq=null;
+function startMathQuiz(){mqi=0;mqs=0;renderMQ();}
+function genMath(){const ops=['+','-','×'];const op=ops[Math.floor(Math.random()*3)];let a=Math.floor(Math.random()*20)+1,b=Math.floor(Math.random()*20)+1;let ans=op==='+'?a+b:op==='-'?a-b:a*b;return{q:`${a} ${op} ${b} = ?`,a:ans};}
+function renderMQ(){
+  const w=document.getElementById('mq-wrap');if(!w)return;
+  if(mqi>=10){w.innerHTML=`<div class="result-box"><div class="result-label">Score</div><div class="result-value">${mqs}/10</div><button class="btn btn-green" style="margin-top:14px" onclick="startMathQuiz()">Play Again</button></div>`;return;}
+  mqq=genMath();const opts=[mqq.a,mqq.a+(Math.floor(Math.random()*5)+1),mqq.a-(Math.floor(Math.random()*5)+1),mqq.a+(Math.floor(Math.random()*10)+5)].sort(()=>Math.random()-.5);
+  w.innerHTML=`<div style="font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:600">Q ${mqi+1}/10 · Score: ${mqs}</div><div style="font-size:22px;font-weight:800;text-align:center;margin-bottom:20px;color:var(--text)">${mqq.q}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${opts.map(o=>`<button class="btn btn-sec" onclick="ansMQ(${o},this)">${o}</button>`).join('')}</div>`;
+}
+function ansMQ(ch,btn){
+  document.querySelectorAll('#mq-wrap button').forEach(b=>b.disabled=true);
+  if(ch===mqq.a){mqs++;btn.style.background='rgba(11,168,126,.3)';btn.style.borderColor='var(--accent2)';}
+  else{btn.style.background='rgba(231,76,60,.2)';}
+  setTimeout(()=>{mqi++;renderMQ();},800);
+}
+
+// ── FLAG QUIZ ─────────────────────────────────────────────────────────────────
+const FLAGS=[{f:'🇺🇸',c:'United States'},{f:'🇬🇧',c:'United Kingdom'},{f:'🇩🇪',c:'Germany'},{f:'🇫🇷',c:'France'},{f:'🇯🇵',c:'Japan'},{f:'🇨🇳',c:'China'},{f:'🇧🇷',c:'Brazil'},{f:'🇮🇳',c:'India'},{f:'🇰🇷',c:'South Korea'},{f:'🇮🇹',c:'Italy'},{f:'🇨🇦',c:'Canada'},{f:'🇦🇺',c:'Australia'},{f:'🇲🇽',c:'Mexico'},{f:'🇪🇸',c:'Spain'},{f:'🇷🇺',c:'Russia'},{f:'🇸🇦',c:'Saudi Arabia'},{f:'🇿🇦',c:'South Africa'},{f:'🇳🇬',c:'Nigeria'},{f:'🇦🇷',c:'Argentina'},{f:'🇹🇷',c:'Turkey'}];
+let fqi=0,fqs=0;
+function startFlagQuiz(){fqi=0;fqs=0;renderFQ();}
+function renderFQ(){
+  const w=document.getElementById('fq-wrap');if(!w)return;
+  if(fqi>=10){w.innerHTML=`<div class="result-box"><div class="result-label">Score</div><div class="result-value">${fqs}/10</div><button class="btn btn-green" style="margin-top:14px" onclick="startFlagQuiz()">Play Again</button></div>`;return;}
+  const correct=FLAGS[Math.floor(Math.random()*FLAGS.length)];
+  const others=FLAGS.filter(f=>f.c!==correct.c).sort(()=>Math.random()-.5).slice(0,3);
+  const opts=[correct,...others].sort(()=>Math.random()-.5);
+  w.innerHTML=`<div style="font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:600">Q ${fqi+1}/10 · Score: ${fqs}</div><div style="font-size:72px;text-align:center;margin-bottom:20px">${correct.f}</div>${opts.map(o=>`<button class="btn btn-sec" style="margin-bottom:8px" onclick="ansFQ('${o.c}','${correct.c}',this)">${o.c}</button>`).join('')}`;
+}
+function ansFQ(ch,co,btn){
+  document.querySelectorAll('#fq-wrap button').forEach(b=>b.disabled=true);
+  if(ch===co){fqs++;btn.style.background='rgba(11,168,126,.3)';}else{btn.style.background='rgba(231,76,60,.2)';}
+  setTimeout(()=>{fqi++;renderFQ();},900);
+}
+
+// ── TYPING TEST ───────────────────────────────────────────────────────────────
+const SENTENCES=['The quick brown fox jumps over the lazy dog','Pack my box with five dozen liquor jugs','How vexingly quick daft zebras jump','The five boxing wizards jump quickly','Sphinx of black quartz, judge my vow'];
+let typingStart=null,typingTarget='';
+function startTyping(){
+  typingTarget=SENTENCES[Math.floor(Math.random()*SENTENCES.length)];
+  document.getElementById('typing-sentence').textContent=typingTarget;
+  const inp=document.getElementById('typing-input');
+  inp.disabled=false;inp.value='';inp.focus();
+  typingStart=Date.now();
+  document.getElementById('typing-stats').style.display='none';
+}
+function checkTyping(){
+  const val=document.getElementById('typing-input').value;
+  if(val===typingTarget){
+    const secs=(Date.now()-typingStart)/1000;
+    const wpm=Math.round((typingTarget.split(' ').length/secs)*60);
+    document.getElementById('typing-wpm').textContent=wpm;
+    document.getElementById('typing-stats').style.display='block';
+    document.getElementById('typing-input').disabled=true;
+  }
+}
+
+// ── WORDLE ────────────────────────────────────────────────────────────────────
+const WORDS=['apple','beach','brave','cloud','dance','eagle','flame','grace','heart','judge','kneel','lemon','magic','night','ocean','piano','queen','river','stone','tiger','ultra','vivid','water','xenon','yacht','zebra','blend','crisp','drink','early','frost','giant','happy','input','joker','light','month','novel','outer','plant','quick','radio','smart','trust','unite','voice','world','extra','young','zones'];
+let wSecret='',wGuesses=[],wCurrent='',wDone=false;
+function initWordle(){
+  wSecret=WORDS[Math.floor(Math.random()*WORDS.length)];
+  wGuesses=[];wCurrent='';wDone=false;
+  renderWordle();document.addEventListener('keydown',handleWordleKey);
+}
+function renderWordle(){
+  const board=document.getElementById('wordle-board');if(!board)return;
+  const rows=[];
+  for(let r=0;r<6;r++){
+    const guess=r<wGuesses.length?wGuesses[r]:(r===wGuesses.length?wCurrent:'');
+    let cells='';
+    for(let c=0;c<5;c++){
+      const ch=guess[c]||'';
+      let bg='var(--surface2)';let color='var(--text)';let border='var(--border)';
+      if(r<wGuesses.length&&ch){
+        if(wSecret[c]===ch){bg='#2ecc71';color='#fff';border='#2ecc71';}
+        else if(wSecret.includes(ch)){bg='#f39c12';color='#fff';border='#f39c12';}
+        else{bg='#555';color='#fff';border='#555';}
+      }
+      cells+=`<div style="width:48px;height:48px;border:2px solid ${border};border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;background:${bg};color:${color};text-transform:uppercase">${ch}</div>`;
+    }
+    rows.push(`<div style="display:flex;gap:6px;justify-content:center">${cells}</div>`);
+  }
+  board.innerHTML=rows.join('');
+}
+function handleWordleKey(e){
+  if(!document.getElementById('wordle-board'))return;
+  if(wDone)return;
+  if(e.key==='Enter'){submitWordle();}
+  else if(e.key==='Backspace'){wCurrent=wCurrent.slice(0,-1);renderWordle();}
+  else if(/^[a-zA-Z]$/.test(e.key)&&wCurrent.length<5){wCurrent+=e.key.toLowerCase();renderWordle();}
+}
+function submitWordle(){
+  if(wCurrent.length!==5){document.getElementById('wordle-msg').textContent='Type a 5-letter word!';return;}
+  wGuesses.push(wCurrent);
+  const won=wCurrent===wSecret;
+  wCurrent='';renderWordle();
+  if(won){document.getElementById('wordle-msg').textContent='🎉 Amazing! You got it!';wDone=true;}
+  else if(wGuesses.length>=6){document.getElementById('wordle-msg').textContent=`❌ The word was: ${wSecret.toUpperCase()}`;wDone=true;}
+  else document.getElementById('wordle-msg').textContent='';
+}
+
+// ── HANGMAN ───────────────────────────────────────────────────────────────────
+const HM_WORDS=['javascript','programming','elephant','umbrella','chocolate','adventure','keyboard','sunshine','basketball','telescope','butterfly','algorithm','carnival','dinosaur','education'];
+let hmWord='',hmGuessed=[],hmWrong=0;
+function startHangman(){
+  hmWord=HM_WORDS[Math.floor(Math.random()*HM_WORDS.length)];
+  hmGuessed=[];hmWrong=0;renderHM();
+}
+function renderHM(){
+  const w=document.getElementById('hm-wrap');if(!w)return;
+  const display=hmWord.split('').map(c=>hmGuessed.includes(c)?c:'_').join(' ');
+  const alphabet='abcdefghijklmnopqrstuvwxyz';
+  const won=hmWord.split('').every(c=>hmGuessed.includes(c));
+  const lost=hmWrong>=6;
+  if(won||lost){
+    w.innerHTML=`<div class="result-box"><div class="result-value">${won?'🎉':'💀'}</div><div style="margin-top:8px;font-size:16px;font-weight:600">${won?'You won!':'Game over!'}</div><div style="margin-top:4px;color:var(--muted)">Word: <strong style="color:var(--text)">${hmWord}</strong></div><button class="btn btn-green" style="margin-top:14px" onclick="startHangman()">New Game</button></div>`;
+    return;
+  }
+  w.innerHTML=`<div style="font-size:28px;text-align:center;letter-spacing:8px;margin-bottom:16px;font-weight:800;color:var(--text)">${display}</div><div style="text-align:center;margin-bottom:6px;font-size:13px;color:var(--muted)">Wrong: ${hmWrong}/6 ${'💀'.repeat(hmWrong)}</div><div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center">${alphabet.split('').map(c=>`<button onclick="guessHM('${c}')" ${hmGuessed.includes(c)?'disabled':''} style="width:32px;height:32px;border-radius:6px;border:1.5px solid ${hmGuessed.includes(c)?(hmWord.includes(c)?'var(--accent2)':'#e74c3c'):'var(--border)'};background:var(--surface2);cursor:pointer;font-size:13px;font-weight:600;color:var(--text)">${c}</button>`).join('')}</div>`;
+}
+function guessHM(c){if(!hmWord.includes(c))hmWrong++;hmGuessed.push(c);renderHM();}
+
+// ── WORD SCRAMBLE ─────────────────────────────────────────────────────────────
+const SC_WORDS=['planet','rocket','garden','castle','bridge','desert','forest','island','jungle','mirror','museum','orange','pillow','rabbit','silver','stream','temple','turtle','valley','winter'];
+let scWord='',scScore=0;
+function startScramble(){scScore=0;renderSC();}
+function renderSC(){
+  const w=document.getElementById('sc-wrap');if(!w)return;
+  scWord=SC_WORDS[Math.floor(Math.random()*SC_WORDS.length)];
+  const scrambled=scWord.split('').sort(()=>Math.random()-.5).join('');
+  w.innerHTML=`<div style="text-align:center;margin-bottom:16px;font-size:13px;color:var(--muted)">Score: <span style="font-weight:700;color:var(--text)">${scScore}</span></div><div style="font-size:32px;font-weight:800;text-align:center;letter-spacing:6px;margin-bottom:20px;color:var(--accent2)">${scrambled.toUpperCase()}</div><input type="text" id="sc-input" placeholder="Your answer..." style="margin-bottom:10px"><div style="display:flex;gap:8px"><button class="btn btn-green" onclick="checkSC()">Submit</button><button class="btn btn-sec" onclick="renderSC()">Skip</button></div>`;
+  document.getElementById('sc-input').addEventListener('keydown',e=>{if(e.key==='Enter')checkSC();});
+}
+function checkSC(){
+  const val=document.getElementById('sc-input').value.trim().toLowerCase();
+  if(val===scWord){scScore++;document.getElementById('sc-wrap').innerHTML=`<div class="result-box" style="margin-bottom:14px"><div class="result-value">✅</div><div>Correct! The word was <strong>${scWord}</strong></div></div><button class="btn btn-green" onclick="renderSC()">Next Word</button>`;}
+  else{document.getElementById('sc-wrap').innerHTML=`<div class="result-box" style="margin-bottom:14px;border-color:#e74c3c;background:rgba(231,76,60,.1)"><div style="font-size:24px">❌</div><div>The word was <strong>${scWord}</strong></div></div><button class="btn btn-green" onclick="renderSC()">Try Another</button>`;}
+}
+
+// ── ANAGRAM ───────────────────────────────────────────────────────────────────
+const ANAGRAMS=[{w:'listen',a:'silent'},{w:'earth',a:'heart'},{w:'night',a:'thing'},{w:'post',a:'stop'},{w:'race',a:'care'},{w:'tea',a:'eat'},{w:'state',a:'taste'},{w:'below',a:'elbow'},{w:'cinema',a:'iceman'},{w:'dusty',a:'study'}];
+let agIdx=0,agScore=0;
+function startAnagram(){agIdx=0;agScore=0;renderAG();}
+function renderAG(){
+  const w=document.getElementById('ag-wrap');if(!w)return;
+  if(agIdx>=ANAGRAMS.length){w.innerHTML=`<div class="result-box"><div class="result-label">Score</div><div class="result-value">${agScore}/${ANAGRAMS.length}</div><button class="btn btn-green" style="margin-top:14px" onclick="startAnagram()">Play Again</button></div>`;return;}
+  const pair=ANAGRAMS[agIdx];
+  w.innerHTML=`<div style="text-align:center;margin-bottom:14px;font-size:13px;color:var(--muted)">Q ${agIdx+1}/${ANAGRAMS.length} · Score: ${agScore}</div><div style="text-align:center;margin-bottom:6px;font-size:14px;color:var(--muted)">Find a word using all these letters:</div><div style="font-size:36px;font-weight:800;text-align:center;letter-spacing:6px;margin-bottom:20px;color:var(--accent2)">${pair.w.toUpperCase()}</div><input type="text" id="ag-input" placeholder="Your anagram..." style="margin-bottom:10px"><div style="display:flex;gap:8px"><button class="btn btn-green" onclick="checkAG()">Submit</button><button class="btn btn-sec" onclick="skipAG()">Skip</button></div>`;
+  document.getElementById('ag-input').addEventListener('keydown',e=>{if(e.key==='Enter')checkAG();});
+}
+function checkAG(){
+  const val=document.getElementById('ag-input').value.trim().toLowerCase();
+  const pair=ANAGRAMS[agIdx];
+  if(val===pair.a||val===pair.w){agScore++;}
+  agIdx++;
+  const correct=val===pair.a||val===pair.w;
+  document.getElementById('ag-wrap').innerHTML=`<div class="result-box" style="margin-bottom:14px;${!correct?'border-color:#e74c3c;background:rgba(231,76,60,.1)':''}"><div style="font-size:24px">${correct?'✅':'❌'}</div><div>${correct?'Correct!':'The answer was'} <strong>${pair.a}</strong></div></div><button class="btn btn-green" onclick="renderAG()">${agIdx<ANAGRAMS.length?'Next':'See Score'}</button>`;
+}
+function skipAG(){agIdx++;renderAG();}
+
+// ── MEMORY CARDS ──────────────────────────────────────────────────────────────
+const EM2=['🐶','🐱','🦊','🐻','🐼','🦁','🐯','🦄'];
+let mc2=[],mf2=[],ms2=0,ml2=false,mm2=0,sel2=[];
+function startMem(){
+  mc2=[...EM2,...EM2].sort(()=>Math.random()-.5);mf2=new Array(16).fill(false);ms2=0;ml2=false;mm2=0;sel2=[];
+  document.getElementById('mm').textContent=0;renderMem2();
+}
+function renderMem2(){
+  const w=document.getElementById('mem-wrap');if(!w)return;
+  w.innerHTML=`<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">${mc2.map((e,i)=>`<button onclick="flipMem2(${i})" id="mc2-${i}" style="aspect-ratio:1;font-size:24px;background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s">${mf2[i]?e:'?'}</button>`).join('')}</div>`;
+}
+function flipMem2(i){
+  if(ml2||mf2[i]||sel2.includes(i))return;
+  mf2[i]=true;document.getElementById('mc2-'+i).textContent=mc2[i];document.getElementById('mc2-'+i).style.background='var(--accent-light)';sel2.push(i);
+  if(sel2.length===2){ml2=true;mm2++;document.getElementById('mm').textContent=mm2;
+    const[a,b]=sel2;
+    if(mc2[a]===mc2[b]){setTimeout(()=>{[a,b].forEach(j=>{const el=document.getElementById('mc2-'+j);if(el){el.style.background='var(--accent2-light)';el.style.borderColor='var(--accent2)';}});ms2++;sel2=[];ml2=false;if(ms2===8)setTimeout(()=>{document.getElementById('mem-wrap').innerHTML=`<div class="result-box"><div class="result-value">🎉</div><div style="margin-top:8px">Finished in <strong>${mm2} moves</strong></div><button class="btn btn-green" style="margin-top:14px" onclick="startMem()">Play Again</button></div>`;},300);},200);}
+    else{setTimeout(()=>{[a,b].forEach(j=>{mf2[j]=false;const el=document.getElementById('mc2-'+j);if(el){el.textContent='?';el.style.background='var(--surface2)';el.style.borderColor='var(--border)';}});sel2=[];ml2=false;},800);}
+  }
+}
+
+// ── SIMON SAYS ────────────────────────────────────────────────────────────────
+let simonSeq=[],simonPlayer=[],simonLevel=0,simonPlaying=false;
+const simonColors=['red','blue','green','yellow'];
+function startSimon(){simonSeq=[];simonLevel=0;addSimon();}
+function addSimon(){simonSeq.push(simonColors[Math.floor(Math.random()*4)]);simonLevel++;document.getElementById('simon-level').textContent=simonLevel;document.getElementById('simon-msg').textContent='Watch...';simonPlayer=[];playSimonSeq(0);}
+function playSimonSeq(i){if(i>=simonSeq.length){setTimeout(()=>{document.getElementById('simon-msg').textContent='Your turn!';simonPlaying=true;},500);return;}
+  const c=simonSeq[i];const el=document.getElementById('s-'+c);if(!el)return;
+  setTimeout(()=>{el.style.opacity='1';el.style.transform='scale(1.05)';setTimeout(()=>{el.style.opacity='.6';el.style.transform='scale(1)';playSimonSeq(i+1);},500);},600*i);}
+function simonPress(c){if(!simonPlaying)return;simonPlayer.push(c);const el=document.getElementById('s-'+c);if(el){el.style.opacity='1';setTimeout(()=>el.style.opacity='.6',200);}
+  const idx=simonPlayer.length-1;
+  if(simonPlayer[idx]!==simonSeq[idx]){document.getElementById('simon-msg').textContent=`❌ Game over! Level: ${simonLevel}`;simonPlaying=false;return;}
+  if(simonPlayer.length===simonSeq.length){simonPlaying=false;document.getElementById('simon-msg').textContent='✅ Correct!';setTimeout(addSimon,800);}}
+
+// ── 2048 ──────────────────────────────────────────────────────────────────────
+let g2=[],g2score=0;
+function init2048(){g2=Array(4).fill(0).map(()=>Array(4).fill(0));g2score=0;addTile();addTile();renderG2();}
+function addTile(){const empty=[];for(let r=0;r<4;r++)for(let c=0;c<4;c++)if(!g2[r][c])empty.push([r,c]);if(!empty.length)return;const[r,c]=empty[Math.floor(Math.random()*empty.length)];g2[r][c]=Math.random()<.9?2:4;}
+const G2COLORS={0:'#3a3d50',2:'#4f63d2',4:'#3d4fb8',8:'#2ecc71',16:'#27ae60',32:'#e67e22',64:'#e74c3c',128:'#f39c12',256:'#9b59b6',512:'#1abc9c',1024:'#e91e63',2048:'#ff9800'};
+function renderG2(){
+  const b=document.getElementById('g2048');if(!b)return;
+  b.innerHTML=g2.flat().map(v=>`<div style="aspect-ratio:1;background:${G2COLORS[v]||'#6c3483'};border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:${v>=1000?'16px':v>=100?'18px':'22px'};color:#fff">${v||''}</div>`).join('');
+  document.getElementById('g-score').textContent=g2score;
+}
+function move2048(dir){
+  let moved=false;
+  const rotate=(m)=>m[0].map((_,c)=>m.map(r=>r[c]).reverse());
+  let b=g2.map(r=>[...r]);
+  for(let t=0;t<(dir==='right'?2:dir==='down'?1:dir==='up'?3:0);t++)b=rotate(b);
+  for(let r=0;r<4;r++){let row=b[r].filter(x=>x);for(let i=0;i<row.length-1;i++){if(row[i]===row[i+1]){row[i]*=2;g2score+=row[i];row.splice(i+1,1);moved=true;}}while(row.length<4)row.push(0);if(b[r].join()!==row.join())moved=true;b[r]=row;}
+  for(let t=0;t<(dir==='right'?2:dir==='down'?3:dir==='up'?1:0);t++)b=rotate(b);
+  if(moved){g2=b;addTile();renderG2();}
+}
+document.addEventListener('keydown',e=>{if(!document.getElementById('g2048'))return;const map={'ArrowLeft':'left','ArrowRight':'right','ArrowUp':'up','ArrowDown':'down','a':'left','d':'right','w':'up','s':'down'};if(map[e.key]){e.preventDefault();move2048(map[e.key]);}});
+
+// ── NUMBER GUESS ──────────────────────────────────────────────────────────────
+let ngSecret=0,ngAttempts=0;
+function startNumGuess(){ngSecret=Math.floor(Math.random()*100)+1;ngAttempts=0;document.getElementById('ng-attempts').textContent=0;document.getElementById('ng-hint').textContent='🤔';document.getElementById('ng-msg').textContent="I'm thinking of a number 1-100...";document.getElementById('ng-input').value='';}
+function guessNum(){
+  const v=+document.getElementById('ng-input').value;if(!v||v<1||v>100){alert('Enter a number 1-100');return;}
+  ngAttempts++;document.getElementById('ng-attempts').textContent=ngAttempts;
+  if(v===ngSecret){document.getElementById('ng-hint').textContent='🎉';document.getElementById('ng-msg').innerHTML=`Correct! It was <strong>${ngSecret}</strong> in ${ngAttempts} tries!`;}
+  else if(v<ngSecret){document.getElementById('ng-hint').textContent='📈';document.getElementById('ng-msg').textContent='Too low! Try higher.';}
+  else{document.getElementById('ng-hint').textContent='📉';document.getElementById('ng-msg').textContent='Too high! Try lower.';}
+  document.getElementById('ng-input').value='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&document.getElementById('ng-input')===document.activeElement)guessNum();});
+
+// ── TIC TAC TOE ───────────────────────────────────────────────────────────────
+let tttBoard=[],tttDone=false;
+function initTTT(){tttBoard=Array(9).fill('');tttDone=false;renderTTT();}
+function renderTTT(){
+  const b=document.getElementById('ttt-board');if(!b)return;
+  b.innerHTML=tttBoard.map((c,i)=>`<button onclick="tttMove(${i})" style="aspect-ratio:1;font-size:32px;background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;cursor:pointer;color:${c==='X'?'var(--accent2)':'#e74c3c'}">${c}</button>`).join('');
+}
+function tttMove(i){
+  if(tttBoard[i]||tttDone)return;
+  tttBoard[i]='X';const w=tttWinner();
+  if(w){document.getElementById('ttt-status').textContent=`🎉 ${w} wins!`;tttDone=true;return;}
+  if(!tttBoard.includes('')){document.getElementById('ttt-status').textContent='🤝 Draw!';tttDone=true;return;}
+  // AI move
+  const empty=tttBoard.map((c,i)=>c?-1:i).filter(i=>i>=0);
+  const ai=empty[Math.floor(Math.random()*empty.length)];
+  tttBoard[ai]='O';const w2=tttWinner();
+  if(w2){document.getElementById('ttt-status').textContent=`😞 ${w2} wins!`;tttDone=true;}
+  else if(!tttBoard.includes('')){document.getElementById('ttt-status').textContent='🤝 Draw!';tttDone=true;}
+  else document.getElementById('ttt-status').textContent='Your turn (X)';
+  renderTTT();
+}
+function tttWinner(){const lines=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];for(const[a,b,c]of lines){if(tttBoard[a]&&tttBoard[a]===tttBoard[b]&&tttBoard[a]===tttBoard[c])return tttBoard[a];}return null;}
+
+// ── ROCK PAPER SCISSORS ───────────────────────────────────────────────────────
+let rpsW=0,rpsL=0;
+function playRPS(p){
+  const choices=['rock','paper','scissors'];const ai=choices[Math.floor(Math.random()*3)];
+  const emojis={rock:'✊',paper:'✋',scissors:'✌️'};
+  const wins={rock:'scissors',paper:'rock',scissors:'paper'};
+  let result;
+  if(p===ai)result='🤝 Draw!';
+  else if(wins[p]===ai){rpsW++;result='🎉 You win!';}
+  else{rpsL++;result='😞 You lose!';}
+  document.getElementById('rps-ws').textContent=rpsW;document.getElementById('rps-ls').textContent=rpsL;
+  document.getElementById('rps-result').innerHTML=`<div style="font-size:40px;margin-bottom:8px">${emojis[p]} vs ${emojis[ai]}</div><div style="font-size:18px;font-weight:700">${result}</div>`;
+}
+
+// ── DICE ROLLER ───────────────────────────────────────────────────────────────
+const DICE_FACES=['⚀','⚁','⚂','⚃','⚄','⚅'];
+function rollDice(n){
+  const results=Array(n).fill(0).map(()=>Math.floor(Math.random()*6));
+  document.getElementById('dice-result').textContent=results.map(r=>DICE_FACES[r]).join(' ');
+  document.getElementById('dice-total').textContent=`Total: ${results.reduce((s,r)=>s+r+1,0)}`;
+}
+
+// ── COIN FLIP ─────────────────────────────────────────────────────────────────
+let cfH=0,cfT=0;
+function flipCoin(){
+  const result=Math.random()<.5;
+  document.getElementById('coin-result').style.animation='none';
+  setTimeout(()=>{document.getElementById('coin-result').textContent=result?'🪙':'🟡';document.getElementById('coin-text').textContent=result?'HEADS!':'TAILS!';document.getElementById('coin-text').style.color=result?'var(--accent2)':'#f39c12';if(result)cfH++;else cfT++;document.getElementById('cf-h').textContent=cfH;document.getElementById('cf-t').textContent=cfT;},100);
+}
+
+// ── REACTION TIME ─────────────────────────────────────────────────────────────
+let reactionState='idle',reactionStart=0,reactionTimeout=null;
+let reactionResults=[];
+function reactionClick(){
+  const box=document.getElementById('reaction-box');if(!box)return;
+  if(reactionState==='idle'){
+    box.style.background='#e74c3c';box.style.color='#fff';box.textContent='Wait for green...';reactionState='waiting';
+    reactionTimeout=setTimeout(()=>{box.style.background='#2ecc71';box.textContent='CLICK NOW!';reactionState='ready';reactionStart=Date.now();},1000+Math.random()*3000);
+  }else if(reactionState==='waiting'){
+    clearTimeout(reactionTimeout);box.style.background='var(--surface2)';box.style.color='var(--muted)';box.textContent='Too early! Try again.';reactionState='idle';
+  }else if(reactionState==='ready'){
+    const ms=Date.now()-reactionStart;reactionResults.push(ms);reactionState='idle';
+    box.style.background='var(--accent-light)';box.style.color='var(--accent)';box.textContent=`${ms}ms — Click to try again`;
+    const avg=Math.round(reactionResults.reduce((a,b)=>a+b,0)/reactionResults.length);
+    document.getElementById('reaction-results').innerHTML=`<div style="font-size:13px;color:var(--muted)">Best: <strong>${Math.min(...reactionResults)}ms</strong> · Avg: <strong>${avg}ms</strong> · Tries: ${reactionResults.length}</div>`;
+  }
+}
+
+// ── COLOR TEST ────────────────────────────────────────────────────────────────
+const COLORS=[{name:'RED',hex:'#e74c3c'},{name:'BLUE',hex:'#3498db'},{name:'GREEN',hex:'#2ecc71'},{name:'YELLOW',hex:'#f1c40f'},{name:'PURPLE',hex:'#9b59b6'},{name:'ORANGE',hex:'#e67e22'}];
+let ctScore=0,ctTimer=null,ctTime=30;
+function startColorTest(){
+  ctScore=0;ctTime=30;document.getElementById('ct-score').textContent=0;
+  document.getElementById('ct-start').style.display='none';
+  ctTimer=setInterval(()=>{ctTime--;document.getElementById('ct-time').textContent=ctTime;if(ctTime<=0){clearInterval(ctTimer);document.getElementById('ct-word').textContent='';document.getElementById('ct-buttons').innerHTML=`<div class="result-box"><div class="result-label">Score</div><div class="result-value">${ctScore}</div></div>`;document.getElementById('ct-start').style.display='block';document.getElementById('ct-start').textContent='Play Again';}},1000);
+  nextColor();
+}
+function nextColor(){
+  const word=COLORS[Math.floor(Math.random()*COLORS.length)];
+  const ink=COLORS[Math.floor(Math.random()*COLORS.length)];
+  document.getElementById('ct-word').innerHTML=`<span style="color:${ink.hex}">${word.name}</span>`;
+  const opts=[word,...COLORS.filter(c=>c.name!==word.name).sort(()=>Math.random()-.5).slice(0,3)].sort(()=>Math.random()-.5);
+  document.getElementById('ct-buttons').innerHTML=opts.map(c=>`<button onclick="ansColor('${c.name}','${word.name}')" style="padding:10px 16px;border-radius:8px;border:1.5px solid var(--border);background:${c.hex};color:#fff;font-weight:700;cursor:pointer;font-size:14px">${c.name}</button>`).join('');
+}
+function ansColor(ch,co){if(ctTime<=0)return;if(ch===co)ctScore++;document.getElementById('ct-score').textContent=ctScore;nextColor();}
+
+// ── MATH PRACTICE ─────────────────────────────────────────────────────────────
+let mpIdx=0,mpScore=0,mpQ=null;
+function startMathPractice(){mpIdx=0;mpScore=0;renderMP();}
+function renderMP(){
+  const w=document.getElementById('mp-wrap');if(!w)return;
+  if(mpIdx>=10){w.innerHTML=`<div class="result-box"><div class="result-label">Score</div><div class="result-value">${mpScore}/10</div><button class="btn btn-green" style="margin-top:14px" onclick="startMathPractice()">Play Again</button></div>`;return;}
+  const ops=[{s:'+',fn:(a,b)=>a+b},{s:'-',fn:(a,b)=>a-b},{s:'×',fn:(a,b)=>a*b},{s:'÷',fn:(a,b)=>a}];
+  const op=ops[Math.floor(Math.random()*3)];
+  let a=Math.floor(Math.random()*12)+1,b=Math.floor(Math.random()*12)+1;
+  mpQ={a:op.fn(a,b),q:`${a} ${op.s} ${b}`};
+  w.innerHTML=`<div style="text-align:center;margin-bottom:10px;font-size:13px;color:var(--muted)">Q ${mpIdx+1}/10 · Score: ${mpScore}</div><div style="font-size:28px;font-weight:800;text-align:center;margin-bottom:18px;color:var(--text)">${mpQ.q} = ?</div><input type="number" id="mp-inp" placeholder="Your answer..." style="margin-bottom:10px"><button class="btn btn-green" onclick="checkMP()">Submit</button>`;
+  document.getElementById('mp-inp').addEventListener('keydown',e=>{if(e.key==='Enter')checkMP();});
+}
+function checkMP(){
+  const v=+document.getElementById('mp-inp').value;if(v===mpQ.a)mpScore++;mpIdx++;
+  document.getElementById('mp-wrap').innerHTML=`<div class="result-box" style="margin-bottom:14px;${v!==mpQ.a?'border-color:#e74c3c;background:rgba(231,76,60,.1)':''}"><div>${v===mpQ.a?'✅ Correct!':'❌ Wrong!'} Answer: <strong>${mpQ.a}</strong></div></div><button class="btn btn-green" onclick="renderMP()">${mpIdx<10?'Next':'See Score'}</button>`;
+}
+
+// ── RIDDLES ───────────────────────────────────────────────────────────────────
+const RIDDLES=[
+  {q:"I have hands but can't clap. What am I?",a:"clock"},
+  {q:"I'm light as a feather, but even the strongest person can't hold me for more than a few minutes.",a:"breath"},
+  {q:"I have cities, but no houses live there. I have mountains, but no trees grow there. What am I?",a:"map"},
+  {q:"The more you take, the more you leave behind. What am I?",a:"footsteps"},
+  {q:"I speak without a mouth and hear without ears. I have no body, but I come alive with wind.",a:"echo"},
+  {q:"I can fly without wings, cry without eyes. Wherever I go, darkness follows me.",a:"cloud"},
+  {q:"I have a head and a tail but no body. What am I?",a:"coin"},
+  {q:"What can run but never walks, has a mouth but never talks, has a bed but never sleeps?",a:"river"},
+  {q:"The more you remove from me the bigger I get. What am I?",a:"hole"},
+  {q:"I'm always in front of you but can never be seen.",a:"future"},
+];
+let rdIdx=0,rdScore=0;
+function startRiddles(){rdIdx=0;rdScore=0;renderRD();}
+function renderRD(){
+  const w=document.getElementById('rd-wrap');if(!w)return;
+  if(rdIdx>=RIDDLES.length){w.innerHTML=`<div class="result-box"><div class="result-label">Score</div><div class="result-value">${rdScore}/${RIDDLES.length}</div><button class="btn btn-green" style="margin-top:14px" onclick="startRiddles()">Play Again</button></div>`;return;}
+  const r=RIDDLES[rdIdx];
+  w.innerHTML=`<div style="text-align:center;margin-bottom:10px;font-size:13px;color:var(--muted)">Riddle ${rdIdx+1}/${RIDDLES.length} · Score: ${rdScore}</div><div style="font-size:15px;line-height:1.6;margin-bottom:20px;color:var(--text);font-style:italic">"${r.q}"</div><input type="text" id="rd-inp" placeholder="Your answer..." style="margin-bottom:10px"><div style="display:flex;gap:8px"><button class="btn btn-green" onclick="checkRD()">Submit</button><button class="btn btn-sec" onclick="skipRD()">Reveal</button></div>`;
+  document.getElementById('rd-inp').addEventListener('keydown',e=>{if(e.key==='Enter')checkRD();});
+}
+function checkRD(){
+  const v=document.getElementById('rd-inp').value.trim().toLowerCase();const r=RIDDLES[rdIdx];
+  const correct=v===r.a||r.a.includes(v)&&v.length>2;if(correct)rdScore++;rdIdx++;
+  document.getElementById('rd-wrap').innerHTML=`<div class="result-box" style="margin-bottom:14px;${!correct?'border-color:#e74c3c;background:rgba(231,76,60,.1)':''}"><div>${correct?'🎉 Correct!':'❌ Wrong!'} Answer: <strong>${r.a}</strong></div></div><button class="btn btn-green" onclick="renderRD()">${rdIdx<RIDDLES.length?'Next Riddle':'See Score'}</button>`;
+}
+function skipRD(){const r=RIDDLES[rdIdx];rdIdx++;document.getElementById('rd-wrap').innerHTML=`<div class="result-box" style="margin-bottom:14px"><div>Answer: <strong>${r.a}</strong></div></div><button class="btn btn-green" onclick="renderRD()">${rdIdx<RIDDLES.length?'Next Riddle':'See Score'}</button>`;}
+
+</script>
+</body>
+</html>

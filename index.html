@@ -204,6 +204,23 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 4
 .tool-card:active{transform:translateY(-2px) scale(.99);}
 
 .tool-icon-wrap{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;position:relative;}
+
+/* CATEGORY BUTTONS */
+.cat-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:10px 20px;border-radius:99px;
+  background:var(--c1);color:#fff;
+  text-decoration:none;font-size:13px;font-weight:700;
+  transition:all .25s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 4px 14px rgba(0,0,0,0.15);
+  position:relative;overflow:hidden;white-space:nowrap;
+}
+.cat-btn:hover{
+  transform:translateY(-4px) scale(1.07);
+  box-shadow:0 8px 24px rgba(0,0,0,0.22);
+  filter:brightness(1.1);
+}
+.cat-btn:active{transform:translateY(-1px) scale(1.02);}
 .tool-icon{font-size:26px;display:block;line-height:1;}
 .tool-name{font-weight:600;font-size:14px;margin-bottom:4px;color:var(--text);}
 .tool-desc{color:var(--muted);font-size:12px;line-height:1.5;}
@@ -323,21 +340,19 @@ footer a:hover{color:var(--text);}
   <a href="/" class="logo">toolnova<span>.tools</span></a>
   <div class="nav-links">
     <a href="#tools" class="nav-links-hide">Tools</a>
-    <a href="https://games.toolnova.tools" class="nav-links-hide" style="color:var(--accent2);font-weight:600;">🎮 Games</a>
     <div id="google_translate_element"></div>
   </div>
 </nav>
 
 <!-- CATEGORY BANNER -->
-<div style="background:var(--surface);border-bottom:1px solid var(--border);padding:0;overflow-x:auto;white-space:nowrap;">
-  <div style="display:inline-flex;gap:0;min-width:100%;">
-    <a href="#pdf-converter" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">📄 PDF Converter</a>
-    <a href="#ocr-tools" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">🔍 OCR Tools</a>
-    <a href="#edit-pdf" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">✂️ Edit PDF</a>
-    <a href="#generators" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">🔧 Generators</a>
-    <a href="#calculators" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">🧮 Calculators</a>
-    <a href="#converters" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">🔄 Converters</a>
-    <a href="https://games.toolnova.tools" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--accent2);font-size:13px;font-weight:700;transition:all .2s;white-space:nowrap;background:var(--accent2-light);" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">🎮 Games</a>
+<div style="background:var(--surface);border-bottom:1px solid var(--border);padding:16px 20px;">
+  <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:900px;margin:0 auto;">
+    <a href="#pdf-converter" class="cat-btn" style="--c1:#e74c3c;--c2:#c0392b;">📄 PDF Converter</a>
+    <a href="#ocr-tools" class="cat-btn" style="--c1:#f39c12;--c2:#d68910;">🔍 OCR Tools</a>
+    <a href="#edit-pdf" class="cat-btn" style="--c1:#9b59b6;--c2:#7d3c98;">✂️ Edit PDF</a>
+    <a href="#generators" class="cat-btn" style="--c1:#4f63d2;--c2:#3d4fb8;">🔧 Generators</a>
+    <a href="#calculators" class="cat-btn" style="--c1:#0ba87e;--c2:#089168;">🧮 Calculators</a>
+    <a href="#converters" class="cat-btn" style="--c1:#1abc9c;--c2:#17a589;">🔄 Converters</a>
   </div>
 </div>
 
@@ -345,7 +360,7 @@ footer a:hover{color:var(--text);}
 <div class="hero">
   <div class="hero-badge">⚡ 100% Free · No signup · Instant results</div>
   <h1>Every tool you need,<br><em>right here.</em></h1>
-  <p>Free online tools used by millions. QR codes, calculators, converters, games — no account, no clutter.</p>
+  <p>Free online tools used by millions. PDF converter, calculators, converters — no account, no clutter.</p>
   <div class="search-wrap">
     <span class="search-icon">🔍</span>
     <input type="text" id="search-input" placeholder="Search tools... (QR, age, unit, word...)" oninput="filterTools(this.value)">
@@ -547,14 +562,6 @@ footer a:hover{color:var(--text);}
       <div class="tool-name">Word Counter</div>
       <div class="tool-desc">Words, characters, sentences, and reading time — live.</div>
     </a>
-  </div>
-
-  <!-- GAMES BANNER -->
-  <div style="background:linear-gradient(135deg,#0ba87e 0%,#089168 100%);border-radius:20px;padding:32px;margin-bottom:32px;text-align:center;color:#fff;">
-    <div style="font-size:40px;margin-bottom:10px;">🎮</div>
-    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;margin-bottom:8px;">Games & Quizzes</div>
-    <div style="opacity:.85;font-size:15px;margin-bottom:20px;">Play 20+ free games — Quiz, Memory, Puzzle, Word and more!</div>
-    <a href="/games.html" style="display:inline-block;background:#fff;color:#0ba87e;text-decoration:none;padding:12px 32px;border-radius:10px;font-weight:700;font-size:15px;">Play Now →</a>
   </div>
 
   <!-- MID AD - AdSense auto -->

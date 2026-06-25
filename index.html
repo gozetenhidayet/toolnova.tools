@@ -4,7 +4,132 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>toolnova.tools — Free Online Tools for Everyone</title>
-<meta name="description" content="Free online tools: QR code generator, image compressor, age calculator, unit converter, word counter and more. No signup needed.">
+<meta name="description" content="Free online tools: PDF converter, QR code generator, age calculator, BMI calculator, currency converter, word counter, password generator and more. No signup, no watermark, instant results.">
+<meta name="keywords" content="pdf to jpg, merge pdf, pdf converter, qr code generator, age calculator, bmi calculator, word counter, currency converter, password generator, image to text, ocr, free online tools">
+<meta name="robots" content="index, follow">
+<meta name="author" content="toolnova.tools">
+<link rel="canonical" href="https://toolnova.tools/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="toolnova.tools — Free Online Tools">
+<meta property="og:description" content="40+ free online tools: PDF converter, QR code, calculators, converters and more. No signup, instant results.">
+<meta property="og:url" content="https://toolnova.tools/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="toolnova.tools">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="toolnova.tools — Free Online Tools">
+<meta name="twitter:description" content="40+ free online tools. No signup, instant results.">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "toolnova.tools",
+  "url": "https://toolnova.tools",
+  "description": "Free online tools: PDF converter, QR code generator, calculators and more",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://toolnova.tools/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#4f63d2">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="toolnova">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('/sw.js')
+      .then(r=>console.log('SW registered'))
+      .catch(e=>console.log('SW error',e));
+  });
+}
+</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V90PDJDP1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V90PDJDP1');
+</script>
+<!-- End Google Analytics -->
+
+<!-- Google Translate -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'af,sq,am,ar,hy,az,eu,be,bn,bs,bg,ca,ceb,zh-CN,zh-TW,co,hr,cs,da,nl,eo,et,fi,fr,fy,gl,ka,de,el,gu,ht,ha,haw,he,hi,hmn,hu,is,ig,id,ga,it,ja,jw,kn,kk,km,ko,ku,ky,lo,la,lv,lt,lb,mk,mg,ms,ml,mt,mi,mr,mn,my,ne,no,ny,or,ps,fa,pl,pt,pa,ro,ru,sm,gd,sr,st,sn,sd,si,sk,sl,so,es,su,sw,sv,tl,tg,ta,te,th,tr,uk,ur,ug,uz,vi,cy,xh,yi,yo,zu',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+
+// Auto-detect browser/country language and translate
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    const browserLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0].toLowerCase();
+    if (browserLang === 'en') return;
+    
+    const selectEl = document.querySelector('.goog-te-combo');
+    if (selectEl) {
+      // Map some special cases
+      const langMap = {'zh': 'zh-CN', 'zht': 'zh-TW'};
+      const targetLang = langMap[browserLang] || browserLang;
+      
+      // Check if language exists in dropdown
+      const option = Array.from(selectEl.options).find(o => o.value === targetLang);
+      if (option) {
+        selectEl.value = targetLang;
+        selectEl.dispatchEvent(new Event('change'));
+      }
+    }
+  }, 1500);
+});
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<style>
+/* Translate Widget Styles */
+#google_translate_element {
+  display: inline-flex;
+  align-items: center;
+}
+.goog-te-gadget {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0 !important;
+}
+.goog-te-gadget .goog-te-combo {
+  background: var(--surface2);
+  border: 1.5px solid var(--border);
+  border-radius: 99px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  cursor: pointer;
+  outline: none;
+  margin: 0 !important;
+  max-width: 130px;
+}
+.goog-te-gadget .goog-te-combo:focus {
+  border-color: var(--accent);
+}
+.goog-te-banner-frame { display: none !important; }
+body { top: 0 !important; }
+.goog-logo-link { display: none !important; }
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
@@ -12,7 +137,7 @@
      ADSENSE — Replace CA-PUB-XXXXXXXXXX with your ID
      after Google approves your site (2-3 weeks)
 ================================================ -->
-<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script> -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3359266836868361" crossorigin="anonymous"></script>
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -96,12 +221,12 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 4
 .affiliate-section h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px;}
 .affiliate-section p{color:var(--muted);font-size:14px;margin-bottom:20px;}
 .affiliate-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
-.aff-card{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px;text-decoration:none;display:block;transition:all .2s;}
-.aff-card:hover{border-color:var(--accent2);transform:translateY(-2px);}
+.aff-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;text-decoration:none;display:block;transition:all .2s;box-shadow:0 1px 4px rgba(0,0,0,0.04);}
+.aff-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 6px 20px rgba(79,99,210,0.12);}
 .aff-card-icon{font-size:22px;margin-bottom:8px;}
 .aff-card-name{font-weight:600;font-size:13px;color:var(--text);margin-bottom:2px;}
 .aff-card-desc{font-size:12px;color:var(--muted);}
-.aff-earn{font-size:11px;font-weight:600;color:var(--accent2);margin-top:6px;}
+.aff-earn{font-size:11px;font-weight:600;color:var(--accent);margin-top:8px;}
 
 /* MODAL */
 .overlay{display:none;position:fixed;inset:0;background:rgba(26,29,46,0.5);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center;padding:20px;}
@@ -153,13 +278,26 @@ footer a:hover{color:var(--text);}
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="logo">toolnova<span>.tools</span></a>
+  <a href="/" class="logo">toolnova<span>.tools</span></a>
   <div class="nav-links">
     <a href="#tools" class="nav-links-hide">Tools</a>
-    <a href="#recommended" class="nav-links-hide">Recommended</a>
-
+    <a href="https://games.toolnova.tools" class="nav-links-hide" style="color:var(--accent2);font-weight:600;">🎮 Games</a>
+    <div id="google_translate_element"></div>
   </div>
 </nav>
+
+<!-- CATEGORY BANNER -->
+<div style="background:var(--surface);border-bottom:1px solid var(--border);padding:0;overflow-x:auto;white-space:nowrap;">
+  <div style="display:inline-flex;gap:0;min-width:100%;">
+    <a href="#pdf-converter" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">📄 PDF Converter</a>
+    <a href="#ocr-tools" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">🔍 OCR Tools</a>
+    <a href="#edit-pdf" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">✂️ Edit PDF</a>
+    <a href="#generators" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">🔧 Generators</a>
+    <a href="#calculators" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">🧮 Calculators</a>
+    <a href="#converters" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;border-right:1px solid var(--border);transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='var(--accent-light)';this.style.color='var(--accent)'" onmouseout="this.style.background='';this.style.color='var(--muted)'">🔄 Converters</a>
+    <a href="https://games.toolnova.tools" style="display:inline-flex;align-items:center;gap:7px;padding:12px 20px;text-decoration:none;color:var(--accent2);font-size:13px;font-weight:700;transition:all .2s;white-space:nowrap;background:var(--accent2-light);" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">🎮 Games</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -174,151 +312,264 @@ footer a:hover{color:var(--text);}
 
 <!-- STATS -->
 <div class="stats">
-  <div class="stat"><div class="stat-num">14</div><div class="stat-label">Free Tools</div></div>
+  <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Free Tools</div></div>
   <div class="stat"><div class="stat-num">0</div><div class="stat-label">Signups Required</div></div>
   <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Runs In Your Browser</div></div>
   <div class="stat"><div class="stat-num">Private</div><div class="stat-label">We Never Store Your Data</div></div>
 </div>
 
-<!-- TOP AD BANNER -->
-<div class="ad-banner">
-  <!-- ADSENSE: replace this div with your AdSense unit code -->
-  <div class="ad-placeholder">📢 Advertisement — Google AdSense will appear here after approval</div>
-</div>
+<!-- TOP AD BANNER - AdSense will auto-insert ads here after approval -->
+<div class="ad-banner"></div>
 
 <!-- TOOLS -->
 <div class="section" id="tools">
 
-  <div class="section-title">🔧 Generators <span class="section-badge">Popular</span></div>
+  <div class="section-title" id="pdf-converter">📄 PDF Converter <span class="section-badge">Most Popular</span></div>
   <div class="tool-grid">
-    <a class="tool-card" href="#" onclick="openTool('qr');return false;">
+    <a class="tool-card" href="/pdf-to-word.html">
+      <span class="tool-icon">📄</span>
+      <div class="tool-name">PDF to Word</div>
+      <div class="tool-desc">Convert PDF files to editable Word documents instantly.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" href="/word-to-pdf.html">
+      <span class="tool-icon">📝</span>
+      <div class="tool-name">Word to PDF</div>
+      <div class="tool-desc">Convert Word documents to PDF format. Fast and free.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" href="/pdf-to-jpg.html">
+      <span class="tool-icon">🖼️</span>
+      <div class="tool-name">PDF to JPG</div>
+      <div class="tool-desc">Convert PDF pages to high quality JPG images.</div>
+    </a>
+    <a class="tool-card" href="/jpg-to-pdf.html">
+      <span class="tool-icon">🔄</span>
+      <div class="tool-name">JPG to PDF</div>
+      <div class="tool-desc">Combine JPG images into a single PDF file.</div>
+    </a>
+    <a class="tool-card" href="/pdf-to-excel.html">
+      <span class="tool-icon">📊</span>
+      <div class="tool-name">PDF to Excel</div>
+      <div class="tool-desc">Extract tables from PDF into Excel spreadsheets.</div>
+    </a>
+    <a class="tool-card" href="/pdf-to-png.html">
+      <span class="tool-icon">🖼️</span>
+      <div class="tool-name">PDF to PNG</div>
+      <div class="tool-desc">Convert PDF pages to PNG images with transparency.</div>
+    </a>
+    <a class="tool-card" href="/png-to-pdf.html">
+      <span class="tool-icon">🔄</span>
+      <div class="tool-name">PNG to PDF</div>
+      <div class="tool-desc">Convert PNG images to PDF documents instantly.</div>
+    </a>
+    <a class="tool-card" href="/pdf-to-text.html">
+      <span class="tool-icon">📋</span>
+      <div class="tool-name">PDF to Text</div>
+      <div class="tool-desc">Extract all text content from any PDF file.</div>
+    </a>
+  </div>
+
+  <div class="section-title" id="ocr-tools">🔍 OCR Tools <span class="section-badge">New</span></div>
+  <div class="tool-grid">
+    <a class="tool-card" href="/image-to-text.html">
+      <span class="tool-icon">🔍</span>
+      <div class="tool-name">Image to Text (OCR)</div>
+      <div class="tool-desc">Extract text from any image using AI recognition.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" href="/scan-pdf-to-text.html">
+      <span class="tool-icon">📱</span>
+      <div class="tool-name">Scan PDF to Text</div>
+      <div class="tool-desc">Make scanned PDFs searchable with OCR technology.</div>
+    </a>
+  </div>
+
+  <div class="section-title" id="edit-pdf">✂️ Edit PDF</div>
+  <div class="tool-grid">
+    <a class="tool-card" href="/merge-pdf.html">
+      <span class="tool-icon">📎</span>
+      <div class="tool-name">Merge PDF</div>
+      <div class="tool-desc">Combine multiple PDF files into one document.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" href="/split-pdf.html">
+      <span class="tool-icon">✂️</span>
+      <div class="tool-name">Split PDF</div>
+      <div class="tool-desc">Split a PDF into multiple separate files.</div>
+    </a>
+    <a class="tool-card" href="/compress-pdf.html">
+      <span class="tool-icon">🗜️</span>
+      <div class="tool-name">Compress PDF</div>
+      <div class="tool-desc">Reduce PDF file size without losing quality.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" href="/rotate-pdf.html">
+      <span class="tool-icon">🔃</span>
+      <div class="tool-name">Rotate PDF</div>
+      <div class="tool-desc">Rotate PDF pages to any angle. 90, 180, 270 degrees.</div>
+    </a>
+    <a class="tool-card" href="/delete-pdf-pages.html">
+      <span class="tool-icon">🗑️</span>
+      <div class="tool-name">Delete PDF Pages</div>
+      <div class="tool-desc">Remove unwanted pages from your PDF file.</div>
+    </a>
+    <a class="tool-card" href="/extract-pdf-pages.html">
+      <span class="tool-icon">📤</span>
+      <div class="tool-name">Extract PDF Pages</div>
+      <div class="tool-desc">Extract specific pages from a PDF document.</div>
+    </a>
+    <a class="tool-card" href="/pdf-sign.html">
+      <span class="tool-icon">✍️</span>
+      <div class="tool-name">Sign PDF</div>
+      <div class="tool-desc">Draw, type or upload your signature and place it on any PDF page.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+  </div>
+
+  <div class="section-title" id="generators">🔧 Generators <span class="section-badge">Popular</span></div>
+  <div class="tool-grid">
+    <a class="tool-card" href="/qr-code-generator.html">
       <span class="tool-icon">📱</span>
       <div class="tool-name">QR Code Generator</div>
       <div class="tool-desc">Turn any URL or text into a QR code. Download as PNG instantly.</div>
-      <span class="tool-badge">Hot</span>
+      <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" href="#" onclick="openTool('password');return false;">
+    <a class="tool-card" href="/password-generator.html">
       <span class="tool-icon">🔐</span>
       <div class="tool-name">Password Generator</div>
       <div class="tool-desc">Strong, secure passwords of any length. Symbols, numbers, uppercase.</div>
     </a>
-    <a class="tool-card" href="#" onclick="openTool('color');return false;">
+    <a class="tool-card" href="/color-code-converter.html">
       <span class="tool-icon">🎨</span>
       <div class="tool-name">Color Code Converter</div>
       <div class="tool-desc">Convert between HEX, RGB, and HSL color formats instantly.</div>
     </a>
-    <a class="tool-card" href="#" onclick="openTool('hash');return false;">
+    <a class="tool-card" href="/lorem-ipsum-generator.html">
       <span class="tool-icon">🔑</span>
       <div class="tool-name">Lorem Ipsum Generator</div>
       <div class="tool-desc">Generate placeholder text for designs and prototypes.</div>
     </a>
   </div>
 
-  <div class="section-title">🧮 Calculators</div>
+  <div class="section-title" id="calculators">🧮 Calculators</div>
   <div class="tool-grid">
-    <a class="tool-card" href="#" onclick="openTool('age');return false;">
+    <a class="tool-card" href="/age-calculator.html">
       <span class="tool-icon">🎂</span>
       <div class="tool-name">Age Calculator</div>
       <div class="tool-desc">Your exact age in years, months, days and hours.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" href="#" onclick="openTool('bmi');return false;">
+    <a class="tool-card" href="/bmi-calculator.html">
       <span class="tool-icon">⚖️</span>
       <div class="tool-name">BMI Calculator</div>
       <div class="tool-desc">Body Mass Index with US Imperial and Metric support.</div>
     </a>
-    <a class="tool-card" href="#" onclick="openTool('tip');return false;">
+    <a class="tool-card" href="/tip-calculator.html">
       <span class="tool-icon">🍽️</span>
       <div class="tool-name">Tip Calculator</div>
       <div class="tool-desc">Split the bill and calculate tips for any group size.</div>
     </a>
-    <a class="tool-card" href="#" onclick="openTool('discount');return false;">
+    <a class="tool-card" href="/discount-calculator.html">
       <span class="tool-icon">🏷️</span>
       <div class="tool-name">Discount Calculator</div>
       <div class="tool-desc">Final price after any percentage discount. Quick math.</div>
     </a>
-    <a class="tool-card" href="#" onclick="openTool('loan');return false;">
+    <a class="tool-card" href="/loan-calculator.html">
       <span class="tool-icon">🏦</span>
       <div class="tool-name">Loan Calculator</div>
       <div class="tool-desc">Monthly payment, total interest on any loan. US-style.</div>
-
     </a>
   </div>
 
-  <div class="section-title">🔄 Converters</div>
+  <div class="section-title" id="converters">🔄 Converters</div>
   <div class="tool-grid">
-    <a class="tool-card" href="#" onclick="openTool('unit');return false;">
+    <a class="tool-card" href="/unit-converter.html">
       <span class="tool-icon">📏</span>
       <div class="tool-name">Unit Converter</div>
       <div class="tool-desc">Length, weight, temperature, speed, volume — all units.</div>
     </a>
-    <a class="tool-card" href="#" onclick="openTool('currency');return false;">
+    <a class="tool-card" href="/currency-converter.html">
       <span class="tool-icon">💱</span>
       <div class="tool-name">Currency Converter</div>
       <div class="tool-desc">Convert between 15 major world currencies instantly.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" href="#" onclick="openTool('case');return false;">
+    <a class="tool-card" href="/text-case-converter.html">
       <span class="tool-icon">🔤</span>
       <div class="tool-name">Text Case Converter</div>
       <div class="tool-desc">UPPER, lower, Title Case, camelCase in one click.</div>
     </a>
-    <a class="tool-card" href="#" onclick="openTool('wordcount');return false;">
+    <a class="tool-card" href="/word-counter.html">
       <span class="tool-icon">📝</span>
       <div class="tool-name">Word Counter</div>
       <div class="tool-desc">Words, characters, sentences, and reading time — live.</div>
     </a>
   </div>
 
-  <div class="section-title">🎮 Games & Quizzes</div>
-  <div class="tool-grid">
-    <a class="tool-card" href="#" onclick="openTool('quiz');return false;">
-      <span class="tool-icon">🧠</span>
-      <div class="tool-name">General Knowledge Quiz</div>
-      <div class="tool-desc">10 questions from around the world. How many can you get?</div>
-      <span class="tool-badge">New</span>
-    </a>
-    <a class="tool-card" href="#" onclick="openTool('memory');return false;">
-      <span class="tool-icon">🃏</span>
-      <div class="tool-name">Memory Card Game</div>
-      <div class="tool-desc">Find all matching pairs. Train your short-term memory.</div>
-    </a>
+  <!-- GAMES BANNER -->
+  <div style="background:linear-gradient(135deg,#0ba87e 0%,#089168 100%);border-radius:20px;padding:32px;margin-bottom:32px;text-align:center;color:#fff;">
+    <div style="font-size:40px;margin-bottom:10px;">🎮</div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;margin-bottom:8px;">Games & Quizzes</div>
+    <div style="opacity:.85;font-size:15px;margin-bottom:20px;">Play 20+ free games — Quiz, Memory, Puzzle, Word and more!</div>
+    <a href="/games.html" style="display:inline-block;background:#fff;color:#0ba87e;text-decoration:none;padding:12px 32px;border-radius:10px;font-weight:700;font-size:15px;">Play Now →</a>
   </div>
 
-  <!-- MID AD -->
-  <div style="text-align:center;margin:32px 0;">
-    <!-- ADSENSE: replace with your mid-content ad unit -->
-    <div class="ad-placeholder" style="border:1.5px dashed var(--border);border-radius:var(--radius);padding:20px;color:var(--muted);font-size:13px;background:var(--surface);">📢 Advertisement — Google AdSense mid-content unit</div>
-  </div>
+  <!-- MID AD - AdSense auto -->
+  <div style="margin:24px 0;"></div>
 
   <!-- AFFILIATE SECTION -->
   <div class="affiliate-section" id="recommended">
-    <h3>🤝 Tools We Recommend</h3>
-    <p>Trusted tools used by our community. We may earn a small commission at no extra cost to you.</p>
+    <h3>⭐ Most Popular Right Now</h3>
+    <p>Trending tools used by thousands of people every day.</p>
     <div class="affiliate-grid">
-      <a class="aff-card" href="https://namecheap.com" target="_blank">
-        <div class="aff-card-icon">🌐</div>
-        <div class="aff-card-name">Namecheap</div>
-        <div class="aff-card-desc">Best domain registrar. Cheap, reliable, easy to use.</div>
-        <div class="aff-earn">★ Recommended</div>
+      <a class="aff-card" href="/pdf-to-jpg.html">
+        <div class="aff-card-icon">🖼️</div>
+        <div class="aff-card-name">PDF to JPG</div>
+        <div class="aff-card-desc">Convert PDF pages to high quality JPG images instantly.</div>
+        <div class="aff-earn">🔥 Most Popular</div>
       </a>
-      <a class="aff-card" href="https://canva.com" target="_blank">
-        <div class="aff-card-icon">🎨</div>
-        <div class="aff-card-name">Canva Pro</div>
-        <div class="aff-card-desc">Design anything beautifully. Free plan available.</div>
-        <div class="aff-earn">★ Recommended</div>
+      <a class="aff-card" href="/image-to-text.html">
+        <div class="aff-card-icon">🔍</div>
+        <div class="aff-card-name">Image to Text</div>
+        <div class="aff-card-desc">Extract text from any image using AI-powered OCR.</div>
+        <div class="aff-earn">🔥 Trending</div>
       </a>
-      <a class="aff-card" href="https://grammarly.com" target="_blank">
+      <a class="aff-card" href="/merge-pdf.html">
+        <div class="aff-card-icon">📎</div>
+        <div class="aff-card-name">Merge PDF</div>
+        <div class="aff-card-desc">Combine multiple PDF files into one document for free.</div>
+        <div class="aff-earn">🔥 Most Used</div>
+      </a>
+      <a class="aff-card" href="/qr-code-generator.html">
+        <div class="aff-card-icon">📱</div>
+        <div class="aff-card-name">QR Code Generator</div>
+        <div class="aff-card-desc">Generate QR codes for any URL or text. Download as PNG.</div>
+        <div class="aff-earn">⭐ Popular</div>
+      </a>
+      <a class="aff-card" href="/pdf-sign.html">
         <div class="aff-card-icon">✍️</div>
-        <div class="aff-card-name">Grammarly</div>
-        <div class="aff-card-desc">Write better emails, essays and messages instantly.</div>
-        <div class="aff-earn">★ Recommended</div>
+        <div class="aff-card-name">Sign PDF</div>
+        <div class="aff-card-desc">Draw or type your signature and place it on any PDF.</div>
+        <div class="aff-earn">⭐ New</div>
       </a>
-      <a class="aff-card" href="https://nordvpn.com" target="_blank">
-        <div class="aff-card-icon">🔒</div>
-        <div class="aff-card-name">NordVPN</div>
-        <div class="aff-card-desc">Stay private online. #1 rated VPN worldwide.</div>
-        <div class="aff-earn">★ Recommended</div>
+      <a class="aff-card" href="/password-generator.html">
+        <div class="aff-card-icon">🔐</div>
+        <div class="aff-card-name">Password Generator</div>
+        <div class="aff-card-desc">Generate strong, secure passwords instantly. Customizable.</div>
+        <div class="aff-earn">⭐ Popular</div>
+      </a>
+      <a class="aff-card" href="/age-calculator.html">
+        <div class="aff-card-icon">🎂</div>
+        <div class="aff-card-name">Age Calculator</div>
+        <div class="aff-card-desc">Find your exact age in years, months, days and hours.</div>
+        <div class="aff-earn">⭐ Popular</div>
+      </a>
+      <a class="aff-card" href="/word-counter.html">
+        <div class="aff-card-icon">📝</div>
+        <div class="aff-card-name">Word Counter</div>
+        <div class="aff-card-desc">Count words, characters and reading time live as you type.</div>
+        <div class="aff-earn">⭐ Popular</div>
       </a>
     </div>
   </div>
@@ -329,14 +580,12 @@ footer a:hover{color:var(--text);}
 <footer>
   <div class="footer-logo">toolnova.tools</div>
   <p style="margin-bottom:14px;">
-    <a href="#">Home</a>
-    <a href="#">Privacy Policy</a>
-    <a href="#">Terms</a>
-    <a href="#">Contact</a>
-
+    <a href="/">Home</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/contact.html">Contact</a>
   </p>
-  <p>© 2025 toolnova.tools — All tools run in your browser. We never store your data.</p>
-  <p style="margin-top:6px;font-size:11px;">Some links on this page are affiliate links. We may earn a commission if you sign up.</p>
+  <p>© 2026 toolnova.tools — All tools run in your browser. We never store your data.</p>
 </footer>
 
 <!-- MODAL -->
@@ -354,7 +603,7 @@ function openTool(key){
     <h2>${tool.title}</h2>
     <div class="modal-sub">${tool.sub}</div>
     ${tool.render()}
-    <div class="modal-ad">📢 Advertisement — AdSense unit here</div>
+
   `;
   document.getElementById('overlay').classList.add('active');
   document.body.style.overflow='hidden';

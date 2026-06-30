@@ -340,7 +340,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 4
 .overlay{display:none;position:fixed;inset:0;background:rgba(26,29,46,0.5);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center;padding:20px;}
 .overlay.active{display:flex;animation:overlay-in .25s ease;}
 @keyframes overlay-in{from{opacity:0;}to{opacity:1;}}
-.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;width:100%;max-width:540px;max-height:90vh;overflow-y:auto;padding:36px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.15);animation:modal-in .3s cubic-bezier(.22,1,.36,1);}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;width:100%;max-width:540px;max-height:90vh;overflow-y:auto;padding:36px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.15);animation:modal-in .3s cubic-bezier(.22,1,.36,1);transition:max-width .2s ease;}
+.modal.modal-wide{max-width:920px;}
 @keyframes modal-in{from{opacity:0;transform:translateY(24px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
 .modal-close{position:absolute;top:14px;right:14px;background:var(--surface2);border:none;color:var(--muted);width:32px;height:32px;border-radius:99px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .modal-close:hover{background:var(--border);color:var(--text);}
@@ -406,7 +407,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);}
 .edit-zoom-btn{width:26px;height:26px;border-radius:6px;border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:all .15s;}
 .edit-zoom-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
 #edit-zoom-pct{font-size:12px;font-weight:600;color:var(--muted);min-width:38px;text-align:center;}
-.edit-canvas-wrap{position:relative;border:1.5px solid var(--border);border-radius:10px;overflow:auto;height:min(60vh,560px);background:#e9eaf5;display:flex;justify-content:center;align-items:flex-start;padding:16px;}
+.edit-canvas-wrap{position:relative;border:1.5px solid var(--border);border-radius:10px;overflow:auto;height:min(72vh,720px);background:#e9eaf5;display:flex;justify-content:center;align-items:flex-start;padding:16px;}
 .edit-canvas-wrap canvas{display:block;cursor:text;box-shadow:0 2px 10px rgba(0,0,0,0.08);background:#fff;}
 .edit-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;pointer-events:none;}
 .edit-page-inner{position:relative;display:inline-block;}
@@ -429,6 +430,8 @@ footer a:hover{color:var(--text);}
   .hero{padding:40px 16px 32px;}
   .section{padding:0 16px 48px;}
   .modal{padding:24px 18px;}
+  .modal.modal-wide{max-width:100%;}
+  .edit-canvas-wrap{height:min(60vh,480px);}
   .row{grid-template-columns:1fr;}
   .result-grid{grid-template-columns:1fr 1fr;}
 }
@@ -800,9 +803,13 @@ if (window['pdfjsLib']) {
 </script>
 <script>
 // ── MODAL ENGINE ──────────────────────────────────────────────────────────────
+const WIDE_TOOLS = new Set(['editpdf','sign','deletepages','extractpages']);
+
 function openTool(key){
   const tool=TOOLS[key];if(!tool)return;
-  document.getElementById('modal-content').innerHTML=`
+  const modalEl = document.getElementById('modal-content');
+  modalEl.classList.toggle('modal-wide', WIDE_TOOLS.has(key));
+  modalEl.innerHTML=`
     <button class="modal-close" onclick="closeTool()">✕</button>
     <h2>${tool.title}</h2>
     <div class="modal-sub">${tool.sub}</div>
@@ -1841,10 +1848,10 @@ async function computeFitScale(page){
   const base = page.getViewport({ scale: 1 });
   const scaleW = availW / base.width;
   const scaleH = availH / base.height;
-  // Fit to width primarily (most PDFs are taller than wide), capped so tiny
-  // pages don't blow up huge and huge pages don't shrink to nothing.
-  let fit = Math.min(scaleW, scaleH * 1.6);
-  fit = Math.max(0.4, Math.min(fit, 3));
+  // Fit the whole page inside the visible area (limited by whichever
+  // dimension is tighter), so an A4 page fills the box as large as possible.
+  let fit = Math.min(scaleW, scaleH);
+  fit = Math.max(0.4, Math.min(fit, 4));
   return fit;
 }
 

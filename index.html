@@ -39,15 +39,19 @@
 </script>
 
 <!-- PWA -->
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#4f63d2">
+<script>
+if(location.hostname==='toolnova.tools'){
+  const m=document.createElement('link'); m.rel='manifest'; m.href='/manifest.json'; document.head.appendChild(m);
+  const ic=document.createElement('link'); ic.rel='apple-touch-icon'; ic.href='/icon-192.png'; document.head.appendChild(ic);
+}
+</script>
+<meta name="theme-color" content="#5b5bf0">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="toolnova">
-<link rel="apple-touch-icon" href="/icon-192.png">
 <script>
-if('serviceWorker' in navigator){
+if('serviceWorker' in navigator && location.hostname==='toolnova.tools'){
   window.addEventListener('load',()=>{
     navigator.serviceWorker.register('/sw.js')
       .then(r=>console.log('SW registered'))
@@ -142,30 +146,39 @@ body { top: 0 !important; }
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg:#f7f8fc;
+  --bg:#f6f7fd;
   --surface:#ffffff;
-  --surface2:#f0f2f8;
-  --border:#e2e5f0;
-  --accent:#4f63d2;
-  --accent-light:#eef0fd;
-  --accent2:#0ba87e;
-  --accent2-light:#e6f8f3;
-  --text:#1a1d2e;
-  --muted:#6b7394;
-  --radius:14px;
-  --shadow:0 2px 12px rgba(79,99,210,0.08);
+  --surface2:#f1f2fa;
+  --border:#e4e6f3;
+  --accent:#5b5bf0;
+  --accent-light:#eeeefe;
+  --accent2:#10b894;
+  --accent2-light:#e5faf3;
+  --accent3:#a855f7;
+  --text:#191b2e;
+  --muted:#6e7191;
+  --radius:16px;
+  --shadow:0 4px 20px rgba(91,91,240,0.10);
 }
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
+body{
+  background:var(--bg);
+  background-image:
+    radial-gradient(at 10% 0%, rgba(91,91,240,0.07) 0px, transparent 50%),
+    radial-gradient(at 90% 10%, rgba(16,184,148,0.07) 0px, transparent 50%),
+    radial-gradient(at 50% 90%, rgba(168,85,247,0.06) 0px, transparent 50%);
+  background-attachment:fixed;
+  color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;
+}
 
 /* NAV */
-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,0.06);}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(91,91,240,0.05);}
 .logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--accent);text-decoration:none;letter-spacing:-.5px;}
 .logo span{color:var(--accent2);}
 .nav-links{display:flex;align-items:center;gap:24px;}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;}
 .nav-links a:hover{color:var(--text);}
 .nav-pro{background:var(--accent);color:#fff!important;padding:7px 16px;border-radius:99px;font-weight:600!important;transition:background .2s!important;}
-.nav-pro:hover{background:#3d4fb8!important;}
+.nav-pro:hover{background:#4747d4!important;}
 
 /* HERO */
 .hero{text-align:center;padding:64px 20px 48px;background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);border-bottom:1px solid var(--border);}
@@ -198,7 +211,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 4
 
 /* TOOL GRID */
 .tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;}
-.tool-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px 18px;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s,border-color .25s;text-decoration:none;display:block;position:relative;overflow:hidden;opacity:0;animation:card-in .5s cubic-bezier(.22,1,.36,1) forwards;}
+.tool-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px 18px;cursor:pointer;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease,border-color .3s ease;text-decoration:none;display:block;position:relative;overflow:hidden;opacity:0;animation:card-in .5s cubic-bezier(.22,1,.36,1) forwards;will-change:transform;}
 @keyframes card-in{from{opacity:0;transform:translateY(16px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
 .tool-grid .tool-card:nth-child(1){animation-delay:.02s;}
 .tool-grid .tool-card:nth-child(2){animation-delay:.06s;}
@@ -208,12 +221,16 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 4
 .tool-grid .tool-card:nth-child(6){animation-delay:.22s;}
 .tool-grid .tool-card:nth-child(7){animation-delay:.26s;}
 .tool-grid .tool-card:nth-child(8){animation-delay:.30s;}
-.tool-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(79,99,210,0.06) 0%,transparent 70%);opacity:0;transition:opacity .3s;}
-.tool-card:hover{border-color:var(--accent);box-shadow:0 8px 28px rgba(79,99,210,0.14);transform:translateY(-5px) scale(1.01);}
+.tool-card::before{content:'';position:absolute;inset:0;border-radius:var(--radius);padding:1.5px;background:linear-gradient(135deg,var(--accent),var(--accent3),var(--accent2));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;pointer-events:none;}
+.tool-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(91,91,240,0.08) 0%,transparent 70%);opacity:0;transition:opacity .3s;}
+.tool-card:hover{border-color:transparent;box-shadow:0 16px 36px rgba(91,91,240,0.18),0 4px 12px rgba(0,0,0,0.04);transform:translateY(-8px) scale(1.02);}
+.tool-card:hover::before{opacity:1;}
 .tool-card:hover::after{opacity:1;}
-.tool-card:active{transform:translateY(-2px) scale(.99);}
+.tool-card:hover .tool-icon-wrap{transform:scale(1.12) rotate(-4deg);box-shadow:0 6px 16px rgba(91,91,240,0.18);}
+.tool-card:hover .tool-name{color:var(--accent);}
+.tool-card:active{transform:translateY(-3px) scale(.99);}
 
-.tool-icon-wrap{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;position:relative;}
+.tool-icon-wrap{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;position:relative;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;}
 
 /* CATEGORY BUTTONS */
 .cat-btn{
@@ -276,7 +293,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 4
 @keyframes ripple-anim{to{transform:scale(4);opacity:0;}}
 
 /* PRO BANNER */
-.pro-banner{background:linear-gradient(135deg,var(--accent) 0%,#3d4fb8 100%);border-radius:20px;padding:36px 40px;margin:40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.pro-banner{background:linear-gradient(135deg,var(--accent) 0%,#4747d4 100%);border-radius:20px;padding:36px 40px;margin:40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
 .pro-banner h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:#fff;margin-bottom:6px;}
 .pro-banner p{color:rgba(255,255,255,0.8);font-size:14px;max-width:420px;}
 .pro-banner ul{list-style:none;margin-top:12px;}
@@ -316,7 +333,7 @@ label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bot
 input[type="text"],input[type="number"],input[type="date"],select,textarea{width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;margin-bottom:16px;}
 input:focus,select:focus,textarea:focus{border-color:var(--accent);}
 .btn{width:100%;background:var(--accent);border:none;border-radius:10px;padding:13px;color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;}
-.btn:hover{background:#3d4fb8;transform:translateY(-1px);}
+.btn:hover{background:#4747d4;transform:translateY(-1px);}
 .btn-sec{background:var(--surface2);color:var(--text);border:1.5px solid var(--border);margin-top:8px;}
 .btn-sec:hover{background:var(--border);transform:translateY(-1px);}
 .result-box{background:var(--accent-light);border:1.5px solid rgba(79,99,210,0.2);border-radius:12px;padding:20px;margin-top:20px;}
@@ -393,8 +410,8 @@ footer a:hover{color:var(--text);}
     <a href="#pdf-converter" class="cat-btn" style="--c1:#e74c3c;--c2:#c0392b;">📄 PDF Converter</a>
     <a href="#ocr-tools" class="cat-btn" style="--c1:#f39c12;--c2:#d68910;">🔍 OCR Tools</a>
     <a href="#edit-pdf" class="cat-btn" style="--c1:#9b59b6;--c2:#7d3c98;">✂️ Edit PDF</a>
-    <a href="#generators" class="cat-btn" style="--c1:#4f63d2;--c2:#3d4fb8;">🔧 Generators</a>
-    <a href="#calculators" class="cat-btn" style="--c1:#0ba87e;--c2:#089168;">🧮 Calculators</a>
+    <a href="#generators" class="cat-btn" style="--c1:#5b5bf0;--c2:#4747d4;">🔧 Generators</a>
+    <a href="#calculators" class="cat-btn" style="--c1:#10b894;--c2:#0d9a7e;">🧮 Calculators</a>
     <a href="#converters" class="cat-btn" style="--c1:#1abc9c;--c2:#17a589;">🔄 Converters</a>
   </div>
 </div>
@@ -418,8 +435,16 @@ footer a:hover{color:var(--text);}
   <div class="stat"><div class="stat-num">Private</div><div class="stat-label">We Never Store Your Data</div></div>
 </div>
 
-<!-- TOP AD BANNER - AdSense will auto-insert ads here after approval -->
-<div class="ad-banner"></div>
+<!-- TOP AD BANNER - AdSense will auto-fill this slot after approval -->
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-3359266836868361"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
 
 <!-- TOOLS -->
 <div class="section" id="tools">
@@ -552,6 +577,31 @@ footer a:hover{color:var(--text);}
     </a>
   </div>
 
+  <!-- PRO BANNER (monetization) -->
+  <div class="pro-banner">
+    <div>
+      <h3>⚡ Go Pro — Remove ads, unlock batch mode</h3>
+      <p>Process unlimited files at once, skip every ad, and get priority OCR speed.</p>
+      <ul>
+        <li>Unlimited batch PDF merging & conversion</li>
+        <li>Ad-free experience across all tools</li>
+        <li>Faster OCR & higher file size limits</li>
+      </ul>
+    </div>
+    <button class="btn-pro" onclick="showToast('Pro plans launching soon — join the waitlist!')">Upgrade to Pro — $4.99/mo</button>
+  </div>
+
+  <!-- MID-PAGE AD SLOT -->
+  <div class="ad-banner">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-3359266836868361"
+         data-ad-slot="2345678901"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
   <div class="section-title" id="calculators">🧮 Calculators</div>
   <div class="tool-grid">
     <a class="tool-card" href="javascript:void(0)" onclick="addRipple(event,this);openTool('age')">
@@ -607,12 +657,20 @@ footer a:hover{color:var(--text);}
     </a>
   </div>
 
-  <!-- MID AD - AdSense auto -->
-  <div style="margin:24px 0;"></div>
+  <!-- LOWER AD SLOT -->
+  <div class="ad-banner">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-3359266836868361"
+         data-ad-slot="3456789012"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 
   <!-- AFFILIATE SECTION -->
   <div class="affiliate-section" id="recommended">
-    <h3>⭐ Most Popular Right Now</h3>
+    <h3>⭐ Most Popular Right Now <span class="section-badge" style="margin-left:6px;vertical-align:middle;">Sponsored</span></h3>
     <p>Trending tools used by thousands of people every day.</p>
     <div class="affiliate-grid">
       <a class="aff-card" href="javascript:void(0)" onclick="openTool('pdf2jpg')">
@@ -703,11 +761,14 @@ function openTool(key){
     <h2>${tool.title}</h2>
     <div class="modal-sub">${tool.sub}</div>
     ${tool.render()}
-
+    <div class="modal-ad">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3359266836868361" data-ad-slot="4567890123" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
   `;
   document.getElementById('overlay').classList.add('active');
   document.body.style.overflow='hidden';
   if(tool.init)tool.init();
+  try{ (adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){}
 }
 function closeTool(){document.getElementById('overlay').classList.remove('active');document.body.style.overflow='';}
 function closeIfOutside(e){if(e.target===document.getElementById('overlay'))closeTool();}
@@ -732,7 +793,7 @@ const TOOLS={
           <select id="qr-size"><option value="128">Small</option><option value="200" selected>Medium</option><option value="300">Large</option></select>
         </div>
         <div><label>Color</label>
-          <select id="qr-color"><option value="#1a1d2e">Black</option><option value="#4f63d2">Blue</option><option value="#0ba87e">Green</option></select>
+          <select id="qr-color"><option value="#1a1d2e">Black</option><option value="#5b5bf0">Blue</option><option value="#10b894">Green</option></select>
         </div>
       </div>
       <button class="btn" onclick="generateQR()">Generate QR Code</button>
@@ -760,8 +821,8 @@ const TOOLS={
     render:()=>`
       <label>Pick or type a color</label>
       <div style="display:flex;gap:10px;align-items:center;margin-bottom:16px;">
-        <input type="color" id="cpick" value="#4f63d2" oninput="colorPick()" style="width:48px;height:44px;border:none;border-radius:8px;cursor:pointer;padding:2px;">
-        <input type="text" id="hex-in" value="#4f63d2" placeholder="#4f63d2" style="margin-bottom:0;flex:1;" oninput="convertColor()">
+        <input type="color" id="cpick" value="#5b5bf0" oninput="colorPick()" style="width:48px;height:44px;border:none;border-radius:8px;cursor:pointer;padding:2px;">
+        <input type="text" id="hex-in" value="#5b5bf0" placeholder="#5b5bf0" style="margin-bottom:0;flex:1;" oninput="convertColor()">
       </div>
       <button class="btn" onclick="convertColor()">Convert</button>
       <div id="color-out"></div>`,
@@ -1079,7 +1140,7 @@ function calcBMI(){
   if(u==='metric'){const w=+document.getElementById('wkg').value,h=+document.getElementById('hcm').value/100;if(!w||!h){alert('Fill in weight and height.');return;}bmi=w/(h*h);}
   else{const lb=+document.getElementById('wlb').value,ft=+document.getElementById('hft').value,i=+document.getElementById('hin').value||0,ti=ft*12+i;if(!lb||!ti){alert('Fill in weight and height.');return;}bmi=(lb/(ti*ti))*703;}
   const cat=bmi<18.5?'Underweight':bmi<25?'Normal weight':bmi<30?'Overweight':'Obese';
-  const col=bmi<18.5?'#2980b9':bmi<25?'#0ba87e':bmi<30?'#e07a20':'#c0392b';
+  const col=bmi<18.5?'#2980b9':bmi<25?'#10b894':bmi<30?'#e07a20':'#c0392b';
   document.getElementById('bmi-out').innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">Your BMI</div><div class="result-value green">${bmi.toFixed(1)}</div><div style="font-weight:600;color:${col};margin-top:6px;">${cat}</div></div>`;
 }
 
@@ -1308,10 +1369,34 @@ function getFiles(inputId){
 }
 
 function downloadBlob(blob, filename){
+  try{
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url; a.download=filename; a.rel='noopener'; a.style.display='none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(url), 30000);
+    return url;
+  }catch(err){
+    showToast('Download blocked — use the link below instead.');
+    return null;
+  }
+}
+
+// Replaces a "Download" button with a real <a download> link the instant it's clicked.
+// Real anchor-with-href links are never blocked by popup/download blockers, unlike a.click()
+// fired from inside an async chain after the original user gesture has "expired".
+function triggerDownload(btn, blob, filename){
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
-  a.href=url; a.download=filename; a.click();
-  setTimeout(()=>URL.revokeObjectURL(url), 4000);
+  a.href=url; a.download=filename; a.rel='noopener';
+  a.className=btn.className; a.style.cssText=btn.style.cssText;
+  a.textContent='⬇ Click to save ' + filename;
+  btn.replaceWith(a);
+  // Auto-click once — works in most browsers since it's a real anchor with href
+  a.click();
+  showToast('Ready! Click the button if it didn\'t save automatically.');
 }
 
 function progressHTML(id, label){
@@ -1354,14 +1439,14 @@ async function doMergePDF(){
     }
     const bytes = await merged.save();
     setProgress('merge-prog',100);
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Merged Successfully</div><div style="margin:10px 0;color:var(--muted);font-size:13px;">${files.length} files combined into one PDF.</div><button class="btn" onclick='downloadMergedPDF()'>⬇ Download merged.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Merged Successfully</div><div style="margin:10px 0;color:var(--muted);font-size:13px;">${files.length} files combined into one PDF.</div><button class="btn" onclick='downloadMergedPDF(this)'>⬇ Download merged.pdf</button></div>`;
     window._mergedPdfBytes = bytes;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not merge PDFs. Make sure all files are valid PDFs.'}</div>`;
   }
   btnReset(btn);
 }
-function downloadMergedPDF(){ downloadBlob(new Blob([window._mergedPdfBytes],{type:'application/pdf'}), 'merged.pdf'); showToast('Downloaded!'); }
+function downloadMergedPDF(btn){ triggerDownload(btn, new Blob([window._mergedPdfBytes],{type:'application/pdf'}), 'merged.pdf'); }
 
 // ── SPLIT PDF ─────────────────────────────────────────────────────────────────
 function parsePageRange(str, max){
@@ -1400,7 +1485,7 @@ async function doSplitPDF(){
     const outBytes = await newDoc.save();
     setProgress('split-prog',100);
     window._splitPdfBytes = outBytes;
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Split Complete</div><div style="margin:10px 0;color:var(--muted);font-size:13px;">${pages.length} of ${max} pages extracted.</div><button class="btn" onclick="downloadBlob(new Blob([window._splitPdfBytes],{type:'application/pdf'}),'split.pdf');showToast('Downloaded!')">⬇ Download split.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Split Complete</div><div style="margin:10px 0;color:var(--muted);font-size:13px;">${pages.length} of ${max} pages extracted.</div><button class="btn" onclick="triggerDownload(this, new Blob([window._splitPdfBytes],{type:'application/pdf'}),'split.pdf')">⬇ Download split.pdf</button></div>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not read this PDF.'}</div>`;
   }
@@ -1431,7 +1516,7 @@ async function doCompressPDF(){
       <div><div class="result-label">Compressed</div><div class="result-value green">${fmtSize(newSize)}</div></div>
       </div>
       <div style="margin:10px 0;color:var(--muted);font-size:13px;">${pct>0?`Reduced by ~${pct}%.`:'This PDF is already well-optimized — structural compression applied.'}</div>
-      <button class="btn" onclick="downloadBlob(new Blob([window._compressedPdfBytes],{type:'application/pdf'}),'compressed.pdf');showToast('Downloaded!')">⬇ Download compressed.pdf</button>`;
+      <button class="btn" onclick="triggerDownload(this, new Blob([window._compressedPdfBytes],{type:'application/pdf'}),'compressed.pdf')">⬇ Download compressed.pdf</button>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not compress this PDF.'}</div>`;
   }
@@ -1458,7 +1543,7 @@ async function doRotatePDF(){
     const outBytes=await doc.save();
     setProgress('rotate-prog',100);
     window._rotatedPdfBytes=outBytes;
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Rotated ${pages.length} Pages</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(new Blob([window._rotatedPdfBytes],{type:'application/pdf'}),'rotated.pdf');showToast('Downloaded!')">⬇ Download rotated.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Rotated ${pages.length} Pages</div><button class="btn" style="margin-top:10px;" onclick="triggerDownload(this, new Blob([window._rotatedPdfBytes],{type:'application/pdf'}),'rotated.pdf')">⬇ Download rotated.pdf</button></div>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not rotate this PDF.'}</div>`;
   }
@@ -1525,7 +1610,7 @@ async function doDeletePages(){
     const outBytes=await doc.save();
     setProgress('del-prog',100);
     window._delPdfBytes=outBytes;
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Removed ${toDelete.size} Page(s)</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(new Blob([window._delPdfBytes],{type:'application/pdf'}),'edited.pdf');showToast('Downloaded!')">⬇ Download edited.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Removed ${toDelete.size} Page(s)</div><button class="btn" style="margin-top:10px;" onclick="triggerDownload(this, new Blob([window._delPdfBytes],{type:'application/pdf'}),'edited.pdf')">⬇ Download edited.pdf</button></div>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
   }
@@ -1550,7 +1635,7 @@ async function doExtractPages(){
     const outBytes=await doc.save();
     setProgress('ext-prog',100);
     window._extPdfBytes=outBytes;
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Extracted ${toKeep.size} Page(s)</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(new Blob([window._extPdfBytes],{type:'application/pdf'}),'extracted.pdf');showToast('Downloaded!')">⬇ Download extracted.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Extracted ${toKeep.size} Page(s)</div><button class="btn" style="margin-top:10px;" onclick="triggerDownload(this, new Blob([window._extPdfBytes],{type:'application/pdf'}),'extracted.pdf')">⬇ Download extracted.pdf</button></div>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
   }
@@ -1615,7 +1700,7 @@ async function doSignPDF(){
     }
     const outBytes=await doc.save();
     window._signedPdfBytes=outBytes;
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Signature Added to Page ${pageNum}</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(new Blob([window._signedPdfBytes],{type:'application/pdf'}),'signed.pdf');showToast('Downloaded!')">⬇ Download signed.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Signature Added to Page ${pageNum}</div><button class="btn" style="margin-top:10px;" onclick="triggerDownload(this, new Blob([window._signedPdfBytes],{type:'application/pdf'}),'signed.pdf')">⬇ Download signed.pdf</button></div>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
   }
@@ -1645,7 +1730,7 @@ async function doImagesToPDF(){
     const outBytes=await doc.save();
     setProgress('i2p-prog',100);
     window._i2pBytes=outBytes;
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ PDF Created (${files.length} pages)</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(new Blob([window._i2pBytes],{type:'application/pdf'}),'images.pdf');showToast('Downloaded!')">⬇ Download images.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ PDF Created (${files.length} pages)</div><button class="btn" style="margin-top:10px;" onclick="triggerDownload(this, new Blob([window._i2pBytes],{type:'application/pdf'}),'images.pdf')">⬇ Download images.pdf</button></div>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
   }
@@ -1701,8 +1786,8 @@ async function doPdfToImages(format){
     window['_pdfImgs_'+format]=images;
     out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ ${n} Page(s) Converted</div>
       <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
-      ${images.map((im,i)=>`<button class="btn btn-sec" onclick="downloadBlob(dataURLtoBlob('${im.dataUrl}'),'page-${im.page}.${format==='jpeg'?'jpg':'png'}')">⬇ Download Page ${im.page}</button>`).join('')}
-      ${images.length>1?`<button class="btn" style="margin-top:6px;" onclick="downloadAllAsZip(window['_pdfImgs_${format}'],'${format==='jpeg'?'jpg':'png'}')">⬇ Download All as ZIP</button>`:''}
+      ${images.map((im,i)=>`<button class="btn btn-sec" onclick="triggerDownload(this, dataURLtoBlob('${im.dataUrl}'),'page-${im.page}.${format==='jpeg'?'jpg':'png'}')">⬇ Download Page ${im.page}</button>`).join('')}
+      ${images.length>1?`<button class="btn" style="margin-top:6px;" onclick="downloadAllAsZip(this, window['_pdfImgs_${format}'],'${format==='jpeg'?'jpg':'png'}')">⬇ Download All as ZIP</button>`:''}
       </div></div>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not render this PDF.'}</div>`;
@@ -1717,13 +1802,13 @@ function dataURLtoBlob(dataUrl){
   for(let i=0;i<bin.length;i++) arr[i]=bin.charCodeAt(i);
   return new Blob([arr],{type:mime});
 }
-async function downloadAllAsZip(images, ext){
+async function downloadAllAsZip(btn, images, ext){
+  btnLoading(btn,'Zipping...');
   if(!window.JSZip){ await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js'); }
   const zip=new JSZip();
   images.forEach(im=>{ zip.file(`page-${im.page}.${ext}`, im.dataUrl.split(',')[1], {base64:true}); });
   const blob=await zip.generateAsync({type:'blob'});
-  downloadBlob(blob,'pages.zip');
-  showToast('ZIP downloaded!');
+  triggerDownload(btn, blob, 'pages.zip');
 }
 function loadScript(src){
   return new Promise((res,rej)=>{
@@ -1742,7 +1827,7 @@ async function doPdfToText(){
   try{
     const text=await extractTextFromPdf(files[0], pct=>setProgress('p2t-prog',pct));
     window._pdfText=text;
-    out.innerHTML=`<div class="result-box" style="margin-top:16px;"><div class="result-label">Extracted Text</div><textarea readonly rows="8" style="margin-top:8px;">${escapeHtml(text).slice(0,5000)}${text.length>5000?'\\n\\n[...preview truncated, full text in download...]':''}</textarea><button class="btn" style="margin-top:8px;" onclick="downloadBlob(new Blob([window._pdfText],{type:'text/plain'}),'extracted.txt');showToast('Downloaded!')">⬇ Download .txt</button></div>`;
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;"><div class="result-label">Extracted Text</div><textarea readonly rows="8" style="margin-top:8px;">${escapeHtml(text).slice(0,5000)}${text.length>5000?'\\n\\n[...preview truncated, full text in download...]':''}</textarea><button class="btn" style="margin-top:8px;" onclick="triggerDownload(this, new Blob([window._pdfText],{type:'text/plain'}),'extracted.txt')">⬇ Download .txt</button></div>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not extract text. This PDF may be scanned — try Scan PDF to Text (OCR) instead.'}</div>`;
   }
@@ -1775,7 +1860,7 @@ async function doOCR(){
       logger: m=>{ if(m.status==='recognizing text') setProgress('ocr-prog', m.progress*100); }
     });
     window._ocrText=text;
-    out.innerHTML=`<div class="result-box" style="margin-top:16px;"><div class="result-label">Extracted Text</div><textarea readonly rows="8" style="margin-top:8px;">${escapeHtml(text)}</textarea><button class="btn" style="margin-top:8px;" onclick="downloadBlob(new Blob([window._ocrText],{type:'text/plain'}),'ocr-result.txt');showToast('Downloaded!')">⬇ Download .txt</button></div>`;
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;"><div class="result-label">Extracted Text</div><textarea readonly rows="8" style="margin-top:8px;">${escapeHtml(text)}</textarea><button class="btn" style="margin-top:8px;" onclick="triggerDownload(this, new Blob([window._ocrText],{type:'text/plain'}),'ocr-result.txt')">⬇ Download .txt</button></div>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'OCR failed. Try a clearer image.'}</div>`;
   }
@@ -1809,7 +1894,7 @@ async function doScanOCR(){
     }
     window._scanOcrText=fullText.trim();
     setProgress('socr-prog',100);
-    out.innerHTML=`<div class="result-box" style="margin-top:16px;"><div class="result-label">Extracted Text (${n} page${n>1?'s':''})</div><textarea readonly rows="8" style="margin-top:8px;">${escapeHtml(fullText.slice(0,5000))}</textarea><button class="btn" style="margin-top:8px;" onclick="downloadBlob(new Blob([window._scanOcrText],{type:'text/plain'}),'scanned-text.txt');showToast('Downloaded!')">⬇ Download .txt</button></div>`;
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;"><div class="result-label">Extracted Text (${n} page${n>1?'s':''})</div><textarea readonly rows="8" style="margin-top:8px;">${escapeHtml(fullText.slice(0,5000))}</textarea><button class="btn" style="margin-top:8px;" onclick="triggerDownload(this, new Blob([window._scanOcrText],{type:'text/plain'}),'scanned-text.txt')">⬇ Download .txt</button></div>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'OCR failed on this PDF.'}</div>`;
   }
@@ -1832,7 +1917,7 @@ async function doPdfToWord(){
     const blob=new Blob(['\ufeff', html], {type:'application/msword'});
     window._wordBlob=blob;
     setProgress('p2w-prog',100);
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Converted to Word</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(window._wordBlob,'converted.doc');showToast('Downloaded!')">⬇ Download converted.doc</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Converted to Word</div><button class="btn" style="margin-top:10px;" onclick="triggerDownload(this, window._wordBlob,'converted.doc')">⬇ Download converted.doc</button></div>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not extract this PDF — it may be scanned. Try Scan PDF to Text first.'}</div>`;
   }
@@ -1877,7 +1962,7 @@ async function doWordToPdf(){
     const outBytes=await doc.save();
     setProgress('w2p-prog',100);
     window._w2pBytes=outBytes;
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Converted to PDF</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(new Blob([window._w2pBytes],{type:'application/pdf'}),'converted.pdf');showToast('Downloaded!')">⬇ Download converted.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Converted to PDF</div><button class="btn" style="margin-top:10px;" onclick="triggerDownload(this, new Blob([window._w2pBytes],{type:'application/pdf'}),'converted.pdf')">⬇ Download converted.pdf</button></div>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not convert this document.'}</div>`;
   }
@@ -1914,7 +1999,7 @@ async function doPdfToExcel(){
     const csv = rows.map(r=>r.split(',').map(c=>`"${c.trim().replace(/"/g,'""')}"`).join(',')).join('\n');
     window._csvBlob=new Blob([csv],{type:'text/csv'});
     setProgress('p2e-prog',100);
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Converted to CSV</div><div style="margin:8px 0;color:var(--muted);font-size:13px;">${rows.length} rows extracted — open in Excel/Sheets.</div><button class="btn" onclick="downloadBlob(window._csvBlob,'converted.csv');showToast('Downloaded!')">⬇ Download converted.csv</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Converted to CSV</div><div style="margin:8px 0;color:var(--muted);font-size:13px;">${rows.length} rows extracted — open in Excel/Sheets.</div><button class="btn" onclick="triggerDownload(this, window._csvBlob,'converted.csv')">⬇ Download converted.csv</button></div>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not extract table data from this PDF.'}</div>`;
   }

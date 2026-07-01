@@ -362,19 +362,38 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 4
 
 .tool-icon-wrap{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;position:relative;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;}
 
+/* CATEGORY BANNER — sticky below nav */
+.cat-banner{
+  position:sticky;
+  top:57px; /* matches nav height */
+  z-index:90;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  padding:10px 20px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+[data-theme="dark"] .cat-banner{box-shadow:0 2px 8px rgba(0,0,0,0.3);}
+.cat-banner-inner{
+  display:flex;flex-wrap:nowrap;gap:8px;
+  justify-content:center;max-width:960px;margin:0 auto;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.cat-banner-inner::-webkit-scrollbar{display:none;}
+
 /* CATEGORY BUTTONS */
 .cat-btn{
   display:inline-flex;align-items:center;gap:7px;
-  padding:10px 20px;border-radius:99px;
+  padding:8px 16px;border-radius:99px;
   background:var(--c1);color:#fff;
   text-decoration:none;font-size:13px;font-weight:700;
   transition:all .25s cubic-bezier(.34,1.56,.64,1);
-  box-shadow:0 4px 14px rgba(0,0,0,0.15);
-  position:relative;overflow:hidden;white-space:nowrap;
+  box-shadow:0 3px 10px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;white-space:nowrap;flex-shrink:0;
 }
 .cat-btn:hover{
-  transform:translateY(-4px) scale(1.07);
-  box-shadow:0 8px 24px rgba(0,0,0,0.22);
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 8px 20px rgba(0,0,0,0.20);
   filter:brightness(1.1);
 }
 .cat-btn:active{transform:translateY(-1px) scale(1.02);}
@@ -551,8 +570,8 @@ footer a:hover{color:var(--text);}
 </nav>
 
 <!-- CATEGORY BANNER -->
-<div style="background:var(--surface);border-bottom:1px solid var(--border);padding:16px 20px;">
-  <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:900px;margin:0 auto;">
+<div class="cat-banner" role="navigation" aria-label="Tool categories">
+  <div class="cat-banner-inner">
     <a href="#pdf-converter" class="cat-btn" style="--c1:#e74c3c;--c2:#c0392b;">📄 PDF Converter</a>
     <a href="#ocr-tools" class="cat-btn" style="--c1:#f39c12;--c2:#d68910;">🔍 OCR Tools</a>
     <a href="#edit-pdf" class="cat-btn" style="--c1:#9b59b6;--c2:#7d3c98;">✂️ Edit PDF</a>
@@ -883,7 +902,7 @@ footer a:hover{color:var(--text);}
     <a href="javascript:void(0)" onclick="openPageModal('privacy')">Privacy Policy</a>
     <a href="javascript:void(0)" onclick="openPageModal('terms')">Terms</a>
     <a href="javascript:void(0)" onclick="openPageModal('contact')">Contact</a>
-    <a href="/sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+    <a href="javascript:void(0)" onclick="openPageModal('sitemap')">Sitemap</a>
   </p>
   <p style="max-width:640px;margin:0 auto 10px;line-height:1.7;">Free online PDF converter, OCR, QR code generator, password generator, age &amp; BMI calculator, currency &amp; unit converter, word counter and more — trusted by users in over 190 countries. All tools run securely in your browser.</p>
   <p>© 2026 toolnova.tools — All tools run in your browser. We never store your data.</p>
@@ -976,7 +995,7 @@ const PAGE_CONTENT = {
   contact:{
     title:'✉️ Contact Us',
     html:`<div class="page-modal-body">
-      <p>Have a question, bug report, or tool suggestion? We'd love to hear from you.</p>
+      <p>Have a question, bug report, or tool suggestion? We'd love to hear from you. Fill in the form below and we'll get back to you within 24 hours.</p>
       <div class="contact-form">
         <input type="text" id="cf-name" placeholder="Your name" autocomplete="name">
         <input type="email" id="cf-email" placeholder="Your email" autocomplete="email">
@@ -984,7 +1003,66 @@ const PAGE_CONTENT = {
         <textarea id="cf-message" placeholder="Your message..."></textarea>
         <button class="btn" onclick="submitContact()">Send Message</button>
       </div>
-      <p style="margin-top:16px;">Or email us directly: <a href="mailto:hello@toolnova.tools">hello@toolnova.tools</a></p>
+    </div>`
+  },
+  sitemap:{
+    title:'🗺️ Sitemap',
+    html:`<div class="page-modal-body">
+      <p>All tools and pages on toolnova.tools — click any to open directly.</p>
+      <h2>📄 PDF Converter</h2>
+      <ul>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('pdf2word')">PDF to Word</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('word2pdf')">Word to PDF</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('pdf2jpg')">PDF to JPG</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('img2pdf')">JPG/PNG to PDF</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('pdf2excel')">PDF to Excel</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('pdf2png')">PDF to PNG</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('pdf2text')">PDF to Text</a></li>
+      </ul>
+      <h2>🔍 OCR Tools</h2>
+      <ul>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('ocr')">Image to Text (OCR)</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('scanocr')">Scan PDF to Text</a></li>
+      </ul>
+      <h2>✂️ Edit PDF</h2>
+      <ul>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('editpdf')">Edit PDF — Add Text</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('merge')">Merge PDF</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('split')">Split PDF</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('compress')">Compress PDF</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('rotate')">Rotate PDF</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('deletepages')">Delete PDF Pages</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('extractpages')">Extract PDF Pages</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('sign')">Sign PDF</a></li>
+      </ul>
+      <h2>🔧 Generators</h2>
+      <ul>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('qr')">QR Code Generator</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('password')">Password Generator</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('color')">Color Code Converter</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('hash')">Lorem Ipsum Generator</a></li>
+      </ul>
+      <h2>🧮 Calculators</h2>
+      <ul>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('age')">Age Calculator</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('bmi')">BMI Calculator</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('tip')">Tip Calculator</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('discount')">Discount Calculator</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('loan')">Loan Calculator</a></li>
+      </ul>
+      <h2>🔄 Converters</h2>
+      <ul>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('unit')">Unit Converter</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('currency')">Currency Converter</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('case')">Text Case Converter</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openTool('wordcount')">Word Counter</a></li>
+      </ul>
+      <h2>📄 Pages</h2>
+      <ul>
+        <li><a href="javascript:void(0)" onclick="closeTool();openPageModal('privacy')">Privacy Policy</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openPageModal('terms')">Terms of Service</a></li>
+        <li><a href="javascript:void(0)" onclick="closeTool();openPageModal('contact')">Contact Us</a></li>
+      </ul>
     </div>`
   }
 };
@@ -1598,6 +1676,18 @@ document.addEventListener('keydown', e=>{
     if(ov && ov.classList.contains('active')) closeTool();
   }
 });
+
+// Keep category banner's top = nav height (dynamic, handles resize/mobile)
+function syncCatBannerTop(){
+  const nav = document.querySelector('nav');
+  const banner = document.querySelector('.cat-banner');
+  if(nav && banner){
+    const h = nav.getBoundingClientRect().height;
+    banner.style.top = Math.round(h) + 'px';
+  }
+}
+window.addEventListener('DOMContentLoaded', syncCatBannerTop);
+window.addEventListener('resize', syncCatBannerTop);
 
 // Auto-set html lang attribute based on google translate selection
 document.addEventListener('DOMContentLoaded', ()=>{

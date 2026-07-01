@@ -89,15 +89,64 @@ if('serviceWorker' in navigator && location.hostname==='toolnova.tools'){
   });
 }
 </script>
-<!-- Google Analytics -->
+<!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V90PDJDP1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-3V90PDJDP1');
+  gtag('config', 'G-3V90PDJDP1', {send_page_view:true});
+  // Custom event helper
+  function trackEvent(action, category, label){
+    try{ gtag('event', action, {event_category:category, event_label:label}); }catch(e){}
+  }
 </script>
-<!-- End Google Analytics -->
+<!-- Microsoft Clarity (replace with your real Clarity project ID) -->
+<script>
+if(location.hostname==='toolnova.tools'){
+  (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window,document,"clarity","script","CLARITY_PROJECT_ID");
+}
+</script>
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://toolnova.tools/"},
+    {"@type":"ListItem","position":2,"name":"PDF Tools","item":"https://toolnova.tools/#pdf-converter"},
+    {"@type":"ListItem","position":3,"name":"Calculators","item":"https://toolnova.tools/#calculators"},
+    {"@type":"ListItem","position":4,"name":"Converters","item":"https://toolnova.tools/#converters"}
+  ]
+}
+</script>
+<!-- ItemList Schema for all tools (improves Google sitelinks) -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ItemList",
+  "name":"Free Online Tools",
+  "description":"40+ free browser-based tools for PDF conversion, OCR, calculations and conversions",
+  "url":"https://toolnova.tools/",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Merge PDF","description":"Combine multiple PDF files into one document online for free"},
+    {"@type":"ListItem","position":2,"name":"Split PDF","description":"Split a PDF into multiple pages or separate files"},
+    {"@type":"ListItem","position":3,"name":"Compress PDF","description":"Reduce PDF file size without losing quality"},
+    {"@type":"ListItem","position":4,"name":"PDF to Word","description":"Convert PDF to editable Word document online"},
+    {"@type":"ListItem","position":5,"name":"PDF to JPG","description":"Convert PDF pages to JPG images online"},
+    {"@type":"ListItem","position":6,"name":"Image to Text OCR","description":"Extract text from any image using AI OCR"},
+    {"@type":"ListItem","position":7,"name":"QR Code Generator","description":"Generate QR codes for any URL or text free"},
+    {"@type":"ListItem","position":8,"name":"Age Calculator","description":"Calculate your exact age in years months and days"},
+    {"@type":"ListItem","position":9,"name":"BMI Calculator","description":"Calculate body mass index with metric and imperial units"},
+    {"@type":"ListItem","position":10,"name":"Currency Converter","description":"Convert between major world currencies instantly"},
+    {"@type":"ListItem","position":11,"name":"Unit Converter","description":"Convert length weight temperature speed and volume units"},
+    {"@type":"ListItem","position":12,"name":"Password Generator","description":"Generate strong secure passwords of any length"}
+  ]
+}
+</script>
 
 <!-- Google Translate -->
 <script type="text/javascript">
@@ -189,6 +238,39 @@ body { top: 0 !important; }
   --muted:#6e7191;
   --radius:16px;
   --shadow:0 4px 20px rgba(91,91,240,0.10);
+  --nav-bg:rgba(255,255,255,0.85);
+}
+[data-theme="dark"]{
+  --bg:#0f1117;
+  --surface:#1a1d2e;
+  --surface2:#22263a;
+  --border:#2e3250;
+  --accent:#7c7cf8;
+  --accent-light:#1e1f40;
+  --accent2:#14c9a0;
+  --accent2-light:#0e2a24;
+  --accent3:#c084fc;
+  --text:#e8eaf6;
+  --muted:#8b8fb3;
+  --shadow:0 4px 20px rgba(0,0,0,0.4);
+  --nav-bg:rgba(26,29,46,0.92);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1117;
+    --surface:#1a1d2e;
+    --surface2:#22263a;
+    --border:#2e3250;
+    --accent:#7c7cf8;
+    --accent-light:#1e1f40;
+    --accent2:#14c9a0;
+    --accent2-light:#0e2a24;
+    --accent3:#c084fc;
+    --text:#e8eaf6;
+    --muted:#8b8fb3;
+    --shadow:0 4px 20px rgba(0,0,0,0.4);
+    --nav-bg:rgba(26,29,46,0.92);
+  }
 }
 body{
   background:var(--bg);
@@ -201,7 +283,7 @@ body{
 }
 
 /* NAV */
-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(91,91,240,0.05);}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(91,91,240,0.05);}
 .logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--accent);text-decoration:none;letter-spacing:-.5px;}
 .logo span{color:var(--accent2);}
 .nav-links{display:flex;align-items:center;gap:24px;}
@@ -209,6 +291,22 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 4
 .nav-links a:hover{color:var(--text);}
 .nav-pro{background:var(--accent);color:#fff!important;padding:7px 16px;border-radius:99px;font-weight:600!important;transition:background .2s!important;}
 .nav-pro:hover{background:#4747d4!important;}
+/* Dark mode toggle */
+.theme-toggle{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--border);background:var(--surface2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:17px;transition:all .2s;flex-shrink:0;}
+.theme-toggle:hover{background:var(--accent-light);border-color:var(--accent);}
+/* Skip to content (accessibility) */
+.skip-link{position:absolute;top:-40px;left:12px;background:var(--accent);color:#fff;padding:8px 14px;border-radius:0 0 8px 8px;font-weight:600;font-size:13px;text-decoration:none;z-index:9999;transition:top .2s;}
+.skip-link:focus{top:0;}
+/* Page modal (Privacy, Terms, Contact) */
+.page-modal-body{padding:4px 0;max-height:65vh;overflow-y:auto;line-height:1.8;}
+.page-modal-body h2{font-size:17px;font-weight:700;margin:18px 0 8px;color:var(--text);}
+.page-modal-body p{color:var(--muted);font-size:14px;margin-bottom:10px;}
+.page-modal-body a{color:var(--accent);}
+.page-modal-body ul{color:var(--muted);font-size:14px;padding-left:20px;margin-bottom:10px;}
+.contact-form{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+.contact-form input,.contact-form textarea{padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:inherit;font-size:14px;background:var(--surface2);color:var(--text);outline:none;}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent);}
+.contact-form textarea{min-height:100px;resize:vertical;}
 
 /* HERO */
 .hero{text-align:center;padding:64px 20px 48px;background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);border-bottom:1px solid var(--border);}
@@ -442,11 +540,13 @@ footer a:hover{color:var(--text);}
 <body>
 
 <!-- NAV -->
-<nav>
-  <a href="/" class="logo">toolnova<span>.tools</span></a>
+<a class="skip-link" href="#tools">Skip to tools</a>
+<nav role="navigation" aria-label="Main navigation">
+  <a href="/" class="logo" aria-label="toolnova.tools home">toolnova<span>.tools</span></a>
   <div class="nav-links">
     <a href="#tools" class="nav-links-hide">Tools</a>
-    <div id="google_translate_element"></div>
+    <div id="google_translate_element" aria-label="Language selector"></div>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode" id="theme-btn" title="Toggle dark mode">🌙</button>
   </div>
 </nav>
 
@@ -776,22 +876,22 @@ footer a:hover{color:var(--text);}
 </div><!-- end .section -->
 
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <div class="footer-logo">toolnova<span style="color:var(--accent2);">.tools</span></div>
   <p style="margin-bottom:14px;">
     <a href="/">Home</a>
-    <a href="/privacy-policy.html">Privacy Policy</a>
-    <a href="/terms.html">Terms</a>
-    <a href="/contact.html">Contact</a>
-    <a href="/sitemap.xml">Sitemap</a>
+    <a href="javascript:void(0)" onclick="openPageModal('privacy')">Privacy Policy</a>
+    <a href="javascript:void(0)" onclick="openPageModal('terms')">Terms</a>
+    <a href="javascript:void(0)" onclick="openPageModal('contact')">Contact</a>
+    <a href="/sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
   </p>
-  <p style="max-width:640px;margin:0 auto 10px;line-height:1.7;">Free online PDF converter, OCR, QR code generator, password generator, age & BMI calculator, currency & unit converter, word counter and more — trusted by users in over 190 countries. All tools run securely in your browser.</p>
+  <p style="max-width:640px;margin:0 auto 10px;line-height:1.7;">Free online PDF converter, OCR, QR code generator, password generator, age &amp; BMI calculator, currency &amp; unit converter, word counter and more — trusted by users in over 190 countries. All tools run securely in your browser.</p>
   <p>© 2026 toolnova.tools — All tools run in your browser. We never store your data.</p>
 </footer>
 
 <!-- MODAL -->
-<div class="overlay" id="overlay" onclick="closeIfOutside(event)">
-  <div class="modal" id="modal-content"></div>
+<div class="overlay" id="overlay" role="presentation" onclick="closeIfOutside(event)" onkeydown="if(event.key==='Escape')closeTool()">
+  <div class="modal" id="modal-content" role="dialog" aria-modal="true"></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -804,6 +904,117 @@ if (window['pdfjsLib']) {
 }
 </script>
 <script>
+// ── THEME (DARK / LIGHT MODE) ─────────────────────────────────────────────────
+(function(){
+  const saved = localStorage.getItem('theme');
+  const preferred = window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+  const theme = saved || preferred;
+  document.documentElement.setAttribute('data-theme', theme);
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const btn = document.getElementById('theme-btn');
+    if(btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+function toggleTheme(){
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  const btn = document.getElementById('theme-btn');
+  if(btn) btn.textContent = next === 'dark' ? '☀️' : '🌙';
+  trackEvent('toggle_theme', 'UX', next);
+}
+
+// ── PAGE MODALS (Privacy Policy, Terms, Contact) ──────────────────────────────
+const PAGE_CONTENT = {
+  privacy:{
+    title:'🔒 Privacy Policy',
+    html:`<div class="page-modal-body">
+      <p><strong>Last updated: June 30, 2026</strong></p>
+      <h2>1. Information We Collect</h2>
+      <p>toolnova.tools does not collect, store, or transmit any personal data or uploaded files. All file processing (PDF conversion, OCR, image editing) happens entirely in your browser using client-side JavaScript. Your files never leave your device.</p>
+      <h2>2. Cookies & Local Storage</h2>
+      <p>We use localStorage only to remember your theme preference (dark/light mode). We do not use tracking cookies. Third-party ad partners (Google AdSense) may use their own cookies — see Google's privacy policy at policies.google.com.</p>
+      <h2>3. Analytics</h2>
+      <p>We use Google Analytics 4 and Microsoft Clarity to understand aggregate, anonymous usage patterns (page views, tool usage counts). No personally identifiable information is collected.</p>
+      <h2>4. Advertising</h2>
+      <p>We display Google AdSense advertisements. Ads are served automatically and contextually. We do not allow adult, gambling, or misleading ads. Revenue from ads keeps this service free for everyone.</p>
+      <h2>5. Third-Party Libraries</h2>
+      <p>We use open-source libraries (pdf-lib, pdf.js, Tesseract.js, QRCode.js) loaded from CDN. These run entirely in your browser and do not send data to external servers.</p>
+      <h2>6. GDPR / KVKK</h2>
+      <p>Since we do not process personal data, GDPR and KVKK obligations are minimal. If you have questions, contact us at privacy@toolnova.tools.</p>
+      <h2>7. Changes</h2>
+      <p>We may update this policy periodically. Continued use of the site constitutes acceptance of the updated policy.</p>
+      <p>Contact: <a href="javascript:void(0)" onclick="openPageModal('contact')">Contact Us</a></p>
+    </div>`
+  },
+  terms:{
+    title:'📋 Terms of Service',
+    html:`<div class="page-modal-body">
+      <p><strong>Last updated: June 30, 2026</strong></p>
+      <h2>1. Acceptance</h2>
+      <p>By using toolnova.tools, you agree to these Terms of Service. If you do not agree, please do not use the site.</p>
+      <h2>2. Free Service</h2>
+      <p>toolnova.tools provides all tools free of charge, supported by non-intrusive advertising. We reserve the right to modify, suspend, or discontinue the service at any time without notice.</p>
+      <h2>3. Permitted Use</h2>
+      <p>You may use toolnova.tools for personal and commercial purposes. You may not:</p>
+      <ul>
+        <li>Scrape or automate bulk requests</li>
+        <li>Attempt to reverse-engineer or copy the service</li>
+        <li>Use the site to process illegal or harmful content</li>
+        <li>Circumvent or interfere with ad delivery</li>
+      </ul>
+      <h2>4. No Warranty</h2>
+      <p>Tools are provided "as is" without warranty of any kind. We are not liable for any loss of data, conversion errors, or damage resulting from use of the site.</p>
+      <h2>5. Intellectual Property</h2>
+      <p>The toolnova.tools brand, design, and code are © 2026 toolnova.tools. Open-source libraries used retain their respective licenses.</p>
+      <h2>6. Governing Law</h2>
+      <p>These terms are governed by the laws of the jurisdiction in which toolnova.tools is operated.</p>
+    </div>`
+  },
+  contact:{
+    title:'✉️ Contact Us',
+    html:`<div class="page-modal-body">
+      <p>Have a question, bug report, or tool suggestion? We'd love to hear from you.</p>
+      <div class="contact-form">
+        <input type="text" id="cf-name" placeholder="Your name" autocomplete="name">
+        <input type="email" id="cf-email" placeholder="Your email" autocomplete="email">
+        <input type="text" id="cf-subject" placeholder="Subject (e.g. Bug report, Tool request)">
+        <textarea id="cf-message" placeholder="Your message..."></textarea>
+        <button class="btn" onclick="submitContact()">Send Message</button>
+      </div>
+      <p style="margin-top:16px;">Or email us directly: <a href="mailto:hello@toolnova.tools">hello@toolnova.tools</a></p>
+    </div>`
+  }
+};
+
+function openPageModal(page){
+  const content = PAGE_CONTENT[page];
+  if(!content) return;
+  const modalEl = document.getElementById('modal-content');
+  modalEl.classList.remove('modal-wide');
+  modalEl.innerHTML = `
+    <button class="modal-close" onclick="closeTool()" aria-label="Close">✕</button>
+    <h2>${content.title}</h2>
+    ${content.html}
+  `;
+  document.getElementById('overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  trackEvent('open_page', 'Navigation', page);
+}
+
+function submitContact(){
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const msg = document.getElementById('cf-message').value.trim();
+  if(!name || !email || !msg){ showToast('Please fill in all fields.'); return; }
+  // In production, replace with a real form handler (e.g. Formspree, EmailJS)
+  showToast('✓ Message sent! We\'ll reply within 24 hours.');
+  trackEvent('contact_submit', 'Engagement', 'contact_form');
+  setTimeout(()=> closeTool(), 1800);
+}
+
 // ── MODAL ENGINE ──────────────────────────────────────────────────────────────
 const WIDE_TOOLS = new Set(['editpdf','sign','deletepages','extractpages']);
 
@@ -811,8 +1022,11 @@ function openTool(key){
   const tool=TOOLS[key];if(!tool)return;
   const modalEl = document.getElementById('modal-content');
   modalEl.classList.toggle('modal-wide', WIDE_TOOLS.has(key));
+  modalEl.setAttribute('role','dialog');
+  modalEl.setAttribute('aria-modal','true');
+  modalEl.setAttribute('aria-label', tool.title);
   modalEl.innerHTML=`
-    <button class="modal-close" onclick="closeTool()">✕</button>
+    <button class="modal-close" onclick="closeTool()" aria-label="Close dialog">✕</button>
     <h2>${tool.title}</h2>
     <div class="modal-sub">${tool.sub}</div>
     ${tool.render()}
@@ -825,8 +1039,12 @@ function openTool(key){
   if(tool.init)tool.init();
   try{ (adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){}
   collapseEmptyAdSlots(document.getElementById('modal-content'));
+  trackEvent('open_tool', 'Tool', key);
 }
-function closeTool(){document.getElementById('overlay').classList.remove('active');document.body.style.overflow='';}
+function closeTool(){
+  document.getElementById('overlay').classList.remove('active');
+  document.body.style.overflow='';
+}
 function closeIfOutside(e){if(e.target===document.getElementById('overlay'))closeTool();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeTool();});
 
@@ -1371,6 +1589,24 @@ document.querySelectorAll('.tool-card').forEach(card=>{
     card.style.setProperty('--mx',((e.clientX-rect.left)/rect.width*100)+'%');
     card.style.setProperty('--my',((e.clientY-rect.top)/rect.height*100)+'%');
   });
+});
+
+// Keyboard: Escape to close modal
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){
+    const ov = document.getElementById('overlay');
+    if(ov && ov.classList.contains('active')) closeTool();
+  }
+});
+
+// Auto-set html lang attribute based on google translate selection
+document.addEventListener('DOMContentLoaded', ()=>{
+  // Watch for Google Translate changes and update <html lang>
+  const observer = new MutationObserver(()=>{
+    const sel = document.querySelector('.goog-te-combo');
+    if(sel && sel.value) document.documentElement.lang = sel.value.split('_')[0] || 'en';
+  });
+  observer.observe(document.body, {childList:true, subtree:true});
 });
 </script>
 

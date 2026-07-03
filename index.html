@@ -38,20 +38,32 @@
 }
 </script>
 
-<!-- PWA -->
-<link rel="manifest" href="/manifest.json">
+<!-- PWA meta (safe to keep even without manifest/sw files) -->
 <meta name="theme-color" content="#4f63d2">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="toolnova">
-<link rel="apple-touch-icon" href="/icon-192.png">
+<!--
+  Service worker + manifest were removed to stop 404s on hosts that don't
+  serve /manifest.json and /sw.js. Once you deploy to your own domain with
+  those two files actually present at the root, re-add:
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <script>
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',()=>{
+      navigator.serviceWorker.register('/sw.js').catch(()=>{});
+    });
+  }
+  </script>
+-->
 <script>
 if('serviceWorker' in navigator){
   window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('/sw.js')
-      .then(r=>console.log('SW registered'))
-      .catch(e=>console.log('SW error',e));
+    fetch('/sw.js',{method:'HEAD'}).then(r=>{
+      if(r.ok){ navigator.serviceWorker.register('/sw.js').catch(()=>{}); }
+    }).catch(()=>{});
   });
 }
 </script>
@@ -157,23 +169,18 @@ body { top: 0 !important; }
 }
 body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
 
-/* NAV */
-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:110;box-shadow:0 1px 8px rgba(0,0,0,0.06);}
-.logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--accent);text-decoration:none;letter-spacing:-.5px;}
+/* NAV — logo + centered categories + language, all in one sticky bar */
+nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:110;box-shadow:0 1px 8px rgba(0,0,0,0.06);flex-wrap:wrap;}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--accent);text-decoration:none;letter-spacing:-.5px;flex-shrink:0;}
 .logo span{color:var(--accent2);}
-.nav-links{display:flex;align-items:center;gap:24px;}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;}
-.nav-links a:hover{color:var(--text);}
-.nav-pro{background:var(--accent);color:#fff!important;padding:7px 16px;border-radius:99px;font-weight:600!important;transition:background .2s!important;}
-.nav-pro:hover{background:#3d4fb8!important;}
-
-/* STICKY CATEGORY BANNER */
-.cat-banner{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 20px;position:sticky;top:57px;z-index:100;}
-.cat-banner-inner{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:900px;margin:0 auto;overflow-x:auto;-webkit-overflow-scrolling:touch;}
-@media(max-width:640px){
-  .cat-banner{top:53px;padding:10px 12px;}
-  .cat-banner-inner{flex-wrap:nowrap;justify-content:flex-start;padding-bottom:2px;}
+.nav-cats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;flex:1;order:2;}
+.nav-lang{flex-shrink:0;order:3;margin-left:auto;}
+@media(max-width:900px){
+  nav{padding:12px 16px;justify-content:space-between;}
+  .nav-cats{order:3;width:100%;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
+  .nav-cats::-webkit-scrollbar{display:none;}
   .cat-btn{padding:8px 14px;font-size:12px;}
+  .nav-lang{order:2;}
 }
 
 /* HERO */
@@ -374,8 +381,6 @@ footer a:hover{color:var(--text);}
 .footer-logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;color:var(--accent);margin-bottom:12px;}
 
 @media(max-width:640px){
-  nav{padding:14px 16px;}
-  .nav-links .nav-links-hide{display:none;}
   .hero{padding:40px 16px 32px;}
   .section{padding:0 16px 48px;}
   .pro-banner{padding:24px 20px;}
@@ -388,19 +393,10 @@ footer a:hover{color:var(--text);}
 <body>
 
 <!-- NAV -->
+<!-- NAV + CATEGORY BAR (single sticky row) -->
 <nav>
   <a href="/" class="logo">toolnova<span>.tools</span></a>
-  <div class="nav-links">
-    <a href="#tools" class="nav-links-hide">Tools</a>
-    <a href="/blog/" class="nav-links-hide">Blog</a>
-    <a href="/about.html" class="nav-links-hide">About</a>
-    <div id="google_translate_element"></div>
-  </div>
-</nav>
-
-<!-- CATEGORY BANNER (sticky) -->
-<div class="cat-banner">
-  <div class="cat-banner-inner">
+  <div class="nav-cats">
     <a href="#pdf-converter" class="cat-btn" style="--c1:#e74c3c;--c2:#c0392b;">📄 PDF Converter</a>
     <a href="#ocr-tools" class="cat-btn" style="--c1:#f39c12;--c2:#d68910;">🔍 OCR Tools</a>
     <a href="#edit-pdf" class="cat-btn" style="--c1:#9b59b6;--c2:#7d3c98;">✂️ Edit PDF</a>
@@ -408,7 +404,8 @@ footer a:hover{color:var(--text);}
     <a href="#calculators" class="cat-btn" style="--c1:#0ba87e;--c2:#089168;">🧮 Calculators</a>
     <a href="#converters" class="cat-btn" style="--c1:#1abc9c;--c2:#17a589;">🔄 Converters</a>
   </div>
-</div>
+  <div class="nav-lang" id="google_translate_element"></div>
+</nav>
 
 <!-- HERO -->
 <div class="hero">

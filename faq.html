@@ -66,18 +66,21 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 body{top:0!important;}
 .goog-logo-link{display:none!important;}
 
-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:110;box-shadow:0 1px 8px rgba(0,0,0,0.06);}
-.logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--accent);text-decoration:none;letter-spacing:-.5px;}
+nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:110;box-shadow:0 1px 8px rgba(0,0,0,0.06);flex-wrap:wrap;}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--accent);text-decoration:none;letter-spacing:-.5px;flex-shrink:0;}
 .logo span{color:var(--accent2);}
-.nav-links{display:flex;align-items:center;gap:24px;}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;}
-.nav-links a:hover{color:var(--text);}
-
-.cat-banner{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 20px;position:sticky;top:57px;z-index:100;}
-.cat-banner-inner{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:900px;margin:0 auto;overflow-x:auto;-webkit-overflow-scrolling:touch;}
-.cat-btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:99px;background:var(--c1);color:#fff;text-decoration:none;font-size:13px;font-weight:700;transition:all .25s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 14px rgba(0,0,0,0.15);position:relative;overflow:hidden;white-space:nowrap;}
+.nav-cats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;flex:1;order:2;}
+.nav-lang{flex-shrink:0;order:3;margin-left:auto;}
+.cat-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:99px;background:var(--c1);color:#fff;text-decoration:none;font-size:12.5px;font-weight:700;transition:all .25s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 14px rgba(0,0,0,0.15);position:relative;overflow:hidden;white-space:nowrap;}
 .cat-btn:hover{transform:translateY(-4px) scale(1.07);box-shadow:0 8px 24px rgba(0,0,0,0.22);filter:brightness(1.1);}
 .cat-btn:active{transform:translateY(-1px) scale(1.02);}
+@media(max-width:900px){
+  nav{padding:12px 16px;justify-content:space-between;}
+  .nav-cats{order:3;width:100%;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
+  .nav-cats::-webkit-scrollbar{display:none;}
+  .cat-btn{padding:8px 14px;font-size:12px;}
+  .nav-lang{order:2;}
+}
 
 .pagehead{text-align:center;padding:56px 20px 40px;background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);border-bottom:1px solid var(--border);}
 .pagehead .eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);color:var(--accent);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 14px;border-radius:99px;margin-bottom:18px;border:1px solid rgba(79,99,210,0.2);}
@@ -113,6 +116,9 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:14px 4
 .cta-box a.btn-cta:hover{transform:translateY(-2px);}
 .back-link{display:inline-block;color:var(--accent);text-decoration:none;font-weight:600;font-size:14px;margin-bottom:24px;}
 .back-link:hover{text-decoration:underline;}
+.back-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;}
+.back-bar a{display:inline-flex;align-items:center;gap:6px;color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:600;transition:color .2s;}
+.back-bar a:hover{color:var(--accent);}
 
 /* LEGAL / STATIC PAGES */
 .legal h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;font-weight:700;margin:30px 0 12px;color:var(--text);}
@@ -156,11 +162,6 @@ footer a:hover{color:var(--text);}
 .footer-logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;color:var(--accent);margin-bottom:12px;}
 
 @media(max-width:640px){
-  nav{padding:14px 16px;}
-  .nav-links .nav-links-hide{display:none;}
-  .cat-banner{top:53px;padding:10px 12px;}
-  .cat-banner-inner{flex-wrap:nowrap;justify-content:flex-start;padding-bottom:2px;}
-  .cat-btn{padding:8px 14px;font-size:12px;}
   .wrap,.wrap-narrow{padding:32px 16px 48px;}
   .contact-form{padding:22px;}
 }
@@ -169,16 +170,7 @@ footer a:hover{color:var(--text);}
 <body>
 <nav>
   <a href="/" class="logo">toolnova<span>.tools</span></a>
-  <div class="nav-links">
-    <a href="/#tools" class="nav-links-hide">Tools</a>
-    <a href="/blog/" class="nav-links-hide">Blog</a>
-    <a href="/about.html" class="nav-links-hide">About</a>
-    <div id="google_translate_element"></div>
-  </div>
-</nav>
-
-<div class="cat-banner">
-  <div class="cat-banner-inner">
+  <div class="nav-cats">
     <a href="/#pdf-converter" class="cat-btn" style="--c1:#e74c3c;--c2:#c0392b;">📄 PDF Converter</a>
     <a href="/#ocr-tools" class="cat-btn" style="--c1:#f39c12;--c2:#d68910;">🔍 OCR Tools</a>
     <a href="/#edit-pdf" class="cat-btn" style="--c1:#9b59b6;--c2:#7d3c98;">✂️ Edit PDF</a>
@@ -186,7 +178,9 @@ footer a:hover{color:var(--text);}
     <a href="/#calculators" class="cat-btn" style="--c1:#0ba87e;--c2:#089168;">🧮 Calculators</a>
     <a href="/#converters" class="cat-btn" style="--c1:#1abc9c;--c2:#17a589;">🔄 Converters</a>
   </div>
-</div>
+  <div class="nav-lang" id="google_translate_element"></div>
+</nav>
+<div class="back-bar"><a href="/">&larr; Back to Home</a></div>
 
 <div class="pagehead">
   <div class="eyebrow">❓ FAQ</div>

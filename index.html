@@ -782,6 +782,15 @@ function closeTool(){document.getElementById('overlay').classList.remove('active
 function closeIfOutside(e){if(e.target===document.getElementById('overlay'))closeTool();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeTool();});
 
+// Auto-open a tool if arriving via a deep link like /?tool=age
+window.addEventListener('DOMContentLoaded',()=>{
+  const params=new URLSearchParams(window.location.search);
+  const t=params.get('tool');
+  if(t && TOOLS[t]){
+    setTimeout(()=>openTool(t),150);
+  }
+});
+
 // ── SEARCH ────────────────────────────────────────────────────────────────────
 function filterTools(q){
   q=q.toLowerCase();

@@ -158,7 +158,7 @@ body { top: 0 !important; }
 body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
 
 /* NAV */
-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,0.06);}
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:110;box-shadow:0 1px 8px rgba(0,0,0,0.06);}
 .logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--accent);text-decoration:none;letter-spacing:-.5px;}
 .logo span{color:var(--accent2);}
 .nav-links{display:flex;align-items:center;gap:24px;}
@@ -166,6 +166,15 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 4
 .nav-links a:hover{color:var(--text);}
 .nav-pro{background:var(--accent);color:#fff!important;padding:7px 16px;border-radius:99px;font-weight:600!important;transition:background .2s!important;}
 .nav-pro:hover{background:#3d4fb8!important;}
+
+/* STICKY CATEGORY BANNER */
+.cat-banner{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 20px;position:sticky;top:57px;z-index:100;}
+.cat-banner-inner{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:900px;margin:0 auto;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+@media(max-width:640px){
+  .cat-banner{top:53px;padding:10px 12px;}
+  .cat-banner-inner{flex-wrap:nowrap;justify-content:flex-start;padding-bottom:2px;}
+  .cat-btn{padding:8px 14px;font-size:12px;}
+}
 
 /* HERO */
 .hero{text-align:center;padding:64px 20px 48px;background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);border-bottom:1px solid var(--border);}
@@ -383,13 +392,15 @@ footer a:hover{color:var(--text);}
   <a href="/" class="logo">toolnova<span>.tools</span></a>
   <div class="nav-links">
     <a href="#tools" class="nav-links-hide">Tools</a>
+    <a href="/blog/" class="nav-links-hide">Blog</a>
+    <a href="/about.html" class="nav-links-hide">About</a>
     <div id="google_translate_element"></div>
   </div>
 </nav>
 
-<!-- CATEGORY BANNER -->
-<div style="background:var(--surface);border-bottom:1px solid var(--border);padding:16px 20px;">
-  <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:900px;margin:0 auto;">
+<!-- CATEGORY BANNER (sticky) -->
+<div class="cat-banner">
+  <div class="cat-banner-inner">
     <a href="#pdf-converter" class="cat-btn" style="--c1:#e74c3c;--c2:#c0392b;">📄 PDF Converter</a>
     <a href="#ocr-tools" class="cat-btn" style="--c1:#f39c12;--c2:#d68910;">🔍 OCR Tools</a>
     <a href="#edit-pdf" class="cat-btn" style="--c1:#9b59b6;--c2:#7d3c98;">✂️ Edit PDF</a>
@@ -671,11 +682,18 @@ footer a:hover{color:var(--text);}
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">toolnova.tools</div>
-  <p style="margin-bottom:14px;">
+  <p style="margin-bottom:10px;">
     <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </p>
+  <p style="margin-bottom:14px;">
     <a href="/privacy-policy.html">Privacy Policy</a>
     <a href="/terms.html">Terms</a>
-    <a href="/contact.html">Contact</a>
+    <a href="/cookie-policy.html">Cookie Policy</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/sitemap.html">Sitemap</a>
   </p>
   <p>© 2026 toolnova.tools — All tools run in your browser. We never store your data.</p>
 </footer>

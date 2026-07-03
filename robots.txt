@@ -1,12 +1,4 @@
-# robots.txt for https://toolnova.tools/
-# Allow all search engine crawlers full access to the site.
-
 User-agent: *
 Allow: /
 
-# Block crawling of internal/legal utility pages that add no SEO value
-Disallow: /sw.js
-Disallow: /manifest.json
-
-# Sitemap location
 Sitemap: https://toolnova.tools/sitemap.xml

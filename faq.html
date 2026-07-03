@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us | toolnova.tools</title>
-<meta name="description" content="Get in touch with the toolnova.tools team for support, bug reports, or tool requests.">
+<title>FAQ | toolnova.tools</title>
+<meta name="description" content="Frequently asked questions about toolnova.tools tools, privacy, and how to get support.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="toolnova.tools">
-<link rel="canonical" href="https://toolnova.tools/contact.html">
-<meta property="og:title" content="Contact Us | toolnova.tools">
-<meta property="og:description" content="Get in touch with the toolnova.tools team for support, bug reports, or tool requests.">
-<meta property="og:url" content="https://toolnova.tools/contact.html">
+<link rel="canonical" href="https://toolnova.tools/faq.html">
+<meta property="og:title" content="FAQ | toolnova.tools">
+<meta property="og:description" content="Frequently asked questions about toolnova.tools tools, privacy, and how to get support.">
+<meta property="og:url" content="https://toolnova.tools/faq.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="toolnova.tools">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Contact Us | toolnova.tools">
-<meta name="twitter:description" content="Get in touch with the toolnova.tools team for support, bug reports, or tool requests.">
+<meta name="twitter:title" content="FAQ | toolnova.tools">
+<meta name="twitter:description" content="Frequently asked questions about toolnova.tools tools, privacy, and how to get support.">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V90PDJDP1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -189,30 +189,52 @@ footer a:hover{color:var(--text);}
 </div>
 
 <div class="pagehead">
-  <div class="eyebrow">✉️ Contact</div>
-  <h1>Get in touch</h1>
-  <p>Questions, bug reports, tool requests or partnership inquiries — we'd love to hear from you.</p>
+  <div class="eyebrow">❓ FAQ</div>
+  <h1>Frequently Asked Questions</h1>
+  <p>Quick answers about how toolnova.tools works, your privacy, and getting the most out of our tools.</p>
 </div>
 <div class="wrap-narrow">
-  <div class="contact-info">
-    <div class="contact-info-card"><div class="ci-icon">📧</div><h4>Email</h4><p>support@toolnova.tools</p></div>
-    <div class="contact-info-card"><div class="ci-icon">💬</div><h4>Response Time</h4><p>Within 1–2 business days</p></div>
-    <div class="contact-info-card"><div class="ci-icon">🐞</div><h4>Bug Reports</h4><p>Include the tool name &amp; browser</p></div>
-  </div>
-  <div class="contact-form">
-    <form onsubmit="event.preventDefault();document.getElementById('cf-success').style.display='block';this.reset();">
-      <label>Your Name</label>
-      <input type="text" required placeholder="Jane Doe">
-      <label>Email Address</label>
-      <input type="email" required placeholder="jane@example.com">
-      <label>Subject</label>
-      <input type="text" required placeholder="Tool request, bug report, feedback...">
-      <label>Message</label>
-      <textarea rows="5" required placeholder="Tell us what's on your mind..."></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-    <p id="cf-success" style="display:none;margin-top:16px;color:var(--accent2);font-weight:600;font-size:14px;">✓ Thanks! Your message has been noted — we'll get back to you soon.</p>
-  </div>
+  <div class="faq-item">
+  <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Are these tools really free?</div>
+  <div class="faq-a"><p>Yes. Every tool on toolnova.tools is completely free to use, with no signup, no watermarks, and no hidden "pro" paywall. The site is supported by non-intrusive advertising.</p></div>
+</div>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to create an account?</div>
+  <div class="faq-a"><p>No account is required for any tool. Just open a tool and use it — nothing is saved to a profile because there is no profile.</p></div>
+</div>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is my data safe? Do you store my files?</div>
+  <div class="faq-a"><p>Most tools (PDF conversion, merging, compression, calculators, generators) run entirely inside your browser. Your files are processed on your own device and are never uploaded to our servers or seen by us.</p></div>
+</div>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why did OCR or text extraction come out with errors?</div>
+  <div class="faq-a"><p>OCR accuracy depends heavily on image quality. Low-resolution, tilted, or handwritten scans produce more errors than clean, high-contrast printed text. Try re-scanning at a higher resolution for better results.</p></div>
+</div>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I use these tools on my phone?</div>
+  <div class="faq-a"><p>Yes, toolnova.tools is fully mobile-responsive and every tool works on modern mobile browsers, including uploading files from your phone's storage or camera.</p></div>
+</div>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why is my converted file's formatting slightly different?</div>
+  <div class="faq-a"><p>Complex layouts, unusual fonts, or embedded objects can shift slightly during conversion. Simple documents (letters, resumes, reports) convert with very high fidelity; heavily designed documents may need minor manual cleanup.</p></div>
+</div>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I use toolnova.tools for commercial purposes?</div>
+  <div class="faq-a"><p>Yes, our tools can be used for personal or business use, subject to our Terms of Service.</p></div>
+</div>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you support languages other than English?</div>
+  <div class="faq-a"><p>The interface can be automatically translated into dozens of languages using the language selector in the top navigation, powered by Google Translate.</p></div>
+</div>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I report a bug or request a new tool?</div>
+  <div class="faq-a"><p>Use our Contact page — we read every message and prioritize frequently requested tools and reported issues.</p></div>
+</div>
+<div class="faq-item">
+  <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is there a file size limit?</div>
+  <div class="faq-a"><p>Since most tools run in your browser, the practical limit depends on your device's memory rather than a fixed cap. Very large files (500MB+) may process more slowly on older devices.</p></div>
+</div>
+
 </div>
 
 <footer>
@@ -232,6 +254,8 @@ footer a:hover{color:var(--text);}
   </p>
   <p>© 2026 toolnova.tools — All tools run in your browser. We never store your data.</p>
 </footer>
-
+<script>
+document.querySelectorAll('.faq-item').forEach(el=>{});
+</script>
 </body>
 </html>

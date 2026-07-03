@@ -164,8 +164,8 @@ body { top: 0 !important; }
   --accent2-light:#e6f8f3;
   --text:#1a1d2e;
   --muted:#6b7394;
-  --radius:14px;
-  --shadow:0 2px 12px rgba(79,99,210,0.08);
+  --radius:18px;
+  --shadow:0 2px 16px rgba(79,99,210,0.07);
 }
 body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
 
@@ -213,8 +213,8 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
 .section-badge{background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:600;padding:2px 10px;border-radius:99px;text-transform:uppercase;letter-spacing:.06em;}
 
 /* TOOL GRID */
-.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;}
-.tool-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px 18px;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s,border-color .25s;text-decoration:none;display:block;position:relative;overflow:hidden;opacity:0;animation:card-in .5s cubic-bezier(.22,1,.36,1) forwards;}
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;}
+.tool-card{background:var(--surface);border:1.5px solid var(--border);border-left:4px solid transparent;border-radius:var(--radius);padding:26px 20px 22px;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s,border-color .25s;text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden;opacity:0;animation:card-in .5s cubic-bezier(.22,1,.36,1) forwards;box-shadow:0 1px 4px rgba(16,24,40,0.04);}
 @keyframes card-in{from{opacity:0;transform:translateY(16px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
 .tool-grid .tool-card:nth-child(1){animation-delay:.02s;}
 .tool-grid .tool-card:nth-child(2){animation-delay:.06s;}
@@ -225,19 +225,29 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
 .tool-grid .tool-card:nth-child(7){animation-delay:.26s;}
 .tool-grid .tool-card:nth-child(8){animation-delay:.30s;}
 .tool-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(79,99,210,0.06) 0%,transparent 70%);opacity:0;transition:opacity .3s;}
-.tool-card:hover{border-color:var(--accent);box-shadow:0 8px 28px rgba(79,99,210,0.14);transform:translateY(-5px) scale(1.01);}
+.tool-card:hover{box-shadow:0 10px 30px rgba(79,99,210,0.14);transform:translateY(-5px) scale(1.01);}
 .tool-card:hover::after{opacity:1;}
 .tool-card:active{transform:translateY(-2px) scale(.99);}
+/* colored left accent stripe, matched to each icon tile's hue */
+.tool-card:has(.ibg-red){border-left-color:#e74c3c;}
+.tool-card:has(.ibg-blue){border-left-color:#4f63d2;}
+.tool-card:has(.ibg-green){border-left-color:#0ba87e;}
+.tool-card:has(.ibg-yellow){border-left-color:#f39c12;}
+.tool-card:has(.ibg-purple){border-left-color:#9b59b6;}
+.tool-card:has(.ibg-pink){border-left-color:#e84393;}
+.tool-card:has(.ibg-teal){border-left-color:#17a589;}
+.tool-card:has(.ibg-orange){border-left-color:#e07a20;}
+.tool-card:has(.ibg-gray){border-left-color:#6b7394;}
+.tool-card:hover{border-left-width:4px;}
 
 
-/* FAVORITE BUTTON */
-.fav-btn{position:absolute;top:11px;right:56px;width:26px;height:26px;border-radius:50%;background:transparent;border:none;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--muted);opacity:.4;cursor:pointer;z-index:3;transition:all .2s ease;line-height:1;}
-.tool-card:hover .fav-btn{opacity:.8;}
-.fav-btn:hover{opacity:1;color:#e74c3c;transform:scale(1.2);background:rgba(231,76,60,0.08);}
-.fav-btn.active{opacity:1;color:#e74c3c;background:rgba(231,76,60,0.1);}
+/* FAVORITE BUTTON — bordered ghost circle, top-right */
+.fav-btn{position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;background:var(--surface);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--muted);cursor:pointer;z-index:3;transition:all .2s ease;line-height:1;}
+.fav-btn:hover{border-color:#e74c3c;color:#e74c3c;transform:scale(1.12);}
+.fav-btn.active{background:#fdeaea;border-color:#e74c3c;color:#e74c3c;}
 .fav-btn.active::before{content:'♥';}
 .fav-btn:not(.active)::before{content:'♡';}
-.tool-icon-wrap{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;position:relative;}
+.tool-icon-wrap{width:54px;height:54px;border-radius:15px;display:flex;align-items:center;justify-content:center;margin:2px 0 14px;position:relative;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.03);}
 
 /* CATEGORY BUTTONS */
 .cat-btn{
@@ -258,7 +268,23 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
 .tool-icon{font-size:26px;display:block;line-height:1;}
 .tool-name{font-weight:600;font-size:14px;margin-bottom:4px;color:var(--text);}
 .tool-desc{color:var(--muted);font-size:12px;line-height:1.5;}
-.tool-badge{position:absolute;top:12px;right:12px;background:var(--accent2-light);color:var(--accent2);font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:99px;}
+
+/* BENTO GRID — featured cards get a bigger, richer tile */
+.tool-grid.bento{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));}
+.tool-card.featured{grid-column:span 2;padding:26px 24px;background:linear-gradient(135deg,var(--surface) 0%,var(--accent-light) 160%);border-color:rgba(79,99,210,0.18);}
+.tool-card.featured .tool-icon-wrap{width:60px;height:60px;border-radius:16px;margin-bottom:16px;}
+.tool-card.featured .tool-icon{font-size:32px;}
+.tool-card.featured .tool-name{font-size:18px;margin-bottom:6px;}
+.tool-card.featured .tool-desc{font-size:13.5px;max-width:80%;}
+.tool-card.featured:hover{box-shadow:0 12px 34px rgba(79,99,210,0.18);}
+@media(max-width:680px){
+  .tool-card.featured{grid-column:span 1;padding:22px 18px;}
+  .tool-card.featured .tool-icon-wrap{width:50px;height:50px;}
+  .tool-card.featured .tool-icon{font-size:26px;}
+  .tool-card.featured .tool-name{font-size:14px;}
+  .tool-card.featured .tool-desc{font-size:12px;max-width:100%;}
+}
+.tool-badge{position:absolute;top:14px;left:14px;background:var(--accent2-light);color:var(--accent2);font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:99px;}
 .tool-badge.hot{background:#fff3e6;color:#e07a20;}
 
 /* Icon animations */
@@ -441,15 +467,15 @@ footer a:hover{color:var(--text);}
 <div class="section" id="tools">
 
   <div class="section-title" id="pdf-converter">📄 PDF Converter <span class="section-badge">Most Popular</span></div>
-  <div class="tool-grid">
-    <a class="tool-card" data-key="c1" href="javascript:void(0)" onclick="addRipple(event,this);openTool('pdf2word')">
+  <div class="tool-grid bento">
+    <a class="tool-card featured" data-key="c1" href="javascript:void(0)" onclick="addRipple(event,this);openTool('pdf2word')">
       <button class="fav-btn" onclick="toggleFav(event,'c1')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-red"><span class="tool-icon anim-float">📄</span></div>
       <div class="tool-name">PDF to Word</div>
       <div class="tool-desc">Convert PDF files to editable Word documents instantly.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c2" href="javascript:void(0)" onclick="addRipple(event,this);openTool('word2pdf')">
+    <a class="tool-card featured" data-key="c2" href="javascript:void(0)" onclick="addRipple(event,this);openTool('word2pdf')">
       <button class="fav-btn" onclick="toggleFav(event,'c2')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-bounce">📝</span></div>
       <div class="tool-name">Word to PDF</div>

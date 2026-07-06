@@ -575,6 +575,13 @@ footer a:hover{color:var(--text);}
       <div class="tool-desc">Draw, type or upload your signature and place it on any PDF page.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
+    <a class="tool-card" data-key="c17b" href="javascript:void(0)" onclick="addRipple(event,this);openTool('addtext')">
+      <button class="fav-btn" onclick="toggleFav(event,'c17b')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-write">✏️</span></div>
+      <div class="tool-name">Add Text to PDF</div>
+      <div class="tool-desc">Type anywhere on a page — fill forms, add notes, annotate.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
   </div>
 
   <div class="section-title" id="generators">🔧 Generators <span class="section-badge">Popular</span></div>
@@ -639,6 +646,34 @@ footer a:hover{color:var(--text);}
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-count">🏦</span></div>
       <div class="tool-name">Loan Calculator</div>
       <div class="tool-desc">Monthly payment, total interest on any loan. US-style.</div>
+    </a>
+    <a class="tool-card" data-key="c26b" href="javascript:void(0)" onclick="addRipple(event,this);openTool('bmr')">
+      <button class="fav-btn" onclick="toggleFav(event,'c26b')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-pulse">🔥</span></div>
+      <div class="tool-name">BMR Calculator</div>
+      <div class="tool-desc">Your basal metabolic rate — calories burned at rest.</div>
+      <span class="tool-badge">New</span>
+    </a>
+    <a class="tool-card" data-key="c26c" href="javascript:void(0)" onclick="addRipple(event,this);openTool('calorie')">
+      <button class="fav-btn" onclick="toggleFav(event,'c26c')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-red"><span class="tool-icon anim-shake">🍎</span></div>
+      <div class="tool-name">Calorie Calculator</div>
+      <div class="tool-desc">Daily calorie needs based on activity level (TDEE).</div>
+      <span class="tool-badge">New</span>
+    </a>
+    <a class="tool-card" data-key="c26d" href="javascript:void(0)" onclick="addRipple(event,this);openTool('bodyfat')">
+      <button class="fav-btn" onclick="toggleFav(event,'c26d')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-wobble">📐</span></div>
+      <div class="tool-name">Body Fat Calculator</div>
+      <div class="tool-desc">Estimate body fat % using the US Navy tape method.</div>
+      <span class="tool-badge">New</span>
+    </a>
+    <a class="tool-card" data-key="c26e" href="javascript:void(0)" onclick="addRipple(event,this);openTool('water')">
+      <button class="fav-btn" onclick="toggleFav(event,'c26e')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-float">💧</span></div>
+      <div class="tool-name">Water Intake Calculator</div>
+      <div class="tool-desc">Daily recommended water intake based on weight &amp; activity.</div>
+      <span class="tool-badge">New</span>
     </a>
   </div>
 
@@ -870,14 +905,82 @@ const TOOLS={
   },
 
   bmi:{
-    title:'⚖️ BMI Calculator',sub:'Works with US Imperial and Metric',
+    title:'⚖️ BMI Calculator',sub:'For adults 20+ · Metric or Imperial',
     render:()=>`
       <label>Units</label>
       <select id="bmi-u" onchange="toggleBMI()"><option value="metric">Metric (kg/cm)</option><option value="imperial">Imperial (lb/ft)</option></select>
       <div id="bmi-met"><div class="row"><div><label>Weight kg</label><input type="number" id="wkg" placeholder="70"></div><div><label>Height cm</label><input type="number" id="hcm" placeholder="175"></div></div></div>
       <div id="bmi-imp" style="display:none"><div class="row"><div><label>Weight lb</label><input type="number" id="wlb" placeholder="154"></div><div><label>Height ft</label><input type="number" id="hft" placeholder="5"></div></div><label>Inches</label><input type="number" id="hin" placeholder="9"></div>
+      <div class="row"><div><label>Age (optional)</label><input type="number" id="bmi-age" placeholder="30"></div><div><label>Gender (optional)</label><select id="bmi-gender"><option value="">—</option><option value="male">Male</option><option value="female">Female</option></select></div></div>
+      <label>Waist circumference (optional — same unit as height)</label><input type="number" id="bmi-waist" placeholder="e.g. 85 cm or 34 in">
       <button class="btn" onclick="calcBMI()">Calculate BMI</button>
       <div id="bmi-out"></div>`,
+    init(){}
+  },
+
+  bmr:{
+    title:'🔥 BMR Calculator',sub:'Calories burned at rest (Mifflin-St Jeor)',
+    render:()=>`
+      <label>Units</label>
+      <select id="bmr-u" onchange="toggleBMR()"><option value="metric">Metric (kg/cm)</option><option value="imperial">Imperial (lb/ft)</option></select>
+      <div id="bmr-met"><div class="row"><div><label>Weight kg</label><input type="number" id="bmr-wkg" placeholder="70"></div><div><label>Height cm</label><input type="number" id="bmr-hcm" placeholder="175"></div></div></div>
+      <div id="bmr-imp" style="display:none"><div class="row"><div><label>Weight lb</label><input type="number" id="bmr-wlb" placeholder="154"></div><div><label>Height ft</label><input type="number" id="bmr-hft" placeholder="5"></div></div><label>Inches</label><input type="number" id="bmr-hin" placeholder="9"></div>
+      <div class="row"><div><label>Age</label><input type="number" id="bmr-age" placeholder="30"></div><div><label>Gender</label><select id="bmr-gender"><option value="male">Male</option><option value="female">Female</option></select></div></div>
+      <button class="btn" onclick="calcBMR()">Calculate BMR</button>
+      <div id="bmr-out"></div>`,
+    init(){}
+  },
+
+  calorie:{
+    title:'🍎 Calorie Calculator',sub:'Daily calorie needs (TDEE)',
+    render:()=>`
+      <label>Units</label>
+      <select id="cal-u" onchange="toggleCalorie()"><option value="metric">Metric (kg/cm)</option><option value="imperial">Imperial (lb/ft)</option></select>
+      <div id="cal-met"><div class="row"><div><label>Weight kg</label><input type="number" id="cal-wkg" placeholder="70"></div><div><label>Height cm</label><input type="number" id="cal-hcm" placeholder="175"></div></div></div>
+      <div id="cal-imp" style="display:none"><div class="row"><div><label>Weight lb</label><input type="number" id="cal-wlb" placeholder="154"></div><div><label>Height ft</label><input type="number" id="cal-hft" placeholder="5"></div></div><label>Inches</label><input type="number" id="cal-hin" placeholder="9"></div>
+      <div class="row"><div><label>Age</label><input type="number" id="cal-age" placeholder="30"></div><div><label>Gender</label><select id="cal-gender"><option value="male">Male</option><option value="female">Female</option></select></div></div>
+      <label>Activity Level</label>
+      <select id="cal-activity">
+        <option value="1.2">Sedentary (little or no exercise)</option>
+        <option value="1.375">Light (exercise 1–3 days/week)</option>
+        <option value="1.55" selected>Moderate (exercise 3–5 days/week)</option>
+        <option value="1.725">Active (exercise 6–7 days/week)</option>
+        <option value="1.9">Very active (hard exercise + physical job)</option>
+      </select>
+      <button class="btn" onclick="calcCalorie()">Calculate Daily Calories</button>
+      <div id="cal-out"></div>`,
+    init(){}
+  },
+
+  bodyfat:{
+    title:'📐 Body Fat Calculator',sub:'US Navy tape-measurement method',
+    render:()=>`
+      <label>Units</label>
+      <select id="bf-u" onchange="toggleBodyFat()"><option value="metric">Metric (cm)</option><option value="imperial">Imperial (in)</option></select>
+      <label>Gender</label>
+      <select id="bf-gender" onchange="toggleBodyFatHip()"><option value="male">Male</option><option value="female">Female</option></select>
+      <div class="row"><div><label>Height</label><input type="number" id="bf-height" placeholder="175"></div><div><label>Neck</label><input type="number" id="bf-neck" placeholder="38"></div></div>
+      <div class="row"><div><label>Waist</label><input type="number" id="bf-waist" placeholder="85"></div><div id="bf-hip-wrap"><label>Hip (women only)</label><input type="number" id="bf-hip" placeholder="95"></div></div>
+      <button class="btn" onclick="calcBodyFat()">Calculate Body Fat %</button>
+      <div id="bf-out"></div>`,
+    init(){document.getElementById('bf-hip-wrap').style.display='none';}
+  },
+
+  water:{
+    title:'💧 Water Intake Calculator',sub:'Daily hydration target',
+    render:()=>`
+      <label>Units</label>
+      <select id="wi-u" onchange="toggleWaterUnit()"><option value="metric">Metric (kg)</option><option value="imperial">Imperial (lb)</option></select>
+      <div id="wi-met"><label>Weight kg</label><input type="number" id="wi-wkg" placeholder="70"></div>
+      <div id="wi-imp" style="display:none"><label>Weight lb</label><input type="number" id="wi-wlb" placeholder="154"></div>
+      <label>Activity Level</label>
+      <select id="wi-activity">
+        <option value="0">Sedentary</option>
+        <option value="0.35" selected>Moderate exercise</option>
+        <option value="0.7">Intense exercise / hot climate</option>
+      </select>
+      <button class="btn" onclick="calcWater()">Calculate Water Intake</button>
+      <div id="wi-out"></div>`,
     init(){}
   },
 
@@ -1032,6 +1135,29 @@ const TOOLS={
     init(){ setupDropzone('sign-file','sign-list','sign-builder',false,'application/pdf', ()=>{ setTimeout(initSigCanvas, 50); }); }
   },
 
+  addtext:{
+    title:'✏️ Add Text to PDF',sub:'Type anywhere on a page — fill forms, add notes, annotate',
+    render:()=>fileDropzone('txt-file','application/pdf',false)+`<div id="txt-list"></div>
+      <div id="txt-builder" style="display:none;">
+        <label>Text to add</label>
+        <textarea id="txt-content" rows="3" placeholder="Type the text you want to add to the PDF..." style="width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text);font-size:14px;font-family:inherit;outline:none;margin-bottom:16px;resize:vertical;"></textarea>
+        <label>Page Number</label>
+        <input type="number" id="txt-page" value="1" min="1">
+        <div class="row">
+          <div><label>Horizontal position (%)</label><input type="number" id="txt-x" value="10" min="0" max="100"></div>
+          <div><label>Vertical position from top (%)</label><input type="number" id="txt-y" value="10" min="0" max="100"></div>
+        </div>
+        <div class="row">
+          <div><label>Font size</label><input type="number" id="txt-size" value="16" min="6" max="72"></div>
+          <div><label>Color</label><input type="color" id="txt-color" value="#1a1d2e" style="width:100%;height:42px;border:1.5px solid var(--border);border-radius:10px;padding:2px;background:var(--surface2);"></div>
+        </div>
+        <button class="btn" onclick="doAddTextToPDF()">Add Text & Download</button>
+        <p style="font-size:12px;color:var(--muted);margin-top:10px;">Tip: 0% / 0% is the top-left corner of the page. Preview the result and re-adjust the position if needed — it only takes a few seconds.</p>
+      </div>
+      <div id="txt-out"></div>`,
+    init(){ setupDropzone('txt-file','txt-list','txt-builder',false,'application/pdf'); }
+  },
+
   img2pdf:{
     title:'🖼️ Image to PDF',sub:'Combine JPG/PNG images into a single PDF — drag to reorder',
     render:()=>fileDropzone('i2p-files','image/*',true)+`<div id="i2p-list"></div><button class="btn" id="i2p-btn" style="display:none;margin-top:10px;" onclick="doImagesToPDF()">Create PDF</button><div id="i2p-out"></div>`,
@@ -1156,13 +1282,152 @@ function calcAge(){
 // ── BMI ───────────────────────────────────────────────────────────────────────
 function toggleBMI(){const u=document.getElementById('bmi-u').value;document.getElementById('bmi-met').style.display=u==='metric'?'':'none';document.getElementById('bmi-imp').style.display=u==='imperial'?'':'none';}
 function calcBMI(){
-  const u=document.getElementById('bmi-u').value;let bmi;
-  if(u==='metric'){const w=+document.getElementById('wkg').value,h=+document.getElementById('hcm').value/100;if(!w||!h){alert('Fill in weight and height.');return;}bmi=w/(h*h);}
-  else{const lb=+document.getElementById('wlb').value,ft=+document.getElementById('hft').value,i=+document.getElementById('hin').value||0,ti=ft*12+i;if(!lb||!ti){alert('Fill in weight and height.');return;}bmi=(lb/(ti*ti))*703;}
+  const u=document.getElementById('bmi-u').value;let bmi,heightM;
+  if(u==='metric'){const w=+document.getElementById('wkg').value,h=+document.getElementById('hcm').value/100;if(!w||!h){alert('Fill in weight and height.');return;}bmi=w/(h*h);heightM=h;}
+  else{const lb=+document.getElementById('wlb').value,ft=+document.getElementById('hft').value,i=+document.getElementById('hin').value||0,ti=ft*12+i;if(!lb||!ti){alert('Fill in weight and height.');return;}bmi=(lb/(ti*ti))*703;heightM=ti*0.0254;}
   const cat=bmi<18.5?'Underweight':bmi<25?'Normal weight':bmi<30?'Overweight':'Obese';
   const col=bmi<18.5?'#2980b9':bmi<25?'#0ba87e':bmi<30?'#e07a20':'#c0392b';
-  document.getElementById('bmi-out').innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">Your BMI</div><div class="result-value green">${bmi.toFixed(1)}</div><div style="font-weight:600;color:${col};margin-top:6px;">${cat}</div></div>`;
+  const pct=Math.max(0,Math.min(100,((bmi-15)/(40-15))*100));
+  const minKg=18.5*heightM*heightM, maxKg=24.9*heightM*heightM;
+  const rangeText=u==='metric'
+    ? `${minKg.toFixed(1)}–${maxKg.toFixed(1)} kg`
+    : `${(minKg*2.20462).toFixed(1)}–${(maxKg*2.20462).toFixed(1)} lb`;
+  // optional waist-circumference risk note (NHLBI thresholds)
+  const gender=document.getElementById('bmi-gender').value;
+  const waist=+document.getElementById('bmi-waist').value;
+  let waistNote='';
+  if(waist && gender){
+    const waistCm = u==='metric' ? waist : waist*2.54;
+    const threshold = gender==='male' ? 102 : 88; // cm (40in / 35in)
+    const highRisk = waistCm > threshold;
+    waistNote = `<div style="background:${highRisk?'#fdeaea':'#e6f8f3'};border-radius:10px;padding:12px 16px;margin-top:10px;font-size:13px;color:${highRisk?'#c0392b':'#089168'};">
+      Waist-related health risk: <strong>${highRisk?'Higher':'Lower'}</strong> — based on NHLBI reference thresholds (${gender==='male'?'40 in / 102 cm':'35 in / 88 cm'}).
+    </div>`;
+  }
+  document.getElementById('bmi-out').innerHTML=`
+    <div class="result-box green" style="margin-top:16px;text-align:center;">
+      <div class="result-label">Your BMI</div>
+      <div class="result-value green">${bmi.toFixed(1)}</div>
+      <div style="font-weight:600;color:${col};margin-top:6px;">${cat}</div>
+      <div style="height:8px;border-radius:99px;background:linear-gradient(90deg,#2980b9 0%,#2980b9 15%,#0ba87e 15%,#0ba87e 45%,#e07a20 45%,#e07a20 65%,#c0392b 65%,#c0392b 100%);position:relative;margin:14px 0 6px;">
+        <div style="position:absolute;top:-4px;left:${pct}%;transform:translateX(-50%);width:2px;height:16px;background:#1a1d2e;border-radius:2px;"></div>
+      </div>
+      <div style="font-size:11px;color:var(--muted);display:flex;justify-content:space-between;"><span>Underweight</span><span>Normal</span><span>Overweight</span><span>Obese</span></div>
+    </div>
+    <div style="background:var(--surface2);border-radius:10px;padding:14px 16px;margin-top:12px;font-size:13px;">
+      <strong>Healthy weight range for your height:</strong> ${rangeText}
+    </div>
+    ${waistNote}
+    <p style="font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.6;">BMI is a general screening measure for adults 20 and older. It doesn't account for muscle mass, age, sex, or pregnancy. Talk to a healthcare provider for a complete assessment.</p>
+    <div style="margin-top:14px;font-size:12.5px;">
+      <span style="color:var(--muted);">Related:</span>
+      <a href="#" onclick="openTool('bmr');return false;" style="color:var(--accent);text-decoration:none;margin-left:4px;">BMR Calculator</a> ·
+      <a href="#" onclick="openTool('calorie');return false;" style="color:var(--accent);text-decoration:none;">Calorie Calculator</a> ·
+      <a href="#" onclick="openTool('bodyfat');return false;" style="color:var(--accent);text-decoration:none;">Body Fat Calculator</a>
+    </div>`;
 }
+
+// ── BMR ───────────────────────────────────────────────────────────────────────
+function toggleBMR(){const u=document.getElementById('bmr-u').value;document.getElementById('bmr-met').style.display=u==='metric'?'':'none';document.getElementById('bmr-imp').style.display=u==='imperial'?'':'none';}
+function calcBMR(){
+  const u=document.getElementById('bmr-u').value;const age=+document.getElementById('bmr-age').value;const gender=document.getElementById('bmr-gender').value;
+  let wkg,hcm;
+  if(u==='metric'){wkg=+document.getElementById('bmr-wkg').value;hcm=+document.getElementById('bmr-hcm').value;}
+  else{const lb=+document.getElementById('bmr-wlb').value,ft=+document.getElementById('bmr-hft').value,i=+document.getElementById('bmr-hin').value||0;wkg=lb*0.453592;hcm=(ft*12+i)*2.54;}
+  if(!wkg||!hcm||!age){alert('Please fill in weight, height and age.');return;}
+  const bmr = gender==='male' ? (10*wkg + 6.25*hcm - 5*age + 5) : (10*wkg + 6.25*hcm - 5*age - 161);
+  document.getElementById('bmr-out').innerHTML=`
+    <div class="result-box green" style="margin-top:16px;text-align:center;">
+      <div class="result-label">Basal Metabolic Rate</div>
+      <div class="result-value green">${Math.round(bmr).toLocaleString()} kcal/day</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:6px;">Calories your body burns at complete rest</div>
+    </div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.6;">Calculated using the Mifflin–St Jeor equation, widely considered one of the most accurate BMR formulas. This is your baseline — see the Calorie Calculator for your total daily needs including activity.</p>
+    <div style="margin-top:14px;font-size:12.5px;">
+      <span style="color:var(--muted);">Related:</span>
+      <a href="#" onclick="openTool('calorie');return false;" style="color:var(--accent);text-decoration:none;margin-left:4px;">Calorie Calculator</a> ·
+      <a href="#" onclick="openTool('bmi');return false;" style="color:var(--accent);text-decoration:none;">BMI Calculator</a>
+    </div>`;
+}
+
+// ── CALORIE / TDEE ──────────────────────────────────────────────────────────────
+function toggleCalorie(){const u=document.getElementById('cal-u').value;document.getElementById('cal-met').style.display=u==='metric'?'':'none';document.getElementById('cal-imp').style.display=u==='imperial'?'':'none';}
+function calcCalorie(){
+  const u=document.getElementById('cal-u').value;const age=+document.getElementById('cal-age').value;const gender=document.getElementById('cal-gender').value;const activity=+document.getElementById('cal-activity').value;
+  let wkg,hcm;
+  if(u==='metric'){wkg=+document.getElementById('cal-wkg').value;hcm=+document.getElementById('cal-hcm').value;}
+  else{const lb=+document.getElementById('cal-wlb').value,ft=+document.getElementById('cal-hft').value,i=+document.getElementById('cal-hin').value||0;wkg=lb*0.453592;hcm=(ft*12+i)*2.54;}
+  if(!wkg||!hcm||!age){alert('Please fill in weight, height and age.');return;}
+  const bmr = gender==='male' ? (10*wkg + 6.25*hcm - 5*age + 5) : (10*wkg + 6.25*hcm - 5*age - 161);
+  const tdee = bmr*activity;
+  document.getElementById('cal-out').innerHTML=`
+    <div class="result-grid result-box green" style="margin-top:16px;">
+      <div><div class="result-label">Maintain</div><div class="result-value green">${Math.round(tdee).toLocaleString()}</div></div>
+      <div><div class="result-label">Mild Loss (-10%)</div><div class="result-value green">${Math.round(tdee*0.9).toLocaleString()}</div></div>
+      <div><div class="result-label">Loss (-20%)</div><div class="result-value green">${Math.round(tdee*0.8).toLocaleString()}</div></div>
+      <div><div class="result-label">Gain (+10%)</div><div class="result-value green">${Math.round(tdee*1.1).toLocaleString()}</div></div>
+    </div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.6;">All values in kcal/day. This estimates your Total Daily Energy Expenditure (TDEE) — the calories needed to maintain, lose, or gain weight at the selected activity level.</p>
+    <div style="margin-top:14px;font-size:12.5px;">
+      <span style="color:var(--muted);">Related:</span>
+      <a href="#" onclick="openTool('bmr');return false;" style="color:var(--accent);text-decoration:none;margin-left:4px;">BMR Calculator</a> ·
+      <a href="#" onclick="openTool('water');return false;" style="color:var(--accent);text-decoration:none;">Water Intake Calculator</a>
+    </div>`;
+}
+
+// ── BODY FAT (US Navy method) ────────────────────────────────────────────────
+function toggleBodyFat(){}
+function toggleBodyFatHip(){document.getElementById('bf-hip-wrap').style.display=document.getElementById('bf-gender').value==='female'?'':'none';}
+function calcBodyFat(){
+  const u=document.getElementById('bf-u').value;const gender=document.getElementById('bf-gender').value;
+  const height=+document.getElementById('bf-height').value, neck=+document.getElementById('bf-neck').value, waist=+document.getElementById('bf-waist').value, hip=+document.getElementById('bf-hip').value||0;
+  if(!height||!neck||!waist||(gender==='female'&&!hip)){alert('Please fill in all required measurements.');return;}
+  let bf;
+  if(u==='metric'){
+    bf = gender==='male'
+      ? 495/(1.0324 - 0.19077*Math.log10(waist-neck) + 0.15456*Math.log10(height)) - 450
+      : 495/(1.29579 - 0.35004*Math.log10(waist+hip-neck) + 0.22100*Math.log10(height)) - 450;
+  } else {
+    bf = gender==='male'
+      ? 86.010*Math.log10(waist-neck) - 70.041*Math.log10(height) + 36.76
+      : 163.205*Math.log10(waist+hip-neck) - 97.684*Math.log10(height) - 78.387;
+  }
+  const cat = gender==='male'
+    ? (bf<6?'Essential fat':bf<14?'Athletic':bf<18?'Fitness':bf<25?'Average':'Above average')
+    : (bf<14?'Essential fat':bf<21?'Athletic':bf<25?'Fitness':bf<32?'Average':'Above average');
+  document.getElementById('bf-out').innerHTML=`
+    <div class="result-box green" style="margin-top:16px;text-align:center;">
+      <div class="result-label">Estimated Body Fat</div>
+      <div class="result-value green">${bf.toFixed(1)}%</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:6px;">${cat}</div>
+    </div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.6;">Estimated using the US Navy tape-measurement method. This is an approximation — for precise body composition, methods like DEXA scans or skinfold calipers are more accurate.</p>
+    <div style="margin-top:14px;font-size:12.5px;">
+      <span style="color:var(--muted);">Related:</span>
+      <a href="#" onclick="openTool('bmi');return false;" style="color:var(--accent);text-decoration:none;margin-left:4px;">BMI Calculator</a> ·
+      <a href="#" onclick="openTool('bmr');return false;" style="color:var(--accent);text-decoration:none;">BMR Calculator</a>
+    </div>`;
+}
+
+// ── WATER INTAKE ──────────────────────────────────────────────────────────────
+function toggleWaterUnit(){const u=document.getElementById('wi-u').value;document.getElementById('wi-met').style.display=u==='metric'?'':'none';document.getElementById('wi-imp').style.display=u==='imperial'?'':'none';}
+function calcWater(){
+  const u=document.getElementById('wi-u').value;const activityBonus=+document.getElementById('wi-activity').value;
+  let wkg;
+  if(u==='metric'){wkg=+document.getElementById('wi-wkg').value;}
+  else{wkg=(+document.getElementById('wi-wlb').value)*0.453592;}
+  if(!wkg){alert('Please enter your weight.');return;}
+  const liters = wkg*0.033 + activityBonus;
+  const glasses = liters/0.25;
+  document.getElementById('wi-out').innerHTML=`
+    <div class="result-grid result-box green" style="margin-top:16px;">
+      <div><div class="result-label">Liters/day</div><div class="result-value green">${liters.toFixed(1)} L</div></div>
+      <div><div class="result-label">8oz Glasses</div><div class="result-value green">${Math.round(glasses)}</div></div>
+    </div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.6;">A general hydration guideline based on body weight and activity level. Individual needs vary with climate, health conditions, and diet — this is a starting reference, not medical advice.</p>`;
+}
+
+
 
 // ── TIP ───────────────────────────────────────────────────────────────────────
 function calcTip(){
@@ -1705,6 +1970,48 @@ async function doSignPDF(){
     const outBytes=await doc.save();
     window._signedPdfBytes=outBytes;
     out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Signature Added to Page ${pageNum}</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(new Blob([window._signedPdfBytes],{type:'application/pdf'}),'signed.pdf');showToast('Downloaded!')">⬇ Download signed.pdf</button></div>`;
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
+  }
+}
+
+// ── ADD TEXT TO PDF ───────────────────────────────────────────────────────────
+function hexToRgb01(hex){
+  const h=hex.replace('#','');
+  const r=parseInt(h.substring(0,2),16)/255, g=parseInt(h.substring(2,4),16)/255, b=parseInt(h.substring(4,6),16)/255;
+  return {r,g,b};
+}
+async function doAddTextToPDF(){
+  const files=getFiles('txt-file');
+  if(!files.length){alert('Please upload a PDF.');return;}
+  const text=document.getElementById('txt-content').value;
+  if(!text.trim()){alert('Please type some text to add.');return;}
+  const pageNum=parseInt(document.getElementById('txt-page').value,10)||1;
+  const xPct=Math.max(0,Math.min(100,+document.getElementById('txt-x').value||0));
+  const yPct=Math.max(0,Math.min(100,+document.getElementById('txt-y').value||0));
+  const fontSize=Math.max(6,+document.getElementById('txt-size').value||16);
+  const colorHex=document.getElementById('txt-color').value||'#1a1d2e';
+  const out=document.getElementById('txt-out');
+  try{
+    const { PDFDocument, rgb, StandardFonts } = PDFLib;
+    const bytes=await fileToArrayBuffer(files[0]);
+    const doc=await PDFDocument.load(bytes,{ignoreEncryption:true});
+    const pages=doc.getPages();
+    if(pageNum<1||pageNum>pages.length){ out.innerHTML=`<div class="result-box" style="color:#c0392b;">Page number out of range (this PDF has ${pages.length} page${pages.length>1?'s':''}).</div>`; return; }
+    const page=pages[pageNum-1];
+    const {width,height}=page.getSize();
+    const font=await doc.embedFont(StandardFonts.Helvetica);
+    const {r,g,b}=hexToRgb01(colorHex);
+    const lines=text.split('\n');
+    const startX=(xPct/100)*width;
+    const startY=height-(yPct/100)*height-fontSize;
+    const lineGap=fontSize*1.35;
+    lines.forEach((line,i)=>{
+      if(line.length) page.drawText(line,{x:startX,y:startY-(i*lineGap),size:fontSize,font,color:rgb(r,g,b)});
+    });
+    const outBytes=await doc.save();
+    window._textPdfBytes=outBytes;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Text Added to Page ${pageNum}</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(new Blob([window._textPdfBytes],{type:'application/pdf'}),'edited.pdf');showToast('Downloaded!')">⬇ Download edited.pdf</button></div>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
   }

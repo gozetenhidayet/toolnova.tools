@@ -1559,19 +1559,26 @@ function addRipple(e,card){
   setTimeout(()=>r.remove(),800);
 }
 // Cursor-driven tilt + glow — the card moves as the pointer moves over it
-document.querySelectorAll('.tool-card').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const rect=card.getBoundingClientRect();
-    const px=(e.clientX-rect.left)/rect.width;
-    const py=(e.clientY-rect.top)/rect.height;
-    card.style.setProperty('--mx',(px*100)+'%');
-    card.style.setProperty('--my',(py*100)+'%');
-    const rotX=(0.5-py)*9;
-    const rotY=(px-0.5)*9;
-    card.style.transform=`perspective(700px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px) scale(1.02)`;
-  });
-  card.addEventListener('mouseleave',()=>{
-    card.style.transform='';
+window.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.tool-card').forEach(card=>{
+    card.style.transition = 'transform .15s ease-out, box-shadow .15s ease-out, border-color .25s';
+    card.addEventListener('mousemove',e=>{
+      const rect=card.getBoundingClientRect();
+      const px=(e.clientX-rect.left)/rect.width;
+      const py=(e.clientY-rect.top)/rect.height;
+      card.style.setProperty('--mx',(px*100)+'%');
+      card.style.setProperty('--my',(py*100)+'%');
+      const rotX=(0.5-py)*22;
+      const rotY=(px-0.5)*22;
+      card.style.transform=`perspective(500px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-12px) scale(1.07)`;
+      card.style.boxShadow='0 22px 40px rgba(79,99,210,0.28)';
+      card.style.zIndex='5';
+    });
+    card.addEventListener('mouseleave',()=>{
+      card.style.transform='';
+      card.style.boxShadow='';
+      card.style.zIndex='';
+    });
   });
 });
 </script>

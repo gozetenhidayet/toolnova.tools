@@ -410,16 +410,13 @@ footer a:hover{color:var(--text);}
   z-index:2;
 }
 .tool-card:hover{
-  transform:none;
+  transform:translateY(-5px) scale(1.01);
   border-color:transparent;
   box-shadow:0 14px 34px rgba(26,29,46,.13);
 }
 .tool-card:hover::after{opacity:1;}
 .tool-card:active{transform:translateY(1px);}
 
-.tool-card .tool-icon{
-  animation:none!important;
-}
 .tool-icon-wrap{
   margin:4px auto 14px;
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.65);
@@ -463,6 +460,237 @@ footer a:hover{color:var(--text);}
   50%{transform:translateX(6px);}
 }
 
+
+/* =========================================================
+   MODERN UI FIXES — sticky category banner, animated title,
+   always-moving icons, stronger hover arrow, popular section
+   CSS-only visual update; tool functions stay unchanged.
+========================================================= */
+html{scroll-padding-top:142px;}
+nav{z-index:300;}
+.category-banner{
+  position:sticky;
+  top:64px;
+  z-index:280;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  box-shadow:0 8px 28px rgba(26,29,46,.08);
+}
+.category-banner-inner{align-items:center;}
+.cat-btn::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.38) 45%,transparent 70%);
+  transform:translateX(-120%);
+  transition:transform .55s ease;
+}
+.cat-btn:hover::before{transform:translateX(120%);}
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 25% 18%,rgba(79,99,210,.12),transparent 30%),
+    radial-gradient(circle at 75% 25%,rgba(11,168,126,.12),transparent 32%),
+    linear-gradient(180deg,#ffffff 0%,#f7f8fc 100%);
+}
+.hero::before,.hero::after{
+  content:'';
+  position:absolute;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  filter:blur(38px);
+  opacity:.45;
+  pointer-events:none;
+  animation:hero-orb 9s ease-in-out infinite alternate;
+}
+.hero::before{left:8%;top:28%;background:rgba(79,99,210,.16);}
+.hero::after{right:10%;top:18%;background:rgba(11,168,126,.16);animation-delay:1.5s;}
+.hero > *{position:relative;z-index:1;}
+.hero h1{
+  font-size:clamp(42px,6vw,72px);
+  line-height:1.02;
+  letter-spacing:-.065em;
+  text-shadow:0 10px 30px rgba(26,29,46,.08);
+  animation:title-pop .75s cubic-bezier(.22,1,.36,1) both;
+}
+.hero h1 em{
+  background:linear-gradient(90deg,#4f63d2,#06b6d4,#0ba87e,#4f63d2);
+  background-size:260% 100%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gradient-title 4.5s ease-in-out infinite;
+}
+.hero-badge{
+  box-shadow:0 8px 24px rgba(79,99,210,.13);
+  animation:badge-float 2.8s ease-in-out infinite;
+}
+.search-wrap{animation:fade-up .6s ease .18s both, search-glow 3.5s ease-in-out infinite;}
+.search-wrap input{background:rgba(255,255,255,.78);backdrop-filter:blur(10px);}
+@keyframes hero-orb{from{transform:translate3d(0,0,0) scale(1);}to{transform:translate3d(24px,-16px,0) scale(1.08);}}
+@keyframes title-pop{from{opacity:0;transform:translateY(20px) scale(.96);filter:blur(6px);}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}}
+@keyframes gradient-title{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+@keyframes badge-float{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+@keyframes search-glow{0%,100%{filter:drop-shadow(0 8px 20px rgba(79,99,210,.06));}50%{filter:drop-shadow(0 12px 30px rgba(11,168,126,.13));}}
+
+/* keep every tool icon moving continuously */
+.tool-icon.anim-spin{animation:icon-spin 4s linear infinite!important;}
+.tool-icon.anim-bounce{animation:icon-bounce 2s ease infinite!important;}
+.tool-icon.anim-pulse{animation:icon-pulse 1.5s ease-in-out infinite!important;}
+.tool-icon.anim-shake{animation:icon-shake .9s ease-in-out infinite!important;}
+.tool-icon.anim-wobble{animation:icon-wobble 2.2s ease-in-out infinite!important;}
+.tool-icon.anim-flip{animation:icon-flip 2.5s ease-in-out infinite!important;}
+.tool-icon.anim-write{animation:icon-write 2s ease-in-out infinite!important;}
+.tool-icon.anim-hue{animation:icon-hue 3s linear infinite!important;}
+.tool-icon.anim-squeeze{animation:icon-squeeze 1.6s ease-in-out infinite!important;}
+.tool-icon.anim-ping{animation:icon-ping 2s cubic-bezier(0,.2,.8,1) infinite!important;}
+.tool-icon.anim-lock{animation:icon-lock 3s ease-in-out infinite!important;}
+.tool-icon.anim-float{animation:icon-float 2.5s ease-in-out infinite!important;}
+.tool-icon.anim-tick{animation:icon-tick 1s steps(1) infinite!important;}
+.tool-icon.anim-count{animation:icon-count 2s ease-in-out infinite!important;}
+.tool-icon-wrap{animation:icon-soft-float 3.8s ease-in-out infinite;}
+@keyframes icon-soft-float{0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
+
+.tool-hover-arrow{
+  transform:translateX(0) rotate(0deg) scale(1);
+  opacity:.95;
+}
+.tool-card:hover .tool-hover-arrow{
+  animation:tool-arrow-move-strong .55s ease-in-out infinite!important;
+}
+@keyframes tool-arrow-move-strong{
+  0%,100%{transform:translateX(0) rotate(0deg) scale(1);}
+  50%{transform:translateX(9px) rotate(-6deg) scale(1.12);}
+}
+.tool-card:hover{
+  transform:translateY(-7px) scale(1.015);
+  box-shadow:0 18px 42px rgba(26,29,46,.14),0 0 0 5px rgba(79,99,210,.035);
+}
+
+.affiliate-section{
+  position:relative;
+  overflow:hidden;
+  padding:36px;
+  border:1.5px solid transparent;
+  background:
+    linear-gradient(#fff,#fff) padding-box,
+    linear-gradient(135deg,rgba(79,99,210,.35),rgba(11,168,126,.28),rgba(245,158,11,.22)) border-box;
+  box-shadow:0 18px 50px rgba(26,29,46,.08);
+}
+.affiliate-section::before{
+  content:'';
+  position:absolute;
+  inset:-80px auto auto -80px;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:rgba(79,99,210,.12);
+  filter:blur(22px);
+  animation:popular-orb 7s ease-in-out infinite alternate;
+}
+.affiliate-section::after{
+  content:'';
+  position:absolute;
+  right:-90px;
+  bottom:-95px;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:rgba(11,168,126,.10);
+  filter:blur(26px);
+  animation:popular-orb 8s ease-in-out infinite alternate-reverse;
+}
+.affiliate-section > *{position:relative;z-index:1;}
+.affiliate-section h3{
+  font-size:24px;
+  letter-spacing:-.035em;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:linear-gradient(90deg,#1a1d2e,#4f63d2,#0ba87e);
+  background-size:220% 100%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gradient-title 5s ease-in-out infinite;
+}
+.affiliate-section p{font-size:15px;margin-bottom:22px;}
+.affiliate-grid{gap:14px;}
+.aff-card{
+  position:relative;
+  min-height:150px;
+  border:1.5px solid rgba(226,229,240,.9);
+  border-radius:18px;
+  background:rgba(255,255,255,.88);
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(26,29,46,.06);
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s,border-color .25s;
+}
+.aff-card::after{
+  content:'→';
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#4f63d2;
+  background:#fff;
+  border:1px solid rgba(226,229,240,.9);
+  box-shadow:0 6px 16px rgba(26,29,46,.08);
+  opacity:0;
+  transform:translateX(-6px);
+  transition:all .25s ease;
+}
+.aff-card:hover{
+  transform:translateY(-7px) scale(1.015);
+  border-color:rgba(79,99,210,.45);
+  box-shadow:0 18px 38px rgba(26,29,46,.12);
+}
+.aff-card:hover::after{
+  opacity:1;
+  transform:translateX(0);
+  animation:tool-arrow-move-strong .65s ease-in-out infinite;
+}
+.aff-card-icon{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#eef0fd,#e6f8f3);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.65);
+  animation:icon-float 2.8s ease-in-out infinite;
+}
+.aff-card-name{font-size:14px;margin-top:2px;}
+.aff-earn{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  padding:4px 8px;
+  border-radius:999px;
+  background:#eef0fd;
+  color:#4f63d2;
+  font-size:10px;
+  letter-spacing:.02em;
+}
+@keyframes popular-orb{from{transform:translate(0,0) scale(1);}to{transform:translate(26px,18px) scale(1.12);}}
+
+@media(max-width:640px){
+  html{scroll-padding-top:128px;}
+  .category-banner{top:61px;overflow-x:auto;}
+  .category-banner-inner{justify-content:flex-start!important;flex-wrap:nowrap!important;min-width:max-content;}
+  .hero h1{font-size:clamp(36px,13vw,52px);}
+  .affiliate-section{padding:24px 18px;}
+}
+
 @media(max-width:640px){
   nav{padding:14px 16px;}
   .nav-links .nav-links-hide{display:none;}
@@ -487,8 +715,8 @@ footer a:hover{color:var(--text);}
 </nav>
 
 <!-- CATEGORY BANNER -->
-<div style="background:var(--surface);border-bottom:1px solid var(--border);padding:16px 20px;">
-  <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:900px;margin:0 auto;">
+<div class="category-banner" style="background:var(--surface);border-bottom:1px solid var(--border);padding:16px 20px;">
+  <div class="category-banner-inner" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:900px;margin:0 auto;">
     <a href="#pdf-converter" class="cat-btn" style="--c1:#e74c3c;--c2:#c0392b;">📄 PDF Converter</a>
     <a href="#ocr-tools" class="cat-btn" style="--c1:#f39c12;--c2:#d68910;">🔍 OCR Tools</a>
     <a href="#edit-pdf" class="cat-btn" style="--c1:#9b59b6;--c2:#7d3c98;">✂️ Edit PDF</a>

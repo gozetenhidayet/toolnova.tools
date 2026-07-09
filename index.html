@@ -714,54 +714,62 @@ footer a:hover{color:var(--text);}
   <div class="affiliate-section" id="recommended">
     <h3>⭐ Most Popular Right Now</h3>
     <p>Trending tools used by thousands of people every day.</p>
-    <div class="affiliate-grid">
-      <a class="aff-card" href="javascript:void(0)" onclick="openTool('pdf2jpg')">
-        <div class="aff-card-icon">🖼️</div>
-        <div class="aff-card-name">PDF to JPG</div>
-        <div class="aff-card-desc">Convert PDF pages to high quality JPG images instantly.</div>
-        <div class="aff-earn">🔥 Most Popular</div>
+    <div class="tool-grid">
+      <a class="tool-card" data-key="p1" href="javascript:void(0)" onclick="addRipple(event,this);openTool('pdf2jpg')">
+        <button class="fav-btn" onclick="toggleFav(event,'p1')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-spin">🖼️</span></div>
+        <div class="tool-name">PDF to JPG</div>
+        <div class="tool-desc">Convert PDF pages to high quality JPG images instantly.</div>
+        <span class="tool-badge hot">Most Popular</span>
       </a>
-      <a class="aff-card" href="javascript:void(0)" onclick="openTool('ocr')">
-        <div class="aff-card-icon">🔍</div>
-        <div class="aff-card-name">Image to Text</div>
-        <div class="aff-card-desc">Extract text from any image using AI-powered OCR.</div>
-        <div class="aff-earn">🔥 Trending</div>
+      <a class="tool-card" data-key="p2" href="javascript:void(0)" onclick="addRipple(event,this);openTool('ocr')">
+        <button class="fav-btn" onclick="toggleFav(event,'p2')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-shake">🔍</span></div>
+        <div class="tool-name">Image to Text</div>
+        <div class="tool-desc">Extract text from any image using AI-powered OCR.</div>
+        <span class="tool-badge hot">Trending</span>
       </a>
-      <a class="aff-card" href="javascript:void(0)" onclick="openTool('merge')">
-        <div class="aff-card-icon">📎</div>
-        <div class="aff-card-name">Merge PDF</div>
-        <div class="aff-card-desc">Combine multiple PDF files into one document for free.</div>
-        <div class="aff-earn">🔥 Most Used</div>
+      <a class="tool-card" data-key="p3" href="javascript:void(0)" onclick="addRipple(event,this);openTool('merge')">
+        <button class="fav-btn" onclick="toggleFav(event,'p3')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-bounce">📎</span></div>
+        <div class="tool-name">Merge PDF</div>
+        <div class="tool-desc">Combine multiple PDF files into one document for free.</div>
+        <span class="tool-badge hot">Most Used</span>
       </a>
-      <a class="aff-card" href="javascript:void(0)" onclick="openTool('qr')">
-        <div class="aff-card-icon">📱</div>
-        <div class="aff-card-name">QR Code Generator</div>
-        <div class="aff-card-desc">Generate QR codes for any URL or text. Download as PNG.</div>
-        <div class="aff-earn">⭐ Popular</div>
+      <a class="tool-card" data-key="p4" href="javascript:void(0)" onclick="addRipple(event,this);openTool('qr')">
+        <button class="fav-btn" onclick="toggleFav(event,'p4')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📱</span></div>
+        <div class="tool-name">QR Code Generator</div>
+        <div class="tool-desc">Generate QR codes for any URL or text. Download as PNG.</div>
+        <span class="tool-badge">Popular</span>
       </a>
-      <a class="aff-card" href="javascript:void(0)" onclick="openTool('sign')">
-        <div class="aff-card-icon">✍️</div>
-        <div class="aff-card-name">Sign PDF</div>
-        <div class="aff-card-desc">Draw or type your signature and place it on any PDF.</div>
-        <div class="aff-earn">⭐ New</div>
+      <a class="tool-card" data-key="p5" href="javascript:void(0)" onclick="addRipple(event,this);openTool('sign')">
+        <button class="fav-btn" onclick="toggleFav(event,'p5')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-write">✍️</span></div>
+        <div class="tool-name">Sign PDF</div>
+        <div class="tool-desc">Draw or type your signature and place it on any PDF.</div>
+        <span class="tool-badge">New</span>
       </a>
-      <a class="aff-card" href="javascript:void(0)" onclick="openTool('password')">
-        <div class="aff-card-icon">🔐</div>
-        <div class="aff-card-name">Password Generator</div>
-        <div class="aff-card-desc">Generate strong, secure passwords instantly. Customizable.</div>
-        <div class="aff-earn">⭐ Popular</div>
+      <a class="tool-card" data-key="p6" href="javascript:void(0)" onclick="addRipple(event,this);openTool('password')">
+        <button class="fav-btn" onclick="toggleFav(event,'p6')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-lock">🔐</span></div>
+        <div class="tool-name">Password Generator</div>
+        <div class="tool-desc">Generate strong, secure passwords instantly. Customizable.</div>
+        <span class="tool-badge">Popular</span>
       </a>
-      <a class="aff-card" href="javascript:void(0)" onclick="openTool('age')">
-        <div class="aff-card-icon">🎂</div>
-        <div class="aff-card-name">Age Calculator</div>
-        <div class="aff-card-desc">Find your exact age in years, months, days and hours.</div>
-        <div class="aff-earn">⭐ Popular</div>
+      <a class="tool-card" data-key="p7" href="javascript:void(0)" onclick="addRipple(event,this);openTool('age')">
+        <button class="fav-btn" onclick="toggleFav(event,'p7')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-pink"><span class="tool-icon anim-tick">🎂</span></div>
+        <div class="tool-name">Age Calculator</div>
+        <div class="tool-desc">Find your exact age in years, months, days and hours.</div>
+        <span class="tool-badge">Popular</span>
       </a>
-      <a class="aff-card" href="javascript:void(0)" onclick="openTool('wordcount')">
-        <div class="aff-card-icon">📝</div>
-        <div class="aff-card-name">Word Counter</div>
-        <div class="aff-card-desc">Count words, characters and reading time live as you type.</div>
-        <div class="aff-earn">⭐ Popular</div>
+      <a class="tool-card" data-key="p8" href="javascript:void(0)" onclick="addRipple(event,this);openTool('wordcount')">
+        <button class="fav-btn" onclick="toggleFav(event,'p8')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📝</span></div>
+        <div class="tool-name">Word Counter</div>
+        <div class="tool-desc">Count words, characters and reading time live as you type.</div>
+        <span class="tool-badge">Popular</span>
       </a>
     </div>
   </div>

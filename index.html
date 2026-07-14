@@ -2657,7 +2657,7 @@ async function convertRecordingToMp4(){
     if(!window._ffmpegInstance){
       window._ffmpegInstance=createFFmpeg({
         log:false,
-        corePath:'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js',
+        corePath:'https://unpkg.com/@ffmpeg/core-st@0.11.1/dist/ffmpeg-core.js',
         progress:({ratio})=>{ if(ratio>=0) setProgress('mp4-prog', Math.min(97,Math.round(ratio*100))); }
       });
     }
@@ -2700,7 +2700,7 @@ async function startHtmlToMp4(){
       await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
     }
     const doc=frameEl.contentDocument || frameEl.contentWindow.document;
-    const target=doc.body;
+    const target=doc.querySelector('.stage') || doc.body;
     const frames=[];
     const frameDelay=1000/fps;
 
@@ -2725,7 +2725,7 @@ async function startHtmlToMp4(){
     if(!window._ffmpegInstance){
       window._ffmpegInstance=createFFmpeg({
         log:false,
-        corePath:'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js',
+        corePath:'https://unpkg.com/@ffmpeg/core-st@0.11.1/dist/ffmpeg-core.js',
         progress:({ratio})=>{ if(ratio>=0) setProgress('h2v-prog', Math.min(97,Math.round(ratio*100))); }
       });
     }

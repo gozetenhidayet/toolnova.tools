@@ -1733,6 +1733,25 @@ async function fileToArrayBuffer(file){
   return await file.arrayBuffer();
 }
 
+// Renders a small thumbnail of page 1 of a resulting PDF so the user can SEE the outcome before downloading.
+async function renderPdfThumbPreview(bytes, elId, pageNum){
+  const el=document.getElementById(elId);
+  if(!el) return;
+  try{
+    const pdf=await pdfjsLib.getDocument({data:bytes.slice(0)}).promise;
+    const safePage=Math.max(1, Math.min(pageNum||1, pdf.numPages));
+    const page=await pdf.getPage(safePage);
+    const viewport=page.getViewport({scale:0.55});
+    const canvas=document.createElement('canvas');
+    canvas.width=viewport.width; canvas.height=viewport.height;
+    await page.render({canvasContext:canvas.getContext('2d'), viewport}).promise;
+    const extra = pdf.numPages>1 ? `<div style="font-size:11px;color:var(--muted);margin-top:6px;">Showing page ${safePage} of ${pdf.numPages}</div>` : '';
+    el.innerHTML = `<img src="${canvas.toDataURL()}" style="max-width:200px;max-height:260px;border:1.5px solid var(--border);border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.1);display:block;margin:12px auto 0;">${extra}`;
+  }catch(e){
+    // Preview is a nice-to-have; if it fails, downloading still works fine.
+  }
+}
+
 // ── MERGE PDF ─────────────────────────────────────────────────────────────────
 async function doMergePDF(){
   const files=getFiles('merge-files');
@@ -1753,8 +1772,9 @@ async function doMergePDF(){
     }
     const bytes = await merged.save();
     setProgress('merge-prog',100);
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Merged Successfully</div><div style="margin:10px 0;color:var(--muted);font-size:13px;">${files.length} files combined into one PDF.</div><button class="btn" onclick='downloadMergedPDF()'>⬇ Download merged.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Merged Successfully</div><div style="margin:10px 0;color:var(--muted);font-size:13px;">${files.length} files combined into one PDF.</div><div id="merge-preview"></div><button class="btn" style="margin-top:12px;" onclick='downloadMergedPDF()'>⬇ Download merged.pdf</button></div>`;
     window._mergedPdfBytes = bytes;
+    renderPdfThumbPreview(bytes, 'merge-preview');
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not merge PDFs. Make sure all files are valid PDFs.'}</div>`;
   }
@@ -1799,7 +1819,8 @@ async function doSplitPDF(){
     const outBytes = await newDoc.save();
     setProgress('split-prog',100);
     window._splitPdfBytes = outBytes;
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Split Complete</div><div style="margin:10px 0;color:var(--muted);font-size:13px;">${pages.length} of ${max} pages extracted.</div><button class="btn" onclick="downloadBlob(new Blob([window._splitPdfBytes],{type:'application/pdf'}),'split.pdf');showToast('Downloaded!')">⬇ Download split.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Split Complete</div><div style="margin:10px 0;color:var(--muted);font-size:13px;">${pages.length} of ${max} pages extracted.</div><div id="split-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._splitPdfBytes],{type:'application/pdf'}),'split.pdf');showToast('Downloaded!')">⬇ Download split.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'split-preview');
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not read this PDF.'}</div>`;
   }
@@ -1830,7 +1851,9 @@ async function doCompressPDF(){
       <div><div class="result-label">Compressed</div><div class="result-value green">${fmtSize(newSize)}</div></div>
       </div>
       <div style="margin:10px 0;color:var(--muted);font-size:13px;">${pct>0?`Reduced by ~${pct}%.`:'This PDF is already well-optimized — structural compression applied.'}</div>
-      <button class="btn" onclick="downloadBlob(new Blob([window._compressedPdfBytes],{type:'application/pdf'}),'compressed.pdf');showToast('Downloaded!')">⬇ Download compressed.pdf</button>`;
+      <div id="compress-preview" style="text-align:center;"></div>
+      <button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._compressedPdfBytes],{type:'application/pdf'}),'compressed.pdf');showToast('Downloaded!')">⬇ Download compressed.pdf</button>`;
+    renderPdfThumbPreview(outBytes, 'compress-preview');
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not compress this PDF.'}</div>`;
   }
@@ -1857,7 +1880,8 @@ async function doRotatePDF(){
     const outBytes=await doc.save();
     setProgress('rotate-prog',100);
     window._rotatedPdfBytes=outBytes;
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Rotated ${pages.length} Pages</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(new Blob([window._rotatedPdfBytes],{type:'application/pdf'}),'rotated.pdf');showToast('Downloaded!')">⬇ Download rotated.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Rotated ${pages.length} Pages</div><div id="rotate-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._rotatedPdfBytes],{type:'application/pdf'}),'rotated.pdf');showToast('Downloaded!')">⬇ Download rotated.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'rotate-preview');
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not rotate this PDF.'}</div>`;
   }
@@ -1924,7 +1948,8 @@ async function doDeletePages(){
     const outBytes=await doc.save();
     setProgress('del-prog',100);
     window._delPdfBytes=outBytes;
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Removed ${toDelete.size} Page(s)</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(new Blob([window._delPdfBytes],{type:'application/pdf'}),'edited.pdf');showToast('Downloaded!')">⬇ Download edited.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Removed ${toDelete.size} Page(s)</div><div id="del-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._delPdfBytes],{type:'application/pdf'}),'edited.pdf');showToast('Downloaded!')">⬇ Download edited.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'del-preview');
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
   }
@@ -1949,7 +1974,8 @@ async function doExtractPages(){
     const outBytes=await doc.save();
     setProgress('ext-prog',100);
     window._extPdfBytes=outBytes;
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Extracted ${toKeep.size} Page(s)</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(new Blob([window._extPdfBytes],{type:'application/pdf'}),'extracted.pdf');showToast('Downloaded!')">⬇ Download extracted.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Extracted ${toKeep.size} Page(s)</div><div id="ext-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._extPdfBytes],{type:'application/pdf'}),'extracted.pdf');showToast('Downloaded!')">⬇ Download extracted.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'ext-preview');
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
   }
@@ -2235,7 +2261,8 @@ async function doSignPDF(){
     }
     const outBytes=await doc.save();
     window._signedPdfBytes=outBytes;
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Signature Added to Page ${pageNum}</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(new Blob([window._signedPdfBytes],{type:'application/pdf'}),'signed.pdf');showToast('Downloaded!')">⬇ Download signed.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Signature Added to Page ${pageNum}</div><div id="sign-result-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._signedPdfBytes],{type:'application/pdf'}),'signed.pdf');showToast('Downloaded!')">⬇ Download signed.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'sign-result-preview', pageNum);
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
   }
@@ -2277,7 +2304,8 @@ async function doAddTextToPDF(){
     });
     const outBytes=await doc.save();
     window._textPdfBytes=outBytes;
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Text Added to Page ${pageNum}</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(new Blob([window._textPdfBytes],{type:'application/pdf'}),'edited.pdf');showToast('Downloaded!')">⬇ Download edited.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Text Added to Page ${pageNum}</div><div id="txt-result-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._textPdfBytes],{type:'application/pdf'}),'edited.pdf');showToast('Downloaded!')">⬇ Download edited.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'txt-result-preview', pageNum);
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
   }
@@ -2307,7 +2335,8 @@ async function doImagesToPDF(){
     const outBytes=await doc.save();
     setProgress('i2p-prog',100);
     window._i2pBytes=outBytes;
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ PDF Created (${files.length} pages)</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(new Blob([window._i2pBytes],{type:'application/pdf'}),'images.pdf');showToast('Downloaded!')">⬇ Download images.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ PDF Created (${files.length} pages)</div><div id="i2p-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._i2pBytes],{type:'application/pdf'}),'images.pdf');showToast('Downloaded!')">⬇ Download images.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'i2p-preview');
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
   }
@@ -2494,7 +2523,8 @@ async function doPdfToWord(){
     const blob=new Blob(['\ufeff', html], {type:'application/msword'});
     window._wordBlob=blob;
     setProgress('p2w-prog',100);
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Converted to Word</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(window._wordBlob,'converted.doc');showToast('Downloaded!')">⬇ Download converted.doc</button></div>`;
+    const snippet = escapeHtml(text.slice(0,400)) + (text.length>400 ? '…' : '');
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Converted to Word</div><div style="background:var(--surface2);border-radius:8px;padding:10px 12px;margin:10px 0;font-size:12.5px;color:var(--muted);max-height:120px;overflow-y:auto;white-space:pre-wrap;">${snippet||'(no extractable text found)'}</div><button class="btn" onclick="downloadBlob(window._wordBlob,'converted.doc');showToast('Downloaded!')">⬇ Download converted.doc</button></div>`;
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not extract this PDF — it may be scanned. Try Scan PDF to Text first.'}</div>`;
   }
@@ -2539,7 +2569,8 @@ async function doWordToPdf(){
     const outBytes=await doc.save();
     setProgress('w2p-prog',100);
     window._w2pBytes=outBytes;
-    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Converted to PDF</div><button class="btn" style="margin-top:10px;" onclick="downloadBlob(new Blob([window._w2pBytes],{type:'application/pdf'}),'converted.pdf');showToast('Downloaded!')">⬇ Download converted.pdf</button></div>`;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Converted to PDF</div><div id="w2p-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._w2pBytes],{type:'application/pdf'}),'converted.pdf');showToast('Downloaded!')">⬇ Download converted.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'w2p-preview');
   }catch(err){
     out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not convert this document.'}</div>`;
   }

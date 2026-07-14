@@ -1123,47 +1123,55 @@ const TOOLS={
   },
 
   sign:{
-    title:'✍️ Sign PDF',sub:'Type, draw, or upload your signature and place it on a page',
+    title:'✍️ Sign PDF',sub:'Type, draw, or upload your signature and drag it into place',
     render:()=>fileDropzone('sign-file','application/pdf',false)+`<div id="sign-list"></div>
       <div id="sign-builder" style="display:none;">
         <div class="sig-tabs">
           <div class="sig-tab active" id="sigtab-type" onclick="switchSigTab('type')">Type</div>
           <div class="sig-tab" id="sigtab-draw" onclick="switchSigTab('draw')">Draw</div>
         </div>
-        <div id="sig-type-pane"><input type="text" id="sig-text" placeholder="Your Name" style="font-family:'Brush Script MT',cursive;font-size:22px;"></div>
+        <div id="sig-type-pane"><input type="text" id="sig-text" placeholder="Your Name" oninput="updateSignOverlay()" style="font-family:'Brush Script MT',cursive;font-size:22px;"></div>
         <div id="sig-draw-pane" style="display:none;">
           <canvas id="sig-canvas" width="460" height="140" style="width:100%;border:1.5px solid var(--border);border-radius:10px;background:#fff;touch-action:none;cursor:crosshair;"></canvas>
           <button class="btn-sec btn" style="margin-top:8px;" onclick="clearSigCanvas()">Clear</button>
         </div>
         <label style="margin-top:14px;">Page Number</label>
-        <input type="number" id="sig-page" value="1" min="1">
+        <input type="number" id="sig-page" value="1" min="1" onchange="updateSignPreviewPage()">
+        <div id="sign-page-info" style="font-size:12px;color:var(--muted);margin:4px 0 12px;"></div>
+        <label>Drag your signature onto the page</label>
+        <div id="sign-preview-wrap" style="position:relative;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px;touch-action:none;cursor:crosshair;background:var(--surface2);min-height:120px;">
+          <canvas id="sign-preview-canvas" style="display:block;width:100%;"></canvas>
+          <div id="sign-overlay" style="position:absolute;left:55%;top:75%;padding:5px 12px;background:rgba(79,99,210,0.14);border:1.5px dashed var(--accent);border-radius:6px;font-family:'Brush Script MT',cursive;font-size:20px;color:#1a1d2e;white-space:nowrap;cursor:grab;user-select:none;">Your Name</div>
+        </div>
         <button class="btn" onclick="doSignPDF()">Add Signature & Download</button>
       </div>
       <div id="sign-out"></div>`,
-    init(){ setupDropzone('sign-file','sign-list','sign-builder',false,'application/pdf', ()=>{ setTimeout(initSigCanvas, 50); }); }
+    init(){ setupDropzone('sign-file','sign-list','sign-builder',false,'application/pdf', ()=>{ setTimeout(()=>{ initSigCanvas(); initSignPreview(); },50); }); }
   },
 
   addtext:{
-    title:'✏️ Add Text to PDF',sub:'Type anywhere on a page — fill forms, add notes, annotate',
+    title:'✏️ Add Text to PDF',sub:'Type your text, then drag it exactly where it should go',
     render:()=>fileDropzone('txt-file','application/pdf',false)+`<div id="txt-list"></div>
       <div id="txt-builder" style="display:none;">
         <label>Text to add</label>
-        <textarea id="txt-content" rows="3" placeholder="Type the text you want to add to the PDF..." style="width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text);font-size:14px;font-family:inherit;outline:none;margin-bottom:16px;resize:vertical;"></textarea>
+        <textarea id="txt-content" rows="2" placeholder="Type the text you want to add to the PDF..." oninput="updateTxtOverlay()" style="width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text);font-size:14px;font-family:inherit;outline:none;margin-bottom:16px;resize:vertical;"></textarea>
         <label>Page Number</label>
-        <input type="number" id="txt-page" value="1" min="1">
+        <input type="number" id="txt-page" value="1" min="1" onchange="updateTxtPreviewPage()">
+        <div id="txt-page-info" style="font-size:12px;color:var(--muted);margin:4px 0 12px;"></div>
         <div class="row">
-          <div><label>Horizontal position (%)</label><input type="number" id="txt-x" value="10" min="0" max="100"></div>
-          <div><label>Vertical position from top (%)</label><input type="number" id="txt-y" value="10" min="0" max="100"></div>
+          <div><label>Font size</label><input type="number" id="txt-size" value="16" min="6" max="72" oninput="updateTxtOverlay()"></div>
+          <div><label>Color</label><input type="color" id="txt-color" value="#1a1d2e" oninput="updateTxtOverlay()" style="width:100%;height:42px;border:1.5px solid var(--border);border-radius:10px;padding:2px;background:var(--surface2);"></div>
         </div>
-        <div class="row">
-          <div><label>Font size</label><input type="number" id="txt-size" value="16" min="6" max="72"></div>
-          <div><label>Color</label><input type="color" id="txt-color" value="#1a1d2e" style="width:100%;height:42px;border:1.5px solid var(--border);border-radius:10px;padding:2px;background:var(--surface2);"></div>
+        <label>Drag the text onto the page</label>
+        <div id="txt-preview-wrap" style="position:relative;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px;touch-action:none;cursor:crosshair;background:var(--surface2);min-height:120px;">
+          <canvas id="txt-preview-canvas" style="display:block;width:100%;"></canvas>
+          <div id="txt-overlay" style="position:absolute;left:10%;top:10%;padding:2px 4px;white-space:pre;cursor:grab;user-select:none;font-family:Helvetica,Arial,sans-serif;">Your text</div>
         </div>
         <button class="btn" onclick="doAddTextToPDF()">Add Text & Download</button>
-        <p style="font-size:12px;color:var(--muted);margin-top:10px;">Tip: 0% / 0% is the top-left corner of the page. Preview the result and re-adjust the position if needed — it only takes a few seconds.</p>
+        <p style="font-size:12px;color:var(--muted);margin-top:10px;">Tip: click anywhere on the page preview, or drag the text box, to reposition it.</p>
       </div>
       <div id="txt-out"></div>`,
-    init(){ setupDropzone('txt-file','txt-list','txt-builder',false,'application/pdf'); }
+    init(){ setupDropzone('txt-file','txt-list','txt-builder',false,'application/pdf', ()=>{ setTimeout(initTxtPreview,50); }); }
   },
 
   img2pdf:{
@@ -1667,7 +1675,7 @@ function removeDzFile(inputId, listId, revealId, idx){
   zone._files.splice(idx,1);
   window['_dzRender_'+inputId]();
   if(zone._files.length===0){
-    ['merge-out','split-out','compress-out','rotate-out','del-out','ext-out','sign-out','i2p-out','p2j-out','p2n-out','p2t-out','ocr-out','socr-out','p2w-out','w2p-out','p2e-out'].forEach(id=>{const e=document.getElementById(id);if(e)e.innerHTML='';});
+    ['merge-out','split-out','compress-out','rotate-out','del-out','ext-out','sign-out','txt-out','i2p-out','p2j-out','p2n-out','p2t-out','ocr-out','socr-out','p2w-out','w2p-out','p2e-out'].forEach(id=>{const e=document.getElementById(id);if(e)e.innerHTML='';});
   }
 }
 
@@ -1932,6 +1940,7 @@ function switchSigTab(which){
   document.getElementById('sigtab-draw').classList.toggle('active', which==='draw');
   document.getElementById('sig-type-pane').style.display = which==='type'?'':'none';
   document.getElementById('sig-draw-pane').style.display = which==='draw'?'':'none';
+  updateSignOverlay();
 }
 function initSigCanvas(){
   const canvas=document.getElementById('sig-canvas');
@@ -1947,17 +1956,164 @@ function initSigCanvas(){
   };
   const start=e=>{ e.preventDefault(); sigDrawing=true; sigHasDrawing=true; const p=pos(e); sigCtx.beginPath(); sigCtx.moveTo(p.x,p.y); };
   const move=e=>{ if(!sigDrawing)return; e.preventDefault(); const p=pos(e); sigCtx.lineTo(p.x,p.y); sigCtx.stroke(); };
-  const end=()=>{ sigDrawing=false; };
+  const end=()=>{ sigDrawing=false; updateSignOverlay(); };
   canvas.addEventListener('mousedown',start); canvas.addEventListener('mousemove',move); window.addEventListener('mouseup',end);
   canvas.addEventListener('touchstart',start); canvas.addEventListener('touchmove',move); canvas.addEventListener('touchend',end);
 }
-function clearSigCanvas(){ if(sigCtx){ sigCtx.clearRect(0,0,460,140); sigHasDrawing=false; } }
+function clearSigCanvas(){ if(sigCtx){ sigCtx.clearRect(0,0,460,140); sigHasDrawing=false; updateSignOverlay(); } }
+
+// ── PDF PAGE PREVIEW + DRAG-TO-PLACE (shared by Sign PDF & Add Text to PDF) ───
+async function renderPlacerPage(file, pageNum, canvasEl){
+  const buf=await fileToArrayBuffer(file);
+  const pdf=await pdfjsLib.getDocument({data:buf.slice(0)}).promise;
+  const n=pdf.numPages;
+  const safePage=Math.max(1, Math.min(pageNum||1, n));
+  const page=await pdf.getPage(safePage);
+  const viewport1=page.getViewport({scale:1});
+  const scale=Math.min(380/viewport1.width, 1.4);
+  const viewport=page.getViewport({scale});
+  canvasEl.width=viewport.width; canvasEl.height=viewport.height;
+  await page.render({canvasContext:canvasEl.getContext('2d'), viewport}).promise;
+  return {numPages:n, page:safePage};
+}
+function attachDragToPlace(wrapEl, overlayEl, posState){
+  if(wrapEl._dragWired) return;
+  wrapEl._dragWired=true;
+  let dragging=false;
+  const setFromClient=(clientX, clientY)=>{
+    const rect=wrapEl.getBoundingClientRect();
+    let x=((clientX-rect.left)/rect.width)*100;
+    let y=((clientY-rect.top)/rect.height)*100;
+    x=Math.max(0,Math.min(94,x));
+    y=Math.max(0,Math.min(94,y));
+    posState.x=x; posState.y=y;
+    overlayEl.style.left=x+'%';
+    overlayEl.style.top=y+'%';
+  };
+  const onDown=e=>{
+    dragging=true;
+    const p = e.touches ? e.touches[0] : e;
+    setFromClient(p.clientX, p.clientY);
+    e.preventDefault();
+  };
+  const onMove=e=>{
+    if(!dragging) return;
+    const p = e.touches ? e.touches[0] : e;
+    setFromClient(p.clientX, p.clientY);
+    e.preventDefault();
+  };
+  const onUp=()=>{ dragging=false; };
+  wrapEl.addEventListener('mousedown', onDown);
+  wrapEl.addEventListener('mousemove', onMove);
+  window.addEventListener('mouseup', onUp);
+  wrapEl.addEventListener('touchstart', onDown, {passive:false});
+  wrapEl.addEventListener('touchmove', onMove, {passive:false});
+  wrapEl.addEventListener('touchend', onUp);
+}
+
+// ── Sign PDF preview ─────────────────────────────────────────────────────────
+window._signPos = {x:55, y:75};
+async function initSignPreview(){
+  const files=getFiles('sign-file');
+  if(!files.length) return;
+  const canvas=document.getElementById('sign-preview-canvas');
+  const wrap=document.getElementById('sign-preview-wrap');
+  const overlay=document.getElementById('sign-overlay');
+  try{
+    const info=await renderPlacerPage(files[0], +document.getElementById('sig-page').value||1, canvas);
+    document.getElementById('sign-page-info').textContent = `Page ${info.page} of ${info.numPages}`;
+    document.getElementById('sig-page').max = info.numPages;
+    attachDragToPlace(wrap, overlay, window._signPos);
+    overlay.style.left=window._signPos.x+'%';
+    overlay.style.top=window._signPos.y+'%';
+    updateSignOverlay();
+  }catch(err){
+    wrap.innerHTML=`<div style="padding:16px;color:#c0392b;font-size:13px;">Could not preview this PDF: ${err.message||'invalid file'}</div>`;
+  }
+}
+async function updateSignPreviewPage(){
+  const files=getFiles('sign-file');
+  if(!files.length) return;
+  const canvas=document.getElementById('sign-preview-canvas');
+  const info=await renderPlacerPage(files[0], +document.getElementById('sig-page').value||1, canvas);
+  document.getElementById('sign-page-info').textContent = `Page ${info.page} of ${info.numPages}`;
+  document.getElementById('sig-page').value = info.page;
+}
+function updateSignOverlay(){
+  const overlay=document.getElementById('sign-overlay');
+  if(!overlay) return;
+  const isDraw = document.getElementById('sigtab-draw') && document.getElementById('sigtab-draw').classList.contains('active');
+  if(isDraw){
+    if(sigHasDrawing){
+      const c=document.getElementById('sig-canvas');
+      overlay.innerHTML=`<img src="${c.toDataURL()}" style="height:34px;display:block;pointer-events:none;">`;
+      overlay.style.background='transparent';
+      overlay.style.border='1.5px dashed var(--accent)';
+      overlay.style.padding='2px';
+    } else {
+      overlay.textContent='✍️ Signature';
+      overlay.style.background='rgba(79,99,210,0.14)';
+      overlay.style.border='1.5px dashed var(--accent)';
+      overlay.style.fontFamily='inherit';
+      overlay.style.fontSize='13px';
+      overlay.style.padding='5px 12px';
+    }
+  } else {
+    const text=document.getElementById('sig-text').value.trim()||'Your Name';
+    overlay.textContent=text;
+    overlay.style.background='rgba(79,99,210,0.14)';
+    overlay.style.border='1.5px dashed var(--accent)';
+    overlay.style.fontFamily=`'Brush Script MT',cursive`;
+    overlay.style.fontSize='20px';
+    overlay.style.padding='5px 12px';
+  }
+}
+
+// ── Add Text to PDF preview ──────────────────────────────────────────────────
+window._txtPos = {x:10, y:10};
+async function initTxtPreview(){
+  const files=getFiles('txt-file');
+  if(!files.length) return;
+  const canvas=document.getElementById('txt-preview-canvas');
+  const wrap=document.getElementById('txt-preview-wrap');
+  const overlay=document.getElementById('txt-overlay');
+  try{
+    const info=await renderPlacerPage(files[0], +document.getElementById('txt-page').value||1, canvas);
+    document.getElementById('txt-page-info').textContent = `Page ${info.page} of ${info.numPages}`;
+    document.getElementById('txt-page').max = info.numPages;
+    attachDragToPlace(wrap, overlay, window._txtPos);
+    overlay.style.left=window._txtPos.x+'%';
+    overlay.style.top=window._txtPos.y+'%';
+    updateTxtOverlay();
+  }catch(err){
+    wrap.innerHTML=`<div style="padding:16px;color:#c0392b;font-size:13px;">Could not preview this PDF: ${err.message||'invalid file'}</div>`;
+  }
+}
+async function updateTxtPreviewPage(){
+  const files=getFiles('txt-file');
+  if(!files.length) return;
+  const canvas=document.getElementById('txt-preview-canvas');
+  const info=await renderPlacerPage(files[0], +document.getElementById('txt-page').value||1, canvas);
+  document.getElementById('txt-page-info').textContent = `Page ${info.page} of ${info.numPages}`;
+  document.getElementById('txt-page').value = info.page;
+}
+function updateTxtOverlay(){
+  const overlay=document.getElementById('txt-overlay');
+  if(!overlay) return;
+  const text=document.getElementById('txt-content').value || 'Your text';
+  const size=+document.getElementById('txt-size').value || 16;
+  const color=document.getElementById('txt-color').value || '#1a1d2e';
+  overlay.textContent=text;
+  overlay.style.fontSize=Math.max(8,size*0.75)+'px'; // preview canvas is scaled down from actual PDF, approximate
+  overlay.style.color=color;
+}
 
 async function doSignPDF(){
   const files=getFiles('sign-file');
   if(!files.length){alert('Please upload a PDF.');return;}
   const isDrawTab = document.getElementById('sigtab-draw').classList.contains('active');
   const pageNum = parseInt(document.getElementById('sig-page').value,10) || 1;
+  const pos = window._signPos || {x:55,y:75};
   const out=document.getElementById('sign-out');
   try{
     const { PDFDocument, rgb, StandardFonts } = PDFLib;
@@ -1967,6 +2123,8 @@ async function doSignPDF(){
     if(pageNum<1||pageNum>pages.length){ out.innerHTML='<div class="result-box" style="color:#c0392b;">Page number out of range.</div>'; return; }
     const page=pages[pageNum-1];
     const {width,height}=page.getSize();
+    const px=(pos.x/100)*width;
+    const py=height-(pos.y/100)*height;
 
     if(isDrawTab){
       if(!sigHasDrawing){alert('Please draw your signature first.');return;}
@@ -1975,12 +2133,12 @@ async function doSignPDF(){
       const pngBytes=await fetch(dataUrl).then(r=>r.arrayBuffer());
       const img=await doc.embedPng(pngBytes);
       const w=160,h=160*(img.height/img.width);
-      page.drawImage(img,{x:width-w-40,y:40,width:w,height:h});
+      page.drawImage(img,{x:px,y:py-h,width:w,height:h});
     } else {
       const text=document.getElementById('sig-text').value.trim();
       if(!text){alert('Please type your signature.');return;}
       const font=await doc.embedFont(StandardFonts.HelveticaOblique);
-      page.drawText(text,{x:width-260,y:50,size:26,font,color:rgb(0.1,0.1,0.18)});
+      page.drawText(text,{x:px,y:py-26,size:26,font,color:rgb(0.1,0.1,0.18)});
     }
     const outBytes=await doc.save();
     window._signedPdfBytes=outBytes;
@@ -2002,8 +2160,7 @@ async function doAddTextToPDF(){
   const text=document.getElementById('txt-content').value;
   if(!text.trim()){alert('Please type some text to add.');return;}
   const pageNum=parseInt(document.getElementById('txt-page').value,10)||1;
-  const xPct=Math.max(0,Math.min(100,+document.getElementById('txt-x').value||0));
-  const yPct=Math.max(0,Math.min(100,+document.getElementById('txt-y').value||0));
+  const pos = window._txtPos || {x:10,y:10};
   const fontSize=Math.max(6,+document.getElementById('txt-size').value||16);
   const colorHex=document.getElementById('txt-color').value||'#1a1d2e';
   const out=document.getElementById('txt-out');
@@ -2018,8 +2175,8 @@ async function doAddTextToPDF(){
     const font=await doc.embedFont(StandardFonts.Helvetica);
     const {r,g,b}=hexToRgb01(colorHex);
     const lines=text.split('\n');
-    const startX=(xPct/100)*width;
-    const startY=height-(yPct/100)*height-fontSize;
+    const startX=(pos.x/100)*width;
+    const startY=height-(pos.y/100)*height-fontSize;
     const lineGap=fontSize*1.35;
     lines.forEach((line,i)=>{
       if(line.length) page.drawText(line,{x:startX,y:startY-(i*lineGap),size:fontSize,font,color:rgb(r,g,b)});

@@ -349,6 +349,11 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
 .pdf-overlay-drag:active{cursor:grabbing;}
 .pdf-overlay-editable{outline:none;white-space:pre-wrap;min-width:24px;min-height:1.1em;cursor:text;}
 .pdf-overlay-resize{position:absolute;right:-7px;bottom:-7px;width:14px;height:14px;background:var(--accent);border:2px solid #fff;border-radius:50%;cursor:nwse-resize;box-shadow:0 1px 4px rgba(0,0,0,0.3);touch-action:none;}
+
+.area-box{position:absolute;left:10%;top:10%;width:70%;height:70%;border:2px dashed #fff;box-shadow:0 0 0 2000px rgba(0,0,0,0.55);}
+.area-drag{position:absolute;top:-22px;left:-2px;background:var(--accent);color:#fff;font-size:11px;line-height:1;padding:4px 9px;border-radius:5px 5px 0 0;cursor:grab;user-select:none;touch-action:none;}
+.area-drag:active{cursor:grabbing;}
+.area-resize{position:absolute;right:-8px;bottom:-8px;width:16px;height:16px;background:var(--accent);border:2px solid #fff;border-radius:50%;cursor:nwse-resize;box-shadow:0 1px 4px rgba(0,0,0,0.35);touch-action:none;}
 @keyframes modal-in{from{opacity:0;transform:translateY(24px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
 .modal-close{position:absolute;top:14px;right:14px;background:var(--surface2);border:none;color:var(--muted);width:32px;height:32px;border-radius:99px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .modal-close:hover{background:var(--border);color:var(--text);}
@@ -632,7 +637,7 @@ footer a:hover{color:var(--text);}
       <button class="fav-btn" onclick="toggleFav(event,'c21c')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-spin">🎬</span></div>
       <div class="tool-name">HTML to MP4</div>
-      <div class="tool-desc">Upload an animated HTML file, export it as video.</div>
+      <div class="tool-desc">Upload an animated HTML file, get a direct MP4 — no permissions.</div>
       <span class="tool-badge">New</span>
     </a>
   </div>
@@ -950,19 +955,19 @@ const TOOLS={
   },
 
   htmltomp4:{
-    title:'🎬 HTML to MP4',sub:'Upload an animated HTML file, export it as a real video — automatically',
+    title:'🎬 HTML to MP4',sub:'Upload an animated HTML file, get a real MP4 — no screen-share prompt',
     render:()=>fileDropzone('h2v-file','.html',false)+`<div id="h2v-list"></div>
       <div id="h2v-builder" style="display:none;">
         <label>Preview</label>
         <div style="border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px;background:#0d0e14;">
           <iframe id="h2v-frame" style="width:100%;height:320px;border:0;display:block;"></iframe>
         </div>
-        <label>Record for how many seconds?</label>
-        <input type="number" id="h2v-duration" value="16" min="2" max="60">
-        <button class="btn" id="h2v-start-btn" onclick="startHtmlToMp4()">🎬 Record &amp; Export</button>
+        <label>Convert how many seconds of it?</label>
+        <input type="number" id="h2v-duration" value="16" min="2" max="30">
+        <button class="btn" id="h2v-start-btn" onclick="startHtmlToMp4()">🎬 Convert to MP4</button>
         <div id="h2v-status" style="margin-top:10px;font-size:13px;color:var(--muted);text-align:center;"></div>
         <div id="h2v-timer" style="font-size:24px;font-weight:800;color:var(--accent);margin-top:4px;text-align:center;"></div>
-        <p style="font-size:11px;color:var(--muted);margin-top:10px;">When the picker appears, choose <strong>"This Tab"</strong> so it records the preview above — not your whole screen.</p>
+        <p style="font-size:11px;color:var(--muted);margin-top:10px;">Captures the page directly — no screen-recording permission needed. Works best with simple layouts; very complex CSS (heavy blurs, some gradients) may not render pixel-perfectly.</p>
       </div>
       <div id="h2v-out"></div>`,
     init(){
@@ -2479,46 +2484,141 @@ function loadScript(src){
   });
 }
 
-// ── SCREEN RECORDER (shared core) ─────────────────────────────────────────────
+// ── SCREEN RECORDER (with area selection) ─────────────────────────────────────
 let _recStream=null, _recorder=null, _recChunks=[], _recStartTime=0, _recTimerInterval=null, _recWebmBlob=null, _recOutputId='rec-out';
+let _rawDisplayStream=null, _previewVideoEl=null, _cropCanvas=null, _cropCtx=null, _cropAnimId=null;
+let _selectRect={x:10,y:10,w:70,h:70};
 
-async function beginRecording(outputId, autoStopMs){
-  _recOutputId=outputId;
-  const out=document.getElementById(outputId);
-  if(out) out.innerHTML='';
+async function startScreenRecording(){
+  const out=document.getElementById('rec-out');
+  out.innerHTML='';
+  const startBtn=document.getElementById('rec-start-btn');
   if(!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia){
-    if(out) out.innerHTML='<div class="result-box" style="color:#c0392b;">Screen recording isn\'t supported in this browser. Try Chrome, Edge, or Firefox on desktop.</div>';
-    return false;
+    out.innerHTML='<div class="result-box" style="color:#c0392b;">Screen recording isn\'t supported in this browser. Try Chrome, Edge, or Firefox on desktop.</div>';
+    return;
   }
   try{
     const stream=await navigator.mediaDevices.getDisplayMedia({ video:{ displaySurface:'browser' }, audio:false, preferCurrentTab:true });
-    _recStream=stream; _recChunks=[];
-    const mimeType=(window.MediaRecorder && MediaRecorder.isTypeSupported('video/webm;codecs=vp9')) ? 'video/webm;codecs=vp9' : 'video/webm';
-    _recorder=new MediaRecorder(stream,{mimeType});
-    _recorder.ondataavailable=e=>{ if(e.data && e.data.size>0) _recChunks.push(e.data); };
-    _recorder.onstop=()=>{ _recWebmBlob=new Blob(_recChunks,{type:'video/webm'}); onRecordingStopped(); };
-    stream.getVideoTracks()[0].onended=()=>{ if(_recorder && _recorder.state!=='inactive') _recorder.stop(); };
-    _recorder.start();
-    _recStartTime=Date.now();
-    _recTimerInterval=setInterval(()=>{
-      const elapsed=Date.now()-_recStartTime;
-      const secs=Math.floor(elapsed/1000);
-      const m=Math.floor(secs/60), s=secs%60;
-      const remain = autoStopMs ? Math.max(0, Math.ceil((autoStopMs-elapsed)/1000)) : null;
-      ['rec-timer','h2v-timer'].forEach(id=>{
-        const el=document.getElementById(id);
-        if(el) el.textContent = remain!==null ? `${remain}s left` : `${m}:${s.toString().padStart(2,'0')}`;
-      });
-    },300);
-    if(autoStopMs){
-      setTimeout(()=>{ if(_recorder && _recorder.state!=='inactive') stopScreenRecording(); }, autoStopMs);
-    }
-    return true;
+    _rawDisplayStream=stream;
+    if(startBtn) startBtn.style.display='none';
+
+    out.innerHTML=`
+      <div style="margin-top:16px;">
+        <div id="rec-select-stage" style="position:relative;border-radius:10px;overflow:hidden;background:#000;">
+          <video id="rec-preview-video" autoplay muted playsinline style="width:100%;display:block;"></video>
+          <div id="rec-select-box" class="area-box">
+            <div class="area-drag">⠿ move</div>
+            <div class="area-resize"></div>
+          </div>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin:8px 0;">Drag the box to choose exactly what to record — the blue tab moves it, the dot resizes it.</p>
+        <button class="btn" onclick="confirmRecordingArea()">🔴 Record This Area</button>
+        <button class="btn btn-sec" onclick="cancelAreaSelection()">Cancel</button>
+      </div>`;
+
+    const video=document.getElementById('rec-preview-video');
+    video.srcObject=stream;
+    _previewVideoEl=video;
+    await new Promise(res=>{ video.onloadedmetadata=()=>{ video.play().catch(()=>{}); res(); }; });
+    setupAreaSelector(document.getElementById('rec-select-stage'), document.getElementById('rec-select-box'), _selectRect);
+    stream.getVideoTracks()[0].onended=()=>{ cancelAreaSelection(); };
   }catch(err){
-    if(out) out.innerHTML=`<div class="result-box" style="color:#c0392b;">Could not start recording: ${err.message||'permission denied'}</div>`;
-    return false;
+    out.innerHTML=`<div class="result-box" style="color:#c0392b;">Could not start recording: ${err.message||'permission denied'}</div>`;
+    if(startBtn) startBtn.style.display='inline-block';
   }
 }
+
+function cancelAreaSelection(){
+  if(_rawDisplayStream) _rawDisplayStream.getTracks().forEach(t=>t.stop());
+  document.getElementById('rec-out').innerHTML='';
+  const startBtn=document.getElementById('rec-start-btn');
+  if(startBtn) startBtn.style.display='inline-block';
+}
+
+// Drag-to-move (via handle) + drag-to-resize (via corner dot) rectangle selector, drawn over the live preview
+function setupAreaSelector(stageEl, boxEl, rectState){
+  const applyBox=()=>{
+    boxEl.style.left=rectState.x+'%'; boxEl.style.top=rectState.y+'%';
+    boxEl.style.width=rectState.w+'%'; boxEl.style.height=rectState.h+'%';
+  };
+  applyBox();
+  let mode=null, startX=0, startY=0, startRect=null;
+  const dragHandle=boxEl.querySelector('.area-drag');
+  const resizeHandle=boxEl.querySelector('.area-resize');
+
+  const begin=(m, e)=>{ mode=m; const p=e.touches?e.touches[0]:e; startX=p.clientX; startY=p.clientY; startRect={...rectState}; e.preventDefault(); e.stopPropagation(); };
+  dragHandle.addEventListener('mousedown', e=>begin('move',e));
+  dragHandle.addEventListener('touchstart', e=>begin('move',e), {passive:false});
+  resizeHandle.addEventListener('mousedown', e=>begin('resize',e));
+  resizeHandle.addEventListener('touchstart', e=>begin('resize',e), {passive:false});
+
+  const onMove=e=>{
+    if(!mode) return;
+    const p=e.touches?e.touches[0]:e;
+    const sr=stageEl.getBoundingClientRect();
+    const dx=((p.clientX-startX)/sr.width)*100, dy=((p.clientY-startY)/sr.height)*100;
+    if(mode==='move'){
+      rectState.x=Math.max(0,Math.min(100-rectState.w, startRect.x+dx));
+      rectState.y=Math.max(0,Math.min(100-rectState.h, startRect.y+dy));
+    } else {
+      rectState.w=Math.max(8,Math.min(100-rectState.x, startRect.w+dx));
+      rectState.h=Math.max(8,Math.min(100-rectState.y, startRect.h+dy));
+    }
+    applyBox();
+    e.preventDefault();
+  };
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('touchmove', onMove, {passive:false});
+  window.addEventListener('mouseup', ()=>{ mode=null; });
+  window.addEventListener('touchend', ()=>{ mode=null; });
+}
+
+function confirmRecordingArea(){
+  const video=_previewVideoEl;
+  const vw=video.videoWidth||1280, vh=video.videoHeight||720;
+  const cw=Math.max(2, Math.round(vw*(_selectRect.w/100)));
+  const ch=Math.max(2, Math.round(vh*(_selectRect.h/100)));
+  const cx=Math.round(vw*(_selectRect.x/100));
+  const cy=Math.round(vh*(_selectRect.y/100));
+
+  _cropCanvas=document.createElement('canvas');
+  _cropCanvas.width=cw; _cropCanvas.height=ch;
+  _cropCtx=_cropCanvas.getContext('2d');
+  (function drawFrame(){
+    _cropCtx.drawImage(video, cx,cy,cw,ch, 0,0,cw,ch);
+    _cropAnimId=requestAnimationFrame(drawFrame);
+  })();
+
+  const canvasStream=_cropCanvas.captureStream(30);
+  _recStream=canvasStream;
+  _recChunks=[];
+  _recOutputId='rec-out';
+  const mimeType=(window.MediaRecorder && MediaRecorder.isTypeSupported('video/webm;codecs=vp9')) ? 'video/webm;codecs=vp9' : 'video/webm';
+  _recorder=new MediaRecorder(canvasStream,{mimeType});
+  _recorder.ondataavailable=e=>{ if(e.data && e.data.size>0) _recChunks.push(e.data); };
+  _recorder.onstop=()=>{
+    cancelAnimationFrame(_cropAnimId);
+    if(_rawDisplayStream) _rawDisplayStream.getTracks().forEach(t=>t.stop());
+    _recWebmBlob=new Blob(_recChunks,{type:'video/webm'});
+    onRecordingStopped();
+  };
+  _recorder.start();
+  _recStartTime=Date.now();
+
+  document.getElementById('rec-out').innerHTML=`
+    <div style="text-align:center;margin-top:12px;">
+      <div id="rec-status">● Recording selected area — stop anytime</div>
+      <div id="rec-timer" style="font-size:26px;font-weight:800;color:var(--accent);margin-top:4px;"></div>
+      <button class="btn" id="rec-stop-btn" style="margin-top:10px;background:#c0392b;" onclick="stopScreenRecording()">⬛ Stop Recording</button>
+    </div>`;
+  _recTimerInterval=setInterval(()=>{
+    const secs=Math.floor((Date.now()-_recStartTime)/1000);
+    const m=Math.floor(secs/60), s=secs%60;
+    const el=document.getElementById('rec-timer');
+    if(el) el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
+  },500);
+}
+
 function stopScreenRecording(){
   if(_recorder && _recorder.state!=='inactive') _recorder.stop();
   if(_recStream) _recStream.getTracks().forEach(t=>t.stop());
@@ -2530,13 +2630,8 @@ function onRecordingStopped(){
   clearInterval(_recTimerInterval);
   const startBtn=document.getElementById('rec-start-btn');
   if(startBtn){ startBtn.style.display='inline-block'; startBtn.textContent='🔴 Record Again'; }
-  const stopBtn=document.getElementById('rec-stop-btn');
-  if(stopBtn) stopBtn.style.display='none';
   const h2vBtn=document.getElementById('h2v-start-btn');
-  if(h2vBtn){ h2vBtn.disabled=false; h2vBtn.textContent='🎬 Record & Export Again'; }
-  const statusEl=document.getElementById('rec-status') || document.getElementById('h2v-status');
-  if(statusEl) statusEl.textContent='Recording complete';
-  ['rec-timer','h2v-timer'].forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent=''; });
+  if(h2vBtn){ h2vBtn.disabled=false; h2vBtn.textContent='🎬 Convert to MP4'; }
 
   const url=URL.createObjectURL(_recWebmBlob);
   const out=document.getElementById(_recOutputId || 'rec-out');
@@ -2550,18 +2645,6 @@ function onRecordingStopped(){
       <div id="mp4-progress"></div>
       <p style="font-size:11px;color:var(--muted);margin-top:8px;">Most platforms (TikTok, Instagram, YouTube) accept .webm directly. Use MP4 conversion only if a platform specifically requires it — it takes longer since a video encoder has to load first.</p>
     </div>`;
-}
-async function startScreenRecording(){
-  const statusEl=document.getElementById('rec-status');
-  if(statusEl) statusEl.textContent='';
-  const startBtn=document.getElementById('rec-start-btn');
-  const stopBtn=document.getElementById('rec-stop-btn');
-  const ok=await beginRecording('rec-out', null);
-  if(ok){
-    if(statusEl) statusEl.textContent='● Recording — stop anytime';
-    if(startBtn) startBtn.style.display='none';
-    if(stopBtn) stopBtn.style.display='inline-block';
-  }
 }
 async function convertRecordingToMp4(){
   const out=document.getElementById('mp4-progress');
@@ -2596,17 +2679,83 @@ async function convertRecordingToMp4(){
   }
 }
 
-// ── HTML TO MP4 (auto-records the uploaded HTML file playing in an iframe) ────
+// ── HTML TO MP4 (direct conversion — captures frames locally, no screen-share permission needed) ─
 async function startHtmlToMp4(){
   const files=getFiles('h2v-file');
   if(!files.length){ alert('Please upload an HTML file first.'); return; }
-  const seconds=Math.max(2, Math.min(60, +document.getElementById('h2v-duration').value||16));
+  const seconds=Math.max(2, Math.min(30, +document.getElementById('h2v-duration').value||16));
+  const fps=6; // kept modest so frame capture can keep up in real time
+  const totalFrames=seconds*fps;
   const statusEl=document.getElementById('h2v-status');
+  const timerEl=document.getElementById('h2v-timer');
   const startBtn=document.getElementById('h2v-start-btn');
-  if(statusEl) statusEl.textContent='Choose "This Tab" in the picker that appears to record the preview above.';
-  if(startBtn){ startBtn.disabled=true; startBtn.textContent='Recording…'; }
-  const ok=await beginRecording('h2v-out', seconds*1000);
-  if(!ok && startBtn){ startBtn.disabled=false; startBtn.textContent='🎬 Record & Export'; }
+  const out=document.getElementById('h2v-out');
+  const frameEl=document.getElementById('h2v-frame');
+  out.innerHTML='';
+  if(startBtn){ startBtn.disabled=true; startBtn.textContent='Converting…'; }
+
+  try{
+    if(!window.html2canvas){
+      if(statusEl) statusEl.textContent='Loading capture engine (first time only)...';
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
+    }
+    const doc=frameEl.contentDocument || frameEl.contentWindow.document;
+    const target=doc.body;
+    const frames=[];
+    const frameDelay=1000/fps;
+
+    for(let i=0;i<totalFrames;i++){
+      const t0=performance.now();
+      const canvas=await html2canvas(target,{backgroundColor:null, logging:false, useCORS:true});
+      frames.push(canvas.toDataURL('image/png'));
+      if(statusEl) statusEl.textContent=`Capturing frame ${i+1} of ${totalFrames}...`;
+      if(timerEl) timerEl.textContent=`${Math.round(((i+1)/totalFrames)*100)}%`;
+      const wait=Math.max(0, frameDelay-(performance.now()-t0));
+      await new Promise(r=>setTimeout(r,wait));
+    }
+
+    if(statusEl) statusEl.textContent='Encoding video (first time may take a bit longer)...';
+    if(timerEl) timerEl.textContent='';
+    out.innerHTML=progressHTML('h2v-prog','Encoding MP4...');
+
+    if(!window.FFmpeg){
+      await loadScript('https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js');
+    }
+    const { createFFmpeg, fetchFile } = FFmpeg;
+    if(!window._ffmpegInstance){
+      window._ffmpegInstance=createFFmpeg({
+        log:false,
+        corePath:'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js',
+        progress:({ratio})=>{ if(ratio>=0) setProgress('h2v-prog', Math.min(97,Math.round(ratio*100))); }
+      });
+    }
+    const ffmpeg=window._ffmpegInstance;
+    if(!ffmpeg.isLoaded()) await ffmpeg.load();
+    setProgress('h2v-prog',10);
+
+    for(let i=0;i<frames.length;i++){
+      ffmpeg.FS('writeFile', `frame${String(i).padStart(4,'0')}.png`, await fetchFile(frames[i]));
+    }
+    setProgress('h2v-prog',40);
+    await ffmpeg.run('-framerate', String(fps), '-i', 'frame%04d.png', '-c:v','libx264','-preset','ultrafast','-pix_fmt','yuv420p', 'output.mp4');
+    setProgress('h2v-prog',95);
+    const data=ffmpeg.FS('readFile','output.mp4');
+    const mp4Blob=new Blob([data.buffer],{type:'video/mp4'});
+    const url=URL.createObjectURL(mp4Blob);
+    setProgress('h2v-prog',100);
+    if(statusEl) statusEl.textContent='';
+
+    window._h2vMp4Blob=mp4Blob;
+    out.innerHTML=`
+      <div class="result-box green" style="margin-top:16px;text-align:center;">
+        <div class="result-label">✓ Video Ready</div>
+        <video src="${url}" controls style="width:100%;border-radius:10px;margin:10px 0;max-height:280px;background:#000;"></video>
+        <button class="btn" onclick="downloadBlob(window._h2vMp4Blob,'html-export.mp4');showToast('Downloaded!')">⬇ Download .mp4</button>
+      </div>`;
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="color:#c0392b;">Conversion failed: ${err.message||'unknown error'}. Try a shorter duration, or a simpler HTML file.</div>`;
+  }
+  if(startBtn){ startBtn.disabled=false; startBtn.textContent='🎬 Convert to MP4'; }
 }
 
 // ── PDF → TEXT ────────────────────────────────────────────────────────────────

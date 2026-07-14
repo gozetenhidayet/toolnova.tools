@@ -9,6 +9,8 @@
 <meta name="robots" content="index, follow">
 <meta name="author" content="toolnova.tools">
 <link rel="canonical" href="https://toolnova.tools/">
+<link rel="alternate" hreflang="en" href="https://toolnova.tools/">
+<link rel="alternate" hreflang="x-default" href="https://toolnova.tools/">
 
 <!-- Open Graph -->
 <meta property="og:title" content="toolnova.tools — Free Online Tools">
@@ -619,6 +621,20 @@ footer a:hover{color:var(--text);}
       <div class="tool-name">Lorem Ipsum Generator</div>
       <div class="tool-desc">Generate placeholder text for designs and prototypes.</div>
     </a>
+    <a class="tool-card" data-key="c21b" href="javascript:void(0)" onclick="addRipple(event,this);openTool('screenrec')">
+      <button class="fav-btn" onclick="toggleFav(event,'c21b')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-red"><span class="tool-icon anim-ping">🎥</span></div>
+      <div class="tool-name">Screen Recorder</div>
+      <div class="tool-desc">Record a tab or screen, download as MP4 — free.</div>
+      <span class="tool-badge">New</span>
+    </a>
+    <a class="tool-card" data-key="c21c" href="javascript:void(0)" onclick="addRipple(event,this);openTool('htmltomp4')">
+      <button class="fav-btn" onclick="toggleFav(event,'c21c')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-spin">🎬</span></div>
+      <div class="tool-name">HTML to MP4</div>
+      <div class="tool-desc">Upload an animated HTML file, export it as video.</div>
+      <span class="tool-badge">New</span>
+    </a>
   </div>
 
   <div class="section-title" id="calculators">🧮 Calculators</div>
@@ -917,6 +933,47 @@ const TOOLS={
       <button class="btn" onclick="genLorem()">Generate</button>
       <div id="lorem-out"></div>`,
     init(){}
+  },
+
+  screenrec:{
+    title:'🎥 Screen Recorder',sub:'Record a tab, window, or screen — download as MP4, free',
+    render:()=>`
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Click Start, then choose the tab, window, or screen to record — great for capturing demos, animations, or tutorials. Nothing is uploaded; recording and conversion both happen in your browser.</p>
+      <div style="text-align:center;">
+        <button class="btn" id="rec-start-btn" onclick="startScreenRecording()">🔴 Start Recording</button>
+        <button class="btn" id="rec-stop-btn" style="display:none;background:#c0392b;" onclick="stopScreenRecording()">⬛ Stop Recording</button>
+        <div id="rec-status" style="margin-top:10px;font-size:13px;color:var(--muted);"></div>
+        <div id="rec-timer" style="font-size:26px;font-weight:800;color:var(--accent);margin-top:4px;"></div>
+      </div>
+      <div id="rec-out"></div>`,
+    init(){}
+  },
+
+  htmltomp4:{
+    title:'🎬 HTML to MP4',sub:'Upload an animated HTML file, export it as a real video — automatically',
+    render:()=>fileDropzone('h2v-file','.html',false)+`<div id="h2v-list"></div>
+      <div id="h2v-builder" style="display:none;">
+        <label>Preview</label>
+        <div style="border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px;background:#0d0e14;">
+          <iframe id="h2v-frame" style="width:100%;height:320px;border:0;display:block;"></iframe>
+        </div>
+        <label>Record for how many seconds?</label>
+        <input type="number" id="h2v-duration" value="16" min="2" max="60">
+        <button class="btn" id="h2v-start-btn" onclick="startHtmlToMp4()">🎬 Record &amp; Export</button>
+        <div id="h2v-status" style="margin-top:10px;font-size:13px;color:var(--muted);text-align:center;"></div>
+        <div id="h2v-timer" style="font-size:24px;font-weight:800;color:var(--accent);margin-top:4px;text-align:center;"></div>
+        <p style="font-size:11px;color:var(--muted);margin-top:10px;">When the picker appears, choose <strong>"This Tab"</strong> so it records the preview above — not your whole screen.</p>
+      </div>
+      <div id="h2v-out"></div>`,
+    init(){
+      setupDropzone('h2v-file','h2v-list','h2v-builder',false,'.html', (files)=>{
+        if(files.length){
+          const url=URL.createObjectURL(files[0]);
+          const frame=document.getElementById('h2v-frame');
+          if(frame) frame.src=url;
+        }
+      });
+    }
   },
 
   age:{
@@ -2420,6 +2477,136 @@ function loadScript(src){
   return new Promise((res,rej)=>{
     const s=document.createElement('script'); s.src=src; s.onload=res; s.onerror=rej; document.head.appendChild(s);
   });
+}
+
+// ── SCREEN RECORDER (shared core) ─────────────────────────────────────────────
+let _recStream=null, _recorder=null, _recChunks=[], _recStartTime=0, _recTimerInterval=null, _recWebmBlob=null, _recOutputId='rec-out';
+
+async function beginRecording(outputId, autoStopMs){
+  _recOutputId=outputId;
+  const out=document.getElementById(outputId);
+  if(out) out.innerHTML='';
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia){
+    if(out) out.innerHTML='<div class="result-box" style="color:#c0392b;">Screen recording isn\'t supported in this browser. Try Chrome, Edge, or Firefox on desktop.</div>';
+    return false;
+  }
+  try{
+    const stream=await navigator.mediaDevices.getDisplayMedia({ video:{ displaySurface:'browser' }, audio:false, preferCurrentTab:true });
+    _recStream=stream; _recChunks=[];
+    const mimeType=(window.MediaRecorder && MediaRecorder.isTypeSupported('video/webm;codecs=vp9')) ? 'video/webm;codecs=vp9' : 'video/webm';
+    _recorder=new MediaRecorder(stream,{mimeType});
+    _recorder.ondataavailable=e=>{ if(e.data && e.data.size>0) _recChunks.push(e.data); };
+    _recorder.onstop=()=>{ _recWebmBlob=new Blob(_recChunks,{type:'video/webm'}); onRecordingStopped(); };
+    stream.getVideoTracks()[0].onended=()=>{ if(_recorder && _recorder.state!=='inactive') _recorder.stop(); };
+    _recorder.start();
+    _recStartTime=Date.now();
+    _recTimerInterval=setInterval(()=>{
+      const elapsed=Date.now()-_recStartTime;
+      const secs=Math.floor(elapsed/1000);
+      const m=Math.floor(secs/60), s=secs%60;
+      const remain = autoStopMs ? Math.max(0, Math.ceil((autoStopMs-elapsed)/1000)) : null;
+      ['rec-timer','h2v-timer'].forEach(id=>{
+        const el=document.getElementById(id);
+        if(el) el.textContent = remain!==null ? `${remain}s left` : `${m}:${s.toString().padStart(2,'0')}`;
+      });
+    },300);
+    if(autoStopMs){
+      setTimeout(()=>{ if(_recorder && _recorder.state!=='inactive') stopScreenRecording(); }, autoStopMs);
+    }
+    return true;
+  }catch(err){
+    if(out) out.innerHTML=`<div class="result-box" style="color:#c0392b;">Could not start recording: ${err.message||'permission denied'}</div>`;
+    return false;
+  }
+}
+function stopScreenRecording(){
+  if(_recorder && _recorder.state!=='inactive') _recorder.stop();
+  if(_recStream) _recStream.getTracks().forEach(t=>t.stop());
+  clearInterval(_recTimerInterval);
+  const stopBtn=document.getElementById('rec-stop-btn');
+  if(stopBtn) stopBtn.style.display='none';
+}
+function onRecordingStopped(){
+  clearInterval(_recTimerInterval);
+  const startBtn=document.getElementById('rec-start-btn');
+  if(startBtn){ startBtn.style.display='inline-block'; startBtn.textContent='🔴 Record Again'; }
+  const stopBtn=document.getElementById('rec-stop-btn');
+  if(stopBtn) stopBtn.style.display='none';
+  const h2vBtn=document.getElementById('h2v-start-btn');
+  if(h2vBtn){ h2vBtn.disabled=false; h2vBtn.textContent='🎬 Record & Export Again'; }
+  const statusEl=document.getElementById('rec-status') || document.getElementById('h2v-status');
+  if(statusEl) statusEl.textContent='Recording complete';
+  ['rec-timer','h2v-timer'].forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent=''; });
+
+  const url=URL.createObjectURL(_recWebmBlob);
+  const out=document.getElementById(_recOutputId || 'rec-out');
+  if(!out) return;
+  out.innerHTML=`
+    <div class="result-box green" style="margin-top:16px;text-align:center;">
+      <div class="result-label">✓ Recording Complete</div>
+      <video src="${url}" controls style="width:100%;border-radius:10px;margin:10px 0;max-height:280px;background:#000;"></video>
+      <button class="btn" onclick="downloadBlob(_recWebmBlob,'recording.webm');showToast('Downloaded!')">⬇ Download .webm (instant)</button>
+      <button class="btn btn-sec" onclick="convertRecordingToMp4()">🎬 Convert to MP4 & Download</button>
+      <div id="mp4-progress"></div>
+      <p style="font-size:11px;color:var(--muted);margin-top:8px;">Most platforms (TikTok, Instagram, YouTube) accept .webm directly. Use MP4 conversion only if a platform specifically requires it — it takes longer since a video encoder has to load first.</p>
+    </div>`;
+}
+async function startScreenRecording(){
+  const statusEl=document.getElementById('rec-status');
+  if(statusEl) statusEl.textContent='';
+  const startBtn=document.getElementById('rec-start-btn');
+  const stopBtn=document.getElementById('rec-stop-btn');
+  const ok=await beginRecording('rec-out', null);
+  if(ok){
+    if(statusEl) statusEl.textContent='● Recording — stop anytime';
+    if(startBtn) startBtn.style.display='none';
+    if(stopBtn) stopBtn.style.display='inline-block';
+  }
+}
+async function convertRecordingToMp4(){
+  const out=document.getElementById('mp4-progress');
+  out.innerHTML=progressHTML('mp4-prog','Loading video encoder (first time only)...');
+  try{
+    if(!window.FFmpeg){
+      await loadScript('https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js');
+    }
+    const { createFFmpeg, fetchFile } = FFmpeg;
+    if(!window._ffmpegInstance){
+      window._ffmpegInstance=createFFmpeg({
+        log:false,
+        corePath:'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js',
+        progress:({ratio})=>{ if(ratio>=0) setProgress('mp4-prog', Math.min(97,Math.round(ratio*100))); }
+      });
+    }
+    const ffmpeg=window._ffmpegInstance;
+    setProgress('mp4-prog',8);
+    if(!ffmpeg.isLoaded()) await ffmpeg.load();
+    setProgress('mp4-prog',20);
+    ffmpeg.FS('writeFile','input.webm', await fetchFile(_recWebmBlob));
+    setProgress('mp4-prog',30);
+    await ffmpeg.run('-i','input.webm','-c:v','libx264','-preset','ultrafast','-pix_fmt','yuv420p','output.mp4');
+    const data=ffmpeg.FS('readFile','output.mp4');
+    setProgress('mp4-prog',100);
+    const mp4Blob=new Blob([data.buffer],{type:'video/mp4'});
+    downloadBlob(mp4Blob,'recording.mp4');
+    showToast('MP4 downloaded!');
+    out.innerHTML='<div style="color:var(--accent2);font-size:12px;margin-top:6px;">✓ MP4 ready and downloaded</div>';
+  }catch(err){
+    out.innerHTML=`<div style="color:#c0392b;font-size:12px;margin-top:6px;">Conversion failed: ${err.message||'unknown error'}. The .webm download above still works fine for most platforms.</div>`;
+  }
+}
+
+// ── HTML TO MP4 (auto-records the uploaded HTML file playing in an iframe) ────
+async function startHtmlToMp4(){
+  const files=getFiles('h2v-file');
+  if(!files.length){ alert('Please upload an HTML file first.'); return; }
+  const seconds=Math.max(2, Math.min(60, +document.getElementById('h2v-duration').value||16));
+  const statusEl=document.getElementById('h2v-status');
+  const startBtn=document.getElementById('h2v-start-btn');
+  if(statusEl) statusEl.textContent='Choose "This Tab" in the picker that appears to record the preview above.';
+  if(startBtn){ startBtn.disabled=true; startBtn.textContent='Recording…'; }
+  const ok=await beginRecording('h2v-out', seconds*1000);
+  if(!ok && startBtn){ startBtn.disabled=false; startBtn.textContent='🎬 Record & Export'; }
 }
 
 // ── PDF → TEXT ────────────────────────────────────────────────────────────────

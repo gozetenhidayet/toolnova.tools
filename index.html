@@ -212,7 +212,8 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
 
 /* SECTION */
 .section{max-width:1100px;margin:0 auto;padding:0 24px 64px;}
-.section-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:700;margin:40px 0 20px;color:var(--text);display:flex;align-items:center;gap:10px;}
+.section-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:700;margin:40px 0 6px;color:var(--text);display:flex;align-items:center;gap:10px;}
+.section-desc{color:var(--muted);font-size:14px;max-width:640px;margin:0 0 20px;line-height:1.6;}
 .section-title::after{content:'';flex:1;height:1px;background:var(--border);}
 .section-badge{background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:600;padding:2px 10px;border-radius:99px;text-transform:uppercase;letter-spacing:.06em;}
 
@@ -477,6 +478,7 @@ footer a:hover{color:var(--text);}
 <div class="section" id="tools">
 
   <div class="section-title" id="pdf-converter">📄 PDF Converter <span class="section-badge">Most Popular</span></div>
+  <p class="section-desc">Convert PDF files to and from Word, Excel, JPG and PNG — everything runs locally in your browser, so your documents are never uploaded to a server.</p>
   <div class="tool-grid">
     <a class="tool-card" data-key="c1" href="javascript:void(0)" onclick="addRipple(event,this);openTool('pdf2word')">
       <button class="fav-btn" onclick="toggleFav(event,'c1')" aria-label="Favorite this tool"></button>
@@ -532,6 +534,7 @@ footer a:hover{color:var(--text);}
   </div>
 
   <div class="section-title" id="ocr-tools">🔍 OCR Tools <span class="section-badge">New</span></div>
+  <p class="section-desc">Pull editable, searchable text out of photos, screenshots and scanned PDFs using on-device optical character recognition — no signup, no upload.</p>
   <div class="tool-grid">
     <a class="tool-card" data-key="c9" href="javascript:void(0)" onclick="addRipple(event,this);openTool('ocr')">
       <button class="fav-btn" onclick="toggleFav(event,'c9')" aria-label="Favorite this tool"></button>
@@ -549,6 +552,7 @@ footer a:hover{color:var(--text);}
   </div>
 
   <div class="section-title" id="edit-pdf">✂️ Edit PDF</div>
+  <p class="section-desc">Merge, split, compress, rotate, sign, and add text to any PDF — full editing control without installing desktop software.</p>
   <div class="tool-grid">
     <a class="tool-card" data-key="c11" href="javascript:void(0)" onclick="addRipple(event,this);openTool('merge')">
       <button class="fav-btn" onclick="toggleFav(event,'c11')" aria-label="Favorite this tool"></button>
@@ -607,6 +611,7 @@ footer a:hover{color:var(--text);}
   </div>
 
   <div class="section-title" id="generators">🔧 Generators <span class="section-badge">Popular</span></div>
+  <p class="section-desc">Instantly generate QR codes, strong random passwords, and placeholder text for designs and prototypes — free, with no daily limits.</p>
   <div class="tool-grid">
     <a class="tool-card" data-key="c18" href="javascript:void(0)" onclick="addRipple(event,this);openTool('qr')">
       <button class="fav-btn" onclick="toggleFav(event,'c18')" aria-label="Favorite this tool"></button>
@@ -636,6 +641,7 @@ footer a:hover{color:var(--text);}
   </div>
 
   <div class="section-title" id="calculators">🧮 Calculators</div>
+  <p class="section-desc">Accurate calculators for age, BMI, BMR, daily calories, tips, discounts, loans and water intake — real formulas, instant results.</p>
   <div class="tool-grid">
     <a class="tool-card" data-key="c22" href="javascript:void(0)" onclick="addRipple(event,this);openTool('age')">
       <button class="fav-btn" onclick="toggleFav(event,'c22')" aria-label="Favorite this tool"></button>
@@ -700,6 +706,7 @@ footer a:hover{color:var(--text);}
   </div>
 
   <div class="section-title" id="converters">🔄 Converters</div>
+  <p class="section-desc">Convert between units, currencies, text cases and color formats (HEX, RGB, HSL) in one click — built for quick, everyday conversions.</p>
   <div class="tool-grid">
     <a class="tool-card" data-key="c27" href="javascript:void(0)" onclick="addRipple(event,this);openTool('unit')">
       <button class="fav-btn" onclick="toggleFav(event,'c27')" aria-label="Favorite this tool"></button>

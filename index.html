@@ -350,7 +350,7 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
 .pdf-overlay-editable{outline:none;white-space:pre-wrap;min-width:24px;min-height:1.1em;cursor:text;}
 .pdf-overlay-resize{position:absolute;right:-7px;bottom:-7px;width:14px;height:14px;background:var(--accent);border:2px solid #fff;border-radius:50%;cursor:nwse-resize;box-shadow:0 1px 4px rgba(0,0,0,0.3);touch-action:none;}
 
-.area-box{position:absolute;left:10%;top:10%;width:70%;height:70%;border:2px dashed #fff;box-shadow:0 0 0 2000px rgba(0,0,0,0.55);}
+.area-box{position:absolute;left:10%;top:10%;width:70%;height:70%;border:2px dashed #fff;box-shadow:0 0 0 2000px rgba(0,0,0,0.55);cursor:move;touch-action:none;}
 .area-drag{position:absolute;top:-22px;left:-2px;background:var(--accent);color:#fff;font-size:11px;line-height:1;padding:4px 9px;border-radius:5px 5px 0 0;cursor:grab;user-select:none;touch-action:none;}
 .area-drag:active{cursor:grabbing;}
 .area-resize{position:absolute;width:16px;height:16px;background:var(--accent);border:2px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.35);touch-action:none;}
@@ -358,6 +358,10 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
 .area-resize.corner-tr{right:-8px;top:-8px;cursor:nesw-resize;}
 .area-resize.corner-bl{left:-8px;bottom:-8px;cursor:nesw-resize;}
 .area-resize.corner-br{right:-8px;bottom:-8px;cursor:nwse-resize;}
+.area-dims{position:absolute;bottom:-24px;right:0;background:rgba(26,29,46,0.85);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:5px;white-space:nowrap;pointer-events:none;}
+.preset-row{display:flex;gap:8px;margin:10px 0;}
+.preset-btn{flex:1;background:var(--surface2);border:1.5px solid var(--border);border-radius:8px;padding:8px;font-size:12px;font-weight:700;color:var(--text);cursor:pointer;transition:all .2s;}
+.preset-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
 @keyframes modal-in{from{opacity:0;transform:translateY(24px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
 .modal-close{position:absolute;top:14px;right:14px;background:var(--surface2);border:none;color:var(--muted);width:32px;height:32px;border-radius:99px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .modal-close:hover{background:var(--border);color:var(--text);}
@@ -2524,6 +2528,24 @@ let _recStream=null, _recorder=null, _recChunks=[], _recStartTime=0, _recTimerIn
 let _rawDisplayStream=null, _previewVideoEl=null, _cropCanvas=null, _cropCtx=null, _cropAnimId=null;
 let _selectRect={x:10,y:10,w:70,h:70};
 
+// Picks the best video format MediaRecorder actually supports in this browser.
+// Chrome 126+ can record straight to MP4 — when available we skip ffmpeg entirely.
+function pickBestVideoMime(){
+  if(!window.MediaRecorder) return {mime:'video/webm', ext:'webm'};
+  const candidates=[
+    {mime:'video/mp4;codecs=avc1', ext:'mp4'},
+    {mime:'video/mp4', ext:'mp4'},
+    {mime:'video/webm;codecs=vp9', ext:'webm'},
+    {mime:'video/webm;codecs=vp8', ext:'webm'},
+    {mime:'video/webm', ext:'webm'}
+  ];
+  for(const c of candidates){
+    if(MediaRecorder.isTypeSupported(c.mime)) return c;
+  }
+  return {mime:'video/webm', ext:'webm'};
+}
+let _recFormat={mime:'video/webm', ext:'webm'};
+
 async function startScreenRecording(){
   const out=document.getElementById('rec-out');
   out.innerHTML='';
@@ -2539,29 +2561,43 @@ async function startScreenRecording(){
 
     out.innerHTML=`
       <div style="margin-top:16px;">
-        <div style="background:#fff3e6;border:1px solid rgba(224,122,32,0.3);border-radius:8px;padding:8px 10px;margin-bottom:10px;font-size:11.5px;color:#8a5a1a;">
-          ⚠️ If you picked <strong>this toolnova.tools tab</strong>, you'll see a mirror-in-mirror effect below — that's expected, not a bug. Open the page you want to record in a <strong>separate tab</strong>, then choose that tab here instead.
+        <div style="background:#eef0fd;border:1px solid rgba(79,99,210,0.25);border-radius:8px;padding:8px 10px;margin-bottom:10px;font-size:11.5px;color:#3d4fb8;">
+          ℹ️ This is a snapshot, not a live mirror — safe to use even if you picked this toolnova.tools tab.
         </div>
         <div id="rec-select-stage" style="position:relative;border-radius:10px;overflow:hidden;background:#000;">
-          <video id="rec-preview-video" autoplay muted playsinline style="width:100%;display:block;"></video>
+          <canvas id="rec-snapshot-canvas" style="width:100%;display:block;"></canvas>
           <div id="rec-select-box" class="area-box">
             <div class="area-drag">⠿ move</div>
+            <div id="rec-select-dims" class="area-dims"></div>
             <div class="area-resize corner-tl" data-corner="tl"></div>
             <div class="area-resize corner-tr" data-corner="tr"></div>
             <div class="area-resize corner-bl" data-corner="bl"></div>
             <div class="area-resize corner-br" data-corner="br"></div>
           </div>
         </div>
-        <p style="font-size:12px;color:var(--muted);margin:8px 0;">Drag the box to choose exactly what to record — the blue tab moves it, the 4 corner dots resize it.</p>
+        <div class="preset-row">
+          <button type="button" class="preset-btn" onclick="applyAreaPreset('full')">Full</button>
+          <button type="button" class="preset-btn" onclick="applyAreaPreset('16:9')">16:9</button>
+          <button type="button" class="preset-btn" onclick="applyAreaPreset('1:1')">1:1</button>
+          <button type="button" class="preset-btn" onclick="applyAreaPreset('9:16')">9:16</button>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin:8px 0;">Drag anywhere inside the box to move it, or use the 4 corner dots to resize.</p>
         <button class="btn" onclick="confirmRecordingArea()">🔴 Record This Area</button>
         <button class="btn btn-sec" onclick="cancelAreaSelection()">Cancel</button>
       </div>`;
 
-    const video=document.getElementById('rec-preview-video');
+    const video=document.createElement('video');
+    video.autoplay=true; video.muted=true; video.playsInline=true;
     video.srcObject=stream;
     _previewVideoEl=video;
     await new Promise(res=>{ video.onloadedmetadata=()=>{ video.play().catch(()=>{}); res(); }; });
-    setupAreaSelector(document.getElementById('rec-select-stage'), document.getElementById('rec-select-box'), _selectRect);
+
+    // Draw a single static snapshot for the selection UI — avoids the live self-capture mirror effect
+    const snapCanvas=document.getElementById('rec-snapshot-canvas');
+    snapCanvas.width=video.videoWidth||1280; snapCanvas.height=video.videoHeight||720;
+    snapCanvas.getContext('2d').drawImage(video,0,0,snapCanvas.width,snapCanvas.height);
+
+    setupAreaSelector(document.getElementById('rec-select-stage'), document.getElementById('rec-select-box'), _selectRect, video.videoWidth||1280, video.videoHeight||720);
     stream.getVideoTracks()[0].onended=()=>{ cancelAreaSelection(); };
   }catch(err){
     out.innerHTML=`<div class="result-box" style="color:#c0392b;">Could not start recording: ${err.message||'permission denied'}</div>`;
@@ -2576,18 +2612,30 @@ function cancelAreaSelection(){
   if(startBtn) startBtn.style.display='inline-block';
 }
 
-// Drag-to-move (via handle) + drag-to-resize (via any of the 4 corner dots) rectangle selector, drawn over the live preview
-function setupAreaSelector(stageEl, boxEl, rectState){
+let _applyAreaBox=null, _areaVideoW=1280, _areaVideoH=720;
+
+// Drag-to-move (anywhere inside the box, or via the handle) + drag-to-resize (any of the 4 corner dots)
+function setupAreaSelector(stageEl, boxEl, rectState, videoW, videoH){
+  _areaVideoW=videoW; _areaVideoH=videoH;
+  const dimsEl=document.getElementById('rec-select-dims');
   const applyBox=()=>{
     boxEl.style.left=rectState.x+'%'; boxEl.style.top=rectState.y+'%';
     boxEl.style.width=rectState.w+'%'; boxEl.style.height=rectState.h+'%';
+    if(dimsEl){
+      const pxW=Math.round(videoW*(rectState.w/100)), pxH=Math.round(videoH*(rectState.h/100));
+      dimsEl.textContent=`${pxW} × ${pxH} px`;
+    }
   };
   applyBox();
+  _applyAreaBox=applyBox;
+
   let mode=null, corner=null, startX=0, startY=0, startRect=null;
   const dragHandle=boxEl.querySelector('.area-drag');
   const resizeHandles=boxEl.querySelectorAll('.area-resize');
 
   const begin=(m, e, c)=>{ mode=m; corner=c||null; const p=e.touches?e.touches[0]:e; startX=p.clientX; startY=p.clientY; startRect={...rectState}; e.preventDefault(); e.stopPropagation(); };
+  boxEl.addEventListener('mousedown', e=>begin('move',e));
+  boxEl.addEventListener('touchstart', e=>begin('move',e), {passive:false});
   dragHandle.addEventListener('mousedown', e=>begin('move',e));
   dragHandle.addEventListener('touchstart', e=>begin('move',e), {passive:false});
   resizeHandles.forEach(h=>{
@@ -2641,6 +2689,21 @@ function setupAreaSelector(stageEl, boxEl, rectState){
   window.addEventListener('touchend', ()=>{ mode=null; corner=null; });
 }
 
+function applyAreaPreset(kind){
+  const stageAspect=_areaVideoW/_areaVideoH;
+  let targetAspect;
+  if(kind==='full'){ _selectRect.x=0; _selectRect.y=0; _selectRect.w=100; _selectRect.h=100; if(_applyAreaBox) _applyAreaBox(); return; }
+  if(kind==='16:9') targetAspect=16/9;
+  else if(kind==='1:1') targetAspect=1;
+  else if(kind==='9:16') targetAspect=9/16;
+  let wPct, hPct;
+  if(targetAspect>=stageAspect){ wPct=100; hPct=(100*stageAspect)/targetAspect; }
+  else { hPct=100; wPct=(100*targetAspect)/stageAspect; }
+  _selectRect.w=wPct; _selectRect.h=hPct;
+  _selectRect.x=(100-wPct)/2; _selectRect.y=(100-hPct)/2;
+  if(_applyAreaBox) _applyAreaBox();
+}
+
 function confirmRecordingArea(){
   const video=_previewVideoEl;
   const vw=video.videoWidth||1280, vh=video.videoHeight||720;
@@ -2661,13 +2724,13 @@ function confirmRecordingArea(){
   _recStream=canvasStream;
   _recChunks=[];
   _recOutputId='rec-out';
-  const mimeType=(window.MediaRecorder && MediaRecorder.isTypeSupported('video/webm;codecs=vp9')) ? 'video/webm;codecs=vp9' : 'video/webm';
-  _recorder=new MediaRecorder(canvasStream,{mimeType});
+  _recFormat=pickBestVideoMime();
+  _recorder=new MediaRecorder(canvasStream,{mimeType:_recFormat.mime});
   _recorder.ondataavailable=e=>{ if(e.data && e.data.size>0) _recChunks.push(e.data); };
   _recorder.onstop=()=>{
     cancelAnimationFrame(_cropAnimId);
     if(_rawDisplayStream) _rawDisplayStream.getTracks().forEach(t=>t.stop());
-    _recWebmBlob=new Blob(_recChunks,{type:'video/webm'});
+    _recWebmBlob=new Blob(_recChunks,{type:_recFormat.mime});
     onRecordingStopped();
   };
   _recorder.start();
@@ -2704,14 +2767,19 @@ function onRecordingStopped(){
   const url=URL.createObjectURL(_recWebmBlob);
   const out=document.getElementById(_recOutputId || 'rec-out');
   if(!out) return;
+  const isNativeMp4=_recFormat.ext==='mp4';
   out.innerHTML=`
     <div class="result-box green" style="margin-top:16px;text-align:center;">
-      <div class="result-label">✓ Recording Complete</div>
+      <div class="result-label">✓ Recording Complete${isNativeMp4?' (MP4)':''}</div>
       <video src="${url}" controls style="width:100%;border-radius:10px;margin:10px 0;max-height:280px;background:#000;"></video>
-      <button class="btn" onclick="downloadBlob(_recWebmBlob,'recording.webm');showToast('Downloaded!')">⬇ Download .webm (instant)</button>
-      <button class="btn btn-sec" onclick="convertRecordingToMp4()">🎬 Convert to MP4 & Download</button>
-      <div id="mp4-progress"></div>
-      <p style="font-size:11px;color:var(--muted);margin-top:8px;">Most platforms (TikTok, Instagram, YouTube) accept .webm directly. Use MP4 conversion only if a platform specifically requires it — it takes longer since a video encoder has to load first.</p>
+      ${isNativeMp4
+        ? `<button class="btn" onclick="downloadBlob(_recWebmBlob,'recording.mp4');showToast('Downloaded!')">⬇ Download .mp4</button>
+           <p style="font-size:11px;color:var(--muted);margin-top:8px;">Recorded natively as MP4 by your browser — no conversion needed.</p>`
+        : `<button class="btn" onclick="downloadBlob(_recWebmBlob,'recording.webm');showToast('Downloaded!')">⬇ Download .webm (instant)</button>
+           <button class="btn btn-sec" onclick="convertRecordingToMp4()">🎬 Convert to MP4 & Download</button>
+           <div id="mp4-progress"></div>
+           <p style="font-size:11px;color:var(--muted);margin-top:8px;">Most platforms (TikTok, Instagram, YouTube) accept .webm directly. Use MP4 conversion only if a platform specifically requires it.</p>`
+      }
     </div>`;
 }
 async function convertRecordingToMp4(){
@@ -2723,6 +2791,7 @@ async function convertRecordingToMp4(){
     }
     const { createFFmpeg, fetchFile } = FFmpeg;
     if(!window._ffmpegInstance){
+
       window._ffmpegInstance=createFFmpeg({
         log:false,
         corePath:'https://unpkg.com/@ffmpeg/core-st@0.11.0/dist/ffmpeg-core.js',

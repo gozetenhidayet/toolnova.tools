@@ -856,30 +856,45 @@ footer a:hover{color:var(--text);}
   <div class="modal" id="modal-content"></div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.1.1/tesseract.min.js"></script>
 <script>
-if (window['pdfjsLib']) {
-  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-}
+// pdf.js worker path is set inside ensureLibsForTool() once pdf.js is actually loaded.
 </script>
 <script>
+// ── LAZY LIBRARY LOADING ──────────────────────────────────────────────────────
+// PDF/OCR/QR libraries are heavy (tesseract.js especially) — load them only when
+// a tool that needs them is actually opened, not on every single page visit.
+const PDF_TOOL_KEYS=new Set(['pdf2word','word2pdf','pdf2jpg','img2pdf','pdf2excel','pdf2png','pdf2text','scanocr','merge','split','compress','rotate','deletepages','extractpages','sign','addtext']);
+async function ensureLibsForTool(key){
+  if(PDF_TOOL_KEYS.has(key)){
+    if(!window.PDFLib){ await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'); }
+    if(!window.pdfjsLib){
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
+      if(window.pdfjsLib){ pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'; }
+    }
+  }
+  if(key==='ocr' && !window.Tesseract){ await loadScript('https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.1.1/tesseract.min.js'); }
+  if(key==='qr' && !window.QRCode){ await loadScript('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js'); }
+}
+
 // ── MODAL ENGINE ──────────────────────────────────────────────────────────────
-function openTool(key){
+async function openTool(key){
   const tool=TOOLS[key];if(!tool)return;
   document.getElementById('modal-content').classList.remove('fullscreen');
+  const needsLibs = PDF_TOOL_KEYS.has(key) || key==='ocr' || key==='qr';
   document.getElementById('modal-content').innerHTML=`
     <button class="modal-fullscreen-btn" id="fs-btn" onclick="toggleModalFullscreen()" title="Full screen">⛶</button>
     <button class="modal-close" onclick="closeTool()">✕</button>
     <h2>${tool.title}</h2>
     <div class="modal-sub">${tool.sub}</div>
-    ${tool.render()}
-
+    ${needsLibs ? '<div id="tool-loading" style="text-align:center;padding:32px 0;color:var(--muted);font-size:13px;">Loading tool…</div>' : tool.render()}
   `;
   document.getElementById('overlay').classList.add('active');
   document.body.style.overflow='hidden';
+  if(needsLibs){
+    await ensureLibsForTool(key);
+    const loadingEl=document.getElementById('tool-loading');
+    if(loadingEl) loadingEl.outerHTML=tool.render();
+  }
   if(tool.init)tool.init();
 }
 function toggleModalFullscreen(){

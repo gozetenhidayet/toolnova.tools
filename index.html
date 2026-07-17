@@ -8,6 +8,7 @@
 <meta name="keywords" content="pdf to jpg, merge pdf, pdf converter, qr code generator, age calculator, bmi calculator, word counter, currency converter, password generator, image to text, ocr, free online tools">
 <meta name="robots" content="index, follow">
 <meta name="author" content="toolnova.tools">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%234f63d2'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial,sans-serif' font-weight='800' fill='white' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
 <link rel="canonical" href="https://toolnova.tools/">
 <link rel="alternate" hreflang="en" href="https://toolnova.tools/">
 <link rel="alternate" hreflang="x-default" href="https://toolnova.tools/">
@@ -112,7 +113,7 @@ window.addEventListener('load', function() {
   }, 1500);
 });
 </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 
 <style>
 /* Translate Widget Styles */
@@ -145,6 +146,7 @@ body { top: 0 !important; }
 .goog-logo-link { display: none !important; }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
 <!-- ================================================
@@ -164,6 +166,8 @@ body { top: 0 !important; }
   --accent-light:#eef0fd;
   --accent2:#0ba87e;
   --accent2-light:#e6f8f3;
+  --accent2-dark:#067a5c;
+  --hot-dark:#a85800;
   --text:#1a1d2e;
   --muted:#6b7394;
   --radius:18px;
@@ -283,8 +287,8 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
 .tool-name{font-weight:600;font-size:14px;margin-bottom:4px;color:var(--text);}
 .tool-desc{color:var(--muted);font-size:12px;line-height:1.5;}
 
-.tool-badge{position:absolute;top:14px;left:14px;background:var(--accent2-light);color:var(--accent2);font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:99px;}
-.tool-badge.hot{background:#fff3e6;color:#e07a20;}
+.tool-badge{position:absolute;top:14px;left:14px;background:var(--accent2-light);color:var(--accent2-dark);font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:99px;}
+.tool-badge.hot{background:#fff3e6;color:var(--hot-dark);}
 
 /* Icon animations */
 @keyframes icon-spin{to{transform:rotate(360deg);}}
@@ -294,7 +298,7 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
 @keyframes icon-wobble{0%,100%{transform:rotate(0);}25%{transform:rotate(-7deg);}75%{transform:rotate(7deg);}}
 @keyframes icon-flip{0%,40%,100%{transform:rotateY(0);}50%,90%{transform:rotateY(180deg);}}
 @keyframes icon-write{0%,100%{transform:rotate(-10deg) translateX(0);}50%{transform:rotate(5deg) translateX(3px);}}
-@keyframes icon-hue{from{filter:hue-rotate(0deg);}to{filter:hue-rotate(360deg);}}
+@keyframes icon-hue{0%,100%{transform:rotate(0) scale(1);}50%{transform:rotate(8deg) scale(1.1);}}
 @keyframes icon-squeeze{0%,100%{transform:scaleY(1);}50%{transform:scaleY(.65);}}
 @keyframes icon-ping{0%,100%{transform:scale(1);}70%{transform:scale(1.2);}}
 @keyframes icon-lock{0%,85%,100%{transform:rotate(0);}87%{transform:rotate(-6deg);}91%{transform:rotate(6deg);}95%{transform:rotate(-3deg);}98%{transform:rotate(2deg);}}
@@ -336,7 +340,7 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
 
 /* AFFILIATE SECTION */
 .affiliate-section{background:var(--surface);border:1.5px solid var(--border);border-radius:20px;padding:32px;margin:24px 0;}
-.affiliate-section h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px;}
+.affiliate-section h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px;}
 .affiliate-section p{color:var(--muted);font-size:14px;margin-bottom:20px;}
 .affiliate-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
 .aff-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;text-decoration:none;display:block;transition:all .2s;box-shadow:0 1px 4px rgba(0,0,0,0.04);}
@@ -450,16 +454,17 @@ footer a:hover{color:var(--text);}
 <nav>
   <a href="/" class="logo">toolnova<span>.tools</span></a>
   <div class="nav-cats">
-    <a href="#pdf-converter" class="cat-btn" style="--c1:#e74c3c;--c2:#c0392b;">📄 PDF Converter</a>
-    <a href="#ocr-tools" class="cat-btn" style="--c1:#f39c12;--c2:#d68910;">🔍 OCR Tools</a>
+    <a href="#pdf-converter" class="cat-btn" style="--c1:#c0392b;--c2:#922b21;">📄 PDF Converter</a>
+    <a href="#ocr-tools" class="cat-btn" style="--c1:#a35f00;--c2:#7a4700;">🔍 OCR Tools</a>
     <a href="#edit-pdf" class="cat-btn" style="--c1:#9b59b6;--c2:#7d3c98;">✂️ Edit PDF</a>
     <a href="#generators" class="cat-btn" style="--c1:#4f63d2;--c2:#3d4fb8;">🔧 Generators</a>
-    <a href="#calculators" class="cat-btn" style="--c1:#0ba87e;--c2:#089168;">🧮 Calculators</a>
-    <a href="#converters" class="cat-btn" style="--c1:#1abc9c;--c2:#17a589;">🔄 Converters</a>
+    <a href="#calculators" class="cat-btn" style="--c1:#067a5c;--c2:#055f47;">🧮 Calculators</a>
+    <a href="#converters" class="cat-btn" style="--c1:#0c7a68;--c2:#095f52;">🔄 Converters</a>
   </div>
   <div class="nav-lang" id="google_translate_element"></div>
 </nav>
 
+<main id="main-content">
 <!-- HERO -->
 <div class="hero">
   <div class="hero-badge">⚡ 100% Free · No signup · Instant results</div>
@@ -492,52 +497,52 @@ footer a:hover{color:var(--text);}
     <p>Convert PDF files to and from Word, Excel, JPG and PNG — everything runs locally in your browser, so your documents are never uploaded to a server.</p>
   </div>
   <div class="tool-grid">
-    <a class="tool-card" data-key="c1" href="javascript:void(0)" onclick="addRipple(event,this);openTool('pdf2word')">
+    <a class="tool-card" data-key="c1" href="/?tool=pdf2word" onclick="return handleToolCardClick(event,this,'pdf2word')">
       <button class="fav-btn" onclick="toggleFav(event,'c1')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-red"><span class="tool-icon anim-float">📄</span></div>
       <div class="tool-name">PDF to Word</div>
       <div class="tool-desc">Convert PDF files to editable Word documents instantly.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c2" href="javascript:void(0)" onclick="addRipple(event,this);openTool('word2pdf')">
+    <a class="tool-card" data-key="c2" href="/?tool=word2pdf" onclick="return handleToolCardClick(event,this,'word2pdf')">
       <button class="fav-btn" onclick="toggleFav(event,'c2')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-bounce">📝</span></div>
       <div class="tool-name">Word to PDF</div>
       <div class="tool-desc">Convert Word documents to PDF format. Fast and free.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c3" href="javascript:void(0)" onclick="addRipple(event,this);openTool('pdf2jpg')">
+    <a class="tool-card" data-key="c3" href="/?tool=pdf2jpg" onclick="return handleToolCardClick(event,this,'pdf2jpg')">
       <button class="fav-btn" onclick="toggleFav(event,'c3')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-spin">🖼️</span></div>
       <div class="tool-name">PDF to JPG</div>
       <div class="tool-desc">Convert PDF pages to high quality JPG images.</div>
     </a>
-    <a class="tool-card" data-key="c4" href="javascript:void(0)" onclick="addRipple(event,this);openTool('img2pdf')">
+    <a class="tool-card" data-key="c4" href="/?tool=img2pdf" onclick="return handleToolCardClick(event,this,'img2pdf')">
       <button class="fav-btn" onclick="toggleFav(event,'c4')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-flip">🔄</span></div>
       <div class="tool-name">JPG to PDF</div>
       <div class="tool-desc">Combine JPG images into a single PDF file.</div>
     </a>
-    <a class="tool-card" data-key="c5" href="javascript:void(0)" onclick="addRipple(event,this);openTool('pdf2excel')">
+    <a class="tool-card" data-key="c5" href="/?tool=pdf2excel" onclick="return handleToolCardClick(event,this,'pdf2excel')">
       <button class="fav-btn" onclick="toggleFav(event,'c5')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-bounce">📊</span></div>
       <div class="tool-name">PDF to Excel</div>
       <div class="tool-desc">Extract tables from PDF into Excel spreadsheets.</div>
     </a>
-    <a class="tool-card" data-key="c6" href="javascript:void(0)" onclick="addRipple(event,this);openTool('pdf2png')">
+    <a class="tool-card" data-key="c6" href="/?tool=pdf2png" onclick="return handleToolCardClick(event,this,'pdf2png')">
       <button class="fav-btn" onclick="toggleFav(event,'c6')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-pulse">🖼️</span></div>
       <div class="tool-name">PDF to PNG</div>
       <div class="tool-desc">Convert PDF pages to PNG images with transparency.</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c7" href="javascript:void(0)" onclick="addRipple(event,this);openTool('img2pdf')">
+    <a class="tool-card" data-key="c7" href="/?tool=img2pdf" onclick="return handleToolCardClick(event,this,'img2pdf')">
       <button class="fav-btn" onclick="toggleFav(event,'c7')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-spin">🔄</span></div>
       <div class="tool-name">PNG to PDF</div>
       <div class="tool-desc">Convert PNG images to PDF documents instantly.</div>
     </a>
-    <a class="tool-card" data-key="c8" href="javascript:void(0)" onclick="addRipple(event,this);openTool('pdf2text')">
+    <a class="tool-card" data-key="c8" href="/?tool=pdf2text" onclick="return handleToolCardClick(event,this,'pdf2text')">
       <button class="fav-btn" onclick="toggleFav(event,'c8')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-wobble">📋</span></div>
       <div class="tool-name">PDF to Text</div>
@@ -551,14 +556,14 @@ footer a:hover{color:var(--text);}
     <p>Pull editable, searchable text out of photos, screenshots and scanned PDFs using on-device optical character recognition — no signup, no upload.</p>
   </div>
   <div class="tool-grid">
-    <a class="tool-card" data-key="c9" href="javascript:void(0)" onclick="addRipple(event,this);openTool('ocr')">
+    <a class="tool-card" data-key="c9" href="/?tool=ocr" onclick="return handleToolCardClick(event,this,'ocr')">
       <button class="fav-btn" onclick="toggleFav(event,'c9')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-shake">🔍</span></div>
       <div class="tool-name">Image to Text (OCR)</div>
       <div class="tool-desc">Extract text from any image using AI recognition.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c10" href="javascript:void(0)" onclick="addRipple(event,this);openTool('scanocr')">
+    <a class="tool-card" data-key="c10" href="/?tool=scanocr" onclick="return handleToolCardClick(event,this,'scanocr')">
       <button class="fav-btn" onclick="toggleFav(event,'c10')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-wobble">📱</span></div>
       <div class="tool-name">Scan PDF to Text</div>
@@ -572,54 +577,54 @@ footer a:hover{color:var(--text);}
     <p>Merge, split, compress, rotate, sign, and add text to any PDF — full editing control without installing desktop software.</p>
   </div>
   <div class="tool-grid">
-    <a class="tool-card" data-key="c11" href="javascript:void(0)" onclick="addRipple(event,this);openTool('merge')">
+    <a class="tool-card" data-key="c11" href="/?tool=merge" onclick="return handleToolCardClick(event,this,'merge')">
       <button class="fav-btn" onclick="toggleFav(event,'c11')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-bounce">📎</span></div>
       <div class="tool-name">Merge PDF</div>
       <div class="tool-desc">Combine multiple PDF files into one document.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c12" href="javascript:void(0)" onclick="addRipple(event,this);openTool('split')">
+    <a class="tool-card" data-key="c12" href="/?tool=split" onclick="return handleToolCardClick(event,this,'split')">
       <button class="fav-btn" onclick="toggleFav(event,'c12')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-squeeze">✂️</span></div>
       <div class="tool-name">Split PDF</div>
       <div class="tool-desc">Split a PDF into multiple separate files.</div>
     </a>
-    <a class="tool-card" data-key="c13" href="javascript:void(0)" onclick="addRipple(event,this);openTool('compress')">
+    <a class="tool-card" data-key="c13" href="/?tool=compress" onclick="return handleToolCardClick(event,this,'compress')">
       <button class="fav-btn" onclick="toggleFav(event,'c13')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-squeeze">🗜️</span></div>
       <div class="tool-name">Compress PDF</div>
       <div class="tool-desc">Reduce PDF file size without losing quality.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c14" href="javascript:void(0)" onclick="addRipple(event,this);openTool('rotate')">
+    <a class="tool-card" data-key="c14" href="/?tool=rotate" onclick="return handleToolCardClick(event,this,'rotate')">
       <button class="fav-btn" onclick="toggleFav(event,'c14')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-spin">🔃</span></div>
       <div class="tool-name">Rotate PDF</div>
       <div class="tool-desc">Rotate PDF pages to any angle. 90, 180, 270 degrees.</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c15" href="javascript:void(0)" onclick="addRipple(event,this);openTool('deletepages')">
+    <a class="tool-card" data-key="c15" href="/?tool=deletepages" onclick="return handleToolCardClick(event,this,'deletepages')">
       <button class="fav-btn" onclick="toggleFav(event,'c15')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-red"><span class="tool-icon anim-wobble">🗑️</span></div>
       <div class="tool-name">Delete PDF Pages</div>
       <div class="tool-desc">Remove unwanted pages from your PDF file.</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c16" href="javascript:void(0)" onclick="addRipple(event,this);openTool('extractpages')">
+    <a class="tool-card" data-key="c16" href="/?tool=extractpages" onclick="return handleToolCardClick(event,this,'extractpages')">
       <button class="fav-btn" onclick="toggleFav(event,'c16')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-bounce">📤</span></div>
       <div class="tool-name">Extract PDF Pages</div>
       <div class="tool-desc">Extract specific pages from a PDF document.</div>
     </a>
-    <a class="tool-card" data-key="c17" href="javascript:void(0)" onclick="addRipple(event,this);openTool('sign')">
+    <a class="tool-card" data-key="c17" href="/?tool=sign" onclick="return handleToolCardClick(event,this,'sign')">
       <button class="fav-btn" onclick="toggleFav(event,'c17')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-write">✍️</span></div>
       <div class="tool-name">Sign PDF</div>
       <div class="tool-desc">Draw, type or upload your signature and place it on any PDF page.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c17b" href="javascript:void(0)" onclick="addRipple(event,this);openTool('addtext')">
+    <a class="tool-card" data-key="c17b" href="/?tool=addtext" onclick="return handleToolCardClick(event,this,'addtext')">
       <button class="fav-btn" onclick="toggleFav(event,'c17b')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-write">✏️</span></div>
       <div class="tool-name">Add Text to PDF</div>
@@ -634,26 +639,26 @@ footer a:hover{color:var(--text);}
     <p>Instantly generate QR codes, strong random passwords, and placeholder text for designs and prototypes — free, with no daily limits.</p>
   </div>
   <div class="tool-grid">
-    <a class="tool-card" data-key="c18" href="javascript:void(0)" onclick="addRipple(event,this);openTool('qr')">
+    <a class="tool-card" data-key="c18" href="/?tool=qr" onclick="return handleToolCardClick(event,this,'qr')">
       <button class="fav-btn" onclick="toggleFav(event,'c18')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📱</span></div>
       <div class="tool-name">QR Code Generator</div>
       <div class="tool-desc">Turn any URL or text into a QR code. Download as PNG instantly.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c19" href="javascript:void(0)" onclick="addRipple(event,this);openTool('password')">
+    <a class="tool-card" data-key="c19" href="/?tool=password" onclick="return handleToolCardClick(event,this,'password')">
       <button class="fav-btn" onclick="toggleFav(event,'c19')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-lock">🔐</span></div>
       <div class="tool-name">Password Generator</div>
       <div class="tool-desc">Strong, secure passwords of any length. Symbols, numbers, uppercase.</div>
     </a>
-    <a class="tool-card" data-key="c20" href="javascript:void(0)" onclick="addRipple(event,this);openTool('color')">
+    <a class="tool-card" data-key="c20" href="/?tool=color" onclick="return handleToolCardClick(event,this,'color')">
       <button class="fav-btn" onclick="toggleFav(event,'c20')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-hue">🎨</span></div>
       <div class="tool-name">Color Code Converter</div>
       <div class="tool-desc">Convert between HEX, RGB, and HSL color formats instantly.</div>
     </a>
-    <a class="tool-card" data-key="c21" href="javascript:void(0)" onclick="addRipple(event,this);openTool('hash')">
+    <a class="tool-card" data-key="c21" href="/?tool=hash" onclick="return handleToolCardClick(event,this,'hash')">
       <button class="fav-btn" onclick="toggleFav(event,'c21')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-float">🔑</span></div>
       <div class="tool-name">Lorem Ipsum Generator</div>
@@ -667,60 +672,60 @@ footer a:hover{color:var(--text);}
     <p>Accurate calculators for age, BMI, BMR, daily calories, tips, discounts, loans and water intake — real formulas, instant results.</p>
   </div>
   <div class="tool-grid">
-    <a class="tool-card" data-key="c22" href="javascript:void(0)" onclick="addRipple(event,this);openTool('age')">
+    <a class="tool-card" data-key="c22" href="/?tool=age" onclick="return handleToolCardClick(event,this,'age')">
       <button class="fav-btn" onclick="toggleFav(event,'c22')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-pink"><span class="tool-icon anim-tick">🎂</span></div>
       <div class="tool-name">Age Calculator</div>
       <div class="tool-desc">Your exact age in years, months, days and hours.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c23" href="javascript:void(0)" onclick="addRipple(event,this);openTool('bmi')">
+    <a class="tool-card" data-key="c23" href="/?tool=bmi" onclick="return handleToolCardClick(event,this,'bmi')">
       <button class="fav-btn" onclick="toggleFav(event,'c23')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-wobble">⚖️</span></div>
       <div class="tool-name">BMI Calculator</div>
       <div class="tool-desc">Body Mass Index with US Imperial and Metric support.</div>
     </a>
-    <a class="tool-card" data-key="c24" href="javascript:void(0)" onclick="addRipple(event,this);openTool('tip')">
+    <a class="tool-card" data-key="c24" href="/?tool=tip" onclick="return handleToolCardClick(event,this,'tip')">
       <button class="fav-btn" onclick="toggleFav(event,'c24')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-ping">🍽️</span></div>
       <div class="tool-name">Tip Calculator</div>
       <div class="tool-desc">Split the bill and calculate tips for any group size.</div>
     </a>
-    <a class="tool-card" data-key="c25" href="javascript:void(0)" onclick="addRipple(event,this);openTool('discount')">
+    <a class="tool-card" data-key="c25" href="/?tool=discount" onclick="return handleToolCardClick(event,this,'discount')">
       <button class="fav-btn" onclick="toggleFav(event,'c25')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-bounce">🏷️</span></div>
       <div class="tool-name">Discount Calculator</div>
       <div class="tool-desc">Final price after any percentage discount. Quick math.</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c26" href="javascript:void(0)" onclick="addRipple(event,this);openTool('loan')">
+    <a class="tool-card" data-key="c26" href="/?tool=loan" onclick="return handleToolCardClick(event,this,'loan')">
       <button class="fav-btn" onclick="toggleFav(event,'c26')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-count">🏦</span></div>
       <div class="tool-name">Loan Calculator</div>
       <div class="tool-desc">Monthly payment, total interest on any loan. US-style.</div>
     </a>
-    <a class="tool-card" data-key="c26b" href="javascript:void(0)" onclick="addRipple(event,this);openTool('bmr')">
+    <a class="tool-card" data-key="c26b" href="/?tool=bmr" onclick="return handleToolCardClick(event,this,'bmr')">
       <button class="fav-btn" onclick="toggleFav(event,'c26b')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-pulse">🔥</span></div>
       <div class="tool-name">BMR Calculator</div>
       <div class="tool-desc">Your basal metabolic rate — calories burned at rest.</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c26c" href="javascript:void(0)" onclick="addRipple(event,this);openTool('calorie')">
+    <a class="tool-card" data-key="c26c" href="/?tool=calorie" onclick="return handleToolCardClick(event,this,'calorie')">
       <button class="fav-btn" onclick="toggleFav(event,'c26c')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-red"><span class="tool-icon anim-shake">🍎</span></div>
       <div class="tool-name">Calorie Calculator</div>
       <div class="tool-desc">Daily calorie needs based on activity level (TDEE).</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c26d" href="javascript:void(0)" onclick="addRipple(event,this);openTool('bodyfat')">
+    <a class="tool-card" data-key="c26d" href="/?tool=bodyfat" onclick="return handleToolCardClick(event,this,'bodyfat')">
       <button class="fav-btn" onclick="toggleFav(event,'c26d')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-wobble">📐</span></div>
       <div class="tool-name">Body Fat Calculator</div>
       <div class="tool-desc">Estimate body fat % using the US Navy tape method.</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c26e" href="javascript:void(0)" onclick="addRipple(event,this);openTool('water')">
+    <a class="tool-card" data-key="c26e" href="/?tool=water" onclick="return handleToolCardClick(event,this,'water')">
       <button class="fav-btn" onclick="toggleFav(event,'c26e')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-float">💧</span></div>
       <div class="tool-name">Water Intake Calculator</div>
@@ -735,27 +740,27 @@ footer a:hover{color:var(--text);}
     <p>Convert between units, currencies, text cases and color formats (HEX, RGB, HSL) in one click — built for quick, everyday conversions.</p>
   </div>
   <div class="tool-grid">
-    <a class="tool-card" data-key="c27" href="javascript:void(0)" onclick="addRipple(event,this);openTool('unit')">
+    <a class="tool-card" data-key="c27" href="/?tool=unit" onclick="return handleToolCardClick(event,this,'unit')">
       <button class="fav-btn" onclick="toggleFav(event,'c27')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-flip">📏</span></div>
       <div class="tool-name">Unit Converter</div>
       <div class="tool-desc">Length, weight, temperature, speed, volume — all units.</div>
     </a>
-    <a class="tool-card" data-key="c28" href="javascript:void(0)" onclick="addRipple(event,this);openTool('currency')">
+    <a class="tool-card" data-key="c28" href="/?tool=currency" onclick="return handleToolCardClick(event,this,'currency')">
       <button class="fav-btn" onclick="toggleFav(event,'c28')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-flip">💱</span></div>
       <div class="tool-name">Currency Converter</div>
       <div class="tool-desc">Convert between 15 major world currencies instantly.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c29" href="javascript:void(0)" onclick="addRipple(event,this);openTool('case')">
+    <a class="tool-card" data-key="c29" href="/?tool=case" onclick="return handleToolCardClick(event,this,'case')">
       <button class="fav-btn" onclick="toggleFav(event,'c29')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-shake">🔤</span></div>
       <div class="tool-name">Text Case Converter</div>
       <div class="tool-desc">UPPER, lower, Title Case, camelCase in one click.</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c30" href="javascript:void(0)" onclick="addRipple(event,this);openTool('wordcount')">
+    <a class="tool-card" data-key="c30" href="/?tool=wordcount" onclick="return handleToolCardClick(event,this,'wordcount')">
       <button class="fav-btn" onclick="toggleFav(event,'c30')" aria-label="Favorite this tool"></button>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📝</span></div>
       <div class="tool-name">Word Counter</div>
@@ -768,59 +773,59 @@ footer a:hover{color:var(--text);}
 
   <!-- AFFILIATE SECTION -->
   <div class="affiliate-section" id="recommended">
-    <h3>⭐ Most Popular Right Now</h3>
+    <h2>⭐ Most Popular Right Now</h2>
     <p>Trending tools used by thousands of people every day.</p>
     <div class="tool-grid">
-      <a class="tool-card" data-key="p1" href="javascript:void(0)" onclick="addRipple(event,this);openTool('pdf2jpg')">
+      <a class="tool-card" data-key="p1" href="/?tool=pdf2jpg" onclick="return handleToolCardClick(event,this,'pdf2jpg')">
         <button class="fav-btn" onclick="toggleFav(event,'p1')" aria-label="Favorite this tool"></button>
         <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-spin">🖼️</span></div>
         <div class="tool-name">PDF to JPG</div>
         <div class="tool-desc">Convert PDF pages to high quality JPG images instantly.</div>
         <span class="tool-badge hot">Most Popular</span>
       </a>
-      <a class="tool-card" data-key="p2" href="javascript:void(0)" onclick="addRipple(event,this);openTool('ocr')">
+      <a class="tool-card" data-key="p2" href="/?tool=ocr" onclick="return handleToolCardClick(event,this,'ocr')">
         <button class="fav-btn" onclick="toggleFav(event,'p2')" aria-label="Favorite this tool"></button>
         <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-shake">🔍</span></div>
         <div class="tool-name">Image to Text</div>
         <div class="tool-desc">Extract text from any image using AI-powered OCR.</div>
         <span class="tool-badge hot">Trending</span>
       </a>
-      <a class="tool-card" data-key="p3" href="javascript:void(0)" onclick="addRipple(event,this);openTool('merge')">
+      <a class="tool-card" data-key="p3" href="/?tool=merge" onclick="return handleToolCardClick(event,this,'merge')">
         <button class="fav-btn" onclick="toggleFav(event,'p3')" aria-label="Favorite this tool"></button>
         <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-bounce">📎</span></div>
         <div class="tool-name">Merge PDF</div>
         <div class="tool-desc">Combine multiple PDF files into one document for free.</div>
         <span class="tool-badge hot">Most Used</span>
       </a>
-      <a class="tool-card" data-key="p4" href="javascript:void(0)" onclick="addRipple(event,this);openTool('qr')">
+      <a class="tool-card" data-key="p4" href="/?tool=qr" onclick="return handleToolCardClick(event,this,'qr')">
         <button class="fav-btn" onclick="toggleFav(event,'p4')" aria-label="Favorite this tool"></button>
         <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📱</span></div>
         <div class="tool-name">QR Code Generator</div>
         <div class="tool-desc">Generate QR codes for any URL or text. Download as PNG.</div>
         <span class="tool-badge">Popular</span>
       </a>
-      <a class="tool-card" data-key="p5" href="javascript:void(0)" onclick="addRipple(event,this);openTool('sign')">
+      <a class="tool-card" data-key="p5" href="/?tool=sign" onclick="return handleToolCardClick(event,this,'sign')">
         <button class="fav-btn" onclick="toggleFav(event,'p5')" aria-label="Favorite this tool"></button>
         <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-write">✍️</span></div>
         <div class="tool-name">Sign PDF</div>
         <div class="tool-desc">Draw or type your signature and place it on any PDF.</div>
         <span class="tool-badge">New</span>
       </a>
-      <a class="tool-card" data-key="p6" href="javascript:void(0)" onclick="addRipple(event,this);openTool('password')">
+      <a class="tool-card" data-key="p6" href="/?tool=password" onclick="return handleToolCardClick(event,this,'password')">
         <button class="fav-btn" onclick="toggleFav(event,'p6')" aria-label="Favorite this tool"></button>
         <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-lock">🔐</span></div>
         <div class="tool-name">Password Generator</div>
         <div class="tool-desc">Generate strong, secure passwords instantly. Customizable.</div>
         <span class="tool-badge">Popular</span>
       </a>
-      <a class="tool-card" data-key="p7" href="javascript:void(0)" onclick="addRipple(event,this);openTool('age')">
+      <a class="tool-card" data-key="p7" href="/?tool=age" onclick="return handleToolCardClick(event,this,'age')">
         <button class="fav-btn" onclick="toggleFav(event,'p7')" aria-label="Favorite this tool"></button>
         <div class="tool-icon-wrap ibg-pink"><span class="tool-icon anim-tick">🎂</span></div>
         <div class="tool-name">Age Calculator</div>
         <div class="tool-desc">Find your exact age in years, months, days and hours.</div>
         <span class="tool-badge">Popular</span>
       </a>
-      <a class="tool-card" data-key="p8" href="javascript:void(0)" onclick="addRipple(event,this);openTool('wordcount')">
+      <a class="tool-card" data-key="p8" href="/?tool=wordcount" onclick="return handleToolCardClick(event,this,'wordcount')">
         <button class="fav-btn" onclick="toggleFav(event,'p8')" aria-label="Favorite this tool"></button>
         <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📝</span></div>
         <div class="tool-name">Word Counter</div>
@@ -831,6 +836,7 @@ footer a:hover{color:var(--text);}
   </div>
 
 </div><!-- end .section -->
+</main><!-- end #main-content -->
 
 <!-- FOOTER -->
 <footer>
@@ -876,6 +882,31 @@ async function ensureLibsForTool(key){
   if(key==='qr' && !window.QRCode){ await loadScript('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js'); }
 }
 
+// ── CRAWLABLE TOOL LINKS ──────────────────────────────────────────────────────
+// Tool cards now have real hrefs like /?tool=pdf2word instead of javascript:void(0),
+// so search engines and users with JS off/new-tab/middle-click get a real, working
+// link. For normal left-clicks we intercept, update the URL without a full reload,
+// and open the modal in place (keeps the fast SPA experience).
+function handleToolCardClick(event, el, key){
+  addRipple(event, el);
+  if(event.metaKey || event.ctrlKey || event.shiftKey || event.button===1) return true; // let ctrl/cmd/middle-click open in new tab
+  event.preventDefault();
+  const url = el.getAttribute('href');
+  if(window.history && history.pushState) history.pushState({tool:key}, '', url);
+  openTool(key);
+  return false;
+}
+window.addEventListener('popstate', function(){
+  const params = new URLSearchParams(location.search);
+  const key = params.get('tool');
+  if(key && TOOLS[key]) openTool(key); else closeTool();
+});
+window.addEventListener('DOMContentLoaded', function(){
+  const params = new URLSearchParams(location.search);
+  const key = params.get('tool');
+  if(key && TOOLS[key]) openTool(key);
+});
+
 // ── MODAL ENGINE ──────────────────────────────────────────────────────────────
 async function openTool(key){
   const tool=TOOLS[key];if(!tool)return;
@@ -904,7 +935,7 @@ function toggleModalFullscreen(){
   if(btn) btn.textContent = isFull ? '⤡' : '⛶';
   if(btn) btn.title = isFull ? 'Exit full screen' : 'Full screen';
 }
-function closeTool(){document.getElementById('overlay').classList.remove('active');document.body.style.overflow='';document.getElementById('modal-content').classList.remove('fullscreen');}
+function closeTool(){document.getElementById('overlay').classList.remove('active');document.body.style.overflow='';document.getElementById('modal-content').classList.remove('fullscreen');if(location.search.includes('tool=')&&history.pushState){history.pushState({},'','/');}}
 function closeIfOutside(e){if(e.target===document.getElementById('overlay'))closeTool();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeTool();});
 

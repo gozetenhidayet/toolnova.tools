@@ -169,7 +169,7 @@ body { top: 0 !important; }
   --radius:18px;
   --shadow:0 2px 16px rgba(79,99,210,0.07);
 }
-body{background:radial-gradient(circle at 6% 8%,rgba(255,214,102,0.35) 0%,transparent 42%),radial-gradient(circle at 94% 12%,rgba(126,200,255,0.32) 0%,transparent 42%),radial-gradient(circle at 12% 92%,rgba(255,159,205,0.30) 0%,transparent 42%),radial-gradient(circle at 92% 90%,rgba(126,232,184,0.30) 0%,transparent 42%),radial-gradient(circle at 50% 50%,rgba(201,166,255,0.14) 0%,transparent 60%),var(--bg);background-attachment:fixed;color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
+body{background:radial-gradient(circle at 6% 8%,rgba(255,214,102,0.35) 0%,transparent 42%),radial-gradient(circle at 94% 12%,rgba(126,200,255,0.32) 0%,transparent 42%),radial-gradient(circle at 12% 92%,rgba(255,159,205,0.30) 0%,transparent 42%),radial-gradient(circle at 92% 90%,rgba(126,232,184,0.30) 0%,transparent 42%),radial-gradient(circle at 50% 50%,rgba(201,166,255,0.14) 0%,transparent 60%),var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
 
 /* NAV — logo + centered categories + language, all in one sticky bar */
 nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:110;box-shadow:0 1px 8px rgba(0,0,0,0.06);flex-wrap:wrap;}
@@ -242,21 +242,6 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
 .tool-card:hover{box-shadow:0 10px 30px rgba(79,99,210,0.14);}
 .tool-card:hover::after{opacity:1;}
 .tool-card:active{transform:translateY(-2px) scale(.99);}
-.tool-card.in-focus{transform:translateY(-8px) scale(1.045);box-shadow:0 18px 36px rgba(79,99,210,0.28),0 0 0 3px rgba(255,255,255,0.9),0 0 0 5px var(--focus-glow,rgba(79,99,210,.4));z-index:3;}
-.tool-card.in-focus .tool-icon-wrap{animation:infocus-pop 1s cubic-bezier(.34,1.56,.64,1) infinite;}
-.tool-card:has(.ibg-red).in-focus{--focus-glow:rgba(255,107,107,.45);}
-.tool-card:has(.ibg-blue).in-focus{--focus-glow:rgba(79,168,255,.45);}
-.tool-card:has(.ibg-green).in-focus{--focus-glow:rgba(46,209,140,.45);}
-.tool-card:has(.ibg-yellow).in-focus{--focus-glow:rgba(255,198,26,.45);}
-.tool-card:has(.ibg-purple).in-focus{--focus-glow:rgba(168,85,247,.45);}
-.tool-card:has(.ibg-pink).in-focus{--focus-glow:rgba(255,111,165,.45);}
-.tool-card:has(.ibg-teal).in-focus{--focus-glow:rgba(20,201,174,.45);}
-.tool-card:has(.ibg-orange).in-focus{--focus-glow:rgba(255,159,28,.45);}
-@keyframes infocus-pop{0%,100%{transform:scale(1) rotate(0);}50%{transform:scale(1.15) rotate(-8deg);}}
-@media(prefers-reduced-motion:reduce){
-  .tool-icon,.tool-card.in-focus .tool-icon-wrap{animation:none!important;}
-  .tool-card.in-focus{transform:none;}
-}
 /* colored left accent stripe, matched to each icon tile's hue */
 .tool-card:has(.ibg-red){border-left-color:#FF6B6B;background:#FFE4E4;}
 .tool-card:has(.ibg-blue){border-left-color:#4FA8FF;background:#DEEEFF;}
@@ -300,8 +285,7 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
   filter:brightness(1.05);
 }
 .cat-btn:active{transform:translateY(-1px) scale(1.02);}
-.tool-icon{font-size:28px;display:block;line-height:1;animation:icon-idle-float 3.4s ease-in-out infinite;}
-@keyframes icon-idle-float{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-4px) rotate(-4deg);}}
+.tool-icon{font-size:28px;display:block;line-height:1;}
 .tool-name{font-weight:600;font-size:14px;margin-bottom:4px;color:var(--text);}
 .tool-desc{color:var(--muted);font-size:12px;line-height:1.5;}
 
@@ -1717,18 +1701,6 @@ function addRipple(e,card){
   setTimeout(()=>r.remove(),800);
 }
 // Cursor-driven tilt + glow — the card moves as the pointer moves over it
-window.addEventListener('DOMContentLoaded', function(){
-  // Highlight + animate whichever tool card is currently centered in view (mobile scroll spotlight)
-  if('IntersectionObserver' in window){
-    const focusIO = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        entry.target.classList.toggle('in-focus', entry.isIntersecting);
-      });
-    }, {root:null, rootMargin:'-42% 0px -42% 0px', threshold:0});
-    document.querySelectorAll('.tool-card').forEach(card=>focusIO.observe(card));
-  }
-});
-
 window.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.tool-card').forEach(card=>{
     card.style.transition = 'transform .15s ease-out, box-shadow .15s ease-out, border-color .25s';

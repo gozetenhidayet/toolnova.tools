@@ -61,15 +61,9 @@
   }
   </script>
 -->
-<script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    fetch('/sw.js',{method:'HEAD'}).then(r=>{
-      if(r.ok){ navigator.serviceWorker.register('/sw.js').catch(()=>{}); }
-    }).catch(()=>{});
-  });
-}
-</script>
+<!-- Service worker registration intentionally omitted: no /sw.js is served, and even
+     a caught fetch() to a missing file still logs a 404 to the console. Re-add the
+     registration only once an actual /sw.js file exists at the site root. -->
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3V90PDJDP1"></script>
 <script>
@@ -144,6 +138,7 @@ window.addEventListener('load', function() {
 .goog-te-banner-frame { display: none !important; }
 body { top: 0 !important; }
 .goog-logo-link { display: none !important; }
+.goog-te-gadget-icon { display: none !important; }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -170,7 +165,7 @@ body { top: 0 !important; }
   --accent2-dark:#067a5c;
   --hot-dark:#a85800;
   --text:#1a1d2e;
-  --muted:#6b7394;
+  --muted:#565D82;
   --radius:18px;
   --shadow:0 2px 16px rgba(79,99,210,0.07);
 }
@@ -179,7 +174,7 @@ body{background:radial-gradient(circle at 6% 8%,rgba(255,214,102,0.35) 0%,transp
 /* NAV — logo + centered categories + language, all in one sticky bar */
 nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:110;box-shadow:0 1px 8px rgba(0,0,0,0.06);flex-wrap:wrap;}
 .logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--accent);text-decoration:none;letter-spacing:-.5px;flex-shrink:0;}
-.logo span{color:var(--accent2);}
+.logo span{color:var(--accent2-dark);}
 .nav-cats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;flex:1;order:2;}
 .nav-lang{flex-shrink:0;order:3;margin-left:auto;}
 @media(max-width:900px){
@@ -287,16 +282,16 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
 .cat-btn{
   display:inline-flex;align-items:center;gap:7px;
   padding:10px 20px;border-radius:99px;
-  background:var(--c1);color:#fff;
+  background:var(--c1);color:var(--c2);
   text-decoration:none;font-size:13px;font-weight:700;
   transition:all .25s cubic-bezier(.34,1.56,.64,1);
-  box-shadow:0 4px 14px rgba(0,0,0,0.15);
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
   position:relative;overflow:hidden;white-space:nowrap;
 }
 .cat-btn:hover{
   transform:translateY(-4px) scale(1.07);
-  box-shadow:0 8px 24px rgba(0,0,0,0.22);
-  filter:brightness(1.1);
+  box-shadow:0 8px 20px rgba(0,0,0,0.12);
+  filter:brightness(0.97);
 }
 .cat-btn:active{transform:translateY(-1px) scale(1.02);}
 .tool-icon{font-size:28px;display:block;line-height:1;animation:icon-idle-float 3.4s ease-in-out infinite;}
@@ -479,12 +474,12 @@ footer a:hover{color:var(--text);}
 <nav>
   <a href="/" class="logo">toolnova<span>.tools</span></a>
   <div class="nav-cats">
-    <a href="#pdf-converter" class="cat-btn" style="--c1:#c0392b;--c2:#922b21;">📄 PDF Converter</a>
-    <a href="#ocr-tools" class="cat-btn" style="--c1:#a35f00;--c2:#7a4700;">🔍 OCR Tools</a>
-    <a href="#edit-pdf" class="cat-btn" style="--c1:#9b59b6;--c2:#7d3c98;">✂️ Edit PDF</a>
-    <a href="#generators" class="cat-btn" style="--c1:#4f63d2;--c2:#3d4fb8;">🔧 Generators</a>
-    <a href="#calculators" class="cat-btn" style="--c1:#067a5c;--c2:#055f47;">🧮 Calculators</a>
-    <a href="#converters" class="cat-btn" style="--c1:#0c7a68;--c2:#095f52;">🔄 Converters</a>
+    <a href="#pdf-converter" class="cat-btn" style="--c1:#FDE4E4;--c2:#B91C1C;">📄 PDF Converter</a>
+    <a href="#ocr-tools" class="cat-btn" style="--c1:#FDEADA;--c2:#9A3412;">🔍 OCR Tools</a>
+    <a href="#edit-pdf" class="cat-btn" style="--c1:#F0E4FE;--c2:#6D28D9;">✂️ Edit PDF</a>
+    <a href="#generators" class="cat-btn" style="--c1:#DFEAFE;--c2:#1D4ED8;">🔧 Generators</a>
+    <a href="#calculators" class="cat-btn" style="--c1:#DFF4E3;--c2:#166534;">🧮 Calculators</a>
+    <a href="#converters" class="cat-btn" style="--c1:#DAF5EF;--c2:#115E59;">🔄 Converters</a>
   </div>
   <div class="nav-lang" id="google_translate_element"></div>
 </nav>

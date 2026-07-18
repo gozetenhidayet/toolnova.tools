@@ -1,0 +1,2794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>toolnova.tools — Free Online Tools for Everyone</title>
+<meta name="description" content="Free online tools: PDF converter, QR code generator, age calculator, BMI calculator, currency converter, word counter, password generator and more. No signup, no watermark, instant results.">
+<meta name="keywords" content="pdf to jpg, merge pdf, pdf converter, qr code generator, age calculator, bmi calculator, word counter, currency converter, password generator, image to text, ocr, free online tools">
+<meta name="robots" content="index, follow">
+<meta name="author" content="toolnova.tools">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%234f63d2'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial,sans-serif' font-weight='800' fill='white' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://toolnova.tools/">
+<link rel="alternate" hreflang="en" href="https://toolnova.tools/">
+<link rel="alternate" hreflang="x-default" href="https://toolnova.tools/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="toolnova.tools — Free Online Tools">
+<meta property="og:description" content="40+ free online tools: PDF converter, QR code, calculators, converters and more. No signup, instant results.">
+<meta property="og:url" content="https://toolnova.tools/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="toolnova.tools">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="toolnova.tools — Free Online Tools">
+<meta name="twitter:description" content="40+ free online tools. No signup, instant results.">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "toolnova.tools",
+  "url": "https://toolnova.tools",
+  "description": "Free online tools: PDF converter, QR code generator, calculators and more",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://toolnova.tools/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- PWA meta (safe to keep even without manifest/sw files) -->
+<meta name="theme-color" content="#4f63d2">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="toolnova">
+<!--
+  Service worker + manifest were removed to stop 404s on hosts that don't
+  serve /manifest.json and /sw.js. Once you deploy to your own domain with
+  those two files actually present at the root, re-add:
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <script>
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',()=>{
+      navigator.serviceWorker.register('/sw.js').catch(()=>{});
+    });
+  }
+  </script>
+-->
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    fetch('/sw.js',{method:'HEAD'}).then(r=>{
+      if(r.ok){ navigator.serviceWorker.register('/sw.js').catch(()=>{}); }
+    }).catch(()=>{});
+  });
+}
+</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V90PDJDP1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3V90PDJDP1');
+</script>
+<!-- End Google Analytics -->
+
+<!-- Google Translate -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'af,sq,am,ar,hy,az,eu,be,bn,bs,bg,ca,ceb,zh-CN,zh-TW,co,hr,cs,da,nl,eo,et,fi,fr,fy,gl,ka,de,el,gu,ht,ha,haw,he,hi,hmn,hu,is,ig,id,ga,it,ja,jw,kn,kk,km,ko,ku,ky,lo,la,lv,lt,lb,mk,mg,ms,ml,mt,mi,mr,mn,my,ne,no,ny,or,ps,fa,pl,pt,pa,ro,ru,sm,gd,sr,st,sn,sd,si,sk,sl,so,es,su,sw,sv,tl,tg,ta,te,th,tr,uk,ur,ug,uz,vi,cy,xh,yi,yo,zu',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+
+// Auto-detect browser/country language and translate
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    const browserLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0].toLowerCase();
+    if (browserLang === 'en') return;
+    
+    const selectEl = document.querySelector('.goog-te-combo');
+    if (selectEl) {
+      // Map some special cases
+      const langMap = {'zh': 'zh-CN', 'zht': 'zh-TW'};
+      const targetLang = langMap[browserLang] || browserLang;
+      
+      // Check if language exists in dropdown
+      const option = Array.from(selectEl.options).find(o => o.value === targetLang);
+      if (option) {
+        selectEl.value = targetLang;
+        selectEl.dispatchEvent(new Event('change'));
+      }
+    }
+  }, 1500);
+});
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+
+<style>
+/* Translate Widget Styles */
+#google_translate_element {
+  display: inline-flex;
+  align-items: center;
+}
+.goog-te-gadget {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0 !important;
+}
+.goog-te-gadget .goog-te-combo {
+  background: var(--surface2);
+  border: 1.5px solid var(--border);
+  border-radius: 99px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  cursor: pointer;
+  outline: none;
+  margin: 0 !important;
+  max-width: 130px;
+}
+.goog-te-gadget .goog-te-combo:focus {
+  border-color: var(--accent);
+}
+.goog-te-banner-frame { display: none !important; }
+body { top: 0 !important; }
+.goog-logo-link { display: none !important; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"></noscript>
+
+<!-- ================================================
+     ADSENSE — Replace CA-PUB-XXXXXXXXXX with your ID
+     after Google approves your site (2-3 weeks)
+================================================ -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3359266836868361" crossorigin="anonymous"></script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F5F0FF;
+  --surface:#FFF9F0;
+  --surface2:#F0E9FF;
+  --border:#E5D9F7;
+  --accent:#4f63d2;
+  --accent-light:#eef0fd;
+  --accent2:#0ba87e;
+  --accent2-light:#e6f8f3;
+  --accent2-dark:#067a5c;
+  --hot-dark:#a85800;
+  --text:#1a1d2e;
+  --muted:#6b7394;
+  --radius:18px;
+  --shadow:0 2px 16px rgba(79,99,210,0.07);
+}
+body{background:radial-gradient(circle at 6% 8%,rgba(255,214,102,0.35) 0%,transparent 42%),radial-gradient(circle at 94% 12%,rgba(126,200,255,0.32) 0%,transparent 42%),radial-gradient(circle at 12% 92%,rgba(255,159,205,0.30) 0%,transparent 42%),radial-gradient(circle at 92% 90%,rgba(126,232,184,0.30) 0%,transparent 42%),radial-gradient(circle at 50% 50%,rgba(201,166,255,0.14) 0%,transparent 60%),var(--bg);background-attachment:fixed;color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
+
+/* NAV — logo + centered categories + language, all in one sticky bar */
+nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:110;box-shadow:0 1px 8px rgba(0,0,0,0.06);flex-wrap:wrap;}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--accent);text-decoration:none;letter-spacing:-.5px;flex-shrink:0;}
+.logo span{color:var(--accent2);}
+.nav-cats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;flex:1;order:2;}
+.nav-lang{flex-shrink:0;order:3;margin-left:auto;}
+@media(max-width:900px){
+  nav{padding:12px 16px;justify-content:space-between;}
+  .nav-cats{order:3;width:100%;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
+  .nav-cats::-webkit-scrollbar{display:none;}
+  .cat-btn{padding:8px 14px;font-size:12px;}
+  .nav-lang{order:2;}
+}
+
+/* HERO */
+.hero{text-align:center;padding:64px 20px 48px;background:linear-gradient(180deg,#FFFDF8 0%,var(--bg) 100%);border-bottom:1px solid var(--border);}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);color:var(--accent);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 14px;border-radius:99px;margin-bottom:20px;border:1px solid rgba(79,99,210,0.2);animation:fade-up .6s ease both;}
+.hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(32px,5vw,56px);font-weight:800;line-height:1.15;margin-bottom:16px;color:var(--text);animation:fade-up .6s ease .08s both;}
+.hero h1 em{font-style:normal;color:var(--accent);background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{color:var(--muted);font-size:17px;max-width:480px;margin:0 auto 32px;animation:fade-up .6s ease .14s both;}
+.search-wrap{max-width:460px;margin:0 auto;position:relative;animation:fade-up .6s ease .2s both;}
+.hero-blog-link{display:inline-flex;align-items:center;gap:6px;margin-top:18px;color:var(--accent);font-weight:600;font-size:14px;text-decoration:none;animation:fade-up .6s ease .3s both;transition:gap .2s;}
+.hero-blog-link:hover{gap:10px;text-decoration:underline;}
+@keyframes fade-up{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.search-wrap input{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:99px;padding:14px 20px 14px 48px;color:var(--text);font-size:15px;outline:none;transition:border-color .2s;box-shadow:var(--shadow);}
+.search-wrap input:focus{border-color:var(--accent);}
+.search-wrap input::placeholder{color:var(--muted);}
+.search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:17px;}
+
+/* STATS */
+.stats{display:flex;justify-content:center;gap:48px;padding:32px 20px;background:var(--surface);border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;font-weight:800;color:var(--accent);}
+.stat-label{color:var(--muted);font-size:13px;margin-top:2px;}
+
+/* AD BANNER — top */
+.ad-banner{max-width:728px;margin:24px auto;padding:0 24px;text-align:center;}
+.ad-placeholder{background:var(--surface);border:1.5px dashed var(--border);border-radius:var(--radius);padding:20px;color:var(--muted);font-size:13px;}
+
+/* SECTION */
+.section{max-width:1100px;margin:0 auto;padding:0 24px 64px;}
+.section-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:700;margin:40px 0 10px;color:var(--text);display:flex;align-items:center;gap:10px;}
+.section-desc-box{display:flex;align-items:center;gap:14px;background:var(--sb,var(--surface2));border-left:4px solid var(--sc,var(--accent));border-radius:12px;padding:14px 18px;margin:0 0 24px;max-width:680px;}
+.section-desc-icon{font-size:24px;flex-shrink:0;line-height:1;animation:sd-breathe 3s ease-in-out infinite;}
+.section-desc-box p{margin:0;color:var(--text);font-weight:600;font-size:14px;line-height:1.6;}
+@keyframes sd-breathe{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
+@media(prefers-reduced-motion:reduce){.section-desc-icon{animation:none;}}
+@media(max-width:640px){
+  .section-desc-box{padding:11px 14px;gap:10px;border-radius:10px;}
+  .section-desc-icon{font-size:19px;}
+  .section-desc-box p{font-size:13px;}
+}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.section-badge{background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:600;padding:2px 10px;border-radius:99px;text-transform:uppercase;letter-spacing:.06em;}
+
+/* TOOL GRID */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;}
+.tool-card{background:var(--surface);border:1.5px solid var(--border);border-left:4px solid transparent;border-radius:var(--radius);padding:26px 20px 22px;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s,border-color .25s;text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden;opacity:0;animation:card-in .5s cubic-bezier(.22,1,.36,1) forwards;box-shadow:0 1px 4px rgba(16,24,40,0.04);}
+@keyframes card-in{from{opacity:0;transform:translateY(16px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+.tool-grid .tool-card:nth-child(1){animation-delay:.02s;}
+.tool-grid .tool-card:nth-child(2){animation-delay:.06s;}
+.tool-grid .tool-card:nth-child(3){animation-delay:.10s;}
+.tool-grid .tool-card:nth-child(4){animation-delay:.14s;}
+.tool-grid .tool-card:nth-child(5){animation-delay:.18s;}
+.tool-grid .tool-card:nth-child(6){animation-delay:.22s;}
+.tool-grid .tool-card:nth-child(7){animation-delay:.26s;}
+.tool-grid .tool-card:nth-child(8){animation-delay:.30s;}
+.tool-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(79,99,210,0.06) 0%,transparent 70%);opacity:0;transition:opacity .3s;}
+.tool-card:hover{box-shadow:0 10px 30px rgba(79,99,210,0.14);}
+.tool-card:hover::after{opacity:1;}
+.tool-card:active{transform:translateY(-2px) scale(.99);}
+.tool-card.in-focus{transform:translateY(-8px) scale(1.045);box-shadow:0 18px 36px rgba(79,99,210,0.28),0 0 0 3px rgba(255,255,255,0.9),0 0 0 5px var(--focus-glow,rgba(79,99,210,.4));z-index:3;}
+.tool-card.in-focus .tool-icon-wrap{animation:infocus-pop 1s cubic-bezier(.34,1.56,.64,1) infinite;}
+.tool-card:has(.ibg-red).in-focus{--focus-glow:rgba(255,107,107,.45);}
+.tool-card:has(.ibg-blue).in-focus{--focus-glow:rgba(79,168,255,.45);}
+.tool-card:has(.ibg-green).in-focus{--focus-glow:rgba(46,209,140,.45);}
+.tool-card:has(.ibg-yellow).in-focus{--focus-glow:rgba(255,198,26,.45);}
+.tool-card:has(.ibg-purple).in-focus{--focus-glow:rgba(168,85,247,.45);}
+.tool-card:has(.ibg-pink).in-focus{--focus-glow:rgba(255,111,165,.45);}
+.tool-card:has(.ibg-teal).in-focus{--focus-glow:rgba(20,201,174,.45);}
+.tool-card:has(.ibg-orange).in-focus{--focus-glow:rgba(255,159,28,.45);}
+@keyframes infocus-pop{0%,100%{transform:scale(1) rotate(0);}50%{transform:scale(1.15) rotate(-8deg);}}
+@media(prefers-reduced-motion:reduce){
+  .tool-icon,.tool-card.in-focus .tool-icon-wrap{animation:none!important;}
+  .tool-card.in-focus{transform:none;}
+}
+/* colored left accent stripe, matched to each icon tile's hue */
+.tool-card:has(.ibg-red){border-left-color:#FF6B6B;background:#FFE4E4;}
+.tool-card:has(.ibg-blue){border-left-color:#4FA8FF;background:#DEEEFF;}
+.tool-card:has(.ibg-green){border-left-color:#2ED18C;background:#DEFBEA;}
+.tool-card:has(.ibg-yellow){border-left-color:#FFC61A;background:#FFF6D2;}
+.tool-card:has(.ibg-purple){border-left-color:#A855F7;background:#F1E4FF;}
+.tool-card:has(.ibg-pink){border-left-color:#FF6FA5;background:#FFE4F0;}
+.tool-card:has(.ibg-teal){border-left-color:#14C9AE;background:#DAFBF4;}
+.tool-card:has(.ibg-orange){border-left-color:#FF9F1C;background:#FFEBD2;}
+.tool-card:has(.ibg-gray){border-left-color:#6b7394;background:#E9EAF5;}
+.tool-card:hover{border-left-width:4px;}
+
+
+/* FAVORITE BUTTON — bordered ghost circle, top-right */
+.fav-btn{position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;background:var(--surface);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--muted);cursor:pointer;z-index:3;transition:all .2s ease;line-height:1;}
+.fav-btn:hover{border-color:#e74c3c;color:#e74c3c;transform:scale(1.12);}
+.fav-btn.active{background:#fdeaea;border-color:#e74c3c;color:#e74c3c;}
+.fav-btn.active::before{content:'♥';}
+.fav-btn:not(.active)::before{content:'♡';}
+.tool-icon-wrap{width:58px;height:58px;border-radius:18px;display:flex;align-items:center;justify-content:center;margin:2px 0 14px;position:relative;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.03);transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+
+/* CATEGORY BUTTONS */
+.cat-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:10px 20px;border-radius:99px;
+  background:var(--c1);color:#fff;
+  text-decoration:none;font-size:13px;font-weight:700;
+  transition:all .25s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 4px 14px rgba(0,0,0,0.15);
+  position:relative;overflow:hidden;white-space:nowrap;
+}
+.cat-btn:hover{
+  transform:translateY(-4px) scale(1.07);
+  box-shadow:0 8px 24px rgba(0,0,0,0.22);
+  filter:brightness(1.1);
+}
+.cat-btn:active{transform:translateY(-1px) scale(1.02);}
+.tool-icon{font-size:28px;display:block;line-height:1;animation:icon-idle-float 3.4s ease-in-out infinite;}
+@keyframes icon-idle-float{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-4px) rotate(-4deg);}}
+.tool-name{font-weight:600;font-size:14px;margin-bottom:4px;color:var(--text);}
+.tool-desc{color:var(--muted);font-size:12px;line-height:1.5;}
+
+.tool-badge{position:absolute;top:14px;left:14px;background:var(--accent2-light);color:var(--accent2-dark);font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:99px;}
+.tool-badge.hot{background:#fff3e6;color:var(--hot-dark);}
+
+/* Icon animations */
+@keyframes icon-spin{to{transform:rotate(360deg);}}
+@keyframes icon-bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+@keyframes icon-pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.18);}}
+@keyframes icon-shake{0%,100%{transform:rotate(0);}25%{transform:rotate(-10deg);}75%{transform:rotate(10deg);}}
+@keyframes icon-wobble{0%,100%{transform:rotate(0);}25%{transform:rotate(-7deg);}75%{transform:rotate(7deg);}}
+@keyframes icon-flip{0%,40%,100%{transform:rotateY(0);}50%,90%{transform:rotateY(180deg);}}
+@keyframes icon-write{0%,100%{transform:rotate(-10deg) translateX(0);}50%{transform:rotate(5deg) translateX(3px);}}
+@keyframes icon-hue{0%,100%{transform:rotate(0) scale(1);}50%{transform:rotate(8deg) scale(1.1);}}
+@keyframes icon-squeeze{0%,100%{transform:scaleY(1);}50%{transform:scaleY(.65);}}
+@keyframes icon-ping{0%,100%{transform:scale(1);}70%{transform:scale(1.2);}}
+@keyframes icon-lock{0%,85%,100%{transform:rotate(0);}87%{transform:rotate(-6deg);}91%{transform:rotate(6deg);}95%{transform:rotate(-3deg);}98%{transform:rotate(2deg);}}
+@keyframes icon-float{0%,100%{transform:translateY(0) rotate(0);}33%{transform:translateY(-5px) rotate(-5deg);}66%{transform:translateY(-3px) rotate(4deg);}}
+@keyframes icon-tick{0%,48%,52%,100%{transform:scale(1);}50%{transform:scale(1.25);}}
+@keyframes icon-count{0%,100%{transform:scale(1) rotate(0);}25%{transform:scale(1.12) rotate(5deg);}75%{transform:scale(.93) rotate(-4deg);}}
+
+.anim-spin{animation:icon-spin 4s linear infinite;}
+.anim-bounce{animation:icon-bounce 2s ease infinite;}
+.anim-pulse{animation:icon-pulse 1.5s ease-in-out infinite;}
+.anim-shake{animation:icon-shake .9s ease-in-out infinite;}
+.anim-wobble{animation:icon-wobble 2.2s ease-in-out infinite;}
+.anim-flip{animation:icon-flip 2.5s ease-in-out infinite;}
+.anim-write{animation:icon-write 2s ease-in-out infinite;}
+.anim-hue{animation:icon-hue 3s linear infinite;}
+.anim-squeeze{animation:icon-squeeze 1.6s ease-in-out infinite;}
+.anim-ping{animation:icon-ping 2s cubic-bezier(0,.2,.8,1) infinite;}
+.anim-lock{animation:icon-lock 3s ease-in-out infinite;}
+.anim-float{animation:icon-float 2.5s ease-in-out infinite;}
+.anim-tick{animation:icon-tick 1s steps(1) infinite;}
+.anim-count{animation:icon-count 2s ease-in-out infinite;}
+
+/* Icon background colors */
+.ibg-red{background:#FF8A8A;box-shadow:0 6px 16px rgba(255,90,90,.4);}
+.ibg-blue{background:#7EC8FF;box-shadow:0 6px 16px rgba(60,140,255,.4);}
+.ibg-green{background:#7EE8B8;box-shadow:0 6px 16px rgba(20,180,120,.35);}
+.ibg-yellow{background:#FFD93D;box-shadow:0 6px 16px rgba(255,190,20,.4);}
+.ibg-purple{background:#C9A6FF;box-shadow:0 6px 16px rgba(150,90,220,.35);}
+.ibg-pink{background:#FFAFCB;box-shadow:0 6px 16px rgba(255,90,150,.35);}
+.ibg-teal{background:#6EEAD4;box-shadow:0 6px 16px rgba(15,190,165,.35);}
+.ibg-orange{background:#FFC46B;box-shadow:0 6px 16px rgba(255,150,20,.35);}
+.ibg-gray{background:#C9CEE0;box-shadow:0 6px 16px rgba(100,110,150,.3);}
+
+/* Ripple */
+.ripple-el{position:absolute;border-radius:50%;background:rgba(79,99,210,0.12);transform:scale(0);animation:ripple-anim .7s linear;pointer-events:none;}
+@keyframes ripple-anim{to{transform:scale(4);opacity:0;}}
+
+/* PRO BANNER */
+.pro-banner{background:linear-gradient(135deg,var(--accent) 0%,#3d4fb8 100%);border-radius:20px;padding:36px 40px;margin:40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.pro-banner h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:#fff;margin-bottom:6px;}
+.pro-banner p{color:rgba(255,255,255,0.8);font-size:14px;max-width:420px;}
+.pro-banner ul{list-style:none;margin-top:12px;}
+.pro-banner ul li{color:rgba(255,255,255,0.9);font-size:13px;margin-bottom:4px;}
+.pro-banner ul li::before{content:'✓ ';color:#7dffda;}
+.btn-pro{background:#FFF4E0;color:var(--accent);font-weight:700;padding:13px 28px;border-radius:10px;border:none;cursor:pointer;font-size:15px;font-family:inherit;white-space:nowrap;transition:transform .2s,box-shadow .2s;}
+.btn-pro:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.15);}
+
+/* AFFILIATE SECTION */
+.affiliate-section{background:var(--surface);border:1.5px solid var(--border);border-radius:20px;padding:32px;margin:24px 0;}
+.affiliate-section h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px;}
+.affiliate-section p{color:var(--muted);font-size:14px;margin-bottom:20px;}
+.affiliate-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.aff-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;text-decoration:none;display:block;transition:all .2s;box-shadow:0 1px 4px rgba(0,0,0,0.04);}
+.aff-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 6px 20px rgba(79,99,210,0.12);}
+.aff-card-icon{font-size:22px;margin-bottom:8px;}
+.aff-card-name{font-weight:600;font-size:13px;color:var(--text);margin-bottom:2px;}
+.aff-card-desc{font-size:12px;color:var(--muted);}
+.aff-earn{font-size:11px;font-weight:600;color:var(--accent);margin-top:8px;}
+
+/* MODAL */
+.overlay{display:none;position:fixed;inset:0;background:rgba(26,29,46,0.5);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center;padding:20px;}
+.overlay.active{display:flex;animation:overlay-in .25s ease;}
+@keyframes overlay-in{from{opacity:0;}to{opacity:1;}}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;width:100%;max-width:540px;max-height:90vh;overflow-y:auto;padding:36px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.15);animation:modal-in .3s cubic-bezier(.22,1,.36,1);transition:max-width .25s ease,max-height .25s ease,border-radius .25s ease;}
+.modal.fullscreen{max-width:100vw;width:100vw;height:100vh;max-height:100vh;border-radius:0;}
+.modal-fullscreen-btn{position:absolute;top:20px;right:64px;width:34px;height:34px;border-radius:50%;background:var(--surface2);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;color:var(--muted);transition:all .2s;}
+.modal-fullscreen-btn:hover{border-color:var(--accent);color:var(--accent);}
+.pdf-overlay-box{position:absolute;background:rgba(79,99,210,0.08);border:1.5px dashed var(--accent);border-radius:4px;padding:3px 6px;}
+.pdf-overlay-drag{position:absolute;top:-20px;left:-1.5px;background:var(--accent);color:#fff;font-size:11px;line-height:1;padding:3px 7px;border-radius:5px 5px 0 0;cursor:grab;user-select:none;touch-action:none;}
+.pdf-overlay-drag:active{cursor:grabbing;}
+.pdf-overlay-editable{outline:none;white-space:pre-wrap;min-width:24px;min-height:1.1em;cursor:text;}
+.pdf-overlay-resize{position:absolute;right:-7px;bottom:-7px;width:14px;height:14px;background:var(--accent);border:2px solid #fff;border-radius:50%;cursor:nwse-resize;box-shadow:0 1px 4px rgba(0,0,0,0.3);touch-action:none;}
+
+@keyframes modal-in{from{opacity:0;transform:translateY(24px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
+.modal-close{position:absolute;top:14px;right:14px;background:var(--surface2);border:none;color:var(--muted);width:32px;height:32px;border-radius:99px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.modal-close:hover{background:var(--border);color:var(--text);}
+.modal h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:21px;font-weight:700;margin-bottom:4px;}
+.modal-sub{color:var(--muted);font-size:13px;margin-bottom:24px;}
+
+/* AD INSIDE MODAL */
+.modal-ad{background:var(--bg);border:1px dashed var(--border);border-radius:10px;padding:14px;text-align:center;color:var(--muted);font-size:12px;margin-top:20px;}
+
+/* FORM */
+label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;}
+input[type="text"],input[type="number"],input[type="date"],select,textarea{width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s,box-shadow .2s,background .2s;margin-bottom:16px;}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(79,99,210,0.12);background:var(--surface);}
+input:hover:not(:focus),select:hover:not(:focus),textarea:hover:not(:focus){border-color:#c7cce0;}
+.btn{width:100%;background:var(--accent);border:none;border-radius:10px;padding:13px;color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s cubic-bezier(.34,1.56,.64,1);font-family:inherit;box-shadow:0 2px 8px rgba(79,99,210,0.15);}
+.btn:hover{background:#3d4fb8;transform:translateY(-2px);box-shadow:0 8px 20px rgba(79,99,210,0.3);}
+.btn:active{transform:translateY(0) scale(.98);box-shadow:0 2px 6px rgba(79,99,210,0.2);}
+.btn-sec{background:var(--surface2);color:var(--text);border:1.5px solid var(--border);margin-top:8px;box-shadow:none;}
+.btn-sec:hover{background:var(--border);transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.08);}
+.btn-sec:active{transform:translateY(0) scale(.98);}
+.btn:disabled{opacity:.6;cursor:not-allowed;transform:none!important;box-shadow:none!important;}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none;}
+}
+.result-box{background:var(--accent-light);border:1.5px solid rgba(79,99,210,0.2);border-radius:12px;padding:20px;margin-top:20px;}
+.result-box.green{background:var(--accent2-light);border-color:rgba(11,168,126,0.2);}
+.result-label{color:var(--muted);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+.result-value{font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:800;color:var(--accent);}
+.result-value.green{color:var(--accent2);}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+
+/* FILE DROPZONE */
+.dropzone{border:2px dashed var(--border);border-radius:14px;padding:32px 20px;text-align:center;cursor:pointer;transition:all .25s;background:var(--surface2);margin-bottom:16px;position:relative;}
+.dropzone:hover,.dropzone.dragover{border-color:var(--accent);background:var(--accent-light);}
+.dropzone-icon{font-size:34px;margin-bottom:10px;display:block;animation:icon-float 2.5s ease-in-out infinite;}
+.dropzone-text{font-weight:600;font-size:14px;color:var(--text);margin-bottom:4px;}
+.dropzone-sub{font-size:12px;color:var(--muted);}
+.dropzone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.file-chip{display:flex;align-items:center;gap:10px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:13px;}
+.file-chip .fc-icon{font-size:18px;}
+.file-chip .fc-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;}
+.file-chip .fc-size{color:var(--muted);font-size:11px;}
+.file-chip .fc-x{cursor:pointer;color:var(--muted);font-weight:700;padding:0 4px;}
+.file-chip .fc-x:hover{color:#c0392b;}
+.progress-wrap{background:var(--border);border-radius:99px;height:8px;overflow:hidden;margin:14px 0;}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0%;transition:width .3s ease;border-radius:99px;}
+.spinner{width:18px;height:18px;border:2.5px solid rgba(255,255,255,0.4);border-top-color:#fff;border-radius:50%;display:inline-block;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.btn:disabled{opacity:.7;cursor:not-allowed;transform:none!important;}
+.page-thumb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:10px;margin:14px 0;max-height:340px;overflow-y:auto;padding:4px;}
+.page-thumb{position:relative;border:2px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;transition:all .2s;background:#fff;}
+.page-thumb img{width:100%;display:block;}
+.page-thumb.selected{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,99,210,0.18);}
+.page-thumb .pt-num{position:absolute;bottom:0;left:0;right:0;background:rgba(26,29,46,0.7);color:#fff;font-size:10px;text-align:center;padding:2px 0;}
+.page-thumb .pt-check{position:absolute;top:4px;right:4px;width:18px;height:18px;border-radius:50%;background:#fff;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;}
+.page-thumb.selected .pt-check{background:var(--accent);border-color:var(--accent);color:#fff;}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--text);color:#fff;padding:12px 22px;border-radius:99px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:all .3s;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,0.2);}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.sig-tabs{display:flex;gap:6px;margin-bottom:14px;}
+.sig-tab{flex:1;text-align:center;padding:9px;border-radius:8px;background:var(--surface2);border:1.5px solid var(--border);cursor:pointer;font-size:13px;font-weight:600;color:var(--muted);transition:all .2s;}
+.sig-tab.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:40px;text-align:center;color:var(--muted);font-size:13px;}
+footer a{color:var(--muted);text-decoration:none;margin:0 8px;}
+footer a:hover{color:var(--text);}
+.footer-logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;color:var(--accent);margin-bottom:12px;}
+
+@media(max-width:640px){
+  .hero{padding:40px 16px 32px;}
+  .section{padding:0 16px 48px;}
+  .pro-banner{padding:24px 20px;}
+  .modal{padding:24px 18px;}
+  .row{grid-template-columns:1fr;}
+  .result-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<!-- NAV + CATEGORY BAR (single sticky row) -->
+<nav>
+  <a href="/" class="logo">toolnova<span>.tools</span></a>
+  <div class="nav-cats">
+    <a href="#pdf-converter" class="cat-btn" style="--c1:#c0392b;--c2:#922b21;">📄 PDF Converter</a>
+    <a href="#ocr-tools" class="cat-btn" style="--c1:#a35f00;--c2:#7a4700;">🔍 OCR Tools</a>
+    <a href="#edit-pdf" class="cat-btn" style="--c1:#9b59b6;--c2:#7d3c98;">✂️ Edit PDF</a>
+    <a href="#generators" class="cat-btn" style="--c1:#4f63d2;--c2:#3d4fb8;">🔧 Generators</a>
+    <a href="#calculators" class="cat-btn" style="--c1:#067a5c;--c2:#055f47;">🧮 Calculators</a>
+    <a href="#converters" class="cat-btn" style="--c1:#0c7a68;--c2:#095f52;">🔄 Converters</a>
+  </div>
+  <div class="nav-lang" id="google_translate_element"></div>
+</nav>
+
+<main id="main-content">
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">⚡ 100% Free · No signup · Instant results</div>
+  <h1>Every tool you need,<br><em>right here.</em></h1>
+  <p>Free online tools used by millions. PDF converter, calculators, converters — no account, no clutter.</p>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search tools... (QR, age, unit, word...)" oninput="filterTools(this.value)">
+  </div>
+  <a href="/blog/" class="hero-blog-link">📚 Read our free guides &amp; how-tos on the blog →</a>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Free Tools</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">Signups Required</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Runs In Your Browser</div></div>
+  <div class="stat"><div class="stat-num">Private</div><div class="stat-label">We Never Store Your Data</div></div>
+</div>
+
+<!-- TOP AD BANNER - AdSense will auto-insert ads here after approval -->
+
+
+<!-- TOOLS -->
+<div class="section" id="tools">
+
+  <div class="section-title" id="pdf-converter">📄 PDF Converter <span class="section-badge">Most Popular</span></div>
+  <div class="section-desc-box" style="--sb:#fdeaea;--sc:#e74c3c;">
+    <span class="section-desc-icon">📄</span>
+    <p>Convert PDF files to and from Word, Excel, JPG and PNG — everything runs locally in your browser, so your documents are never uploaded to a server.</p>
+  </div>
+  <div class="tool-grid">
+    <a class="tool-card" data-key="c1" href="/?tool=pdf2word" onclick="return handleToolCardClick(event,this,'pdf2word')">
+      <button class="fav-btn" onclick="toggleFav(event,'c1')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-red"><span class="tool-icon anim-float">📄</span></div>
+      <div class="tool-name">PDF to Word</div>
+      <div class="tool-desc">Convert PDF files to editable Word documents instantly.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" data-key="c2" href="/?tool=word2pdf" onclick="return handleToolCardClick(event,this,'word2pdf')">
+      <button class="fav-btn" onclick="toggleFav(event,'c2')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-bounce">📝</span></div>
+      <div class="tool-name">Word to PDF</div>
+      <div class="tool-desc">Convert Word documents to PDF format. Fast and free.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" data-key="c3" href="/?tool=pdf2jpg" onclick="return handleToolCardClick(event,this,'pdf2jpg')">
+      <button class="fav-btn" onclick="toggleFav(event,'c3')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-spin">🖼️</span></div>
+      <div class="tool-name">PDF to JPG</div>
+      <div class="tool-desc">Convert PDF pages to high quality JPG images.</div>
+    </a>
+    <a class="tool-card" data-key="c4" href="/?tool=img2pdf" onclick="return handleToolCardClick(event,this,'img2pdf')">
+      <button class="fav-btn" onclick="toggleFav(event,'c4')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-flip">🔄</span></div>
+      <div class="tool-name">JPG to PDF</div>
+      <div class="tool-desc">Combine JPG images into a single PDF file.</div>
+    </a>
+    <a class="tool-card" data-key="c5" href="/?tool=pdf2excel" onclick="return handleToolCardClick(event,this,'pdf2excel')">
+      <button class="fav-btn" onclick="toggleFav(event,'c5')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-bounce">📊</span></div>
+      <div class="tool-name">PDF to Excel</div>
+      <div class="tool-desc">Extract tables from PDF into Excel spreadsheets.</div>
+    </a>
+    <a class="tool-card" data-key="c6" href="/?tool=pdf2png" onclick="return handleToolCardClick(event,this,'pdf2png')">
+      <button class="fav-btn" onclick="toggleFav(event,'c6')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-pulse">🖼️</span></div>
+      <div class="tool-name">PDF to PNG</div>
+      <div class="tool-desc">Convert PDF pages to PNG images with transparency.</div>
+      <span class="tool-badge">New</span>
+    </a>
+    <a class="tool-card" data-key="c7" href="/?tool=img2pdf" onclick="return handleToolCardClick(event,this,'img2pdf')">
+      <button class="fav-btn" onclick="toggleFav(event,'c7')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-spin">🔄</span></div>
+      <div class="tool-name">PNG to PDF</div>
+      <div class="tool-desc">Convert PNG images to PDF documents instantly.</div>
+    </a>
+    <a class="tool-card" data-key="c8" href="/?tool=pdf2text" onclick="return handleToolCardClick(event,this,'pdf2text')">
+      <button class="fav-btn" onclick="toggleFav(event,'c8')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-wobble">📋</span></div>
+      <div class="tool-name">PDF to Text</div>
+      <div class="tool-desc">Extract all text content from any PDF file.</div>
+    </a>
+  </div>
+
+  <div class="section-title" id="ocr-tools">🔍 OCR Tools <span class="section-badge">New</span></div>
+  <div class="section-desc-box" style="--sb:#fef3e2;--sc:#f39c12;">
+    <span class="section-desc-icon">🔍</span>
+    <p>Pull editable, searchable text out of photos, screenshots and scanned PDFs using on-device optical character recognition — no signup, no upload.</p>
+  </div>
+  <div class="tool-grid">
+    <a class="tool-card" data-key="c9" href="/?tool=ocr" onclick="return handleToolCardClick(event,this,'ocr')">
+      <button class="fav-btn" onclick="toggleFav(event,'c9')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-shake">🔍</span></div>
+      <div class="tool-name">Image to Text (OCR)</div>
+      <div class="tool-desc">Extract text from any image using AI recognition.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" data-key="c10" href="/?tool=scanocr" onclick="return handleToolCardClick(event,this,'scanocr')">
+      <button class="fav-btn" onclick="toggleFav(event,'c10')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-wobble">📱</span></div>
+      <div class="tool-name">Scan PDF to Text</div>
+      <div class="tool-desc">Make scanned PDFs searchable with OCR technology.</div>
+    </a>
+  </div>
+
+  <div class="section-title" id="edit-pdf">✂️ Edit PDF</div>
+  <div class="section-desc-box" style="--sb:#f3eefd;--sc:#9b59b6;">
+    <span class="section-desc-icon">✂️</span>
+    <p>Merge, split, compress, rotate, sign, and add text to any PDF — full editing control without installing desktop software.</p>
+  </div>
+  <div class="tool-grid">
+    <a class="tool-card" data-key="c11" href="/?tool=merge" onclick="return handleToolCardClick(event,this,'merge')">
+      <button class="fav-btn" onclick="toggleFav(event,'c11')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-bounce">📎</span></div>
+      <div class="tool-name">Merge PDF</div>
+      <div class="tool-desc">Combine multiple PDF files into one document.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" data-key="c12" href="/?tool=split" onclick="return handleToolCardClick(event,this,'split')">
+      <button class="fav-btn" onclick="toggleFav(event,'c12')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-squeeze">✂️</span></div>
+      <div class="tool-name">Split PDF</div>
+      <div class="tool-desc">Split a PDF into multiple separate files.</div>
+    </a>
+    <a class="tool-card" data-key="c13" href="/?tool=compress" onclick="return handleToolCardClick(event,this,'compress')">
+      <button class="fav-btn" onclick="toggleFav(event,'c13')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-squeeze">🗜️</span></div>
+      <div class="tool-name">Compress PDF</div>
+      <div class="tool-desc">Reduce PDF file size without losing quality.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" data-key="c14" href="/?tool=rotate" onclick="return handleToolCardClick(event,this,'rotate')">
+      <button class="fav-btn" onclick="toggleFav(event,'c14')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-spin">🔃</span></div>
+      <div class="tool-name">Rotate PDF</div>
+      <div class="tool-desc">Rotate PDF pages to any angle. 90, 180, 270 degrees.</div>
+      <span class="tool-badge">New</span>
+    </a>
+    <a class="tool-card" data-key="c15" href="/?tool=deletepages" onclick="return handleToolCardClick(event,this,'deletepages')">
+      <button class="fav-btn" onclick="toggleFav(event,'c15')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-red"><span class="tool-icon anim-wobble">🗑️</span></div>
+      <div class="tool-name">Delete PDF Pages</div>
+      <div class="tool-desc">Remove unwanted pages from your PDF file.</div>
+      <span class="tool-badge">New</span>
+    </a>
+    <a class="tool-card" data-key="c16" href="/?tool=extractpages" onclick="return handleToolCardClick(event,this,'extractpages')">
+      <button class="fav-btn" onclick="toggleFav(event,'c16')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-bounce">📤</span></div>
+      <div class="tool-name">Extract PDF Pages</div>
+      <div class="tool-desc">Extract specific pages from a PDF document.</div>
+    </a>
+    <a class="tool-card" data-key="c17" href="/?tool=sign" onclick="return handleToolCardClick(event,this,'sign')">
+      <button class="fav-btn" onclick="toggleFav(event,'c17')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-write">✍️</span></div>
+      <div class="tool-name">Sign PDF</div>
+      <div class="tool-desc">Draw, type or upload your signature and place it on any PDF page.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" data-key="c17b" href="/?tool=addtext" onclick="return handleToolCardClick(event,this,'addtext')">
+      <button class="fav-btn" onclick="toggleFav(event,'c17b')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-write">✏️</span></div>
+      <div class="tool-name">Add Text to PDF</div>
+      <div class="tool-desc">Type anywhere on a page — fill forms, add notes, annotate.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+  </div>
+
+  <div class="section-title" id="generators">🔧 Generators <span class="section-badge">Popular</span></div>
+  <div class="section-desc-box" style="--sb:#eef0fd;--sc:#4f63d2;">
+    <span class="section-desc-icon">🔧</span>
+    <p>Instantly generate QR codes, strong random passwords, and placeholder text for designs and prototypes — free, with no daily limits.</p>
+  </div>
+  <div class="tool-grid">
+    <a class="tool-card" data-key="c18" href="/?tool=qr" onclick="return handleToolCardClick(event,this,'qr')">
+      <button class="fav-btn" onclick="toggleFav(event,'c18')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📱</span></div>
+      <div class="tool-name">QR Code Generator</div>
+      <div class="tool-desc">Turn any URL or text into a QR code. Download as PNG instantly.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" data-key="c19" href="/?tool=password" onclick="return handleToolCardClick(event,this,'password')">
+      <button class="fav-btn" onclick="toggleFav(event,'c19')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-lock">🔐</span></div>
+      <div class="tool-name">Password Generator</div>
+      <div class="tool-desc">Strong, secure passwords of any length. Symbols, numbers, uppercase.</div>
+    </a>
+    <a class="tool-card" data-key="c20" href="/?tool=color" onclick="return handleToolCardClick(event,this,'color')">
+      <button class="fav-btn" onclick="toggleFav(event,'c20')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-hue">🎨</span></div>
+      <div class="tool-name">Color Code Converter</div>
+      <div class="tool-desc">Convert between HEX, RGB, and HSL color formats instantly.</div>
+    </a>
+    <a class="tool-card" data-key="c21" href="/?tool=hash" onclick="return handleToolCardClick(event,this,'hash')">
+      <button class="fav-btn" onclick="toggleFav(event,'c21')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-float">🔑</span></div>
+      <div class="tool-name">Lorem Ipsum Generator</div>
+      <div class="tool-desc">Generate placeholder text for designs and prototypes.</div>
+    </a>
+  </div>
+
+  <div class="section-title" id="calculators">🧮 Calculators</div>
+  <div class="section-desc-box" style="--sb:#e6f8f3;--sc:#0ba87e;">
+    <span class="section-desc-icon">🧮</span>
+    <p>Accurate calculators for age, BMI, BMR, daily calories, tips, discounts, loans and water intake — real formulas, instant results.</p>
+  </div>
+  <div class="tool-grid">
+    <a class="tool-card" data-key="c22" href="/?tool=age" onclick="return handleToolCardClick(event,this,'age')">
+      <button class="fav-btn" onclick="toggleFav(event,'c22')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-pink"><span class="tool-icon anim-tick">🎂</span></div>
+      <div class="tool-name">Age Calculator</div>
+      <div class="tool-desc">Your exact age in years, months, days and hours.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" data-key="c23" href="/?tool=bmi" onclick="return handleToolCardClick(event,this,'bmi')">
+      <button class="fav-btn" onclick="toggleFav(event,'c23')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-wobble">⚖️</span></div>
+      <div class="tool-name">BMI Calculator</div>
+      <div class="tool-desc">Body Mass Index with US Imperial and Metric support.</div>
+    </a>
+    <a class="tool-card" data-key="c24" href="/?tool=tip" onclick="return handleToolCardClick(event,this,'tip')">
+      <button class="fav-btn" onclick="toggleFav(event,'c24')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-ping">🍽️</span></div>
+      <div class="tool-name">Tip Calculator</div>
+      <div class="tool-desc">Split the bill and calculate tips for any group size.</div>
+    </a>
+    <a class="tool-card" data-key="c25" href="/?tool=discount" onclick="return handleToolCardClick(event,this,'discount')">
+      <button class="fav-btn" onclick="toggleFav(event,'c25')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-bounce">🏷️</span></div>
+      <div class="tool-name">Discount Calculator</div>
+      <div class="tool-desc">Final price after any percentage discount. Quick math.</div>
+      <span class="tool-badge">New</span>
+    </a>
+    <a class="tool-card" data-key="c26" href="/?tool=loan" onclick="return handleToolCardClick(event,this,'loan')">
+      <button class="fav-btn" onclick="toggleFav(event,'c26')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-count">🏦</span></div>
+      <div class="tool-name">Loan Calculator</div>
+      <div class="tool-desc">Monthly payment, total interest on any loan. US-style.</div>
+    </a>
+    <a class="tool-card" data-key="c26b" href="/?tool=bmr" onclick="return handleToolCardClick(event,this,'bmr')">
+      <button class="fav-btn" onclick="toggleFav(event,'c26b')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-pulse">🔥</span></div>
+      <div class="tool-name">BMR Calculator</div>
+      <div class="tool-desc">Your basal metabolic rate — calories burned at rest.</div>
+      <span class="tool-badge">New</span>
+    </a>
+    <a class="tool-card" data-key="c26c" href="/?tool=calorie" onclick="return handleToolCardClick(event,this,'calorie')">
+      <button class="fav-btn" onclick="toggleFav(event,'c26c')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-red"><span class="tool-icon anim-shake">🍎</span></div>
+      <div class="tool-name">Calorie Calculator</div>
+      <div class="tool-desc">Daily calorie needs based on activity level (TDEE).</div>
+      <span class="tool-badge">New</span>
+    </a>
+    <a class="tool-card" data-key="c26d" href="/?tool=bodyfat" onclick="return handleToolCardClick(event,this,'bodyfat')">
+      <button class="fav-btn" onclick="toggleFav(event,'c26d')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-wobble">📐</span></div>
+      <div class="tool-name">Body Fat Calculator</div>
+      <div class="tool-desc">Estimate body fat % using the US Navy tape method.</div>
+      <span class="tool-badge">New</span>
+    </a>
+    <a class="tool-card" data-key="c26e" href="/?tool=water" onclick="return handleToolCardClick(event,this,'water')">
+      <button class="fav-btn" onclick="toggleFav(event,'c26e')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-float">💧</span></div>
+      <div class="tool-name">Water Intake Calculator</div>
+      <div class="tool-desc">Daily recommended water intake based on weight &amp; activity.</div>
+      <span class="tool-badge">New</span>
+    </a>
+  </div>
+
+  <div class="section-title" id="converters">🔄 Converters</div>
+  <div class="section-desc-box" style="--sb:#e6faf6;--sc:#1abc9c;">
+    <span class="section-desc-icon">🔄</span>
+    <p>Convert between units, currencies, text cases and color formats (HEX, RGB, HSL) in one click — built for quick, everyday conversions.</p>
+  </div>
+  <div class="tool-grid">
+    <a class="tool-card" data-key="c27" href="/?tool=unit" onclick="return handleToolCardClick(event,this,'unit')">
+      <button class="fav-btn" onclick="toggleFav(event,'c27')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-flip">📏</span></div>
+      <div class="tool-name">Unit Converter</div>
+      <div class="tool-desc">Length, weight, temperature, speed, volume — all units.</div>
+    </a>
+    <a class="tool-card" data-key="c28" href="/?tool=currency" onclick="return handleToolCardClick(event,this,'currency')">
+      <button class="fav-btn" onclick="toggleFav(event,'c28')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-flip">💱</span></div>
+      <div class="tool-name">Currency Converter</div>
+      <div class="tool-desc">Convert between 15 major world currencies instantly.</div>
+      <span class="tool-badge hot">Hot</span>
+    </a>
+    <a class="tool-card" data-key="c29" href="/?tool=case" onclick="return handleToolCardClick(event,this,'case')">
+      <button class="fav-btn" onclick="toggleFav(event,'c29')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-shake">🔤</span></div>
+      <div class="tool-name">Text Case Converter</div>
+      <div class="tool-desc">UPPER, lower, Title Case, camelCase in one click.</div>
+      <span class="tool-badge">New</span>
+    </a>
+    <a class="tool-card" data-key="c30" href="/?tool=wordcount" onclick="return handleToolCardClick(event,this,'wordcount')">
+      <button class="fav-btn" onclick="toggleFav(event,'c30')" aria-label="Favorite this tool"></button>
+      <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📝</span></div>
+      <div class="tool-name">Word Counter</div>
+      <div class="tool-desc">Words, characters, sentences, and reading time — live.</div>
+    </a>
+  </div>
+
+  <!-- MID AD - AdSense auto -->
+  <div style="margin:24px 0;"></div>
+
+  <!-- AFFILIATE SECTION -->
+  <div class="affiliate-section" id="recommended">
+    <h2>⭐ Most Popular Right Now</h2>
+    <p>Trending tools used by thousands of people every day.</p>
+    <div class="tool-grid">
+      <a class="tool-card" data-key="p1" href="/?tool=pdf2jpg" onclick="return handleToolCardClick(event,this,'pdf2jpg')">
+        <button class="fav-btn" onclick="toggleFav(event,'p1')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-spin">🖼️</span></div>
+        <div class="tool-name">PDF to JPG</div>
+        <div class="tool-desc">Convert PDF pages to high quality JPG images instantly.</div>
+        <span class="tool-badge hot">Most Popular</span>
+      </a>
+      <a class="tool-card" data-key="p2" href="/?tool=ocr" onclick="return handleToolCardClick(event,this,'ocr')">
+        <button class="fav-btn" onclick="toggleFav(event,'p2')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-shake">🔍</span></div>
+        <div class="tool-name">Image to Text</div>
+        <div class="tool-desc">Extract text from any image using AI-powered OCR.</div>
+        <span class="tool-badge hot">Trending</span>
+      </a>
+      <a class="tool-card" data-key="p3" href="/?tool=merge" onclick="return handleToolCardClick(event,this,'merge')">
+        <button class="fav-btn" onclick="toggleFav(event,'p3')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-bounce">📎</span></div>
+        <div class="tool-name">Merge PDF</div>
+        <div class="tool-desc">Combine multiple PDF files into one document for free.</div>
+        <span class="tool-badge hot">Most Used</span>
+      </a>
+      <a class="tool-card" data-key="p4" href="/?tool=qr" onclick="return handleToolCardClick(event,this,'qr')">
+        <button class="fav-btn" onclick="toggleFav(event,'p4')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📱</span></div>
+        <div class="tool-name">QR Code Generator</div>
+        <div class="tool-desc">Generate QR codes for any URL or text. Download as PNG.</div>
+        <span class="tool-badge">Popular</span>
+      </a>
+      <a class="tool-card" data-key="p5" href="/?tool=sign" onclick="return handleToolCardClick(event,this,'sign')">
+        <button class="fav-btn" onclick="toggleFav(event,'p5')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-write">✍️</span></div>
+        <div class="tool-name">Sign PDF</div>
+        <div class="tool-desc">Draw or type your signature and place it on any PDF.</div>
+        <span class="tool-badge">New</span>
+      </a>
+      <a class="tool-card" data-key="p6" href="/?tool=password" onclick="return handleToolCardClick(event,this,'password')">
+        <button class="fav-btn" onclick="toggleFav(event,'p6')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-lock">🔐</span></div>
+        <div class="tool-name">Password Generator</div>
+        <div class="tool-desc">Generate strong, secure passwords instantly. Customizable.</div>
+        <span class="tool-badge">Popular</span>
+      </a>
+      <a class="tool-card" data-key="p7" href="/?tool=age" onclick="return handleToolCardClick(event,this,'age')">
+        <button class="fav-btn" onclick="toggleFav(event,'p7')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-pink"><span class="tool-icon anim-tick">🎂</span></div>
+        <div class="tool-name">Age Calculator</div>
+        <div class="tool-desc">Find your exact age in years, months, days and hours.</div>
+        <span class="tool-badge">Popular</span>
+      </a>
+      <a class="tool-card" data-key="p8" href="/?tool=wordcount" onclick="return handleToolCardClick(event,this,'wordcount')">
+        <button class="fav-btn" onclick="toggleFav(event,'p8')" aria-label="Favorite this tool"></button>
+        <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📝</span></div>
+        <div class="tool-name">Word Counter</div>
+        <div class="tool-desc">Count words, characters and reading time live as you type.</div>
+        <span class="tool-badge">Popular</span>
+      </a>
+    </div>
+  </div>
+
+</div><!-- end .section -->
+</main><!-- end #main-content -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">toolnova.tools</div>
+  <p style="margin-bottom:10px;">
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </p>
+  <p style="margin-bottom:14px;">
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/cookie-policy.html">Cookie Policy</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/sitemap.html">Sitemap</a>
+  </p>
+  <p>© 2026 toolnova.tools — All tools run in your browser. We never store your data.</p>
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="closeIfOutside(event)">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<script>
+// pdf.js worker path is set inside ensureLibsForTool() once pdf.js is actually loaded.
+</script>
+<script>
+// ── LAZY LIBRARY LOADING ──────────────────────────────────────────────────────
+// PDF/OCR/QR libraries are heavy (tesseract.js especially) — load them only when
+// a tool that needs them is actually opened, not on every single page visit.
+const PDF_TOOL_KEYS=new Set(['pdf2word','word2pdf','pdf2jpg','img2pdf','pdf2excel','pdf2png','pdf2text','scanocr','merge','split','compress','rotate','deletepages','extractpages','sign','addtext']);
+async function ensureLibsForTool(key){
+  if(PDF_TOOL_KEYS.has(key)){
+    if(!window.PDFLib){ await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js'); }
+    if(!window.pdfjsLib){
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
+      if(window.pdfjsLib){ pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'; }
+    }
+  }
+  if(key==='ocr' && !window.Tesseract){ await loadScript('https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.1.1/tesseract.min.js'); }
+  if(key==='qr' && !window.QRCode){ await loadScript('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js'); }
+}
+
+// ── CRAWLABLE TOOL LINKS ──────────────────────────────────────────────────────
+// Tool cards now have real hrefs like /?tool=pdf2word instead of javascript:void(0),
+// so search engines and users with JS off/new-tab/middle-click get a real, working
+// link. For normal left-clicks we intercept, update the URL without a full reload,
+// and open the modal in place (keeps the fast SPA experience).
+function handleToolCardClick(event, el, key){
+  addRipple(event, el);
+  if(event.metaKey || event.ctrlKey || event.shiftKey || event.button===1) return true; // let ctrl/cmd/middle-click open in new tab
+  event.preventDefault();
+  const url = el.getAttribute('href');
+  if(window.history && history.pushState) history.pushState({tool:key}, '', url);
+  openTool(key);
+  return false;
+}
+window.addEventListener('popstate', function(){
+  const params = new URLSearchParams(location.search);
+  const key = params.get('tool');
+  if(key && TOOLS[key]) openTool(key); else closeTool();
+});
+window.addEventListener('DOMContentLoaded', function(){
+  const params = new URLSearchParams(location.search);
+  const key = params.get('tool');
+  if(key && TOOLS[key]) openTool(key);
+});
+
+// ── MODAL ENGINE ──────────────────────────────────────────────────────────────
+async function openTool(key){
+  const tool=TOOLS[key];if(!tool)return;
+  document.getElementById('modal-content').classList.remove('fullscreen');
+  const needsLibs = PDF_TOOL_KEYS.has(key) || key==='ocr' || key==='qr';
+  document.getElementById('modal-content').innerHTML=`
+    <button class="modal-fullscreen-btn" id="fs-btn" onclick="toggleModalFullscreen()" title="Full screen">⛶</button>
+    <button class="modal-close" onclick="closeTool()">✕</button>
+    <h2>${tool.title}</h2>
+    <div class="modal-sub">${tool.sub}</div>
+    ${needsLibs ? '<div id="tool-loading" style="text-align:center;padding:32px 0;color:var(--muted);font-size:13px;">Loading tool…</div>' : tool.render()}
+  `;
+  document.getElementById('overlay').classList.add('active');
+  document.body.style.overflow='hidden';
+  if(needsLibs){
+    await ensureLibsForTool(key);
+    const loadingEl=document.getElementById('tool-loading');
+    if(loadingEl) loadingEl.outerHTML=tool.render();
+  }
+  if(tool.init)tool.init();
+}
+function toggleModalFullscreen(){
+  const modal=document.getElementById('modal-content');
+  const btn=document.getElementById('fs-btn');
+  const isFull=modal.classList.toggle('fullscreen');
+  if(btn) btn.textContent = isFull ? '⤡' : '⛶';
+  if(btn) btn.title = isFull ? 'Exit full screen' : 'Full screen';
+}
+function closeTool(){document.getElementById('overlay').classList.remove('active');document.body.style.overflow='';document.getElementById('modal-content').classList.remove('fullscreen');if(location.search.includes('tool=')&&history.pushState){history.pushState({},'','/');}}
+function closeIfOutside(e){if(e.target===document.getElementById('overlay'))closeTool();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeTool();});
+
+// Auto-open a tool if arriving via a deep link like /?tool=age
+window.addEventListener('DOMContentLoaded',()=>{
+  const params=new URLSearchParams(window.location.search);
+  const t=params.get('tool');
+  if(t && TOOLS[t]){
+    setTimeout(()=>openTool(t),150);
+  }
+});
+
+// ── SEARCH ────────────────────────────────────────────────────────────────────
+function filterTools(q){
+  q=q.toLowerCase();
+  document.querySelectorAll('.tool-card').forEach(c=>{c.style.display=c.textContent.toLowerCase().includes(q)?'':'none';});
+}
+
+// ── TOOL DEFINITIONS ──────────────────────────────────────────────────────────
+const TOOLS={
+
+  qr:{
+    title:'📱 QR Code Generator',sub:'Enter any URL or text — download instantly',
+    render:()=>`
+      <label>URL or Text</label>
+      <input type="text" id="qr-input" placeholder="https://toolnova.tools" />
+      <div class="row">
+        <div><label>Size</label>
+          <select id="qr-size"><option value="128">Small</option><option value="200" selected>Medium</option><option value="300">Large</option></select>
+        </div>
+        <div><label>Color</label>
+          <select id="qr-color"><option value="#1a1d2e">Black</option><option value="#4f63d2">Blue</option><option value="#0ba87e">Green</option></select>
+        </div>
+      </div>
+      <button class="btn" onclick="generateQR()">Generate QR Code</button>
+      <div id="qr-out" style="text-align:center;margin-top:16px;"></div>`,
+    init(){}
+  },
+
+  password:{
+    title:'🔐 Password Generator',sub:'Secure, random passwords in one click',
+    render:()=>`
+      <label>Length: <span id="pw-lv">16</span></label>
+      <input type="range" id="pw-len" min="6" max="64" value="16" oninput="document.getElementById('pw-lv').textContent=this.value" style="width:100%;margin-bottom:16px;accent-color:var(--accent);">
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
+        <label style="text-transform:none;letter-spacing:0;font-size:14px;display:flex;align-items:center;gap:6px;color:var(--text);"><input type="checkbox" id="pw-u" checked> Uppercase</label>
+        <label style="text-transform:none;letter-spacing:0;font-size:14px;display:flex;align-items:center;gap:6px;color:var(--text);"><input type="checkbox" id="pw-n" checked> Numbers</label>
+        <label style="text-transform:none;letter-spacing:0;font-size:14px;display:flex;align-items:center;gap:6px;color:var(--text);"><input type="checkbox" id="pw-s" checked> Symbols</label>
+      </div>
+      <button class="btn" onclick="generatePW()">Generate Password</button>
+      <div id="pw-out"></div>`,
+    init(){}
+  },
+
+  color:{
+    title:'🎨 Color Code Converter',sub:'HEX ↔ RGB ↔ HSL',
+    render:()=>`
+      <label>Pick or type a color</label>
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:16px;">
+        <input type="color" id="cpick" value="#4f63d2" oninput="colorPick()" style="width:48px;height:44px;border:none;border-radius:8px;cursor:pointer;padding:2px;">
+        <input type="text" id="hex-in" value="#4f63d2" placeholder="#4f63d2" style="margin-bottom:0;flex:1;" oninput="convertColor()">
+      </div>
+      <button class="btn" onclick="convertColor()">Convert</button>
+      <div id="color-out"></div>`,
+    init(){convertColor();}
+  },
+
+  hash:{
+    title:'📄 Lorem Ipsum Generator',sub:'Placeholder text for any project',
+    render:()=>`
+      <label>Number of paragraphs</label>
+      <select id="lorem-n"><option>1</option><option selected>2</option><option>3</option><option>5</option></select>
+      <button class="btn" onclick="genLorem()">Generate</button>
+      <div id="lorem-out"></div>`,
+    init(){}
+  },
+
+  age:{
+    title:'🎂 Age Calculator',sub:'Your exact age down to the hour',
+    render:()=>`
+      <label>Date of Birth</label>
+      <input type="date" id="dob" max="${new Date().toISOString().split('T')[0]}" />
+      <button class="btn" onclick="calcAge()">Calculate Age</button>
+      <div id="age-out"></div>`,
+    init(){}
+  },
+
+  bmi:{
+    title:'⚖️ BMI Calculator',sub:'For adults 20+ · Metric or Imperial',
+    render:()=>`
+      <label>Units</label>
+      <select id="bmi-u" onchange="toggleBMI()"><option value="metric">Metric (kg/cm)</option><option value="imperial">Imperial (lb/ft)</option></select>
+      <div id="bmi-met"><div class="row"><div><label>Weight kg</label><input type="number" id="wkg" placeholder="70"></div><div><label>Height cm</label><input type="number" id="hcm" placeholder="175"></div></div></div>
+      <div id="bmi-imp" style="display:none"><div class="row"><div><label>Weight lb</label><input type="number" id="wlb" placeholder="154"></div><div><label>Height ft</label><input type="number" id="hft" placeholder="5"></div></div><label>Inches</label><input type="number" id="hin" placeholder="9"></div>
+      <div class="row"><div><label>Age (optional)</label><input type="number" id="bmi-age" placeholder="30"></div><div><label>Gender (optional)</label><select id="bmi-gender"><option value="">—</option><option value="male">Male</option><option value="female">Female</option></select></div></div>
+      <label>Waist circumference (optional — same unit as height)</label><input type="number" id="bmi-waist" placeholder="e.g. 85 cm or 34 in">
+      <button class="btn" onclick="calcBMI()">Calculate BMI</button>
+      <div id="bmi-out"></div>`,
+    init(){}
+  },
+
+  bmr:{
+    title:'🔥 BMR Calculator',sub:'Calories burned at rest (Mifflin-St Jeor)',
+    render:()=>`
+      <label>Units</label>
+      <select id="bmr-u" onchange="toggleBMR()"><option value="metric">Metric (kg/cm)</option><option value="imperial">Imperial (lb/ft)</option></select>
+      <div id="bmr-met"><div class="row"><div><label>Weight kg</label><input type="number" id="bmr-wkg" placeholder="70"></div><div><label>Height cm</label><input type="number" id="bmr-hcm" placeholder="175"></div></div></div>
+      <div id="bmr-imp" style="display:none"><div class="row"><div><label>Weight lb</label><input type="number" id="bmr-wlb" placeholder="154"></div><div><label>Height ft</label><input type="number" id="bmr-hft" placeholder="5"></div></div><label>Inches</label><input type="number" id="bmr-hin" placeholder="9"></div>
+      <div class="row"><div><label>Age</label><input type="number" id="bmr-age" placeholder="30"></div><div><label>Gender</label><select id="bmr-gender"><option value="male">Male</option><option value="female">Female</option></select></div></div>
+      <button class="btn" onclick="calcBMR()">Calculate BMR</button>
+      <div id="bmr-out"></div>`,
+    init(){}
+  },
+
+  calorie:{
+    title:'🍎 Calorie Calculator',sub:'Daily calorie needs (TDEE)',
+    render:()=>`
+      <label>Units</label>
+      <select id="cal-u" onchange="toggleCalorie()"><option value="metric">Metric (kg/cm)</option><option value="imperial">Imperial (lb/ft)</option></select>
+      <div id="cal-met"><div class="row"><div><label>Weight kg</label><input type="number" id="cal-wkg" placeholder="70"></div><div><label>Height cm</label><input type="number" id="cal-hcm" placeholder="175"></div></div></div>
+      <div id="cal-imp" style="display:none"><div class="row"><div><label>Weight lb</label><input type="number" id="cal-wlb" placeholder="154"></div><div><label>Height ft</label><input type="number" id="cal-hft" placeholder="5"></div></div><label>Inches</label><input type="number" id="cal-hin" placeholder="9"></div>
+      <div class="row"><div><label>Age</label><input type="number" id="cal-age" placeholder="30"></div><div><label>Gender</label><select id="cal-gender"><option value="male">Male</option><option value="female">Female</option></select></div></div>
+      <label>Activity Level</label>
+      <select id="cal-activity">
+        <option value="1.2">Sedentary (little or no exercise)</option>
+        <option value="1.375">Light (exercise 1–3 days/week)</option>
+        <option value="1.55" selected>Moderate (exercise 3–5 days/week)</option>
+        <option value="1.725">Active (exercise 6–7 days/week)</option>
+        <option value="1.9">Very active (hard exercise + physical job)</option>
+      </select>
+      <button class="btn" onclick="calcCalorie()">Calculate Daily Calories</button>
+      <div id="cal-out"></div>`,
+    init(){}
+  },
+
+  bodyfat:{
+    title:'📐 Body Fat Calculator',sub:'US Navy tape-measurement method',
+    render:()=>`
+      <label>Units</label>
+      <select id="bf-u" onchange="toggleBodyFat()"><option value="metric">Metric (cm)</option><option value="imperial">Imperial (in)</option></select>
+      <label>Gender</label>
+      <select id="bf-gender" onchange="toggleBodyFatHip()"><option value="male">Male</option><option value="female">Female</option></select>
+      <div class="row"><div><label>Height</label><input type="number" id="bf-height" placeholder="175"></div><div><label>Neck</label><input type="number" id="bf-neck" placeholder="38"></div></div>
+      <div class="row"><div><label>Waist</label><input type="number" id="bf-waist" placeholder="85"></div><div id="bf-hip-wrap"><label>Hip (women only)</label><input type="number" id="bf-hip" placeholder="95"></div></div>
+      <button class="btn" onclick="calcBodyFat()">Calculate Body Fat %</button>
+      <div id="bf-out"></div>`,
+    init(){document.getElementById('bf-hip-wrap').style.display='none';}
+  },
+
+  water:{
+    title:'💧 Water Intake Calculator',sub:'Daily hydration target',
+    render:()=>`
+      <label>Units</label>
+      <select id="wi-u" onchange="toggleWaterUnit()"><option value="metric">Metric (kg)</option><option value="imperial">Imperial (lb)</option></select>
+      <div id="wi-met"><label>Weight kg</label><input type="number" id="wi-wkg" placeholder="70"></div>
+      <div id="wi-imp" style="display:none"><label>Weight lb</label><input type="number" id="wi-wlb" placeholder="154"></div>
+      <label>Activity Level</label>
+      <select id="wi-activity">
+        <option value="0">Sedentary</option>
+        <option value="0.35" selected>Moderate exercise</option>
+        <option value="0.7">Intense exercise / hot climate</option>
+      </select>
+      <button class="btn" onclick="calcWater()">Calculate Water Intake</button>
+      <div id="wi-out"></div>`,
+    init(){}
+  },
+
+  tip:{
+    title:'🍽️ Tip Calculator',sub:'Split the bill for any group',
+    render:()=>`
+      <label>Bill Amount ($)</label><input type="number" id="bill" placeholder="85.00">
+      <div class="row"><div><label>Tip %</label><input type="number" id="tpct" value="18" placeholder="18"></div><div><label>People</label><input type="number" id="split" value="1" placeholder="1"></div></div>
+      <button class="btn" onclick="calcTip()">Calculate</button>
+      <div id="tip-out"></div>`,
+    init(){}
+  },
+
+  discount:{
+    title:'🏷️ Discount Calculator',sub:'Final price after any discount',
+    render:()=>`
+      <label>Original Price ($)</label><input type="number" id="oprice" placeholder="120">
+      <label>Discount (%)</label><input type="number" id="dpct" placeholder="20">
+      <button class="btn" onclick="calcDiscount()">Calculate</button>
+      <div id="disc-out"></div>`,
+    init(){}
+  },
+
+  loan:{
+    title:'🏦 Loan Calculator',sub:'Monthly payment & total interest',
+    render:()=>`
+      <label>Loan Amount ($)</label><input type="number" id="lamt" placeholder="20000">
+      <div class="row"><div><label>Interest Rate %</label><input type="number" id="lrate" placeholder="6.5"></div><div><label>Term (years)</label><input type="number" id="lterm" placeholder="5"></div></div>
+      <button class="btn" onclick="calcLoan()">Calculate</button>
+      <div id="loan-out"></div>`,
+    init(){}
+  },
+
+  unit:{
+    title:'📏 Unit Converter',sub:'Length, weight, temperature, speed & more',
+    render:()=>`
+      <label>Category</label>
+      <select id="ucat" onchange="renderUnitOpts()"><option value="length">Length</option><option value="weight">Weight</option><option value="temp">Temperature</option><option value="speed">Speed</option></select>
+      <label>Value</label><input type="number" id="uval" placeholder="Enter value">
+      <div class="row"><div><label>From</label><select id="ufrom"></select></div><div><label>To</label><select id="uto"></select></div></div>
+      <button class="btn" onclick="convertUnit()">Convert</button>
+      <div id="unit-out"></div>`,
+    init(){renderUnitOpts();}
+  },
+
+  currency:{
+    title:'💱 Currency Converter',sub:'15 major world currencies',
+    render:()=>{
+      const cc=['USD','EUR','GBP','JPY','CAD','AUD','CHF','CNY','INR','MXN','BRL','KRW','TRY','SAR','AED'];
+      const o=cc.map(c=>`<option value="${c}">${c}</option>`).join('');
+      return`<label>Amount</label><input type="number" id="camt" value="100" placeholder="100">
+      <div class="row"><div><label>From</label><select id="cfrom">${o}</select></div><div><label>To</label><select id="cto">${o.replace('value="EUR"','value="EUR" selected')}</select></div></div>
+      <button class="btn" onclick="convertCurr()">Convert</button>
+      <div id="curr-out"></div>
+      <p style="color:var(--muted);font-size:11px;margin-top:10px;">* Approximate rates. Check your bank for exact figures.</p>`;
+    },
+    init(){}
+  },
+
+  case:{
+    title:'🔤 Text Case Converter',sub:'Transform text in one click',
+    render:()=>`
+      <label>Your Text</label>
+      <textarea id="case-in" rows="4" placeholder="Type or paste text here..."></textarea>
+      <div class="row" style="gap:8px;"><button class="btn" onclick="doCase('upper')">UPPERCASE</button><button class="btn" onclick="doCase('lower')">lowercase</button></div>
+      <div class="row" style="gap:8px;margin-top:8px;"><button class="btn" onclick="doCase('title')">Title Case</button><button class="btn" onclick="doCase('camel')">camelCase</button></div>
+      <div id="case-out"></div>`,
+    init(){}
+  },
+
+  wordcount:{
+    title:'📝 Word Counter',sub:'Live count — words, characters, reading time',
+    render:()=>`
+      <label>Your Text</label>
+      <textarea id="wc-in" rows="6" placeholder="Paste your text here..." oninput="liveWC()"></textarea>
+      <div class="result-grid result-box" id="wc-out" style="margin-top:16px;">
+        <div><div class="result-label">Words</div><div class="result-value" id="wc-w">0</div></div>
+        <div><div class="result-label">Characters</div><div class="result-value" id="wc-c">0</div></div>
+        <div><div class="result-label">Sentences</div><div class="result-value" id="wc-s">0</div></div>
+        <div><div class="result-label">Read time</div><div class="result-value" id="wc-t">0 min</div></div>
+      </div>`,
+    init(){}
+  },
+
+  quiz:{
+    title:'🧠 General Knowledge Quiz',sub:'10 questions — how many can you get right?',
+    render:()=>`<div id="quiz-wrap"><button class="btn" onclick="startQuiz()">Start Quiz</button></div>`,
+    init(){}
+  },
+
+  memory:{
+    title:'🃏 Memory Card Game',sub:'Find all matching pairs',
+    render:()=>`<div id="mem-wrap"><button class="btn" onclick="startMemory()">Start Game</button></div>`,
+    init(){}
+  },
+
+  // ── PDF TOOLS ──────────────────────────────────────────────────────────────
+  merge:{
+    title:'📎 Merge PDF',sub:'Combine multiple PDFs into one — drag to reorder',
+    render:()=>fileDropzone('merge-files','application/pdf',true)+`<div id="merge-list"></div><button class="btn" id="merge-btn" style="display:none;margin-top:10px;" onclick="doMergePDF()">Merge PDFs</button><div id="merge-out"></div>`,
+    init(){ setupDropzone('merge-files','merge-list','merge-btn',true,'application/pdf'); }
+  },
+
+  split:{
+    title:'✂️ Split PDF',sub:'Pick pages or a range to extract into a new PDF',
+    render:()=>fileDropzone('split-file','application/pdf',false)+`<div id="split-list"></div><div id="split-options" style="display:none;"><label>Pages (e.g. 1-3,5,7)</label><input type="text" id="split-range" placeholder="1-3,5"><button class="btn" onclick="doSplitPDF()">Split PDF</button></div><div id="split-out"></div>`,
+    init(){ setupDropzone('split-file','split-list','split-options',false,'application/pdf'); }
+  },
+
+  compress:{
+    title:'🗜️ Compress PDF',sub:'Shrink file size by re-optimizing the PDF structure',
+    render:()=>fileDropzone('compress-file','application/pdf',false)+`<div id="compress-list"></div><button class="btn" id="compress-btn" style="display:none;margin-top:10px;" onclick="doCompressPDF()">Compress PDF</button><div id="compress-out"></div>`,
+    init(){ setupDropzone('compress-file','compress-list','compress-btn',false,'application/pdf'); }
+  },
+
+  rotate:{
+    title:'🔃 Rotate PDF',sub:'Rotate all pages clockwise',
+    render:()=>fileDropzone('rotate-file','application/pdf',false)+`<div id="rotate-list"></div><div id="rotate-options" style="display:none;"><label>Rotation</label><select id="rotate-deg"><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select><button class="btn" onclick="doRotatePDF()">Rotate PDF</button></div><div id="rotate-out"></div>`,
+    init(){ setupDropzone('rotate-file','rotate-list','rotate-options',false,'application/pdf'); }
+  },
+
+  deletepages:{
+    title:'🗑️ Delete PDF Pages',sub:'Click thumbnails to select pages to remove',
+    render:()=>fileDropzone('del-file','application/pdf',false)+`<div id="del-list"></div><div id="del-thumbs"></div><button class="btn" id="del-btn" style="display:none;margin-top:10px;" onclick="doDeletePages()">Delete Selected Pages</button><div id="del-out"></div>`,
+    init(){ setupDropzone('del-file','del-list',null,false,'application/pdf',renderPageThumbsForDelete); }
+  },
+
+  extractpages:{
+    title:'📤 Extract PDF Pages',sub:'Click thumbnails to select pages to keep',
+    render:()=>fileDropzone('ext-file','application/pdf',false)+`<div id="ext-list"></div><div id="ext-thumbs"></div><button class="btn" id="ext-btn" style="display:none;margin-top:10px;" onclick="doExtractPages()">Extract Selected Pages</button><div id="ext-out"></div>`,
+    init(){ setupDropzone('ext-file','ext-list',null,false,'application/pdf',renderPageThumbsForExtract); }
+  },
+
+  sign:{
+    title:'✍️ Sign PDF',sub:'Type, draw, or upload your signature and drag it into place',
+    render:()=>fileDropzone('sign-file','application/pdf',false)+`<div id="sign-list"></div>
+      <div id="sign-builder" style="display:none;">
+        <div class="sig-tabs">
+          <div class="sig-tab active" id="sigtab-type" onclick="switchSigTab('type')">Type</div>
+          <div class="sig-tab" id="sigtab-draw" onclick="switchSigTab('draw')">Draw</div>
+        </div>
+        <div id="sig-type-pane"><input type="text" id="sig-text" placeholder="Your Name" oninput="updateSignOverlay()" style="font-family:'Brush Script MT',cursive;font-size:22px;"></div>
+        <div id="sig-draw-pane" style="display:none;">
+          <canvas id="sig-canvas" width="460" height="140" style="width:100%;border:1.5px solid var(--border);border-radius:10px;background:#fff;touch-action:none;cursor:crosshair;"></canvas>
+          <button class="btn-sec btn" style="margin-top:8px;" onclick="clearSigCanvas()">Clear</button>
+        </div>
+        <label style="margin-top:14px;">Page Number</label>
+        <input type="number" id="sig-page" value="1" min="1" onchange="updateSignPreviewPage()">
+        <div id="sign-page-info" style="font-size:12px;color:var(--muted);margin:4px 0 12px;"></div>
+        <label>Drag your signature onto the page — use the corner dot to resize it</label>
+        <div id="sign-preview-wrap" style="position:relative;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px;background:var(--surface2);min-height:120px;">
+          <canvas id="sign-preview-canvas" style="display:block;width:100%;"></canvas>
+          <div id="sign-overlay" class="pdf-overlay-box" style="left:55%;top:75%;">
+            <div class="pdf-overlay-drag">⠿ move</div>
+            <div id="sign-overlay-inner" style="font-family:'Brush Script MT',cursive;font-size:20px;color:#1a1d2e;white-space:nowrap;user-select:none;">Your Name</div>
+            <div class="pdf-overlay-resize" title="Drag to resize"></div>
+          </div>
+        </div>
+        <button class="btn" onclick="doSignPDF()">Add Signature & Download</button>
+      </div>
+      <div id="sign-out"></div>`,
+    init(){ setupDropzone('sign-file','sign-list','sign-builder',false,'application/pdf', ()=>{ setTimeout(()=>{ initSigCanvas(); initSignPreview(); },50); }); }
+  },
+
+  addtext:{
+    title:'✏️ Add Text to PDF',sub:'Click anywhere on the page and start typing',
+    render:()=>fileDropzone('txt-file','application/pdf',false)+`<div id="txt-list"></div>
+      <div id="txt-builder" style="display:none;">
+        <label>Page Number</label>
+        <input type="number" id="txt-page" value="1" min="1" onchange="updateTxtPreviewPage()">
+        <div id="txt-page-info" style="font-size:12px;color:var(--muted);margin:4px 0 12px;"></div>
+        <div class="row">
+          <div><label>Font size</label><input type="number" id="txt-size" value="16" min="6" max="96" oninput="onTxtSizeInputChange()"></div>
+          <div><label>Color</label><input type="color" id="txt-color" value="#1a1d2e" oninput="onTxtColorChange()" style="width:100%;height:42px;border:1.5px solid var(--border);border-radius:10px;padding:2px;background:var(--surface2);"></div>
+        </div>
+        <label>Click anywhere on the page and type. Drag the blue tab to move it, the dot to resize it.</label>
+        <div id="txt-preview-wrap" style="position:relative;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px;background:var(--surface2);min-height:120px;">
+          <canvas id="txt-preview-canvas" style="display:block;width:100%;"></canvas>
+          <div id="txt-overlay" class="pdf-overlay-box" style="left:10%;top:10%;">
+            <div class="pdf-overlay-drag">⠿ move</div>
+            <div id="txt-overlay-text" class="pdf-overlay-editable" contenteditable="true" style="font-size:16px;color:#1a1d2e;font-family:Helvetica,Arial,sans-serif;">Click here and type</div>
+            <div class="pdf-overlay-resize" title="Drag to resize"></div>
+          </div>
+        </div>
+        <button class="btn" onclick="doAddTextToPDF()">Add Text & Download</button>
+      </div>
+      <div id="txt-out"></div>`,
+    init(){ setupDropzone('txt-file','txt-list','txt-builder',false,'application/pdf', ()=>{ setTimeout(initTxtPreview,50); }); }
+  },
+
+  img2pdf:{
+    title:'🖼️ Image to PDF',sub:'Combine JPG/PNG images into a single PDF — drag to reorder',
+    render:()=>fileDropzone('i2p-files','image/*',true)+`<div id="i2p-list"></div><button class="btn" id="i2p-btn" style="display:none;margin-top:10px;" onclick="doImagesToPDF()">Create PDF</button><div id="i2p-out"></div>`,
+    init(){ setupDropzone('i2p-files','i2p-list','i2p-btn',true,'image/*'); }
+  },
+
+  pdf2jpg:{
+    title:'🖼️ PDF to JPG',sub:'Convert each page into a downloadable JPG image',
+    render:()=>fileDropzone('p2j-file','application/pdf',false)+`<div id="p2j-list"></div><button class="btn" id="p2j-btn" style="display:none;margin-top:10px;" onclick="doPdfToImages('jpeg')">Convert to JPG</button><div id="p2j-out"></div>`,
+    init(){ setupDropzone('p2j-file','p2j-list','p2j-btn',false,'application/pdf'); }
+  },
+
+  pdf2png:{
+    title:'🖼️ PDF to PNG',sub:'Convert each page into a downloadable PNG image',
+    render:()=>fileDropzone('p2n-file','application/pdf',false)+`<div id="p2n-list"></div><button class="btn" id="p2n-btn" style="display:none;margin-top:10px;" onclick="doPdfToImages('png')">Convert to PNG</button><div id="p2n-out"></div>`,
+    init(){ setupDropzone('p2n-file','p2n-list','p2n-btn',false,'application/pdf'); }
+  },
+
+  pdf2text:{
+    title:'📋 PDF to Text',sub:'Extract all text content from a PDF',
+    render:()=>fileDropzone('p2t-file','application/pdf',false)+`<div id="p2t-list"></div><button class="btn" id="p2t-btn" style="display:none;margin-top:10px;" onclick="doPdfToText()">Extract Text</button><div id="p2t-out"></div>`,
+    init(){ setupDropzone('p2t-file','p2t-list','p2t-btn',false,'application/pdf'); }
+  },
+
+  ocr:{
+    title:'🔍 Image to Text (OCR)',sub:'Extract text from any image using AI recognition',
+    render:()=>fileDropzone('ocr-file','image/*',false)+`<div id="ocr-list"></div><button class="btn" id="ocr-btn" style="display:none;margin-top:10px;" onclick="doOCR()">Extract Text</button><div id="ocr-out"></div>`,
+    init(){ setupDropzone('ocr-file','ocr-list','ocr-btn',false,'image/*'); }
+  },
+
+  scanocr:{
+    title:'📱 Scan PDF to Text (OCR)',sub:'Run OCR on a scanned PDF to extract searchable text',
+    render:()=>fileDropzone('socr-file','application/pdf',false)+`<div id="socr-list"></div><button class="btn" id="socr-btn" style="display:none;margin-top:10px;" onclick="doScanOCR()">Run OCR</button><div id="socr-out"></div>`,
+    init(){ setupDropzone('socr-file','socr-list','socr-btn',false,'application/pdf'); }
+  },
+
+  pdf2word:{
+    title:'📄 PDF to Word',sub:'Extract text from your PDF into an editable .doc file',
+    render:()=>fileDropzone('p2w-file','application/pdf',false)+`<div id="p2w-list"></div><button class="btn" id="p2w-btn" style="display:none;margin-top:10px;" onclick="doPdfToWord()">Convert to Word</button><div id="p2w-out"></div><p style="color:var(--muted);font-size:11px;margin-top:10px;">* Extracts text content; original visual layout/images are not preserved.</p>`,
+    init(){ setupDropzone('p2w-file','p2w-list','p2w-btn',false,'application/pdf'); }
+  },
+
+  word2pdf:{
+    title:'📝 Word to PDF',sub:'Convert a .docx file to PDF',
+    render:()=>fileDropzone('w2p-file','.docx','false')+`<div id="w2p-list"></div><button class="btn" id="w2p-btn" style="display:none;margin-top:10px;" onclick="doWordToPdf()">Convert to PDF</button><div id="w2p-out"></div><p style="color:var(--muted);font-size:11px;margin-top:10px;">* Converts text content; complex formatting/images may not be preserved.</p>`,
+    init(){ setupDropzone('w2p-file','w2p-list','w2p-btn',false,'.docx'); }
+  },
+
+  pdf2excel:{
+    title:'📊 PDF to Excel',sub:'Extract text/tables from a PDF into a .csv file',
+    render:()=>fileDropzone('p2e-file','application/pdf',false)+`<div id="p2e-list"></div><button class="btn" id="p2e-btn" style="display:none;margin-top:10px;" onclick="doPdfToExcel()">Convert to CSV</button><div id="p2e-out"></div><p style="color:var(--muted);font-size:11px;margin-top:10px;">* Best with PDFs containing simple tabular data.</p>`,
+    init(){ setupDropzone('p2e-file','p2e-list','p2e-btn',false,'application/pdf'); }
+  },
+
+};
+
+// ── QR ────────────────────────────────────────────────────────────────────────
+function generateQR(){
+  const txt=document.getElementById('qr-input').value.trim();
+  const sz=+document.getElementById('qr-size').value;
+  const cl=document.getElementById('qr-color').value;
+  if(!txt){alert('Please enter a URL or text.');return;}
+  const out=document.getElementById('qr-out');
+  out.innerHTML='';
+  const d=document.createElement('div');
+  out.appendChild(d);
+  new QRCode(d,{text:txt,width:sz,height:sz,colorDark:cl,colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
+  setTimeout(()=>{
+    const cv=d.querySelector('canvas');
+    if(cv){const btn=document.createElement('button');btn.className='btn btn-sec';btn.style.marginTop='12px';btn.textContent='⬇ Download PNG';btn.onclick=()=>{const a=document.createElement('a');a.download='qr.png';a.href=cv.toDataURL();a.click();};out.appendChild(btn);}
+  },300);
+}
+
+// ── PASSWORD ──────────────────────────────────────────────────────────────────
+function generatePW(){
+  const len=+document.getElementById('pw-len').value;
+  let chars='abcdefghijklmnopqrstuvwxyz';
+  if(document.getElementById('pw-u').checked)chars+='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  if(document.getElementById('pw-n').checked)chars+='0123456789';
+  if(document.getElementById('pw-s').checked)chars+='!@#$%^&*()_+-=[]{}|;:,.?';
+  let pw='';for(let i=0;i<len;i++)pw+=chars[Math.floor(Math.random()*chars.length)];
+  document.getElementById('pw-out').innerHTML=`<div class="result-box" style="margin-top:16px;font-family:monospace;font-size:15px;word-break:break-all;"><div class="result-label">Password</div><div style="color:var(--accent);font-weight:700;margin:6px 0;">${pw}</div><button class="btn btn-sec" onclick="navigator.clipboard.writeText('${pw}');this.textContent='✓ Copied!'">Copy</button></div>`;
+}
+
+// ── COLOR ─────────────────────────────────────────────────────────────────────
+function colorPick(){document.getElementById('hex-in').value=document.getElementById('cpick').value;convertColor();}
+function convertColor(){
+  let hex=document.getElementById('hex-in').value.trim();
+  if(!hex.startsWith('#'))hex='#'+hex;
+  if(!/^#[0-9A-Fa-f]{6}$/.test(hex)){document.getElementById('color-out').innerHTML='<div class="result-box" style="margin-top:12px;color:#c0392b;">Invalid hex color.</div>';return;}
+  document.getElementById('cpick').value=hex;
+  const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  const max=Math.max(r,g,b)/255,min=Math.min(r,g,b)/255,l=(max+min)/2,d=max-min;
+  const s=d?d/(1-Math.abs(2*l-1)):0;
+  let h=0;if(d){const sg=max===r/255?(g/255-b/255)/d:max===g/255?2+(b/255-r/255)/d:4+(r/255-g/255)/d;h=Math.round(sg*60);if(h<0)h+=360;}
+  document.getElementById('color-out').innerHTML=`<div class="result-box green" style="margin-top:14px;"><div style="width:100%;height:50px;border-radius:8px;background:${hex};margin-bottom:12px;"></div><div style="display:grid;gap:6px;font-size:14px;"><div><span style="color:var(--muted);">HEX</span> <strong>${hex.toUpperCase()}</strong></div><div><span style="color:var(--muted);">RGB</span> <strong>rgb(${r}, ${g}, ${b})</strong></div><div><span style="color:var(--muted);">HSL</span> <strong>hsl(${h}, ${Math.round(s*100)}%, ${Math.round(l*100)}%)</strong></div></div></div>`;
+}
+
+// ── LOREM ─────────────────────────────────────────────────────────────────────
+function genLorem(){
+  const n=+document.getElementById('lorem-n').value;
+  const p='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.';
+  const p2='Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.';
+  const p3='Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis molestie dictum semper, quam quam congue eros, sit amet interdum nisi quam in magna.';
+  const paras=[p,p2,p3,p,p2];
+  const text=paras.slice(0,n).join('\n\n');
+  document.getElementById('lorem-out').innerHTML=`<div class="result-box" style="margin-top:14px;font-size:13px;line-height:1.7;white-space:pre-wrap;">${text}<br><br><button class="btn btn-sec" style="margin-top:8px;" onclick="navigator.clipboard.writeText(\`${text.replace(/`/g,'')}\`);this.textContent='✓ Copied!'">Copy</button></div>`;
+}
+
+// ── AGE ───────────────────────────────────────────────────────────────────────
+function calcAge(){
+  const dob=new Date(document.getElementById('dob').value);
+  if(!dob||isNaN(dob)){alert('Please select your date of birth.');return;}
+  const now=new Date();
+  let y=now.getFullYear()-dob.getFullYear(),m=now.getMonth()-dob.getMonth(),d=now.getDate()-dob.getDate();
+  if(d<0){m--;d+=new Date(now.getFullYear(),now.getMonth(),0).getDate();}
+  if(m<0){y--;m+=12;}
+  const td=Math.floor((now-dob)/86400000);
+  document.getElementById('age-out').innerHTML=`<div class="result-grid result-box green" style="margin-top:16px;"><div><div class="result-label">Years</div><div class="result-value green">${y}</div></div><div><div class="result-label">Months</div><div class="result-value green">${m}</div></div><div><div class="result-label">Days left</div><div class="result-value green">${d}</div></div><div><div class="result-label">Total Days</div><div class="result-value green">${td.toLocaleString()}</div></div></div>`;
+}
+
+// ── BMI ───────────────────────────────────────────────────────────────────────
+function toggleBMI(){const u=document.getElementById('bmi-u').value;document.getElementById('bmi-met').style.display=u==='metric'?'':'none';document.getElementById('bmi-imp').style.display=u==='imperial'?'':'none';}
+function calcBMI(){
+  const u=document.getElementById('bmi-u').value;let bmi,heightM;
+  if(u==='metric'){const w=+document.getElementById('wkg').value,h=+document.getElementById('hcm').value/100;if(!w||!h){alert('Fill in weight and height.');return;}bmi=w/(h*h);heightM=h;}
+  else{const lb=+document.getElementById('wlb').value,ft=+document.getElementById('hft').value,i=+document.getElementById('hin').value||0,ti=ft*12+i;if(!lb||!ti){alert('Fill in weight and height.');return;}bmi=(lb/(ti*ti))*703;heightM=ti*0.0254;}
+  const cat=bmi<18.5?'Underweight':bmi<25?'Normal weight':bmi<30?'Overweight':'Obese';
+  const col=bmi<18.5?'#2980b9':bmi<25?'#0ba87e':bmi<30?'#e07a20':'#c0392b';
+  const pct=Math.max(0,Math.min(100,((bmi-15)/(40-15))*100));
+  const minKg=18.5*heightM*heightM, maxKg=24.9*heightM*heightM;
+  const rangeText=u==='metric'
+    ? `${minKg.toFixed(1)}–${maxKg.toFixed(1)} kg`
+    : `${(minKg*2.20462).toFixed(1)}–${(maxKg*2.20462).toFixed(1)} lb`;
+  // optional waist-circumference risk note (NHLBI thresholds)
+  const gender=document.getElementById('bmi-gender').value;
+  const waist=+document.getElementById('bmi-waist').value;
+  let waistNote='';
+  if(waist && gender){
+    const waistCm = u==='metric' ? waist : waist*2.54;
+    const threshold = gender==='male' ? 102 : 88; // cm (40in / 35in)
+    const highRisk = waistCm > threshold;
+    waistNote = `<div style="background:${highRisk?'#fdeaea':'#e6f8f3'};border-radius:10px;padding:12px 16px;margin-top:10px;font-size:13px;color:${highRisk?'#c0392b':'#089168'};">
+      Waist-related health risk: <strong>${highRisk?'Higher':'Lower'}</strong> — based on NHLBI reference thresholds (${gender==='male'?'40 in / 102 cm':'35 in / 88 cm'}).
+    </div>`;
+  }
+  document.getElementById('bmi-out').innerHTML=`
+    <div class="result-box green" style="margin-top:16px;text-align:center;">
+      <div class="result-label">Your BMI</div>
+      <div class="result-value green">${bmi.toFixed(1)}</div>
+      <div style="font-weight:600;color:${col};margin-top:6px;">${cat}</div>
+      <div style="height:8px;border-radius:99px;background:linear-gradient(90deg,#2980b9 0%,#2980b9 15%,#0ba87e 15%,#0ba87e 45%,#e07a20 45%,#e07a20 65%,#c0392b 65%,#c0392b 100%);position:relative;margin:14px 0 6px;">
+        <div style="position:absolute;top:-4px;left:${pct}%;transform:translateX(-50%);width:2px;height:16px;background:#1a1d2e;border-radius:2px;"></div>
+      </div>
+      <div style="font-size:11px;color:var(--muted);display:flex;justify-content:space-between;"><span>Underweight</span><span>Normal</span><span>Overweight</span><span>Obese</span></div>
+    </div>
+    <div style="background:var(--surface2);border-radius:10px;padding:14px 16px;margin-top:12px;font-size:13px;">
+      <strong>Healthy weight range for your height:</strong> ${rangeText}
+    </div>
+    ${waistNote}
+    <p style="font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.6;">BMI is a general screening measure for adults 20 and older. It doesn't account for muscle mass, age, sex, or pregnancy. Talk to a healthcare provider for a complete assessment.</p>
+    <div style="margin-top:14px;font-size:12.5px;">
+      <span style="color:var(--muted);">Related:</span>
+      <a href="#" onclick="openTool('bmr');return false;" style="color:var(--accent);text-decoration:none;margin-left:4px;">BMR Calculator</a> ·
+      <a href="#" onclick="openTool('calorie');return false;" style="color:var(--accent);text-decoration:none;">Calorie Calculator</a> ·
+      <a href="#" onclick="openTool('bodyfat');return false;" style="color:var(--accent);text-decoration:none;">Body Fat Calculator</a>
+    </div>`;
+}
+
+// ── BMR ───────────────────────────────────────────────────────────────────────
+function toggleBMR(){const u=document.getElementById('bmr-u').value;document.getElementById('bmr-met').style.display=u==='metric'?'':'none';document.getElementById('bmr-imp').style.display=u==='imperial'?'':'none';}
+function calcBMR(){
+  const u=document.getElementById('bmr-u').value;const age=+document.getElementById('bmr-age').value;const gender=document.getElementById('bmr-gender').value;
+  let wkg,hcm;
+  if(u==='metric'){wkg=+document.getElementById('bmr-wkg').value;hcm=+document.getElementById('bmr-hcm').value;}
+  else{const lb=+document.getElementById('bmr-wlb').value,ft=+document.getElementById('bmr-hft').value,i=+document.getElementById('bmr-hin').value||0;wkg=lb*0.453592;hcm=(ft*12+i)*2.54;}
+  if(!wkg||!hcm||!age){alert('Please fill in weight, height and age.');return;}
+  const bmr = gender==='male' ? (10*wkg + 6.25*hcm - 5*age + 5) : (10*wkg + 6.25*hcm - 5*age - 161);
+  document.getElementById('bmr-out').innerHTML=`
+    <div class="result-box green" style="margin-top:16px;text-align:center;">
+      <div class="result-label">Basal Metabolic Rate</div>
+      <div class="result-value green">${Math.round(bmr).toLocaleString()} kcal/day</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:6px;">Calories your body burns at complete rest</div>
+    </div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.6;">Calculated using the Mifflin–St Jeor equation, widely considered one of the most accurate BMR formulas. This is your baseline — see the Calorie Calculator for your total daily needs including activity.</p>
+    <div style="margin-top:14px;font-size:12.5px;">
+      <span style="color:var(--muted);">Related:</span>
+      <a href="#" onclick="openTool('calorie');return false;" style="color:var(--accent);text-decoration:none;margin-left:4px;">Calorie Calculator</a> ·
+      <a href="#" onclick="openTool('bmi');return false;" style="color:var(--accent);text-decoration:none;">BMI Calculator</a>
+    </div>`;
+}
+
+// ── CALORIE / TDEE ──────────────────────────────────────────────────────────────
+function toggleCalorie(){const u=document.getElementById('cal-u').value;document.getElementById('cal-met').style.display=u==='metric'?'':'none';document.getElementById('cal-imp').style.display=u==='imperial'?'':'none';}
+function calcCalorie(){
+  const u=document.getElementById('cal-u').value;const age=+document.getElementById('cal-age').value;const gender=document.getElementById('cal-gender').value;const activity=+document.getElementById('cal-activity').value;
+  let wkg,hcm;
+  if(u==='metric'){wkg=+document.getElementById('cal-wkg').value;hcm=+document.getElementById('cal-hcm').value;}
+  else{const lb=+document.getElementById('cal-wlb').value,ft=+document.getElementById('cal-hft').value,i=+document.getElementById('cal-hin').value||0;wkg=lb*0.453592;hcm=(ft*12+i)*2.54;}
+  if(!wkg||!hcm||!age){alert('Please fill in weight, height and age.');return;}
+  const bmr = gender==='male' ? (10*wkg + 6.25*hcm - 5*age + 5) : (10*wkg + 6.25*hcm - 5*age - 161);
+  const tdee = bmr*activity;
+  document.getElementById('cal-out').innerHTML=`
+    <div class="result-grid result-box green" style="margin-top:16px;">
+      <div><div class="result-label">Maintain</div><div class="result-value green">${Math.round(tdee).toLocaleString()}</div></div>
+      <div><div class="result-label">Mild Loss (-10%)</div><div class="result-value green">${Math.round(tdee*0.9).toLocaleString()}</div></div>
+      <div><div class="result-label">Loss (-20%)</div><div class="result-value green">${Math.round(tdee*0.8).toLocaleString()}</div></div>
+      <div><div class="result-label">Gain (+10%)</div><div class="result-value green">${Math.round(tdee*1.1).toLocaleString()}</div></div>
+    </div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.6;">All values in kcal/day. This estimates your Total Daily Energy Expenditure (TDEE) — the calories needed to maintain, lose, or gain weight at the selected activity level.</p>
+    <div style="margin-top:14px;font-size:12.5px;">
+      <span style="color:var(--muted);">Related:</span>
+      <a href="#" onclick="openTool('bmr');return false;" style="color:var(--accent);text-decoration:none;margin-left:4px;">BMR Calculator</a> ·
+      <a href="#" onclick="openTool('water');return false;" style="color:var(--accent);text-decoration:none;">Water Intake Calculator</a>
+    </div>`;
+}
+
+// ── BODY FAT (US Navy method) ────────────────────────────────────────────────
+function toggleBodyFat(){}
+function toggleBodyFatHip(){document.getElementById('bf-hip-wrap').style.display=document.getElementById('bf-gender').value==='female'?'':'none';}
+function calcBodyFat(){
+  const u=document.getElementById('bf-u').value;const gender=document.getElementById('bf-gender').value;
+  const height=+document.getElementById('bf-height').value, neck=+document.getElementById('bf-neck').value, waist=+document.getElementById('bf-waist').value, hip=+document.getElementById('bf-hip').value||0;
+  if(!height||!neck||!waist||(gender==='female'&&!hip)){alert('Please fill in all required measurements.');return;}
+  let bf;
+  if(u==='metric'){
+    bf = gender==='male'
+      ? 495/(1.0324 - 0.19077*Math.log10(waist-neck) + 0.15456*Math.log10(height)) - 450
+      : 495/(1.29579 - 0.35004*Math.log10(waist+hip-neck) + 0.22100*Math.log10(height)) - 450;
+  } else {
+    bf = gender==='male'
+      ? 86.010*Math.log10(waist-neck) - 70.041*Math.log10(height) + 36.76
+      : 163.205*Math.log10(waist+hip-neck) - 97.684*Math.log10(height) - 78.387;
+  }
+  const cat = gender==='male'
+    ? (bf<6?'Essential fat':bf<14?'Athletic':bf<18?'Fitness':bf<25?'Average':'Above average')
+    : (bf<14?'Essential fat':bf<21?'Athletic':bf<25?'Fitness':bf<32?'Average':'Above average');
+  document.getElementById('bf-out').innerHTML=`
+    <div class="result-box green" style="margin-top:16px;text-align:center;">
+      <div class="result-label">Estimated Body Fat</div>
+      <div class="result-value green">${bf.toFixed(1)}%</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:6px;">${cat}</div>
+    </div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.6;">Estimated using the US Navy tape-measurement method. This is an approximation — for precise body composition, methods like DEXA scans or skinfold calipers are more accurate.</p>
+    <div style="margin-top:14px;font-size:12.5px;">
+      <span style="color:var(--muted);">Related:</span>
+      <a href="#" onclick="openTool('bmi');return false;" style="color:var(--accent);text-decoration:none;margin-left:4px;">BMI Calculator</a> ·
+      <a href="#" onclick="openTool('bmr');return false;" style="color:var(--accent);text-decoration:none;">BMR Calculator</a>
+    </div>`;
+}
+
+// ── WATER INTAKE ──────────────────────────────────────────────────────────────
+function toggleWaterUnit(){const u=document.getElementById('wi-u').value;document.getElementById('wi-met').style.display=u==='metric'?'':'none';document.getElementById('wi-imp').style.display=u==='imperial'?'':'none';}
+function calcWater(){
+  const u=document.getElementById('wi-u').value;const activityBonus=+document.getElementById('wi-activity').value;
+  let wkg;
+  if(u==='metric'){wkg=+document.getElementById('wi-wkg').value;}
+  else{wkg=(+document.getElementById('wi-wlb').value)*0.453592;}
+  if(!wkg){alert('Please enter your weight.');return;}
+  const liters = wkg*0.033 + activityBonus;
+  const glasses = liters/0.25;
+  document.getElementById('wi-out').innerHTML=`
+    <div class="result-grid result-box green" style="margin-top:16px;">
+      <div><div class="result-label">Liters/day</div><div class="result-value green">${liters.toFixed(1)} L</div></div>
+      <div><div class="result-label">8oz Glasses</div><div class="result-value green">${Math.round(glasses)}</div></div>
+    </div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.6;">A general hydration guideline based on body weight and activity level. Individual needs vary with climate, health conditions, and diet — this is a starting reference, not medical advice.</p>`;
+}
+
+
+
+// ── TIP ───────────────────────────────────────────────────────────────────────
+function calcTip(){
+  const b=+document.getElementById('bill').value,p=+document.getElementById('tpct').value,s=+document.getElementById('split').value||1;
+  if(!b){alert('Enter bill amount.');return;}
+  const tip=b*p/100,total=b+tip;
+  document.getElementById('tip-out').innerHTML=`<div class="result-grid result-box green" style="margin-top:16px;"><div><div class="result-label">Tip</div><div class="result-value green">$${tip.toFixed(2)}</div></div><div><div class="result-label">Total</div><div class="result-value green">$${total.toFixed(2)}</div></div><div><div class="result-label">Per Person</div><div class="result-value green">$${(total/s).toFixed(2)}</div></div><div><div class="result-label">Tip/Person</div><div class="result-value green">$${(tip/s).toFixed(2)}</div></div></div>`;
+}
+
+// ── DISCOUNT ──────────────────────────────────────────────────────────────────
+function calcDiscount(){
+  const o=+document.getElementById('oprice').value,p=+document.getElementById('dpct').value;
+  if(!o||!p){alert('Fill in both fields.');return;}
+  const saved=o*p/100,final=o-saved;
+  document.getElementById('disc-out').innerHTML=`<div class="result-grid result-box green" style="margin-top:16px;"><div><div class="result-label">You Save</div><div class="result-value green">$${saved.toFixed(2)}</div></div><div><div class="result-label">Final Price</div><div class="result-value green">$${final.toFixed(2)}</div></div></div>`;
+}
+
+// ── LOAN ──────────────────────────────────────────────────────────────────────
+function calcLoan(){
+  const P=+document.getElementById('lamt').value,r=+document.getElementById('lrate').value/100/12,n=+document.getElementById('lterm').value*12;
+  if(!P||!r||!n){alert('Fill in all fields.');return;}
+  const monthly=P*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);
+  const totalPay=monthly*n,totalInt=totalPay-P;
+  document.getElementById('loan-out').innerHTML=`<div class="result-grid result-box" style="margin-top:16px;"><div><div class="result-label">Monthly Payment</div><div class="result-value">$${monthly.toFixed(2)}</div></div><div><div class="result-label">Total Interest</div><div class="result-value">$${totalInt.toFixed(2)}</div></div><div><div class="result-label">Total Paid</div><div class="result-value">$${totalPay.toFixed(2)}</div></div><div><div class="result-label">Principal</div><div class="result-value">$${P.toLocaleString()}</div></div></div>`;
+}
+
+// ── UNIT ──────────────────────────────────────────────────────────────────────
+const UDB={length:{meter:1,kilometer:0.001,mile:0.000621371,foot:3.28084,inch:39.3701,centimeter:100,yard:1.09361},weight:{kilogram:1,gram:1000,pound:2.20462,ounce:35.274,ton:0.001},temp:{celsius:1,fahrenheit:1,kelvin:1},speed:{'km/h':1,'mph':0.621371,'knot':0.539957,'m/s':0.277778}};
+function renderUnitOpts(){const cat=document.getElementById('ucat').value,keys=Object.keys(UDB[cat]),opts=keys.map(k=>`<option value="${k}">${k}</option>`).join('');document.getElementById('ufrom').innerHTML=opts;document.getElementById('uto').innerHTML=opts;if(document.getElementById('uto').options.length>1)document.getElementById('uto').selectedIndex=1;}
+function convertUnit(){
+  const cat=document.getElementById('ucat').value,val=+document.getElementById('uval').value,from=document.getElementById('ufrom').value,to=document.getElementById('uto').value;
+  if(isNaN(val)){alert('Enter a number.');return;}
+  let res;
+  if(cat==='temp'){let c=from==='celsius'?val:from==='fahrenheit'?(val-32)*5/9:val-273.15;res=to==='celsius'?c:to==='fahrenheit'?c*9/5+32:c+273.15;}
+  else{res=(val/UDB[cat][from])*UDB[cat][to];}
+  document.getElementById('unit-out').innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">Result</div><div class="result-value green">${res.toLocaleString(undefined,{maximumFractionDigits:6})} ${to}</div></div>`;
+}
+
+// ── CURRENCY ──────────────────────────────────────────────────────────────────
+const RATES={USD:1,EUR:0.92,GBP:0.79,JPY:149.5,CAD:1.36,AUD:1.53,CHF:0.89,CNY:7.24,INR:83.1,MXN:17.2,BRL:4.97,KRW:1325,TRY:32.1,SAR:3.75,AED:3.67};
+function convertCurr(){
+  const a=+document.getElementById('camt').value,f=document.getElementById('cfrom').value,t=document.getElementById('cto').value;
+  const res=(a/RATES[f])*RATES[t];
+  document.getElementById('curr-out').innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">${a} ${f} =</div><div class="result-value green">${res.toLocaleString(undefined,{maximumFractionDigits:2})} ${t}</div></div>`;
+}
+
+// ── TEXT CASE ─────────────────────────────────────────────────────────────────
+function doCase(type){
+  let t=document.getElementById('case-in').value;if(!t){alert('Enter some text.');return;}
+  if(type==='upper')t=t.toUpperCase();
+  else if(type==='lower')t=t.toLowerCase();
+  else if(type==='title')t=t.replace(/\w\S*/g,w=>w[0].toUpperCase()+w.slice(1).toLowerCase());
+  else if(type==='camel')t=t.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g,(_,c)=>c.toUpperCase());
+  document.getElementById('case-out').innerHTML=`<div class="result-box" style="margin-top:14px;"><div class="result-label">Result</div><div style="font-size:14px;color:var(--text);margin:6px 0;word-break:break-word;">${t}</div><button class="btn btn-sec" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='✓ Copied!'">Copy</button></div>`;
+}
+
+// ── WORD COUNT ────────────────────────────────────────────────────────────────
+function liveWC(){
+  const t=document.getElementById('wc-in').value;
+  const w=t.trim()?t.trim().split(/\s+/).length:0;
+  document.getElementById('wc-w').textContent=w.toLocaleString();
+  document.getElementById('wc-c').textContent=t.length.toLocaleString();
+  document.getElementById('wc-s').textContent=t.split(/[.!?]+/).filter(s=>s.trim()).length;
+  const min=Math.ceil(w/200);
+  document.getElementById('wc-t').textContent=min<1?'< 1 min':min+' min';
+}
+
+// ── QUIZ ──────────────────────────────────────────────────────────────────────
+const QS=[
+  {q:"What is the capital of Australia?",a:"Canberra",o:["Sydney","Melbourne","Canberra","Brisbane"]},
+  {q:"How many sides does a hexagon have?",a:"6",o:["5","6","7","8"]},
+  {q:"Which planet is closest to the Sun?",a:"Mercury",o:["Venus","Earth","Mercury","Mars"]},
+  {q:"Which language has the most native speakers?",a:"Mandarin Chinese",o:["English","Spanish","Hindi","Mandarin Chinese"]},
+  {q:"What is 15% of 200?",a:"30",o:["25","30","35","40"]},
+  {q:"Who painted the Mona Lisa?",a:"Leonardo da Vinci",o:["Michelangelo","Raphael","Leonardo da Vinci","Picasso"]},
+  {q:"What year did World War II end?",a:"1945",o:["1943","1944","1945","1946"]},
+  {q:"What is the chemical symbol for gold?",a:"Au",o:["Go","Gd","Au","Ag"]},
+  {q:"How many bones are in the adult human body?",a:"206",o:["186","196","206","216"]},
+  {q:"What is the largest ocean?",a:"Pacific",o:["Atlantic","Indian","Pacific","Arctic"]},
+];
+let qi=0,qs=0;
+function startQuiz(){qi=0;qs=0;renderQ();}
+function renderQ(){
+  const w=document.getElementById('quiz-wrap');
+  if(qi>=QS.length){w.innerHTML=`<div class="result-box green" style="text-align:center;"><div class="result-label">Final Score</div><div class="result-value green">${qs} / ${QS.length}</div><div style="margin-top:6px;color:var(--muted);">${qs>=8?'🏆 Excellent!':qs>=5?'👍 Good job!':'📚 Keep learning!'}</div><button class="btn" style="margin-top:14px;" onclick="startQuiz()">Play Again</button></div>`;return;}
+  const q=QS[qi];
+  w.innerHTML=`<div style="color:var(--muted);font-size:12px;margin-bottom:8px;">Question ${qi+1} of ${QS.length} · Score: ${qs}</div><div style="font-size:16px;font-weight:600;margin-bottom:18px;">${q.q}</div>${q.o.map(o=>`<button class="btn btn-sec" style="margin-bottom:8px;text-align:left;" onclick="ansQ('${o.replace(/'/g,"\\'")}','${q.a.replace(/'/g,"\\'")}',this)">${o}</button>`).join('')}`;
+}
+function ansQ(ch,co,btn){
+  document.querySelectorAll('#quiz-wrap button').forEach(b=>b.disabled=true);
+  if(ch===co){qs++;btn.style.borderColor='var(--accent2)';btn.style.color='var(--accent2)';}
+  else{btn.style.borderColor='#c0392b';btn.style.color='#c0392b';}
+  setTimeout(()=>{qi++;renderQ();},900);
+}
+
+// ── MEMORY ────────────────────────────────────────────────────────────────────
+const EM=['🐶','🐱','🦊','🐻','🐼','🦁','🐯','🦄'];
+let mc=[],mf=[],ms=0,ml=false,mm=0;
+function startMemory(){mc=[...EM,...EM].sort(()=>Math.random()-.5);mf=new Array(16).fill(false);ms=0;ml=false;mm=0;renderMem();}
+function renderMem(){
+  document.getElementById('mem-wrap').innerHTML=`<div style="text-align:right;color:var(--muted);font-size:13px;margin-bottom:10px;">Moves: <span id="mm">${mm}</span></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">${mc.map((e,i)=>`<button onclick="flipMem(${i})" id="mc${i}" style="aspect-ratio:1;font-size:22px;background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;">${mf[i]?e:'?'}</button>`).join('')}</div>`;
+}
+function flipMem(i){
+  if(ml||mf[i])return;
+  mf[i]=true;
+  document.getElementById('mc'+i).textContent=mc[i];
+  const op=mf.map((f,j)=>f&&!document.getElementById('mc'+j)?.dataset.solved?j:-1).filter(j=>j>=0);
+  if(op.length===2){
+    ml=true;mm++;document.getElementById('mm').textContent=mm;
+    if(mc[op[0]]===mc[op[1]]){
+      op.forEach(j=>{const b=document.getElementById('mc'+j);if(b){b.dataset.solved='1';b.style.borderColor='var(--accent2)';}});
+      ms++;
+      if(ms===8){setTimeout(()=>{document.getElementById('mem-wrap').innerHTML=`<div class="result-box green" style="text-align:center;"><div class="result-label">🎉 You Win!</div><div class="result-value green">${mm} moves</div><button class="btn" style="margin-top:14px;" onclick="startMemory()">Play Again</button></div>`;},400);}
+      ml=false;
+    }else{setTimeout(()=>{op.forEach(j=>{mf[j]=false;const b=document.getElementById('mc'+j);if(b)b.textContent='?';});ml=false;},800);}
+  }
+}
+</script>
+
+<script>
+// Ripple effect on card click
+function addRipple(e,card){
+  const r=document.createElement('div');
+  r.className='ripple-el';
+  const rect=card.getBoundingClientRect();
+  const size=Math.max(rect.width,rect.height)*2;
+  r.style.cssText=`width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px`;
+  card.appendChild(r);
+  setTimeout(()=>r.remove(),800);
+}
+// Cursor-driven tilt + glow — the card moves as the pointer moves over it
+window.addEventListener('DOMContentLoaded', function(){
+  // Highlight + animate whichever tool card is currently centered in view (mobile scroll spotlight)
+  if('IntersectionObserver' in window){
+    const focusIO = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        entry.target.classList.toggle('in-focus', entry.isIntersecting);
+      });
+    }, {root:null, rootMargin:'-42% 0px -42% 0px', threshold:0});
+    document.querySelectorAll('.tool-card').forEach(card=>focusIO.observe(card));
+  }
+});
+
+window.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.tool-card').forEach(card=>{
+    card.style.transition = 'transform .15s ease-out, box-shadow .15s ease-out, border-color .25s';
+    card.addEventListener('mousemove',e=>{
+      const rect=card.getBoundingClientRect();
+      const px=(e.clientX-rect.left)/rect.width;
+      const py=(e.clientY-rect.top)/rect.height;
+      card.style.setProperty('--mx',(px*100)+'%');
+      card.style.setProperty('--my',(py*100)+'%');
+      const rotX=(0.5-py)*22;
+      const rotY=(px-0.5)*22;
+      card.style.transform=`perspective(500px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-12px) scale(1.07)`;
+      card.style.boxShadow='0 22px 40px rgba(79,99,210,0.28)';
+      card.style.zIndex='5';
+    });
+    card.addEventListener('mouseleave',()=>{
+      card.style.transform='';
+      card.style.boxShadow='';
+      card.style.zIndex='';
+    });
+  });
+
+  // Scroll-reveal: sections and blog/footer blocks fade + rise into view as the user scrolls
+  const revealTargets = document.querySelectorAll('.section-title, .tool-grid, .affiliate-section, footer, .hero-blog-link');
+  revealTargets.forEach((el,i)=>{
+    el.classList.add('reveal');
+    el.style.transitionDelay=(Math.min(i%3,2)*0.06)+'s';
+  });
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+    revealTargets.forEach(el=>io.observe(el));
+  } else {
+    revealTargets.forEach(el=>el.classList.add('in-view'));
+  }
+});
+</script>
+
+<script>
+// ════════════════════════════════════════════════════════════════════════════
+// FILE / PDF / OCR ENGINE
+// ════════════════════════════════════════════════════════════════════════════
+
+function showToast(msg){
+  let t=document.getElementById('app-toast');
+  if(!t){t=document.createElement('div');t.id='app-toast';t.className='toast';document.body.appendChild(t);}
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2600);
+}
+
+function fmtSize(b){
+  if(b<1024)return b+' B';
+  if(b<1024*1024)return (b/1024).toFixed(1)+' KB';
+  return (b/1024/1024).toFixed(2)+' MB';
+}
+
+// Generates the HTML for a dropzone + hidden file input
+function fileDropzone(id, accept, multiple){
+  return `<div class="dropzone" id="${id}-zone">
+    <span class="dropzone-icon">📁</span>
+    <div class="dropzone-text">Click to upload or drag & drop</div>
+    <div class="dropzone-sub">${multiple?'You can select multiple files':'Select a file'} — ${accept==='application/pdf'?'PDF':accept==='.docx'?'DOCX':accept.includes('image')?'JPG, PNG, WEBP':accept}</div>
+    <input type="file" id="${id}" accept="${accept}" ${multiple?'multiple':''}>
+  </div>`;
+}
+
+// Wires up a dropzone: drag/drop, click-to-upload, file chip list, reveal target button/panel.
+// onFilesReady(files) optional extra callback fired after files stored.
+function setupDropzone(inputId, listId, revealId, multiple, accept, onFilesReady){
+  const zone=document.getElementById(inputId+'-zone');
+  const input=document.getElementById(inputId);
+  const list=document.getElementById(listId);
+  if(!zone||!input)return;
+  zone._files=[];
+
+  function renderList(){
+    list.innerHTML=zone._files.map((f,i)=>`
+      <div class="file-chip">
+        <span class="fc-icon">${f.type.includes('pdf')?'📄':f.type.includes('image')?'🖼️':'📝'}</span>
+        <span class="fc-name">${f.name}</span>
+        <span class="fc-size">${fmtSize(f.size)}</span>
+        <span class="fc-x" onclick="removeDzFile('${inputId}','${listId}','${revealId||''}',${i})">✕</span>
+      </div>`).join('');
+    if(revealId){
+      const rev=document.getElementById(revealId);
+      if(rev) rev.style.display = zone._files.length ? '' : 'none';
+    }
+  }
+  window['_dzRender_'+inputId]=renderList;
+
+  function addFiles(fl){
+    const arr=Array.from(fl);
+    if(!multiple){ zone._files=arr.slice(0,1); }
+    else { zone._files=zone._files.concat(arr); }
+    renderList();
+    if(onFilesReady) onFilesReady(zone._files, inputId);
+  }
+
+  input.addEventListener('change', e=>{ if(e.target.files.length) addFiles(e.target.files); e.target.value=''; });
+  zone.addEventListener('dragover', e=>{ e.preventDefault(); zone.classList.add('dragover'); });
+  zone.addEventListener('dragleave', ()=> zone.classList.remove('dragover'));
+  zone.addEventListener('drop', e=>{
+    e.preventDefault(); zone.classList.remove('dragover');
+    if(e.dataTransfer.files.length) addFiles(e.dataTransfer.files);
+  });
+
+  zone.getFiles = ()=> zone._files;
+}
+
+function removeDzFile(inputId, listId, revealId, idx){
+  const zone=document.getElementById(inputId+'-zone');
+  zone._files.splice(idx,1);
+  window['_dzRender_'+inputId]();
+  if(zone._files.length===0){
+    ['merge-out','split-out','compress-out','rotate-out','del-out','ext-out','sign-out','txt-out','i2p-out','p2j-out','p2n-out','p2t-out','ocr-out','socr-out','p2w-out','w2p-out','p2e-out'].forEach(id=>{const e=document.getElementById(id);if(e)e.innerHTML='';});
+  }
+}
+
+function getFiles(inputId){
+  const zone=document.getElementById(inputId+'-zone');
+  return zone ? zone._files : [];
+}
+
+function downloadBlob(blob, filename){
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download=filename; a.click();
+  setTimeout(()=>URL.revokeObjectURL(url), 4000);
+}
+
+function progressHTML(id, label){
+  return `<div class="result-box" style="margin-top:16px;"><div class="result-label">${label}</div><div class="progress-wrap"><div class="progress-bar" id="${id}-bar" style="width:5%;"></div></div></div>`;
+}
+function setProgress(id, pct){
+  const b=document.getElementById(id+'-bar'); if(b) b.style.width=Math.min(100,pct)+'%';
+}
+function btnLoading(btn, text){
+  btn._orig = btn._orig || btn.textContent;
+  btn.disabled = true;
+  btn.innerHTML = `<span class="spinner"></span>${text}`;
+}
+function btnReset(btn){
+  btn.disabled = false;
+  btn.textContent = btn._orig || btn.textContent;
+}
+
+async function fileToArrayBuffer(file){
+  return await file.arrayBuffer();
+}
+
+// Renders a small thumbnail of page 1 of a resulting PDF so the user can SEE the outcome before downloading.
+async function renderPdfThumbPreview(bytes, elId, pageNum){
+  const el=document.getElementById(elId);
+  if(!el) return;
+  try{
+    const pdf=await pdfjsLib.getDocument({data:bytes.slice(0)}).promise;
+    const safePage=Math.max(1, Math.min(pageNum||1, pdf.numPages));
+    const page=await pdf.getPage(safePage);
+    const viewport=page.getViewport({scale:0.55});
+    const canvas=document.createElement('canvas');
+    canvas.width=viewport.width; canvas.height=viewport.height;
+    await page.render({canvasContext:canvas.getContext('2d'), viewport}).promise;
+    const extra = pdf.numPages>1 ? `<div style="font-size:11px;color:var(--muted);margin-top:6px;">Showing page ${safePage} of ${pdf.numPages}</div>` : '';
+    el.innerHTML = `<img src="${canvas.toDataURL()}" style="max-width:200px;max-height:260px;border:1.5px solid var(--border);border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.1);display:block;margin:12px auto 0;">${extra}`;
+  }catch(e){
+    // Preview is a nice-to-have; if it fails, downloading still works fine.
+  }
+}
+
+// ── MERGE PDF ─────────────────────────────────────────────────────────────────
+async function doMergePDF(){
+  const files=getFiles('merge-files');
+  if(files.length<2){alert('Please add at least 2 PDF files to merge.');return;}
+  const btn=document.getElementById('merge-btn');
+  const out=document.getElementById('merge-out');
+  btnLoading(btn,'Merging...');
+  out.innerHTML=progressHTML('merge-prog','Merging PDFs...');
+  try{
+    const { PDFDocument } = PDFLib;
+    const merged = await PDFDocument.create();
+    for(let i=0;i<files.length;i++){
+      const bytes = await fileToArrayBuffer(files[i]);
+      const src = await PDFDocument.load(bytes, {ignoreEncryption:true});
+      const pages = await merged.copyPages(src, src.getPageIndices());
+      pages.forEach(p=>merged.addPage(p));
+      setProgress('merge-prog', 10 + (i+1)/files.length*85);
+    }
+    const bytes = await merged.save();
+    setProgress('merge-prog',100);
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Merged Successfully</div><div style="margin:10px 0;color:var(--muted);font-size:13px;">${files.length} files combined into one PDF.</div><div id="merge-preview"></div><button class="btn" style="margin-top:12px;" onclick='downloadMergedPDF()'>⬇ Download merged.pdf</button></div>`;
+    window._mergedPdfBytes = bytes;
+    renderPdfThumbPreview(bytes, 'merge-preview');
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not merge PDFs. Make sure all files are valid PDFs.'}</div>`;
+  }
+  btnReset(btn);
+}
+function downloadMergedPDF(){ downloadBlob(new Blob([window._mergedPdfBytes],{type:'application/pdf'}), 'merged.pdf'); showToast('Downloaded!'); }
+
+// ── SPLIT PDF ─────────────────────────────────────────────────────────────────
+function parsePageRange(str, max){
+  const pages=new Set();
+  str.split(',').forEach(part=>{
+    part=part.trim(); if(!part)return;
+    if(part.includes('-')){
+      const [a,b]=part.split('-').map(n=>parseInt(n.trim(),10));
+      if(!isNaN(a)&&!isNaN(b)){ for(let i=Math.min(a,b); i<=Math.max(a,b); i++) if(i>=1&&i<=max) pages.add(i); }
+    } else {
+      const n=parseInt(part,10);
+      if(!isNaN(n) && n>=1 && n<=max) pages.add(n);
+    }
+  });
+  return Array.from(pages).sort((a,b)=>a-b);
+}
+async function doSplitPDF(){
+  const files=getFiles('split-file');
+  if(!files.length){alert('Please upload a PDF.');return;}
+  const rangeStr=document.getElementById('split-range').value.trim();
+  if(!rangeStr){alert('Enter a page range, e.g. 1-3,5');return;}
+  const out=document.getElementById('split-out');
+  out.innerHTML=progressHTML('split-prog','Splitting PDF...');
+  try{
+    const { PDFDocument } = PDFLib;
+    const bytes = await fileToArrayBuffer(files[0]);
+    const src = await PDFDocument.load(bytes, {ignoreEncryption:true});
+    const max=src.getPageCount();
+    const pages=parsePageRange(rangeStr, max);
+    if(!pages.length){ out.innerHTML='<div class="result-box" style="color:#c0392b;">No valid pages found in that range.</div>'; return; }
+    setProgress('split-prog',40);
+    const newDoc = await PDFDocument.create();
+    const copied = await newDoc.copyPages(src, pages.map(p=>p-1));
+    copied.forEach(p=>newDoc.addPage(p));
+    setProgress('split-prog',90);
+    const outBytes = await newDoc.save();
+    setProgress('split-prog',100);
+    window._splitPdfBytes = outBytes;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Split Complete</div><div style="margin:10px 0;color:var(--muted);font-size:13px;">${pages.length} of ${max} pages extracted.</div><div id="split-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._splitPdfBytes],{type:'application/pdf'}),'split.pdf');showToast('Downloaded!')">⬇ Download split.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'split-preview');
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not read this PDF.'}</div>`;
+  }
+}
+
+// ── COMPRESS PDF ──────────────────────────────────────────────────────────────
+async function doCompressPDF(){
+  const files=getFiles('compress-file');
+  if(!files.length){alert('Please upload a PDF.');return;}
+  const btn=document.getElementById('compress-btn');
+  const out=document.getElementById('compress-out');
+  btnLoading(btn,'Compressing...');
+  out.innerHTML=progressHTML('compress-prog','Optimizing PDF...');
+  try{
+    const { PDFDocument } = PDFLib;
+    const origSize=files[0].size;
+    const bytes=await fileToArrayBuffer(files[0]);
+    setProgress('compress-prog',30);
+    const doc=await PDFDocument.load(bytes, {ignoreEncryption:true, updateMetadata:false});
+    setProgress('compress-prog',60);
+    const outBytes=await doc.save({useObjectStreams:true, addDefaultPage:false});
+    setProgress('compress-prog',100);
+    const newSize=outBytes.byteLength;
+    const pct = origSize>newSize ? Math.round((1-newSize/origSize)*100) : 0;
+    window._compressedPdfBytes=outBytes;
+    out.innerHTML=`<div class="result-grid result-box green" style="margin-top:16px;">
+      <div><div class="result-label">Original</div><div class="result-value green">${fmtSize(origSize)}</div></div>
+      <div><div class="result-label">Compressed</div><div class="result-value green">${fmtSize(newSize)}</div></div>
+      </div>
+      <div style="margin:10px 0;color:var(--muted);font-size:13px;">${pct>0?`Reduced by ~${pct}%.`:'This PDF is already well-optimized — structural compression applied.'}</div>
+      <div id="compress-preview" style="text-align:center;"></div>
+      <button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._compressedPdfBytes],{type:'application/pdf'}),'compressed.pdf');showToast('Downloaded!')">⬇ Download compressed.pdf</button>`;
+    renderPdfThumbPreview(outBytes, 'compress-preview');
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not compress this PDF.'}</div>`;
+  }
+  btnReset(btn);
+}
+
+// ── ROTATE PDF ────────────────────────────────────────────────────────────────
+async function doRotatePDF(){
+  const files=getFiles('rotate-file');
+  if(!files.length){alert('Please upload a PDF.');return;}
+  const deg=parseInt(document.getElementById('rotate-deg').value,10);
+  const out=document.getElementById('rotate-out');
+  out.innerHTML=progressHTML('rotate-prog','Rotating pages...');
+  try{
+    const { PDFDocument, degrees } = PDFLib;
+    const bytes=await fileToArrayBuffer(files[0]);
+    const doc=await PDFDocument.load(bytes,{ignoreEncryption:true});
+    const pages=doc.getPages();
+    pages.forEach((p,i)=>{
+      const cur=p.getRotation().angle;
+      p.setRotation(degrees((cur+deg)%360));
+      setProgress('rotate-prog', (i+1)/pages.length*90);
+    });
+    const outBytes=await doc.save();
+    setProgress('rotate-prog',100);
+    window._rotatedPdfBytes=outBytes;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Rotated ${pages.length} Pages</div><div id="rotate-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._rotatedPdfBytes],{type:'application/pdf'}),'rotated.pdf');showToast('Downloaded!')">⬇ Download rotated.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'rotate-preview');
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not rotate this PDF.'}</div>`;
+  }
+}
+
+// ── DELETE / EXTRACT PAGES (with thumbnails) ─────────────────────────────────
+async function renderThumbsCommon(files, thumbsId, mode){
+  const wrap=document.getElementById(thumbsId);
+  if(!files.length){ wrap.innerHTML=''; return; }
+  wrap.innerHTML=`<div class="progress-wrap"><div class="progress-bar" id="${thumbsId}-bar" style="width:10%;"></div></div>`;
+  try{
+    const buf=await fileToArrayBuffer(files[0]);
+    const pdf=await pdfjsLib.getDocument({data:buf.slice(0)}).promise;
+    const n=pdf.numPages;
+    const grid=document.createElement('div');
+    grid.className='page-thumb-grid';
+    wrap.innerHTML='';
+    wrap.appendChild(grid);
+    const selected = mode==='extract' ? new Set() : new Set(); // for delete: selected=to-delete; extract: selected=to-keep
+    wrap._selected = selected;
+    wrap._numPages = n;
+    for(let i=1;i<=n;i++){
+      const page=await pdf.getPage(i);
+      const viewport=page.getViewport({scale:0.3});
+      const canvas=document.createElement('canvas');
+      canvas.width=viewport.width; canvas.height=viewport.height;
+      await page.render({canvasContext:canvas.getContext('2d'), viewport}).promise;
+      const div=document.createElement('div');
+      div.className='page-thumb';
+      div.innerHTML=`<img src="${canvas.toDataURL()}"><div class="pt-num">${i}</div><div class="pt-check">✓</div>`;
+      div.onclick=()=>{
+        if(selected.has(i)){selected.delete(i); div.classList.remove('selected');}
+        else {selected.add(i); div.classList.add('selected');}
+        const btnId = mode==='extract' ? 'ext-btn' : 'del-btn';
+        const btn=document.getElementById(btnId);
+        if(btn) btn.style.display = selected.size ? '' : 'none';
+      };
+      grid.appendChild(div);
+    }
+  }catch(err){
+    wrap.innerHTML=`<div class="result-box" style="color:#c0392b;">Could not render preview: ${err.message||'invalid PDF'}</div>`;
+  }
+}
+function renderPageThumbsForDelete(files){ renderThumbsCommon(files, 'del-thumbs', 'delete'); document.getElementById('del-btn').style.display='none'; }
+function renderPageThumbsForExtract(files){ renderThumbsCommon(files, 'ext-thumbs', 'extract'); document.getElementById('ext-btn').style.display='none'; }
+
+async function doDeletePages(){
+  const files=getFiles('del-file');
+  const wrap=document.getElementById('del-thumbs');
+  const toDelete=wrap._selected;
+  if(!files.length || !toDelete || !toDelete.size){alert('Select at least one page to delete.');return;}
+  const out=document.getElementById('del-out');
+  out.innerHTML=progressHTML('del-prog','Removing pages...');
+  try{
+    const { PDFDocument } = PDFLib;
+    const bytes=await fileToArrayBuffer(files[0]);
+    const src=await PDFDocument.load(bytes,{ignoreEncryption:true});
+    const max=src.getPageCount();
+    const keep=[]; for(let i=0;i<max;i++) if(!toDelete.has(i+1)) keep.push(i);
+    setProgress('del-prog',40);
+    const doc=await PDFDocument.create();
+    const pages=await doc.copyPages(src, keep);
+    pages.forEach(p=>doc.addPage(p));
+    const outBytes=await doc.save();
+    setProgress('del-prog',100);
+    window._delPdfBytes=outBytes;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Removed ${toDelete.size} Page(s)</div><div id="del-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._delPdfBytes],{type:'application/pdf'}),'edited.pdf');showToast('Downloaded!')">⬇ Download edited.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'del-preview');
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
+  }
+}
+
+async function doExtractPages(){
+  const files=getFiles('ext-file');
+  const wrap=document.getElementById('ext-thumbs');
+  const toKeep=wrap._selected;
+  if(!files.length || !toKeep || !toKeep.size){alert('Select at least one page to extract.');return;}
+  const out=document.getElementById('ext-out');
+  out.innerHTML=progressHTML('ext-prog','Extracting pages...');
+  try{
+    const { PDFDocument } = PDFLib;
+    const bytes=await fileToArrayBuffer(files[0]);
+    const src=await PDFDocument.load(bytes,{ignoreEncryption:true});
+    const indices=Array.from(toKeep).sort((a,b)=>a-b).map(p=>p-1);
+    setProgress('ext-prog',40);
+    const doc=await PDFDocument.create();
+    const pages=await doc.copyPages(src, indices);
+    pages.forEach(p=>doc.addPage(p));
+    const outBytes=await doc.save();
+    setProgress('ext-prog',100);
+    window._extPdfBytes=outBytes;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Extracted ${toKeep.size} Page(s)</div><div id="ext-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._extPdfBytes],{type:'application/pdf'}),'extracted.pdf');showToast('Downloaded!')">⬇ Download extracted.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'ext-preview');
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
+  }
+}
+
+// ── SIGN PDF ──────────────────────────────────────────────────────────────────
+let sigCtx=null, sigDrawing=false, sigHasDrawing=false;
+function switchSigTab(which){
+  document.getElementById('sigtab-type').classList.toggle('active', which==='type');
+  document.getElementById('sigtab-draw').classList.toggle('active', which==='draw');
+  document.getElementById('sig-type-pane').style.display = which==='type'?'':'none';
+  document.getElementById('sig-draw-pane').style.display = which==='draw'?'':'none';
+  updateSignOverlay();
+}
+function initSigCanvas(){
+  const canvas=document.getElementById('sig-canvas');
+  if(!canvas || canvas._wired) return;
+  canvas._wired=true;
+  sigCtx=canvas.getContext('2d');
+  sigCtx.lineWidth=2.5; sigCtx.lineCap='round'; sigCtx.strokeStyle='#1a1d2e';
+  const pos=e=>{
+    const r=canvas.getBoundingClientRect();
+    const cx = (e.touches?e.touches[0].clientX:e.clientX) - r.left;
+    const cy = (e.touches?e.touches[0].clientY:e.clientY) - r.top;
+    return {x: cx*(canvas.width/r.width), y: cy*(canvas.height/r.height)};
+  };
+  const start=e=>{ e.preventDefault(); sigDrawing=true; sigHasDrawing=true; const p=pos(e); sigCtx.beginPath(); sigCtx.moveTo(p.x,p.y); };
+  const move=e=>{ if(!sigDrawing)return; e.preventDefault(); const p=pos(e); sigCtx.lineTo(p.x,p.y); sigCtx.stroke(); };
+  const end=()=>{ sigDrawing=false; updateSignOverlay(); };
+  canvas.addEventListener('mousedown',start); canvas.addEventListener('mousemove',move); window.addEventListener('mouseup',end);
+  canvas.addEventListener('touchstart',start); canvas.addEventListener('touchmove',move); canvas.addEventListener('touchend',end);
+}
+function clearSigCanvas(){ if(sigCtx){ sigCtx.clearRect(0,0,460,140); sigHasDrawing=false; updateSignOverlay(); } }
+
+// ── PDF PAGE PREVIEW + DRAG-TO-PLACE (shared by Sign PDF & Add Text to PDF) ───
+async function renderPlacerPage(file, pageNum, canvasEl){
+  const buf=await fileToArrayBuffer(file);
+  const pdf=await pdfjsLib.getDocument({data:buf.slice(0)}).promise;
+  const n=pdf.numPages;
+  const safePage=Math.max(1, Math.min(pageNum||1, n));
+  const page=await pdf.getPage(safePage);
+  const viewport1=page.getViewport({scale:1});
+  const scale=Math.min(380/viewport1.width, 1.4);
+  const viewport=page.getViewport({scale});
+  canvasEl.width=viewport.width; canvasEl.height=viewport.height;
+  await page.render({canvasContext:canvasEl.getContext('2d'), viewport}).promise;
+  return {numPages:n, page:safePage};
+}
+function attachDragToPlace(wrapEl, overlayEl, posState, focusEl){
+  if(wrapEl._dragWired) return;
+  wrapEl._dragWired=true;
+  let dragging=false;
+  const setFromClient=(clientX, clientY)=>{
+    const rect=wrapEl.getBoundingClientRect();
+    let x=((clientX-rect.left)/rect.width)*100;
+    let y=((clientY-rect.top)/rect.height)*100;
+    x=Math.max(0,Math.min(94,x));
+    y=Math.max(0,Math.min(94,y));
+    posState.x=x; posState.y=y;
+    overlayEl.style.left=x+'%';
+    overlayEl.style.top=y+'%';
+  };
+  const isOnOverlay=target => overlayEl.contains(target);
+  const onDown=e=>{
+    if(isOnOverlay(e.target)) return; // let the drag-handle / editable / resize handle manage their own events
+    dragging=true;
+    const p = e.touches ? e.touches[0] : e;
+    setFromClient(p.clientX, p.clientY);
+    if(focusEl){ setTimeout(()=>focusEl.focus(),0); }
+    e.preventDefault();
+  };
+  const onMove=e=>{
+    if(!dragging) return;
+    const p = e.touches ? e.touches[0] : e;
+    setFromClient(p.clientX, p.clientY);
+    e.preventDefault();
+  };
+  const onUp=()=>{ dragging=false; };
+  wrapEl.addEventListener('mousedown', onDown);
+  wrapEl.addEventListener('mousemove', onMove);
+  window.addEventListener('mouseup', onUp);
+  wrapEl.addEventListener('touchstart', onDown, {passive:false});
+  wrapEl.addEventListener('touchmove', onMove, {passive:false});
+  wrapEl.addEventListener('touchend', onUp);
+
+  // drag-handle: moves the overlay without needing to click empty page space
+  const handle=overlayEl.querySelector('.pdf-overlay-drag');
+  if(handle && !handle._wired){
+    handle._wired=true;
+    let handleDragging=false;
+    const hDown=e=>{ handleDragging=true; e.preventDefault(); e.stopPropagation(); };
+    const hMove=e=>{
+      if(!handleDragging) return;
+      const p = e.touches ? e.touches[0] : e;
+      setFromClient(p.clientX, p.clientY);
+      e.preventDefault();
+    };
+    const hUp=()=>{ handleDragging=false; };
+    handle.addEventListener('mousedown', hDown);
+    window.addEventListener('mousemove', hMove);
+    window.addEventListener('mouseup', hUp);
+    handle.addEventListener('touchstart', hDown, {passive:false});
+    window.addEventListener('touchmove', hMove, {passive:false});
+    window.addEventListener('touchend', hUp);
+  }
+}
+// Wires a resize-handle (bottom-right dot) that scales a numeric size value by drag distance from the overlay's top-left.
+function wireResizeHandle(overlayEl, getSize, setSize){
+  const handle=overlayEl.querySelector('.pdf-overlay-resize');
+  if(!handle || handle._wired) return;
+  handle._wired=true;
+  let resizing=false, startDist=1, startSize=16;
+  const start=e=>{
+    resizing=true;
+    const rect=overlayEl.getBoundingClientRect();
+    const p = e.touches ? e.touches[0] : e;
+    startDist=Math.max(1, Math.hypot(p.clientX-rect.left, p.clientY-rect.top));
+    startSize=getSize();
+    e.preventDefault(); e.stopPropagation();
+  };
+  const move=e=>{
+    if(!resizing) return;
+    const rect=overlayEl.getBoundingClientRect();
+    const p = e.touches ? e.touches[0] : e;
+    const dist=Math.max(1, Math.hypot(p.clientX-rect.left, p.clientY-rect.top));
+    const scale=dist/startDist;
+    const newSize=Math.max(6, Math.min(120, Math.round(startSize*scale)));
+    setSize(newSize);
+    e.preventDefault();
+  };
+  const end=()=>{ resizing=false; };
+  handle.addEventListener('mousedown', start);
+  window.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+  handle.addEventListener('touchstart', start, {passive:false});
+  window.addEventListener('touchmove', move, {passive:false});
+  window.addEventListener('touchend', end);
+}
+
+
+// ── Sign PDF preview ─────────────────────────────────────────────────────────
+window._signPos = {x:55, y:75};
+window._signFontSize = 26;   // used when typed signature
+window._signImgScale = 1;    // used when drawn signature (base width 160px)
+async function initSignPreview(){
+  const files=getFiles('sign-file');
+  if(!files.length) return;
+  const canvas=document.getElementById('sign-preview-canvas');
+  const wrap=document.getElementById('sign-preview-wrap');
+  const overlay=document.getElementById('sign-overlay');
+  try{
+    const info=await renderPlacerPage(files[0], +document.getElementById('sig-page').value||1, canvas);
+    document.getElementById('sign-page-info').textContent = `Page ${info.page} of ${info.numPages}`;
+    document.getElementById('sig-page').max = info.numPages;
+    attachDragToPlace(wrap, overlay, window._signPos);
+    overlay.style.left=window._signPos.x+'%';
+    overlay.style.top=window._signPos.y+'%';
+    wireResizeHandle(overlay,
+      ()=> document.getElementById('sigtab-draw').classList.contains('active') ? window._signImgScale*100 : window._signFontSize,
+      (v)=>{
+        const isDraw=document.getElementById('sigtab-draw').classList.contains('active');
+        if(isDraw){ window._signImgScale=Math.max(0.3,Math.min(4,v/100)); } else { window._signFontSize=v; }
+        updateSignOverlay();
+      });
+    updateSignOverlay();
+  }catch(err){
+    wrap.innerHTML=`<div style="padding:16px;color:#c0392b;font-size:13px;">Could not preview this PDF: ${err.message||'invalid file'}</div>`;
+  }
+}
+async function updateSignPreviewPage(){
+  const files=getFiles('sign-file');
+  if(!files.length) return;
+  const canvas=document.getElementById('sign-preview-canvas');
+  const info=await renderPlacerPage(files[0], +document.getElementById('sig-page').value||1, canvas);
+  document.getElementById('sign-page-info').textContent = `Page ${info.page} of ${info.numPages}`;
+  document.getElementById('sig-page').value = info.page;
+}
+function updateSignOverlay(){
+  const inner=document.getElementById('sign-overlay-inner');
+  if(!inner) return;
+  const isDraw = document.getElementById('sigtab-draw') && document.getElementById('sigtab-draw').classList.contains('active');
+  if(isDraw){
+    if(sigHasDrawing){
+      const c=document.getElementById('sig-canvas');
+      const h=34*window._signImgScale;
+      inner.innerHTML=`<img src="${c.toDataURL()}" style="height:${h}px;display:block;pointer-events:none;">`;
+    } else {
+      inner.textContent='✍️ Signature';
+      inner.style.fontFamily='inherit';
+      inner.style.fontSize='13px';
+    }
+  } else {
+    const text=document.getElementById('sig-text').value.trim()||'Your Name';
+    inner.textContent=text;
+    inner.style.fontFamily=`'Brush Script MT',cursive`;
+    inner.style.fontSize=Math.round(window._signFontSize*0.77)+'px';
+  }
+}
+
+// ── Add Text to PDF preview ──────────────────────────────────────────────────
+window._txtPos = {x:10, y:10};
+window._txtFontSize = 16;
+async function initTxtPreview(){
+  const files=getFiles('txt-file');
+  if(!files.length) return;
+  const canvas=document.getElementById('txt-preview-canvas');
+  const wrap=document.getElementById('txt-preview-wrap');
+  const overlay=document.getElementById('txt-overlay');
+  const editable=document.getElementById('txt-overlay-text');
+  try{
+    const info=await renderPlacerPage(files[0], +document.getElementById('txt-page').value||1, canvas);
+    document.getElementById('txt-page-info').textContent = `Page ${info.page} of ${info.numPages}`;
+    document.getElementById('txt-page').max = info.numPages;
+    attachDragToPlace(wrap, overlay, window._txtPos, editable);
+    overlay.style.left=window._txtPos.x+'%';
+    overlay.style.top=window._txtPos.y+'%';
+    wireResizeHandle(overlay, ()=>window._txtFontSize, (v)=>{
+      window._txtFontSize=v;
+      document.getElementById('txt-size').value=v;
+      editable.style.fontSize=Math.max(8,v*0.75)+'px';
+    });
+    // clicking directly into the editable text must not trigger the wrap's move-to-click behavior
+    editable.addEventListener('mousedown', e=>e.stopPropagation());
+    editable.addEventListener('touchstart', e=>e.stopPropagation());
+    editable.addEventListener('focus', ()=>{ if(editable.textContent==='Click here and type') editable.textContent=''; });
+    editable.addEventListener('blur', ()=>{ if(!editable.textContent.trim()) editable.textContent='Click here and type'; });
+  }catch(err){
+    wrap.innerHTML=`<div style="padding:16px;color:#c0392b;font-size:13px;">Could not preview this PDF: ${err.message||'invalid file'}</div>`;
+  }
+}
+async function updateTxtPreviewPage(){
+  const files=getFiles('txt-file');
+  if(!files.length) return;
+  const canvas=document.getElementById('txt-preview-canvas');
+  const info=await renderPlacerPage(files[0], +document.getElementById('txt-page').value||1, canvas);
+  document.getElementById('txt-page-info').textContent = `Page ${info.page} of ${info.numPages}`;
+  document.getElementById('txt-page').value = info.page;
+}
+function onTxtSizeInputChange(){
+  const size=+document.getElementById('txt-size').value||16;
+  window._txtFontSize=size;
+  const el=document.getElementById('txt-overlay-text');
+  if(el) el.style.fontSize=Math.max(8,size*0.75)+'px';
+}
+function onTxtColorChange(){
+  const color=document.getElementById('txt-color').value;
+  const el=document.getElementById('txt-overlay-text');
+  if(el) el.style.color=color;
+}
+
+async function doSignPDF(){
+  const files=getFiles('sign-file');
+  if(!files.length){alert('Please upload a PDF.');return;}
+  const isDrawTab = document.getElementById('sigtab-draw').classList.contains('active');
+  const pageNum = parseInt(document.getElementById('sig-page').value,10) || 1;
+  const pos = window._signPos || {x:55,y:75};
+  const out=document.getElementById('sign-out');
+  try{
+    const { PDFDocument, rgb, StandardFonts } = PDFLib;
+    const bytes=await fileToArrayBuffer(files[0]);
+    const doc=await PDFDocument.load(bytes,{ignoreEncryption:true});
+    const pages=doc.getPages();
+    if(pageNum<1||pageNum>pages.length){ out.innerHTML='<div class="result-box" style="color:#c0392b;">Page number out of range.</div>'; return; }
+    const page=pages[pageNum-1];
+    const {width,height}=page.getSize();
+    const px=(pos.x/100)*width;
+    const py=height-(pos.y/100)*height;
+
+    if(isDrawTab){
+      if(!sigHasDrawing){alert('Please draw your signature first.');return;}
+      const canvas=document.getElementById('sig-canvas');
+      const dataUrl=canvas.toDataURL('image/png');
+      const pngBytes=await fetch(dataUrl).then(r=>r.arrayBuffer());
+      const img=await doc.embedPng(pngBytes);
+      const w=160*(window._signImgScale||1), h=w*(img.height/img.width);
+      page.drawImage(img,{x:px,y:py-h,width:w,height:h});
+    } else {
+      const text=document.getElementById('sig-text').value.trim();
+      if(!text){alert('Please type your signature.');return;}
+      const size=window._signFontSize||26;
+      const font=await doc.embedFont(StandardFonts.HelveticaOblique);
+      page.drawText(text,{x:px,y:py-size,size,font,color:rgb(0.1,0.1,0.18)});
+    }
+    const outBytes=await doc.save();
+    window._signedPdfBytes=outBytes;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Signature Added to Page ${pageNum}</div><div id="sign-result-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._signedPdfBytes],{type:'application/pdf'}),'signed.pdf');showToast('Downloaded!')">⬇ Download signed.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'sign-result-preview', pageNum);
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
+  }
+}
+
+// ── ADD TEXT TO PDF ───────────────────────────────────────────────────────────
+function hexToRgb01(hex){
+  const h=hex.replace('#','');
+  const r=parseInt(h.substring(0,2),16)/255, g=parseInt(h.substring(2,4),16)/255, b=parseInt(h.substring(4,6),16)/255;
+  return {r,g,b};
+}
+async function doAddTextToPDF(){
+  const files=getFiles('txt-file');
+  if(!files.length){alert('Please upload a PDF.');return;}
+  const editable=document.getElementById('txt-overlay-text');
+  const text = editable ? editable.innerText : '';
+  if(!text.trim() || text.trim()==='Click here and type'){alert('Click on the page preview and type some text first.');return;}
+  const pageNum=parseInt(document.getElementById('txt-page').value,10)||1;
+  const pos = window._txtPos || {x:10,y:10};
+  const fontSize=Math.max(6, window._txtFontSize || +document.getElementById('txt-size').value || 16);
+  const colorHex=document.getElementById('txt-color').value||'#1a1d2e';
+  const out=document.getElementById('txt-out');
+  try{
+    const { PDFDocument, rgb, StandardFonts } = PDFLib;
+    const bytes=await fileToArrayBuffer(files[0]);
+    const doc=await PDFDocument.load(bytes,{ignoreEncryption:true});
+    const pages=doc.getPages();
+    if(pageNum<1||pageNum>pages.length){ out.innerHTML=`<div class="result-box" style="color:#c0392b;">Page number out of range (this PDF has ${pages.length} page${pages.length>1?'s':''}).</div>`; return; }
+    const page=pages[pageNum-1];
+    const {width,height}=page.getSize();
+    const font=await doc.embedFont(StandardFonts.Helvetica);
+    const {r,g,b}=hexToRgb01(colorHex);
+    const lines=text.split('\n');
+    const startX=(pos.x/100)*width;
+    const startY=height-(pos.y/100)*height-fontSize;
+    const lineGap=fontSize*1.35;
+    lines.forEach((line,i)=>{
+      if(line.length) page.drawText(line,{x:startX,y:startY-(i*lineGap),size:fontSize,font,color:rgb(r,g,b)});
+    });
+    const outBytes=await doc.save();
+    window._textPdfBytes=outBytes;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Text Added to Page ${pageNum}</div><div id="txt-result-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._textPdfBytes],{type:'application/pdf'}),'edited.pdf');showToast('Downloaded!')">⬇ Download edited.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'txt-result-preview', pageNum);
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
+  }
+}
+
+// ── IMAGES → PDF ──────────────────────────────────────────────────────────────
+async function doImagesToPDF(){
+  const files=getFiles('i2p-files');
+  if(!files.length){alert('Please add at least 1 image.');return;}
+  const btn=document.getElementById('i2p-btn');
+  const out=document.getElementById('i2p-out');
+  btnLoading(btn,'Creating PDF...');
+  out.innerHTML=progressHTML('i2p-prog','Building PDF...');
+  try{
+    const { PDFDocument } = PDFLib;
+    const doc=await PDFDocument.create();
+    for(let i=0;i<files.length;i++){
+      const f=files[i];
+      const bytes=await fileToArrayBuffer(f);
+      let img;
+      if(f.type.includes('png')) img=await doc.embedPng(bytes);
+      else img=await doc.embedJpg(await convertToJpegBytes(f));
+      const page=doc.addPage([img.width,img.height]);
+      page.drawImage(img,{x:0,y:0,width:img.width,height:img.height});
+      setProgress('i2p-prog',(i+1)/files.length*90);
+    }
+    const outBytes=await doc.save();
+    setProgress('i2p-prog',100);
+    window._i2pBytes=outBytes;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ PDF Created (${files.length} pages)</div><div id="i2p-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._i2pBytes],{type:'application/pdf'}),'images.pdf');showToast('Downloaded!')">⬇ Download images.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'i2p-preview');
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message}</div>`;
+  }
+  btnReset(btn);
+}
+// Helper: ensure non-JPEG raster images (e.g. webp) get converted to real JPEG bytes for pdf-lib
+async function convertToJpegBytes(file){
+  if(file.type==='image/jpeg' || file.type==='image/jpg') return await fileToArrayBuffer(file);
+  const img=await loadImage(file);
+  const canvas=document.createElement('canvas');
+  canvas.width=img.width; canvas.height=img.height;
+  canvas.getContext('2d').drawImage(img,0,0);
+  const blob=await new Promise(res=>canvas.toBlob(res,'image/jpeg',0.92));
+  return await blob.arrayBuffer();
+}
+function loadImage(file){
+  return new Promise((res,rej)=>{
+    const img=new Image();
+    img.onload=()=>res(img);
+    img.onerror=rej;
+    img.src=URL.createObjectURL(file);
+  });
+}
+
+// ── PDF → IMAGES (JPG/PNG) ────────────────────────────────────────────────────
+async function doPdfToImages(format){
+  const inputId = format==='jpeg' ? 'p2j-file' : 'p2n-file';
+  const outId = format==='jpeg' ? 'p2j-out' : 'p2n-out';
+  const btnId = format==='jpeg' ? 'p2j-btn' : 'p2n-btn';
+  const files=getFiles(inputId);
+  if(!files.length){alert('Please upload a PDF.');return;}
+  const btn=document.getElementById(btnId);
+  const out=document.getElementById(outId);
+  btnLoading(btn,'Converting...');
+  out.innerHTML=progressHTML(btnId+'-prog','Rendering pages...');
+  try{
+    const buf=await fileToArrayBuffer(files[0]);
+    const pdf=await pdfjsLib.getDocument({data:buf}).promise;
+    const n=pdf.numPages;
+    const images=[];
+    for(let i=1;i<=n;i++){
+      const page=await pdf.getPage(i);
+      const viewport=page.getViewport({scale:2});
+      const canvas=document.createElement('canvas');
+      canvas.width=viewport.width; canvas.height=viewport.height;
+      await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;
+      const mime = format==='jpeg' ? 'image/jpeg' : 'image/png';
+      const dataUrl=canvas.toDataURL(mime, 0.92);
+      images.push({page:i, dataUrl});
+      setProgress(btnId+'-prog', (i/n)*90);
+    }
+    setProgress(btnId+'-prog',100);
+    window['_pdfImgs_'+format]=images;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ ${n} Page(s) Converted</div>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
+      ${images.map((im,i)=>`<button class="btn btn-sec" onclick="downloadBlob(dataURLtoBlob('${im.dataUrl}'),'page-${im.page}.${format==='jpeg'?'jpg':'png'}')">⬇ Download Page ${im.page}</button>`).join('')}
+      ${images.length>1?`<button class="btn" style="margin-top:6px;" onclick="downloadAllAsZip(window['_pdfImgs_${format}'],'${format==='jpeg'?'jpg':'png'}')">⬇ Download All as ZIP</button>`:''}
+      </div></div>`;
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not render this PDF.'}</div>`;
+  }
+  btnReset(btn);
+}
+function dataURLtoBlob(dataUrl){
+  const [meta,b64]=dataUrl.split(',');
+  const mime=meta.match(/:(.*?);/)[1];
+  const bin=atob(b64);
+  const arr=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++) arr[i]=bin.charCodeAt(i);
+  return new Blob([arr],{type:mime});
+}
+async function downloadAllAsZip(images, ext){
+  if(!window.JSZip){ await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js'); }
+  const zip=new JSZip();
+  images.forEach(im=>{ zip.file(`page-${im.page}.${ext}`, im.dataUrl.split(',')[1], {base64:true}); });
+  const blob=await zip.generateAsync({type:'blob'});
+  downloadBlob(blob,'pages.zip');
+  showToast('ZIP downloaded!');
+}
+function loadScript(src){
+  return new Promise((res,rej)=>{
+    const s=document.createElement('script'); s.src=src; s.onload=res; s.onerror=rej; document.head.appendChild(s);
+  });
+}
+
+// ── PDF → TEXT ────────────────────────────────────────────────────────────────
+async function doPdfToText(){
+  const files=getFiles('p2t-file');
+  if(!files.length){alert('Please upload a PDF.');return;}
+  const btn=document.getElementById('p2t-btn');
+  const out=document.getElementById('p2t-out');
+  btnLoading(btn,'Extracting...');
+  out.innerHTML=progressHTML('p2t-prog','Reading PDF text...');
+  try{
+    const text=await extractTextFromPdf(files[0], pct=>setProgress('p2t-prog',pct));
+    window._pdfText=text;
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;"><div class="result-label">Extracted Text</div><textarea readonly rows="8" style="margin-top:8px;">${escapeHtml(text).slice(0,5000)}${text.length>5000?'\\n\\n[...preview truncated, full text in download...]':''}</textarea><button class="btn" style="margin-top:8px;" onclick="downloadBlob(new Blob([window._pdfText],{type:'text/plain'}),'extracted.txt');showToast('Downloaded!')">⬇ Download .txt</button></div>`;
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not extract text. This PDF may be scanned — try Scan PDF to Text (OCR) instead.'}</div>`;
+  }
+  btnReset(btn);
+}
+async function extractTextFromPdf(file, onProgress){
+  const buf=await fileToArrayBuffer(file);
+  const pdf=await pdfjsLib.getDocument({data:buf}).promise;
+  let full='';
+  for(let i=1;i<=pdf.numPages;i++){
+    const page=await pdf.getPage(i);
+    const content=await page.getTextContent();
+    full += content.items.map(it=>it.str).join(' ') + '\n\n';
+    if(onProgress) onProgress((i/pdf.numPages)*95);
+  }
+  return full.trim();
+}
+function escapeHtml(s){ return s.replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+// ── OCR (image) ───────────────────────────────────────────────────────────────
+async function doOCR(){
+  const files=getFiles('ocr-file');
+  if(!files.length){alert('Please upload an image.');return;}
+  const btn=document.getElementById('ocr-btn');
+  const out=document.getElementById('ocr-out');
+  btnLoading(btn,'Reading...');
+  out.innerHTML=progressHTML('ocr-prog','Running OCR (this can take a moment)...');
+  try{
+    const { data: { text } } = await Tesseract.recognize(files[0], 'eng', {
+      logger: m=>{ if(m.status==='recognizing text') setProgress('ocr-prog', m.progress*100); }
+    });
+    window._ocrText=text;
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;"><div class="result-label">Extracted Text</div><textarea readonly rows="8" style="margin-top:8px;">${escapeHtml(text)}</textarea><button class="btn" style="margin-top:8px;" onclick="downloadBlob(new Blob([window._ocrText],{type:'text/plain'}),'ocr-result.txt');showToast('Downloaded!')">⬇ Download .txt</button></div>`;
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'OCR failed. Try a clearer image.'}</div>`;
+  }
+  btnReset(btn);
+}
+
+// ── SCAN PDF → OCR TEXT ───────────────────────────────────────────────────────
+async function doScanOCR(){
+  const files=getFiles('socr-file');
+  if(!files.length){alert('Please upload a PDF.');return;}
+  const btn=document.getElementById('socr-btn');
+  const out=document.getElementById('socr-out');
+  btnLoading(btn,'Running OCR...');
+  out.innerHTML=progressHTML('socr-prog','Converting pages & running OCR...');
+  try{
+    const buf=await fileToArrayBuffer(files[0]);
+    const pdf=await pdfjsLib.getDocument({data:buf}).promise;
+    let fullText='';
+    const n=pdf.numPages;
+    for(let i=1;i<=n;i++){
+      const page=await pdf.getPage(i);
+      const viewport=page.getViewport({scale:2});
+      const canvas=document.createElement('canvas');
+      canvas.width=viewport.width; canvas.height=viewport.height;
+      await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;
+      const dataUrl=canvas.toDataURL('image/png');
+      const { data:{text} } = await Tesseract.recognize(dataUrl,'eng',{
+        logger: m=>{ if(m.status==='recognizing text') setProgress('socr-prog', ((i-1)+m.progress)/n*95); }
+      });
+      fullText += `--- Page ${i} ---\n${text}\n\n`;
+    }
+    window._scanOcrText=fullText.trim();
+    setProgress('socr-prog',100);
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;"><div class="result-label">Extracted Text (${n} page${n>1?'s':''})</div><textarea readonly rows="8" style="margin-top:8px;">${escapeHtml(fullText.slice(0,5000))}</textarea><button class="btn" style="margin-top:8px;" onclick="downloadBlob(new Blob([window._scanOcrText],{type:'text/plain'}),'scanned-text.txt');showToast('Downloaded!')">⬇ Download .txt</button></div>`;
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'OCR failed on this PDF.'}</div>`;
+  }
+  btnReset(btn);
+}
+
+// ── PDF → WORD (text-based .doc) ──────────────────────────────────────────────
+async function doPdfToWord(){
+  const files=getFiles('p2w-file');
+  if(!files.length){alert('Please upload a PDF.');return;}
+  const btn=document.getElementById('p2w-btn');
+  const out=document.getElementById('p2w-out');
+  btnLoading(btn,'Converting...');
+  out.innerHTML=progressHTML('p2w-prog','Extracting content...');
+  try{
+    const text=await extractTextFromPdf(files[0], pct=>setProgress('p2w-prog',pct));
+    const html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+      <head><meta charset="utf-8"><title>Document</title></head>
+      <body>${text.split('\n\n').map(p=>`<p>${escapeHtml(p).replace(/\n/g,'<br>')}</p>`).join('')}</body></html>`;
+    const blob=new Blob(['\ufeff', html], {type:'application/msword'});
+    window._wordBlob=blob;
+    setProgress('p2w-prog',100);
+    const snippet = escapeHtml(text.slice(0,400)) + (text.length>400 ? '…' : '');
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Converted to Word</div><div style="background:var(--surface2);border-radius:8px;padding:10px 12px;margin:10px 0;font-size:12.5px;color:var(--muted);max-height:120px;overflow-y:auto;white-space:pre-wrap;">${snippet||'(no extractable text found)'}</div><button class="btn" onclick="downloadBlob(window._wordBlob,'converted.doc');showToast('Downloaded!')">⬇ Download converted.doc</button></div>`;
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not extract this PDF — it may be scanned. Try Scan PDF to Text first.'}</div>`;
+  }
+  btnReset(btn);
+}
+
+// ── WORD → PDF (text-based) ───────────────────────────────────────────────────
+async function doWordToPdf(){
+  const files=getFiles('w2p-file');
+  if(!files.length){alert('Please upload a .docx file.');return;}
+  const btn=document.getElementById('w2p-btn');
+  const out=document.getElementById('w2p-out');
+  btnLoading(btn,'Converting...');
+  out.innerHTML=progressHTML('w2p-prog','Reading document...');
+  try{
+    if(!window.mammoth){ await loadScript('https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js'); }
+    const buf=await fileToArrayBuffer(files[0]);
+    setProgress('w2p-prog',30);
+    const result=await mammoth.extractRawText({arrayBuffer:buf});
+    const text=result.value;
+    setProgress('w2p-prog',55);
+    const { PDFDocument, StandardFonts, rgb } = PDFLib;
+    const doc=await PDFDocument.create();
+    const font=await doc.embedFont(StandardFonts.Helvetica);
+    const fontSize=11, margin=50, lineHeight=15;
+    let page=doc.addPage([612,792]);
+    let y=792-margin;
+    const maxWidth=612-margin*2;
+    const words=text.split(/\s+/);
+    let line='';
+    function pushLine(l){
+      if(y<margin){ page=doc.addPage([612,792]); y=792-margin; }
+      page.drawText(l,{x:margin,y,size:fontSize,font,color:rgb(0.1,0.1,0.18)});
+      y-=lineHeight;
+    }
+    for(const w of words){
+      const test=line?line+' '+w:w;
+      if(font.widthOfTextAtSize(test,fontSize)>maxWidth){ pushLine(line); line=w; } else { line=test; }
+    }
+    if(line) pushLine(line);
+    setProgress('w2p-prog',90);
+    const outBytes=await doc.save();
+    setProgress('w2p-prog',100);
+    window._w2pBytes=outBytes;
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;text-align:center;"><div class="result-label">✓ Converted to PDF</div><div id="w2p-preview"></div><button class="btn" style="margin-top:12px;" onclick="downloadBlob(new Blob([window._w2pBytes],{type:'application/pdf'}),'converted.pdf');showToast('Downloaded!')">⬇ Download converted.pdf</button></div>`;
+    renderPdfThumbPreview(outBytes, 'w2p-preview');
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not convert this document.'}</div>`;
+  }
+  btnReset(btn);
+}
+
+// ── PDF → EXCEL (CSV of text lines) ───────────────────────────────────────────
+async function doPdfToExcel(){
+  const files=getFiles('p2e-file');
+  if(!files.length){alert('Please upload a PDF.');return;}
+  const btn=document.getElementById('p2e-btn');
+  const out=document.getElementById('p2e-out');
+  btnLoading(btn,'Converting...');
+  out.innerHTML=progressHTML('p2e-prog','Extracting rows...');
+  try{
+    const buf=await fileToArrayBuffer(files[0]);
+    const pdf=await pdfjsLib.getDocument({data:buf}).promise;
+    let rows=[];
+    for(let i=1;i<=pdf.numPages;i++){
+      const page=await pdf.getPage(i);
+      const content=await page.getTextContent();
+      // group items by approx Y position to form rows
+      const lineMap={};
+      content.items.forEach(it=>{
+        const y=Math.round(it.transform[5]);
+        if(!lineMap[y]) lineMap[y]=[];
+        lineMap[y].push(it.str);
+      });
+      Object.keys(lineMap).sort((a,b)=>b-a).forEach(y=>{
+        rows.push(lineMap[y].join(' , '));
+      });
+      setProgress('p2e-prog',(i/pdf.numPages)*90);
+    }
+    const csv = rows.map(r=>r.split(',').map(c=>`"${c.trim().replace(/"/g,'""')}"`).join(',')).join('\n');
+    window._csvBlob=new Blob([csv],{type:'text/csv'});
+    setProgress('p2e-prog',100);
+    out.innerHTML=`<div class="result-box green" style="margin-top:16px;"><div class="result-label">✓ Converted to CSV</div><div style="margin:8px 0;color:var(--muted);font-size:13px;">${rows.length} rows extracted — open in Excel/Sheets.</div><button class="btn" onclick="downloadBlob(window._csvBlob,'converted.csv');showToast('Downloaded!')">⬇ Download converted.csv</button></div>`;
+  }catch(err){
+    out.innerHTML=`<div class="result-box" style="margin-top:16px;color:#c0392b;">Error: ${err.message||'Could not extract table data from this PDF.'}</div>`;
+  }
+  btnReset(btn);
+}
+
+// ── FAVORITES (heart button on tool cards, saved in localStorage) ─────────────
+function toggleFav(e, key){
+  e.stopPropagation();
+  e.preventDefault();
+  const btn = e.currentTarget;
+  let favs = [];
+  try { favs = JSON.parse(localStorage.getItem('tn_favs') || '[]'); } catch(err) { favs = []; }
+  const idx = favs.indexOf(key);
+  if (idx > -1) { favs.splice(idx, 1); btn.classList.remove('active'); }
+  else { favs.push(key); btn.classList.add('active'); }
+  try { localStorage.setItem('tn_favs', JSON.stringify(favs)); } catch(err) {}
+}
+(function initFavorites(){
+  let favs = [];
+  try { favs = JSON.parse(localStorage.getItem('tn_favs') || '[]'); } catch(err) { favs = []; }
+  favs.forEach(function(key){
+    const card = document.querySelector('.tool-card[data-key="' + key + '"]');
+    if (card) {
+      const btn = card.querySelector('.fav-btn');
+      if (btn) btn.classList.add('active');
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

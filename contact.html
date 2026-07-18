@@ -93,13 +93,17 @@ footer a:hover{color:var(--accent);}
 
   <div class="card">
     <!--
-      This form posts to FormSubmit.co, which forwards submissions straight to our
-      inbox without ever exposing that email address in the page's HTML.
-      IMPORTANT SETUP STEP (do this once): replace YOUR_FORMSUBMIT_ID below with the
-      activation hash FormSubmit gives you after your first confirmed submission.
-      See the note at the bottom of this file for exact instructions.
+      This form posts to FormSubmit.co, which forwards submissions to
+      hynngozeten@gmail.com. ONE-TIME STEP (only the inbox owner can do this):
+      the first time this form is submitted, FormSubmit sends a confirmation
+      email to hynngozeten@gmail.com — click "Activate" in that email once,
+      and every submission after that arrives normally.
+      OPTIONAL PRIVACY UPGRADE: after activating, FormSubmit's dashboard can
+      give you a random hash (e.g. a1b2c3...). Send that hash back and the
+      email address below can be swapped out so it no longer appears
+      anywhere in this file's source code.
     -->
-    <form action="https://formsubmit.co/YOUR_FORMSUBMIT_ID" method="POST" id="contactForm">
+    <form action="https://formsubmit.co/hynngozeten@gmail.com" method="POST" id="contactForm">
       <input type="hidden" name="_subject" value="New message from toolnova.tools contact form">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">

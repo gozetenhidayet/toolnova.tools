@@ -110,29 +110,44 @@ function googleTranslateElementInit() {
   }, 'google_translate_element');
 }
 
-// Auto-detect browser/country language and translate
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    const browserLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0].toLowerCase();
-    if (browserLang === 'en') return;
-    
-    const selectEl = document.querySelector('.goog-te-combo');
-    if (selectEl) {
-      // Map some special cases
-      const langMap = {'zh': 'zh-CN', 'zht': 'zh-TW'};
-      const targetLang = langMap[browserLang] || browserLang;
-      
-      // Check if language exists in dropdown
-      const option = Array.from(selectEl.options).find(o => o.value === targetLang);
-      if (option) {
-        selectEl.value = targetLang;
-        selectEl.dispatchEvent(new Event('change'));
+function toolnovaLoadTranslateWidget(){
+  if(window.__toolnovaTranslateLoaded) return;
+  window.__toolnovaTranslateLoaded = true;
+  const s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+  document.head.appendChild(s);
+}
+
+const toolnovaBrowserLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0].toLowerCase();
+
+if (toolnovaBrowserLang !== 'en') {
+  // Non-English visitor: load the widget now so the existing auto-translate-on-load
+  // behavior below still works exactly as before.
+  toolnovaLoadTranslateWidget();
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      const selectEl = document.querySelector('.goog-te-combo');
+      if (selectEl) {
+        const langMap = {'zh': 'zh-CN', 'zht': 'zh-TW'};
+        const targetLang = langMap[toolnovaBrowserLang] || toolnovaBrowserLang;
+        const option = Array.from(selectEl.options).find(o => o.value === targetLang);
+        if (option) {
+          selectEl.value = targetLang;
+          selectEl.dispatchEvent(new Event('change'));
+        }
       }
-    }
-  }, 1500);
-});
+    }, 1500);
+  });
+} else {
+  // English visitor: nothing to auto-translate, so don't pay the ~38 KiB download/parse
+  // cost until they actually click the language selector themselves.
+  window.addEventListener('DOMContentLoaded', function(){
+    const el = document.getElementById('google_translate_element');
+    if(el) el.addEventListener('click', toolnovaLoadTranslateWidget, {once:true});
+  });
+}
 </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 
 <style>
 /* Translate Widget Styles */

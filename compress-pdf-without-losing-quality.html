@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Compress a PDF Without Losing Quality — toolnova.tools</title>
+<meta name="description" content="What actually makes a PDF file large, and practical ways to shrink it without ruining text or image quality.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%234f63d2'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial,sans-serif' font-weight='800' fill='white' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://toolnova.tools/blog/compress-pdf-without-losing-quality.html">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5F0FF;--surface:#FFF9F0;--border:#E5D9F7;--accent:#4f63d2;--accent-light:#eef0fd;--text:#1a1d2e;--muted:#565D82;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:16px;line-height:1.75;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--accent);text-decoration:none;}
+.logo span{color:#067a5c;}
+.nav-back{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;}
+article{max-width:700px;margin:0 auto;padding:48px 20px 80px;}
+.tag{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;}
+h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:800;margin:10px 0 8px;line-height:1.2;}
+.meta{color:var(--muted);font-size:13px;margin-bottom:32px;}
+h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:21px;font-weight:700;margin:34px 0 12px;}
+p{color:#3a3f57;margin-bottom:16px;}
+ul,ol{padding-left:22px;margin-bottom:16px;color:#3a3f57;}
+li{margin-bottom:6px;}
+a{color:var(--accent);}
+.cta{background:var(--surface);border:1.5px solid var(--border);border-radius:16px;padding:22px 26px;margin:32px 0;text-align:center;}
+.cta a.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 26px;border-radius:10px;margin-top:10px;}
+footer{background:var(--surface);border-top:1px solid var(--border);padding:32px;text-align:center;color:var(--muted);font-size:13px;}
+footer a{color:var(--muted);margin:0 8px;text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">toolnova<span>.tools</span></a>
+  <a href="/blog/" class="nav-back">← Back to blog</a>
+</nav>
+<article>
+  <div class="tag">PDF Tips</div>
+  <h1>How to Compress a PDF Without Losing Quality</h1>
+  <p class="meta">6 min read · Updated July 2026</p>
+
+  <p>You attach a PDF to an email and get bounced back with "message too large." Or you try to upload a scanned document to a form and it just won't go through. The file feels like it should be small — it's mostly text, maybe a few images — so why is it 40MB?</p>
+
+  <h2>What actually makes a PDF large</h2>
+  <p>Three things are usually responsible, in order of how much they matter:</p>
+  <ul>
+    <li><strong>Uncompressed or high-resolution images.</strong> A single photo straight from a modern phone camera can be 4-8MB. Scan a page at 600 DPI and it's even bigger. Multiply that by a 20-page document and you've got a monster file.</li>
+    <li><strong>Embedded fonts.</strong> PDFs often embed entire font files so the document looks the same on any device. This adds up, especially with multiple fonts or font weights.</li>
+    <li><strong>Leftover data from editing.</strong> If a PDF has been edited, merged, or exported repeatedly, it can carry old, unused data from previous versions.</li>
+  </ul>
+
+  <h2>The fix: compress, don't just "save smaller"</h2>
+  <p>Simply re-saving a PDF rarely shrinks it much. Real compression re-processes the images inside the PDF — reducing their resolution and re-encoding them more efficiently — while leaving the text sharp, since text in a PDF is usually vector data, not a picture.</p>
+  <p>That's the key distinction: <strong>text quality basically never degrades</strong> from PDF compression, because compression tools target the images, not the text layer. What you're actually controlling is image quality, and most PDF compressors let you pick how aggressive to be.</p>
+
+  <h2>A quick approach</h2>
+  <ol>
+    <li>Start with a "balanced" or "medium" compression setting rather than "maximum" — maximum compression often reduces image DPI further than you need for on-screen viewing.</li>
+    <li>Check the result. If it's for on-screen reading, you can compress much further than something meant to be printed.</li>
+    <li>If a file is still large after compression, the images inside it are likely the actual culprit — consider whether you need full-resolution images at all, or if smaller ones would do.</li>
+  </ol>
+
+  <h2>When compression won't help much</h2>
+  <p>If your PDF is mostly text with no images, it's probably already small — a 50-page text-only PDF might only be 500KB-1MB. In that case, the "too large" file is almost certainly image-heavy, and compression will make a real difference.</p>
+
+  <div class="cta">
+    <div>Try it yourself — no signup, and your file never leaves your browser.</div>
+    <a class="btn" href="/?tool=compress">Compress a PDF now →</a>
+  </div>
+
+  <h2>Related tools</h2>
+  <ul>
+    <li><a href="/?tool=merge">Merge PDF</a> — combine multiple files, then compress the result</li>
+    <li><a href="/?tool=pdf2jpg">PDF to JPG</a> — extract just the images if that's all you need</li>
+    <li><a href="/?tool=split">Split PDF</a> — break a large file into smaller, shareable chunks</li>
+  </ul>
+</article>
+<footer>
+  <p>
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </p>
+  <p>© 2026 toolnova.tools</p>
+</footer>
+</body>
+</html>

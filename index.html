@@ -64,37 +64,52 @@
 <!-- Service worker registration intentionally omitted: no /sw.js is served, and even
      a caught fetch() to a missing file still logs a 404 to the console. Re-add the
      registration only once an actual /sw.js file exists at the site root. -->
-<!-- Google Analytics — loaded after first interaction or idle timeout, not on initial parse.
+<!-- Google Analytics — loaded after first interaction or idle time, not on initial parse.
      Deferring this (and AdSense below) removes ~300KiB+ of unused-JS/main-thread work
      from the critical initial load without losing any analytics data or ad revenue,
-     since no ad units are currently placed on the page anyway. -->
+     since no ad units are currently placed on the page anyway. The two scripts are
+     also staggered across separate idle windows so they never execute back-to-back
+     as one large blocking task (that was spiking Total Blocking Time). -->
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 window.gtag = gtag;
 
-function toolnovaLoadDeferredScripts(){
-  if(window.__toolnovaDeferredLoaded) return;
-  window.__toolnovaDeferredLoaded = true;
+function toolnovaIdle(fn, timeout){
+  if('requestIdleCallback' in window){ requestIdleCallback(fn, {timeout: timeout}); }
+  else{ setTimeout(fn, Math.min(timeout, 1000)); }
+}
 
+function toolnovaLoadGA(){
+  if(window.__toolnovaGALoaded) return;
+  window.__toolnovaGALoaded = true;
   var gtagScript = document.createElement('script');
   gtagScript.async = true;
   gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-3V90PDJDP1';
   document.head.appendChild(gtagScript);
   gtag('js', new Date());
   gtag('config', 'G-3V90PDJDP1');
-
+}
+function toolnovaLoadAds(){
+  if(window.__toolnovaAdsLoaded) return;
+  window.__toolnovaAdsLoaded = true;
   var adsScript = document.createElement('script');
   adsScript.async = true;
   adsScript.crossOrigin = 'anonymous';
   adsScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3359266836868361';
   document.head.appendChild(adsScript);
 }
+function toolnovaLoadDeferredScripts(){
+  if(window.__toolnovaDeferredLoaded) return;
+  window.__toolnovaDeferredLoaded = true;
+  toolnovaIdle(toolnovaLoadGA, 2000);
+  toolnovaIdle(toolnovaLoadAds, 4000); // separate idle window, well after GA's
+}
 ['scroll','mousemove','touchstart','keydown','click'].forEach(function(evt){
   window.addEventListener(evt, toolnovaLoadDeferredScripts, {once:true, passive:true});
 });
 window.addEventListener('load', function(){
-  setTimeout(toolnovaLoadDeferredScripts, 3000);
+  toolnovaIdle(toolnovaLoadDeferredScripts, 4000);
 });
 </script>
 <!-- End Google Analytics -->

@@ -2,322 +2,146 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://toolnova.tools/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://toolnova.tools/about.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://toolnova.tools/contact.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/privacy-policy.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/terms.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/cookie-policy.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://toolnova.tools/faq.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/privacy-policy.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/terms.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/cookie-policy.html</loc>
   </url>
   <url>
     <loc>https://toolnova.tools/sitemap.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://toolnova.tools/blog/pdf-to-word-without-losing-formatting.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/merge-pdf-files-online-guide.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://toolnova.tools/blog/</loc>
   </url>
   <url>
     <loc>https://toolnova.tools/blog/compress-pdf-without-losing-quality.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://toolnova.tools/blog/ocr-how-computers-read-text-from-images.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://toolnova.tools/blog/pdf-vs-word-which-to-use.html</loc>
   </url>
   <url>
-    <loc>https://toolnova.tools/blog/free-vs-paid-pdf-tools.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/convert-word-to-pdf-in-seconds.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/best-way-to-split-a-large-pdf.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/how-to-sign-a-pdf-online.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/qr-codes-101.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/how-to-create-a-strong-memorable-password.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/understanding-bmi-what-your-number-means.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/how-to-calculate-your-exact-age.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/tip-calculator-guide-how-much-to-tip.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/how-loan-calculators-work.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/beginners-guide-to-unit-conversion.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/how-currency-conversion-rates-work.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/text-case-converter-when-to-use-which.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/word-counter-guide-for-writers-and-students.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/how-to-extract-text-from-a-scanned-pdf.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/blog/why-browser-based-tools-are-safer.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/pdf-to-word.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/word-to-pdf.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/pdf-to-jpg.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/jpg-to-pdf.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/pdf-to-excel.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/pdf-to-png.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/png-to-pdf.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/pdf-to-text.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/image-to-text.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/scan-pdf-to-text.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/merge-pdf.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/split-pdf.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/compress-pdf.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/rotate-pdf.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/delete-pdf-pages.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/extract-pdf-pages.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/sign-pdf.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/add-text-to-pdf.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://toolnova.tools/blog/5-tips-smaller-faster-files.html</loc>
   </url>
   <url>
     <loc>https://toolnova.tools/qr-code-generator.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://toolnova.tools/password-generator.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://toolnova.tools/color-code-converter.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://toolnova.tools/lorem-ipsum-generator.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://toolnova.tools/age-calculator.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://toolnova.tools/bmi-calculator.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/tip-calculator.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/discount-calculator.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/loan-calculator.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/unit-converter.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/currency-converter.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/text-case-converter.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://toolnova.tools/word-counter.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://toolnova.tools/bmr-calculator.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://toolnova.tools/calorie-calculator.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://toolnova.tools/body-fat-calculator.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://toolnova.tools/water-intake-calculator.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/tip-calculator.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/discount-calculator.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/loan-calculator.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/unit-converter.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/currency-converter.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/text-case-converter.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/word-counter.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/general-knowledge-quiz.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/memory-card-game.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/merge-pdf.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/split-pdf.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/compress-pdf.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/rotate-pdf.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/delete-pdf-pages.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/extract-pdf-pages.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/sign-pdf.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/add-text-to-pdf.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/jpg-to-pdf.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/pdf-to-jpg.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/pdf-to-png.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/pdf-to-text.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/image-to-text.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/scan-pdf-to-text.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/pdf-to-word.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/word-to-pdf.html</loc>
+  </url>
+  <url>
+    <loc>https://toolnova.tools/pdf-to-excel.html</loc>
   </url>
 </urlset>

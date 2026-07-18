@@ -4,348 +4,53 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Age Calculator — Free Online Tool | toolnova.tools</title>
-<meta name="description" content="Free age calculator: find your exact age in years, months, weeks, days and hours. Learn how age is actually calculated, including leap years, and see common legal age milestones by country.">
+<meta name="description" content="Your exact age down to the hour — free, no signup, runs entirely in your browser. Try Age Calculator now on toolnova.tools.">
 <meta name="robots" content="index, follow">
-<meta name="author" content="toolnova.tools">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%234f63d2'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial,sans-serif' font-weight='800' fill='white' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
 <link rel="canonical" href="https://toolnova.tools/age-calculator.html">
-<meta property="og:title" content="Age Calculator — Free Online Tool | toolnova.tools">
-<meta property="og:description" content="Find your exact age in years, months, weeks, days and hours — plus a plain-English explanation of how age calculation actually works.">
-<meta property="og:url" content="https://toolnova.tools/age-calculator.html">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="toolnova.tools">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Age Calculator — Free Online Tool | toolnova.tools">
-<meta name="twitter:description" content="Find your exact age in years, months, weeks, days and hours — plus how age calculation actually works.">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3V90PDJDP1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3V90PDJDP1');
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3359266836868361" crossorigin="anonymous"></script>
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'en',
-    includedLanguages: 'af,sq,am,ar,hy,az,eu,be,bn,bs,bg,ca,ceb,zh-CN,zh-TW,co,hr,cs,da,nl,eo,et,fi,fr,fy,gl,ka,de,el,gu,ht,ha,haw,he,hi,hmn,hu,is,ig,id,ga,it,ja,jw,kn,kk,km,ko,ku,ky,lo,la,lv,lt,lb,mk,mg,ms,ml,mt,mi,mr,mn,my,ne,no,ny,or,ps,fa,pl,pt,pa,ro,ru,sm,gd,sr,st,sn,sd,si,sk,sl,so,es,su,sw,sv,tl,tg,ta,te,th,tr,uk,ur,ug,uz,vi,cy,xh,yi,yo,zu',
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-    autoDisplay: false
-  }, 'google_translate_element');
-}
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    const browserLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0].toLowerCase();
-    if (browserLang === 'en') return;
-    const selectEl = document.querySelector('.goog-te-combo');
-    if (selectEl) {
-      const langMap = {'zh': 'zh-CN', 'zht': 'zh-TW'};
-      const targetLang = langMap[browserLang] || browserLang;
-      const option = Array.from(selectEl.options).find(o => o.value === targetLang);
-      if (option) { selectEl.value = targetLang; selectEl.dispatchEvent(new Event('change')); }
-    }
-  }, 1500);
-});
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Age Calculator", "url": "https://toolnova.tools/age-calculator.html", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (runs in browser)", "description": "Your exact age in years, months, days and hours.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "toolnova.tools", "url": "https://toolnova.tools/"}}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
-{"@type": "Question", "name": "How accurate is this age calculator?", "acceptedAnswer": {"@type": "Answer", "text": "It's exact to the day. The calculator accounts for leap years and the fact that months have different numbers of days, so the years/months/days breakdown is precise, not a rough estimate."}},
-{"@type": "Question", "name": "Does it account for leap years?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Leap years (which add February 29th) are handled automatically as part of the date math, so your age in days and your years/months/days breakdown are both correct even across multiple leap years."}},
-{"@type": "Question", "name": "Can I calculate my age as of a past or future date, not just today?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The \"Calculate Age On\" field defaults to today's date but can be changed to any date — useful for figuring out how old you were (or will be) on a specific day, such as a graduation date or a future eligibility deadline."}},
-{"@type": "Question", "name": "What formula does this age calculator use?", "acceptedAnswer": {"@type": "Answer", "text": "It compares the year, month, and day of your birth date to the target date, borrowing a month or year where needed (the same logic as subtraction with carrying), then also calculates the exact total number of days and hours between the two dates."}},
-{"@type": "Question", "name": "Why is my age in days different from what I expected?", "acceptedAnswer": {"@type": "Answer", "text": "A quick mental estimate (age in years times 365) ignores leap years and the exact day count, which adds up over a lifetime. The calculator uses the real calendar, so its day count is more accurate than a rough multiplication."}},
-{"@type": "Question", "name": "Can I calculate someone else's age, not just my own?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — enter any birth date, not necessarily your own, to calculate that person's exact age as of today or any other date."}},
-{"@type": "Question", "name": "Do I need to install anything?", "acceptedAnswer": {"@type": "Answer", "text": "No — the calculator runs directly in your browser. There's nothing to download or install."}},
-{"@type": "Question", "name": "Can I use this on my phone?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, it's fully responsive and works smoothly on any mobile browser, including entering dates with your phone's native date picker."}},
-{"@type": "Question", "name": "Is my birth date stored or sent anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. The calculation happens entirely in your browser using JavaScript. Your date of birth is never uploaded, logged, or stored on any server."}}
-]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://toolnova.tools/"}, {"@type": "ListItem", "position": 2, "name": "Age Calculator", "item": "https://toolnova.tools/age-calculator.html"}]}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --bg:#f7f8fc; --surface:#ffffff; --surface2:#f0f2f8; --border:#e2e5f0;
-  --accent:#4f63d2; --accent-light:#eef0fd; --accent2:#0ba87e; --accent2-light:#e6f8f3;
-  --text:#1a1d2e; --muted:#6b7394; --radius:14px; --shadow:0 2px 12px rgba(79,99,210,0.08);
-}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;min-height:100vh;}
-#google_translate_element{display:inline-flex;align-items:center;}
-.goog-te-gadget{font-family:'Inter',sans-serif!important;font-size:0!important;}
-.goog-te-gadget .goog-te-combo{background:var(--surface2);border:1.5px solid var(--border);border-radius:99px;padding:6px 12px;font-size:13px;font-family:'Inter',sans-serif;color:var(--text);cursor:pointer;outline:none;margin:0!important;max-width:130px;}
-.goog-te-banner-frame{display:none!important;}
-body{top:0!important;}
-.goog-logo-link{display:none!important;}
-
-nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:110;box-shadow:0 1px 8px rgba(0,0,0,0.06);flex-wrap:wrap;}
-.logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--accent);text-decoration:none;letter-spacing:-.5px;flex-shrink:0;}
-.logo span{color:var(--accent2);}
-.nav-cats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;flex:1;order:2;}
-.nav-lang{flex-shrink:0;order:3;margin-left:auto;}
-.cat-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:99px;background:var(--c1);color:#fff;text-decoration:none;font-size:12.5px;font-weight:700;transition:all .25s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 14px rgba(0,0,0,0.15);position:relative;overflow:hidden;white-space:nowrap;}
-.cat-btn:hover{transform:translateY(-4px) scale(1.07);box-shadow:0 8px 24px rgba(0,0,0,0.22);filter:brightness(1.1);}
-.cat-btn:active{transform:translateY(-1px) scale(1.02);}
-@media(max-width:900px){
-  nav{padding:12px 16px;justify-content:space-between;}
-  .nav-cats{order:3;width:100%;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
-  .nav-cats::-webkit-scrollbar{display:none;}
-  .cat-btn{padding:8px 14px;font-size:12px;}
-  .nav-lang{order:2;}
-}
-
-.pagehead{text-align:center;padding:56px 20px 40px;background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);border-bottom:1px solid var(--border);}
-.pagehead .eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--accent-light);color:var(--accent);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 14px;border-radius:99px;margin-bottom:18px;border:1px solid rgba(79,99,210,0.2);}
-.pagehead h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(28px,4.5vw,44px);font-weight:800;line-height:1.2;margin-bottom:14px;color:var(--text);}
-.pagehead p{color:var(--muted);font-size:16px;max-width:600px;margin:0 auto;}
-
-.wrap{max-width:1100px;margin:0 auto;padding:48px 24px 64px;}
-.wrap-narrow{max-width:760px;margin:0 auto;padding:48px 24px 64px;}
-
-.ad-banner{max-width:728px;margin:24px auto;padding:0 24px;text-align:center;}
-.ad-placeholder{background:var(--surface);border:1.5px dashed var(--border);border-radius:var(--radius);padding:20px;color:var(--muted);font-size:13px;}
-
-/* BLOG GRID */
-.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px;margin-top:8px;}
-.blog-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px;text-decoration:none;display:block;transition:all .25s cubic-bezier(.34,1.56,.64,1);box-shadow:0 1px 4px rgba(0,0,0,0.03);}
-.blog-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 10px 28px rgba(79,99,210,0.13);}
-.blog-cat{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:99px;margin-bottom:12px;background:var(--c1,#eef0fd);color:var(--c2,#4f63d2);}
-.blog-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:700;margin-bottom:8px;color:var(--text);line-height:1.35;}
-.blog-card p{color:var(--muted);font-size:13.5px;line-height:1.6;}
-.blog-meta{color:var(--muted);font-size:12px;margin-top:14px;display:flex;gap:10px;align-items:center;}
-
-/* ARTICLE */
-.article-meta{color:var(--muted);font-size:13px;margin-bottom:8px;}
-.article h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(26px,4vw,38px);font-weight:800;line-height:1.25;margin:8px 0 20px;color:var(--text);}
-.article p{margin-bottom:18px;color:var(--text);font-size:16px;}
-.article h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:700;margin:32px 0 14px;color:var(--text);}
-.article ul,.article ol{margin:0 0 18px 22px;color:var(--text);}
-.article li{margin-bottom:8px;}
-.cta-box{background:linear-gradient(135deg,var(--accent) 0%,#3d4fb8 100%);border-radius:16px;padding:26px 28px;margin:32px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
-.cta-box div h3{font-family:'Plus Jakarta Sans',sans-serif;color:#fff;font-size:17px;font-weight:700;margin-bottom:4px;}
-.cta-box div p{color:rgba(255,255,255,0.85);font-size:13px;margin:0;}
-.cta-box a.btn-cta{background:#fff;color:var(--accent);font-weight:700;padding:11px 22px;border-radius:10px;text-decoration:none;font-size:14px;white-space:nowrap;transition:transform .2s;}
-.cta-box a.btn-cta:hover{transform:translateY(-2px);}
-.back-link{display:inline-block;color:var(--accent);text-decoration:none;font-weight:600;font-size:14px;margin-bottom:24px;}
-.back-link:hover{text-decoration:underline;}
-.back-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;}
-.back-bar a{display:inline-flex;align-items:center;gap:6px;color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:600;transition:color .2s;}
-.back-bar a:hover{color:var(--accent);}
-
-/* LEGAL / STATIC PAGES */
-.legal h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;font-weight:700;margin:30px 0 12px;color:var(--text);}
-.legal p{margin-bottom:14px;color:var(--text);}
-.legal ul{margin:0 0 14px 22px;}
-.legal li{margin-bottom:6px;}
-.legal .updated{color:var(--muted);font-size:13px;margin-bottom:28px;}
-
-/* FAQ ACCORDION */
-.faq-item{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden;}
-.faq-q{padding:18px 20px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:14.5px;}
-.faq-q::after{content:'+';font-size:20px;color:var(--accent);transition:transform .25s;}
-.faq-item.open .faq-q::after{transform:rotate(45deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 20px;color:var(--muted);font-size:14px;}
-.faq-item.open .faq-a{max-height:300px;padding:0 20px 18px;}
-
-/* CONTACT FORM */
-.contact-form{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);}
-.contact-form label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;}
-.contact-form input,.contact-form textarea{width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text);font-size:14px;font-family:inherit;outline:none;margin-bottom:16px;}
-.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent);}
-.contact-form button{width:100%;background:var(--accent);border:none;border-radius:10px;padding:13px;color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;}
-.contact-form button:hover{background:#3d4fb8;}
-.contact-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px;}
-.contact-info-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center;}
-.contact-info-card .ci-icon{font-size:24px;margin-bottom:8px;}
-.contact-info-card h4{font-size:14px;font-weight:700;margin-bottom:4px;}
-.contact-info-card p{color:var(--muted);font-size:13px;margin:0;}
-
-/* SITEMAP PAGE */
-.sitemap-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;}
-.sitemap-cols h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;margin-bottom:12px;color:var(--text);}
-.sitemap-cols ul{list-style:none;}
-.sitemap-cols li{margin-bottom:8px;}
-.sitemap-cols a{color:var(--muted);text-decoration:none;font-size:14px;}
-.sitemap-cols a:hover{color:var(--accent);}
-
-footer{background:var(--surface);border-top:1px solid var(--border);padding:40px;text-align:center;color:var(--muted);font-size:13px;}
-footer a{color:var(--muted);text-decoration:none;margin:0 8px;}
-footer a:hover{color:var(--text);}
-.footer-logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;color:var(--accent);margin-bottom:12px;}
-
-@media(max-width:640px){
-  .wrap,.wrap-narrow{padding:32px 16px 48px;}
-  .contact-form{padding:22px;}
-}
+:root{--bg:#F5F0FF;--surface:#FFF9F0;--border:#E5D9F7;--accent:#4f63d2;--accent-light:#eef0fd;--text:#1a1d2e;--muted:#565D82;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:var(--surface);border-bottom:1px solid var(--border);}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:var(--accent);text-decoration:none;}
+.logo span{color:#067a5c;}
+main{max-width:640px;margin:0 auto;padding:56px 20px 80px;text-align:center;}
+.icon{font-size:56px;margin-bottom:14px;}
+h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:30px;font-weight:800;margin:0 0 10px;}
+.sub{color:var(--muted);font-size:16px;margin-bottom:28px;}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:15px 34px;border-radius:12px;font-size:16px;box-shadow:0 10px 24px rgba(79,99,210,0.3);}
+.features{display:flex;justify-content:center;gap:24px;margin-top:30px;flex-wrap:wrap;}
+.features div{font-size:13px;color:var(--muted);}
+footer{background:var(--surface);border-top:1px solid var(--border);padding:28px;text-align:center;color:var(--muted);font-size:13px;margin-top:40px;}
+footer a{color:var(--muted);margin:0 8px;text-decoration:none;}
 </style>
+<script>
+// Send returning/direct visitors straight into the working tool after the page
+// (and its content, for search engines) has loaded.
+setTimeout(function(){ window.location.href = "/?tool=age"; }, 1200);
+</script>
 </head>
 <body>
 <nav>
   <a href="/" class="logo">toolnova<span>.tools</span></a>
-  <div class="nav-cats">
-    <a href="/#pdf-converter" class="cat-btn" style="--c1:#e74c3c;--c2:#c0392b;">📄 PDF Converter</a>
-    <a href="/#ocr-tools" class="cat-btn" style="--c1:#f39c12;--c2:#d68910;">🔍 OCR Tools</a>
-    <a href="/#edit-pdf" class="cat-btn" style="--c1:#9b59b6;--c2:#7d3c98;">✂️ Edit PDF</a>
-    <a href="/#generators" class="cat-btn" style="--c1:#4f63d2;--c2:#3d4fb8;">🔧 Generators</a>
-    <a href="/#calculators" class="cat-btn" style="--c1:#0ba87e;--c2:#089168;">🧮 Calculators</a>
-    <a href="/#converters" class="cat-btn" style="--c1:#1abc9c;--c2:#17a589;">🔄 Converters</a>
-  </div>
-  <div class="nav-lang" id="google_translate_element"></div>
+  <a href="/" style="color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;">← All tools</a>
 </nav>
-<div class="back-bar"><a href="/">&larr; Back to Home</a></div>
-
-<div class="pagehead">
-  <div class="eyebrow">🎂 Free Online Tool</div>
+<main>
+  <div class="icon">🎂</div>
   <h1>Age Calculator</h1>
-  <p>Your exact age in years, months, days and hours.</p>
-</div>
-<div class="wrap-narrow" style="text-align:center;">
-  <p style="font-size:16px;color:var(--text);max-width:600px;margin:0 auto 32px;line-height:1.7;">Calculate your exact age — down to the day — instantly. Handles leap years and variable month lengths automatically, something that's surprisingly fiddly to do by hand.</p>
-  <a href="/?tool=age" style="display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;font-weight:700;font-size:16px;padding:16px 32px;border-radius:14px;text-decoration:none;box-shadow:0 8px 24px rgba(79,99,210,0.25);">
-    🎂 Open Age Calculator — Free
-  </a>
-  <p style="margin-top:16px;color:var(--muted);font-size:13px;">No signup &middot; No file uploads &middot; Runs instantly in your browser</p>
-  
-
-  <div style="text-align:left;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-top:24px;">
-    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;margin-bottom:12px;">How age is actually calculated</h2>
-    <p style="margin-bottom:14px;">"How old am I?" looks like simple subtraction — current year minus birth year — but that only gives a rough number. An exact age, down to the day, has to deal with two real complications that a quick mental calculation ignores.</p>
-    <p style="margin-bottom:14px;">The first is that <strong>months don't all have the same length</strong>. Going from a birth date to today means comparing year, month, and day separately, and if the current day-of-month is earlier than the birth day-of-month, you have to "borrow" a month — the same way you'd borrow a ten when subtracting 47 from 82 by hand. The number of days borrowed depends on how long the previous month was, which changes month to month.</p>
-    <p style="margin-bottom:14px;">The second complication is <strong>leap years</strong>. Every four years (with a few exceptions at the turn of a century), February gets an extra day. Anyone born before February 29th in a leap year, calculating their age years later, needs that extra day counted correctly or the total day/hour count will be off by a day for every leap year that's passed.</p>
-    <p>This calculator does both automatically: it compares your birth date to the target date component by component (handling the borrowing correctly), and separately computes the exact number of calendar days between the two dates — which inherently accounts for every leap year in between — to give you a precise day and hour count alongside the years/months/days breakdown.</p>
+  <p class="sub">Your exact age down to the hour — free, no signup required, and it runs entirely in your browser.</p>
+  <a class="btn" href="/?tool=age">Open Age Calculator →</a>
+  <div class="features">
+    <div>✓ 100% free</div>
+    <div>✓ No signup</div>
+    <div>✓ Files never uploaded</div>
   </div>
-
-  <div style="text-align:left;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-top:20px;">
-    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;margin-bottom:12px;">Age in different units (rough reference)</h2>
-    <p style="margin-bottom:14px;">Once you know your age in years, these approximate conversions are handy for quick context. The calculator above gives you the exact numbers for your specific birth date — this table just shows the general multipliers people often look for:</p>
-    <div style="overflow-x:auto;">
-    <table style="width:100%;border-collapse:collapse;font-size:13.5px;">
-      <thead><tr style="background:var(--surface2);">
-        <th style="text-align:left;padding:10px 12px;border-bottom:1.5px solid var(--border);">1 year is approximately…</th>
-        <th style="text-align:left;padding:10px 12px;border-bottom:1.5px solid var(--border);">Value</th>
-      </tr></thead>
-      <tbody>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border);">Months</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);">12</td></tr>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border);">Weeks</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);">52.18</td></tr>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border);">Days</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);">365.25 (accounting for leap years)</td></tr>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border);">Hours</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);">8,766</td></tr>
-        <tr><td style="padding:9px 12px;">Minutes</td><td style="padding:9px 12px;">525,960</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-
-  <div style="text-align:left;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-top:20px;">
-    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;margin-bottom:12px;">Common legal age milestones</h2>
-    <p style="margin-bottom:14px;">Exact age matters most when it determines a legal right or eligibility cutoff. These are common milestones in many countries — always confirm the specific rule for your own country or state, since exact ages vary:</p>
-    <div style="overflow-x:auto;">
-    <table style="width:100%;border-collapse:collapse;font-size:13.5px;">
-      <thead><tr style="background:var(--surface2);">
-        <th style="text-align:left;padding:10px 12px;border-bottom:1.5px solid var(--border);">Milestone</th>
-        <th style="text-align:left;padding:10px 12px;border-bottom:1.5px solid var(--border);">Typical age</th>
-      </tr></thead>
-      <tbody>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border);">Legal adulthood (most countries)</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);">18</td></tr>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border);">Minimum drinking age (US)</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);">21</td></tr>
-        <tr><td style="padding:9px 12px;border-bottom:1px solid var(--border);">Full driving license (varies widely)</td><td style="padding:9px 12px;border-bottom:1px solid var(--border);">16–18</td></tr>
-        <tr><td style="padding:9px 12px;">Typical retirement / pension eligibility</td><td style="padding:9px 12px;">65–67</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-
-  <div style="text-align:left;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-top:24px;">
-    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;margin-bottom:12px;">How to use Age Calculator</h2>
-    <ol style="margin:0 0 0 20px;color:var(--text);font-size:14px;line-height:2;"><li>Click "Open Age Calculator" below.</li><li>Enter your numbers into the fields.</li><li>Get an instant, accurate result — no manual math needed.</li><li>Change any input and watch the result update in real time.</li></ol>
-  </div>
-
-  <div style="text-align:left;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-top:20px;">
-    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;margin-bottom:12px;">Common ways people use Age Calculator</h2>
-    <ul style="margin:0 0 0 20px;color:var(--text);font-size:14px;line-height:1.8;"><li>Checking exact eligibility for an age-restricted form</li><li>Working out someone's precise age for a legal document</li><li>Settling a friendly debate about who's older, down to the day</li></ul>
-  </div>
-
-  <div style="text-align:left;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-top:20px;">
-    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;margin-bottom:10px;">Why use toolnova.tools for this?</h2>
-    <ul style="margin:0 0 0 20px;color:var(--muted);font-size:14px;line-height:1.8;"><li>Uses the same formulas professionals rely on — nothing simplified or approximate</li><li>Updates results instantly as you change any input</li><li>No ads interrupting the calculation itself</li><li>Built for quick lookups, not slow multi-step wizards</li></ul>
-  </div>
-
-  <div style="text-align:left;margin-top:28px;">
-    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;margin-bottom:12px;">Frequently asked questions</h2>
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How accurate is this age calculator?</div>
-      <div class="faq-a"><p>It's exact to the day. The calculator accounts for leap years and the fact that months have different numbers of days, so the years/months/days breakdown is precise, not a rough estimate.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does it account for leap years?</div>
-      <div class="faq-a"><p>Yes. Leap years (which add February 29th) are handled automatically as part of the date math, so your age in days and your years/months/days breakdown are both correct even across multiple leap years.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I calculate my age as of a past or future date, not just today?</div>
-      <div class="faq-a"><p>Yes. The "Calculate Age On" field defaults to today's date but can be changed to any date — useful for figuring out how old you were (or will be) on a specific day, such as a graduation date or a future eligibility deadline.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What formula does this age calculator use?</div>
-      <div class="faq-a"><p>It compares the year, month, and day of your birth date to the target date, borrowing a month or year where needed (the same logic as subtraction with carrying), then also calculates the exact total number of days and hours between the two dates.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why is my age in days different from what I expected?</div>
-      <div class="faq-a"><p>A quick mental estimate (age in years times 365) ignores leap years and the exact day count, which adds up over a lifetime. The calculator uses the real calendar, so its day count is more accurate than a rough multiplication.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I calculate someone else's age, not just my own?</div>
-      <div class="faq-a"><p>Yes — enter any birth date, not necessarily your own, to calculate that person's exact age as of today or any other date.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to install anything?</div>
-      <div class="faq-a"><p>No — the calculator runs directly in your browser. There's nothing to download or install.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I use this on my phone?</div>
-      <div class="faq-a"><p>Yes, it's fully responsive and works smoothly on any mobile browser, including entering dates with your phone's native date picker.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is my birth date stored or sent anywhere?</div>
-      <div class="faq-a"><p>No. The calculation happens entirely in your browser using JavaScript. Your date of birth is never uploaded, logged, or stored on any server.</p></div>
-    </div>
-  </div>
-
-  <div style="text-align:left;margin-top:28px;">
-    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;margin-bottom:12px;">Related tools</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;">
-      <a href="/bmi-calculator.html" style="display:block;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:16px;text-decoration:none;">
-      <div style="font-size:22px;margin-bottom:6px;">⚖️</div>
-      <div style="font-weight:700;font-size:14px;color:var(--text);margin-bottom:4px;">BMI Calculator</div>
-      <div style="font-size:12.5px;color:var(--muted);">Body Mass Index with US Imperial and Metric support.</div>
-    </a><a href="/tip-calculator.html" style="display:block;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:16px;text-decoration:none;">
-      <div style="font-size:22px;margin-bottom:6px;">💵</div>
-      <div style="font-weight:700;font-size:14px;color:var(--text);margin-bottom:4px;">Tip Calculator</div>
-      <div style="font-size:12.5px;color:var(--muted);">Split the bill and calculate tips for any group size.</div>
-    </a><a href="/discount-calculator.html" style="display:block;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:16px;text-decoration:none;">
-      <div style="font-size:22px;margin-bottom:6px;">🏷️</div>
-      <div style="font-weight:700;font-size:14px;color:var(--text);margin-bottom:4px;">Discount Calculator</div>
-      <div style="font-size:12.5px;color:var(--muted);">Final price after any percentage discount. Quick math.</div>
-    </a>
-    </div>
-  </div>
-</div>
-
+</main>
 <footer>
-  <div class="footer-logo">toolnova.tools</div>
-  <p style="margin-bottom:10px;">
-    <a href="/">Home</a>
-    <a href="/blog/">Blog</a>
-    <a href="/about.html">About</a>
-    <a href="/contact.html">Contact</a>
-  </p>
-  <p style="margin-bottom:14px;">
-    <a href="/privacy-policy.html">Privacy Policy</a>
-    <a href="/terms.html">Terms</a>
-    <a href="/cookie-policy.html">Cookie Policy</a>
-    <a href="/faq.html">FAQ</a>
-    <a href="/sitemap.html">Sitemap</a>
-  </p>
-  <p>© 2026 toolnova.tools — All tools run in your browser. We never store your data.</p>
+  <p><a href="/">Home</a><a href="/blog/">Blog</a><a href="/contact.html">Contact</a></p>
+  <p>© 2026 toolnova.tools</p>
 </footer>
-
 </body>
 </html>

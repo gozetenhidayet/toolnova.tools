@@ -224,7 +224,7 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
   .section-desc-box p{font-size:13px;}
 }
 .section-title::after{content:'';flex:1;height:1px;background:var(--border);}
-.section-badge{background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:600;padding:2px 10px;border-radius:99px;text-transform:uppercase;letter-spacing:.06em;}
+.section-badge{background:var(--sb1,var(--accent-light));color:var(--sb2,var(--accent));font-size:11px;font-weight:700;padding:2px 10px;border-radius:99px;text-transform:uppercase;letter-spacing:.06em;}
 
 /* TOOL GRID */
 .tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;}
@@ -282,11 +282,11 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
 .cat-btn{
   display:inline-flex;align-items:center;gap:8px;
   padding:9px 10px 9px 18px;border-radius:99px;
-  background:var(--surface);color:var(--c2);
+  background:var(--c1);color:var(--c2);
   border:2px solid var(--c2);
   text-decoration:none;font-size:13px;font-weight:800;
   transition:all .25s cubic-bezier(.34,1.56,.64,1);
-  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+  box-shadow:0 3px 10px rgba(0,0,0,0.08);
   position:relative;overflow:hidden;white-space:nowrap;
 }
 .cat-btn .cat-count{
@@ -296,8 +296,8 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
 }
 .cat-btn:hover{
   transform:translateY(-4px) scale(1.06);
-  box-shadow:0 8px 20px rgba(0,0,0,0.12);
-  background:var(--c1);
+  box-shadow:0 8px 20px rgba(0,0,0,0.14);
+  filter:brightness(1.05);
 }
 .cat-btn:active{transform:translateY(-1px) scale(1.02);}
 .tool-icon{font-size:28px;display:block;line-height:1;animation:icon-idle-float 3.4s ease-in-out infinite;}
@@ -480,12 +480,12 @@ footer a:hover{color:var(--text);}
 <nav>
   <a href="/" class="logo">toolnova<span>.tools</span></a>
   <div class="nav-cats">
-    <a href="#pdf-converter" class="cat-btn" style="--c1:#FDE4E4;--c2:#B91C1C;">📄 PDF Converter <span class="cat-count">8</span></a>
-    <a href="#ocr-tools" class="cat-btn" style="--c1:#FDEADA;--c2:#9A3412;">🔍 OCR Tools <span class="cat-count">2</span></a>
-    <a href="#edit-pdf" class="cat-btn" style="--c1:#F0E4FE;--c2:#6D28D9;">✂️ Edit PDF <span class="cat-count">8</span></a>
-    <a href="#generators" class="cat-btn" style="--c1:#DFEAFE;--c2:#1D4ED8;">🔧 Generators <span class="cat-count">4</span></a>
-    <a href="#calculators" class="cat-btn" style="--c1:#DFF4E3;--c2:#166534;">🧮 Calculators <span class="cat-count">9</span></a>
-    <a href="#converters" class="cat-btn" style="--c1:#DAF5EF;--c2:#115E59;">🔄 Converters <span class="cat-count">4</span></a>
+    <a href="#pdf-converter" class="cat-btn" style="--c1:#FFD3D3;--c2:#B91C1C;">📄 PDF Converter <span class="cat-count">8</span></a>
+    <a href="#ocr-tools" class="cat-btn" style="--c1:#FFDDBB;--c2:#9A3412;">🔍 OCR Tools <span class="cat-count">2</span></a>
+    <a href="#edit-pdf" class="cat-btn" style="--c1:#E5D2FF;--c2:#6D28D9;">✂️ Edit PDF <span class="cat-count">8</span></a>
+    <a href="#generators" class="cat-btn" style="--c1:#CFE1FF;--c2:#1D4ED8;">🔧 Generators <span class="cat-count">4</span></a>
+    <a href="#calculators" class="cat-btn" style="--c1:#CFF0D8;--c2:#166534;">🧮 Calculators <span class="cat-count">9</span></a>
+    <a href="#converters" class="cat-btn" style="--c1:#C9F5EB;--c2:#115E59;">🔄 Converters <span class="cat-count">4</span></a>
   </div>
   <div class="nav-lang" id="google_translate_element"></div>
 </nav>
@@ -517,7 +517,7 @@ footer a:hover{color:var(--text);}
 <!-- TOOLS -->
 <div class="section" id="tools">
 
-  <div class="section-title" id="pdf-converter">📄 PDF Converter <span class="section-badge">Most Popular</span></div>
+  <div class="section-title" id="pdf-converter">📄 PDF Converter <span class="section-badge" style="--sb1:#FDE4E4;--sb2:#B91C1C;">Most Popular</span></div>
   <div class="section-desc-box" style="--sb:#fdeaea;--sc:#e74c3c;">
     <span class="section-desc-icon">📄</span>
     <p>Convert PDF files to and from Word, Excel, JPG and PNG — everything runs locally in your browser, so your documents are never uploaded to a server.</p>
@@ -576,7 +576,7 @@ footer a:hover{color:var(--text);}
     </a>
   </div>
 
-  <div class="section-title" id="ocr-tools">🔍 OCR Tools <span class="section-badge">New</span></div>
+  <div class="section-title" id="ocr-tools">🔍 OCR Tools <span class="section-badge" style="--sb1:#FDEADA;--sb2:#9A3412;">New</span></div>
   <div class="section-desc-box" style="--sb:#fef3e2;--sc:#f39c12;">
     <span class="section-desc-icon">🔍</span>
     <p>Pull editable, searchable text out of photos, screenshots and scanned PDFs using on-device optical character recognition — no signup, no upload.</p>
@@ -659,7 +659,7 @@ footer a:hover{color:var(--text);}
     </a>
   </div>
 
-  <div class="section-title" id="generators">🔧 Generators <span class="section-badge">Popular</span></div>
+  <div class="section-title" id="generators">🔧 Generators <span class="section-badge" style="--sb1:#DFEAFE;--sb2:#1D4ED8;">Popular</span></div>
   <div class="section-desc-box" style="--sb:#eef0fd;--sc:#4f63d2;">
     <span class="section-desc-icon">🔧</span>
     <p>Instantly generate QR codes, strong random passwords, and placeholder text for designs and prototypes — free, with no daily limits.</p>

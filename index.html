@@ -102,7 +102,7 @@ function toolnovaLoadAds(){
 function toolnovaLoadDeferredScripts(){
   if(window.__toolnovaDeferredLoaded) return;
   window.__toolnovaDeferredLoaded = true;
-  toolnovaIdle(toolnovaLoadGA, 1500);
+  toolnovaIdle(toolnovaLoadGA, 5000);
   // AdSense loader intentionally not called: no real <ins class="adsbygoogle">
   // ad units exist on the page yet (see the commented-out ad slots above), so
   // there's nothing for it to fill. Re-enable toolnovaLoadAds() here once a

@@ -1,0 +1,28 @@
+TOOLNOVA DEPLOYMENT CHECKLIST — 21 JULY 2026
+
+1. Upload index.html to the website root.
+2. Upload ads.txt, robots.txt and sitemap.xml to the same root directory.
+3. Open these addresses and confirm they return HTTP 200:
+   https://toolnova.tools/ads.txt
+   https://toolnova.tools/robots.txt
+   https://toolnova.tools/sitemap.xml
+4. Add the code in adsense-head-snippet.html inside <head> on About, Contact,
+   Privacy, Terms, Cookie Policy, FAQ, Blog and every other monetized page.
+5. In AdSense, turn on Auto ads for toolnova.tools. Start with Auto ads instead
+   of placing manual ads beside upload, download, calculate or navigation buttons.
+6. In AdSense > Privacy & messaging, publish a Google-certified European
+   regulations message for EEA/UK/Switzerland and configure applicable US-state
+   privacy messages. HTML alone cannot complete this dashboard setting.
+7. Do not click your own ads, ask visitors to click, or place ads so they look
+   like tool/download/navigation buttons.
+8. In Search Console, submit: https://toolnova.tools/sitemap.xml
+9. Inspect https://toolnova.tools/ with URL Inspection, run the live test and
+   request indexing after deployment.
+10. Keep About, Contact, Privacy Policy, Terms, Cookie Policy and FAQ pages live.
+    The Privacy/Cookie pages should accurately disclose Google AdSense,
+    Google Analytics, Google Translate, consent choices and localStorage use.
+11. The homepage now uses /#tool=... share links. Do not add fragment URLs to
+    sitemap.xml; search engines index the canonical homepage, not URL fragments.
+12. AdSense approval and Google rankings are not guaranteed. They also depend on
+    site-wide original content, functioning tools, policy history, crawl access,
+    user experience, traffic quality and account review.

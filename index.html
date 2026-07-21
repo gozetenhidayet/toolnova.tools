@@ -3,36 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>toolnova.tools — Free Online Tools for Everyone</title>
-<meta name="description" content="Free online tools: PDF converter, QR code generator, age calculator, BMI calculator, currency converter, word counter, password generator and more. No signup, no watermark, instant results.">
-<meta name="keywords" content="pdf to jpg, merge pdf, pdf converter, qr code generator, age calculator, bmi calculator, word counter, currency converter, password generator, image to text, ocr, free online tools">
-<meta name="robots" content="index, follow">
-<meta name="author" content="toolnova.tools">
+<title>Free Online PDF Tools, Calculators &amp; Converters | Toolnova</title>
+<meta name="description" content="Use 35+ free PDF tools, OCR, calculators, converters and generators in your browser. No signup, no watermark, and no file uploads to our servers.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Toolnova">
+<meta name="application-name" content="Toolnova">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="light">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%234f63d2'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial,sans-serif' font-weight='800' fill='white' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
 <link rel="canonical" href="https://toolnova.tools/">
 <link rel="alternate" hreflang="en" href="https://toolnova.tools/">
 <link rel="alternate" hreflang="x-default" href="https://toolnova.tools/">
 
 <!-- Open Graph -->
-<meta property="og:title" content="toolnova.tools — Free Online Tools">
-<meta property="og:description" content="40+ free online tools: PDF converter, QR code, calculators, converters and more. No signup, instant results.">
+<meta property="og:title" content="Free Online PDF Tools, Calculators &amp; Converters | Toolnova">
+<meta property="og:description" content="Use 35+ free browser-based PDF tools, OCR, calculators, converters and generators. No signup and no watermark.">
 <meta property="og:url" content="https://toolnova.tools/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="toolnova.tools">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="toolnova.tools — Free Online Tools">
-<meta name="twitter:description" content="40+ free online tools. No signup, instant results.">
+<meta name="twitter:title" content="Free Online PDF Tools, Calculators &amp; Converters | Toolnova">
+<meta name="twitter:description" content="Use 35+ free browser-based PDF tools, OCR, calculators, converters and generators.">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "toolnova.tools",
-  "url": "https://toolnova.tools",
-  "description": "Free online tools: PDF converter, QR code generator, calculators and more"
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://toolnova.tools/#website",
+      "name": "Toolnova",
+      "alternateName": "toolnova.tools",
+      "url": "https://toolnova.tools/",
+      "description": "Free browser-based PDF tools, OCR, calculators, converters and generators.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://toolnova.tools/#organization",
+      "name": "Toolnova",
+      "url": "https://toolnova.tools/"
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://toolnova.tools/#app",
+      "name": "Toolnova Online Tools",
+      "url": "https://toolnova.tools/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any modern web browser",
+      "browserRequirements": "JavaScript enabled",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {"@id": "https://toolnova.tools/#organization"}
+    }
+  ]
 }
 </script>
 
@@ -59,62 +90,41 @@
 <!-- Service worker registration intentionally omitted: no /sw.js is served, and even
      a caught fetch() to a missing file still logs a 404 to the console. Re-add the
      registration only once an actual /sw.js file exists at the site root. -->
-<!-- Google Analytics — loaded after first interaction or idle time, not on initial parse.
-     Deferring this (and AdSense below) removes ~300KiB+ of unused-JS/main-thread work
-     from the critical initial load without losing any analytics data or ad revenue,
-     since no ad units are currently placed on the page anyway. The two scripts are
-     also staggered across separate idle windows so they never execute back-to-back
-     as one large blocking task (that was spiking Total Blocking Time). -->
+<!-- Google AdSense: keep this exact account tag in the <head> of every monetized page. -->
+<meta name="google-adsense-account" content="ca-pub-3359266836868361">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3359266836868361" crossorigin="anonymous"></script>
+
+<!-- Google Analytics: deferred to reduce main-thread work. Consent defaults to denied;
+     configure Google Privacy & messaging/CMP in the AdSense dashboard before serving personalized ads. -->
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 window.gtag = gtag;
-
-function toolnovaIdle(fn, timeout){
-  if('requestIdleCallback' in window){ requestIdleCallback(fn, {timeout: timeout}); }
-  else{ setTimeout(fn, Math.min(timeout, 1000)); }
-}
+gtag('consent', 'default', {
+  ad_storage: 'denied',
+  analytics_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  wait_for_update: 500
+});
 
 function toolnovaLoadGA(){
   if(window.__toolnovaGALoaded) return;
   window.__toolnovaGALoaded = true;
-  var gtagScript = document.createElement('script');
-  gtagScript.async = true;
-  gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-3V90PDJDP1';
-  document.head.appendChild(gtagScript);
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-3V90PDJDP1';
+  document.head.appendChild(s);
   gtag('js', new Date());
-  gtag('config', 'G-3V90PDJDP1');
+  gtag('config', 'G-3V90PDJDP1', {anonymize_ip: true});
 }
-function toolnovaLoadAds(){
-  if(window.__toolnovaAdsLoaded) return;
-  window.__toolnovaAdsLoaded = true;
-  var adsScript = document.createElement('script');
-  adsScript.async = true;
-  adsScript.crossOrigin = 'anonymous';
-  adsScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3359266836868361';
-  adsScript.onload = function(){
-    document.querySelectorAll('ins.adsbygoogle').forEach(function(){
-      try{ (window.adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){}
-    });
-  };
-  document.head.appendChild(adsScript);
-}
-function toolnovaLoadDeferredScripts(){
-  if(window.__toolnovaDeferredLoaded) return;
-  window.__toolnovaDeferredLoaded = true;
-  toolnovaIdle(toolnovaLoadGA, 5000);
-  // AdSense loader intentionally not called: no real <ins class="adsbygoogle">
-  // ad units exist on the page yet (see the commented-out ad slots above), so
-  // there's nothing for it to fill. Re-enable toolnovaLoadAds() here once a
-  // real ad-slot ID is wired in.
-}
-// Interaction-only on purpose: automated audits (Lighthouse/PageSpeed) never scroll,
-// click, or touch the page, so these third-party scripts stay completely out of the
-// measured trace and contribute zero Total Blocking Time. Any real visitor who
-// scrolls, taps, or moves the mouse anywhere on the page still loads them normally
-// within ~1.5-3s of that first interaction.
-['scroll','mousemove','touchstart','keydown','click'].forEach(function(evt){
-  window.addEventListener(evt, toolnovaLoadDeferredScripts, {once:true, passive:true});
+
+let toolnovaGATimer = window.setTimeout(toolnovaLoadGA, 8000);
+['scroll','touchstart','keydown','click'].forEach(function(evt){
+  window.addEventListener(evt, function(){
+    window.clearTimeout(toolnovaGATimer);
+    toolnovaLoadGA();
+  }, {once:true, passive:true});
 });
 </script>
 <!-- End Google Analytics -->
@@ -135,7 +145,7 @@ function toolnovaLoadTranslateWidget(){
   window.__toolnovaTranslateLoaded = true;
   const s = document.createElement('script');
   s.type = 'text/javascript';
-  s.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+  s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
   document.head.appendChild(s);
 }
 
@@ -205,11 +215,6 @@ body { top: 0 !important; }
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"></noscript>
 
-<!-- ================================================
-     ADSENSE — loader is now injected dynamically by the deferred-load
-     script above (see 'Google Analytics' block) once the user interacts
-     with the page or after a short idle timeout.
-================================================ -->
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -518,13 +523,72 @@ footer a:hover{color:var(--text);}
   .row{grid-template-columns:1fr;}
   .result-grid{grid-template-columns:1fr 1fr;}
 }
+
+
+/* ACCESSIBILITY, MOBILE AND CONTENT QUALITY */
+.skip-link{position:fixed;left:12px;top:12px;z-index:1000;background:var(--text);color:#fff;padding:10px 14px;border-radius:8px;transform:translateY(-150%);transition:transform .2s;text-decoration:none;font-weight:700;}
+.skip-link:focus{transform:translateY(0);}
+.search-status{min-height:22px;margin-top:8px;color:var(--muted);font-size:13px;}
+.info-section{max-width:1100px;margin:0 auto;padding:8px 24px 56px;}
+.info-section h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(24px,4vw,34px);line-height:1.25;text-align:center;margin-bottom:12px;}
+.info-lead{max-width:760px;margin:0 auto 26px;text-align:center;color:var(--muted);font-size:15px;}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:30px;}
+.info-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);}
+.info-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;margin:8px 0 6px;}
+.info-card p{color:var(--muted);font-size:13px;}
+.faq-list{max-width:820px;margin:0 auto;display:grid;gap:10px;}
+.faq-list details{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;}
+.faq-list summary{cursor:pointer;font-weight:700;line-height:1.4;}
+.faq-list details p{color:var(--muted);font-size:13px;margin-top:9px;}
+.trust-note{max-width:820px;margin:22px auto 0;background:var(--accent-light);border:1px solid rgba(79,99,210,.2);border-radius:12px;padding:14px 16px;color:var(--muted);font-size:12.5px;line-height:1.6;}
+.tool-notice{margin-top:18px;padding:11px 13px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-size:11.5px;line-height:1.55;}
+.footer-disclosure{max-width:760px;margin:14px auto 0;line-height:1.6;font-size:12px;}
+:focus-visible{outline:3px solid rgba(79,99,210,.38);outline-offset:3px;}
+
+@media(max-width:760px){
+  body{font-size:14px;overflow-x:hidden;}
+  nav{position:relative;top:auto;}
+  .hero{padding:38px 16px 30px;}
+  .hero h1{font-size:clamp(30px,10vw,42px);}
+  .hero p{font-size:15px;}
+  .search-wrap input,input[type="text"],input[type="number"],input[type="date"],select,textarea{font-size:16px;}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:24px 16px;}
+  .tool-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+  .tool-card{padding:22px 12px 18px;min-width:0;}
+  .tool-name{font-size:13px;}
+  .tool-desc{font-size:11.5px;}
+  .tool-icon-wrap{width:52px;height:52px;}
+  .modal{width:100%;max-width:none;max-height:100dvh;height:auto;border-radius:18px;padding:56px 16px 22px;}
+  .overlay{padding:8px;align-items:flex-end;}
+  .modal.fullscreen{height:100dvh;}
+  .modal-close,.modal-fullscreen-btn{width:40px;height:40px;top:10px;}
+  .modal-fullscreen-btn{right:58px;}
+  .btn{min-height:46px;}
+  .dropzone{padding:26px 14px;}
+  .info-section{padding:4px 16px 42px;}
+  .info-grid{grid-template-columns:1fr;}
+  footer{padding:34px 16px;}
+  footer a{display:inline-block;padding:5px 3px;margin:0 4px;}
+}
+@media(max-width:390px){
+  .tool-grid{grid-template-columns:1fr;}
+  .stats{grid-template-columns:1fr 1fr;}
+}
+@media(hover:none),(pointer:coarse){
+  .tool-card:hover{transform:none;box-shadow:0 4px 14px rgba(79,99,210,.10);}
+  .cat-btn:hover{transform:none;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
+}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- NAV -->
 <!-- NAV + CATEGORY BAR (single sticky row) -->
-<nav>
+<nav aria-label="Primary navigation">
   <a href="/" class="logo">toolnova<span>.tools</span></a>
   <div class="nav-cats">
     <a href="#pdf-converter" class="cat-btn" style="--c1:#FFD3D3;--c2:#B91C1C;">📄 PDF Converter <span class="cat-count">8</span></a>
@@ -540,19 +604,20 @@ footer a:hover{color:var(--text);}
 <main id="main-content">
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">⚡ 100% Free · No signup · Instant results</div>
-  <h1>Every tool you need,<br><em>right here.</em></h1>
-  <p>Free online tools used by millions. PDF converter, calculators, converters — no account, no clutter.</p>
+  <div class="hero-badge">⚡ Free tools · No signup · Browser-based</div>
+  <h1>Free online tools,<br><em>ready when you are.</em></h1>
+  <p>Convert documents, calculate everyday results, create QR codes and more — directly in your browser, with no account required.</p>
   <div class="search-wrap">
     <span class="search-icon">🔍</span>
-    <input type="text" id="search-input" placeholder="Search tools... (QR, age, unit, word...)" oninput="filterTools(this.value)">
+    <input type="search" id="search-input" aria-label="Search Toolnova tools" autocomplete="off" enterkeyhint="search" placeholder="Search: PDF to Word, OCR, age, QR..." oninput="filterTools(this.value)">
+    <div id="search-status" class="search-status" role="status" aria-live="polite"></div>
   </div>
   <a href="/blog/" class="hero-blog-link">📚 Read our free guides &amp; how-tos on the blog →</a>
 </div>
 
 <!-- STATS -->
 <div class="stats">
-  <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Free Tools</div></div>
+  <div class="stat"><div class="stat-num">35+</div><div class="stat-label">Free Tools</div></div>
   <div class="stat"><div class="stat-num">0</div><div class="stat-label">Signups Required</div></div>
   <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Runs In Your Browser</div></div>
   <div class="stat"><div class="stat-num">Private</div><div class="stat-label">We Never Store Your Data</div></div>
@@ -587,53 +652,53 @@ footer a:hover{color:var(--text);}
     <p>Convert PDF files to and from Word, Excel, JPG and PNG — everything runs locally in your browser, so your documents are never uploaded to a server.</p>
   </div>
   <div class="tool-grid">
-    <a class="tool-card" data-key="c1" href="/?tool=pdf2word" onclick="return handleToolCardClick(event,this,'pdf2word')">
-      <button class="fav-btn" onclick="toggleFav(event,'c1')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c1" href="/#tool=pdf2word" onclick="return handleToolCardClick(event,this,'pdf2word')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c1\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c1\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-red"><span class="tool-icon anim-float">📄</span></div>
       <div class="tool-name">PDF to Word</div>
       <div class="tool-desc">Convert PDF files to editable Word documents instantly.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c2" href="/?tool=word2pdf" onclick="return handleToolCardClick(event,this,'word2pdf')">
-      <button class="fav-btn" onclick="toggleFav(event,'c2')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c2" href="/#tool=word2pdf" onclick="return handleToolCardClick(event,this,'word2pdf')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c2\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c2\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-bounce">📝</span></div>
       <div class="tool-name">Word to PDF</div>
       <div class="tool-desc">Convert Word documents to PDF format. Fast and free.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c3" href="/?tool=pdf2jpg" onclick="return handleToolCardClick(event,this,'pdf2jpg')">
-      <button class="fav-btn" onclick="toggleFav(event,'c3')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c3" href="/#tool=pdf2jpg" onclick="return handleToolCardClick(event,this,'pdf2jpg')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c3\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c3\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-spin">🖼️</span></div>
       <div class="tool-name">PDF to JPG</div>
       <div class="tool-desc">Convert PDF pages to high quality JPG images.</div>
     </a>
-    <a class="tool-card" data-key="c4" href="/?tool=img2pdf" onclick="return handleToolCardClick(event,this,'img2pdf')">
-      <button class="fav-btn" onclick="toggleFav(event,'c4')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c4" href="/#tool=img2pdf" onclick="return handleToolCardClick(event,this,'img2pdf')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c4\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c4\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-flip">🔄</span></div>
       <div class="tool-name">JPG to PDF</div>
       <div class="tool-desc">Combine JPG images into a single PDF file.</div>
     </a>
-    <a class="tool-card" data-key="c5" href="/?tool=pdf2excel" onclick="return handleToolCardClick(event,this,'pdf2excel')">
-      <button class="fav-btn" onclick="toggleFav(event,'c5')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c5" href="/#tool=pdf2excel" onclick="return handleToolCardClick(event,this,'pdf2excel')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c5\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c5\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-bounce">📊</span></div>
       <div class="tool-name">PDF to Excel</div>
       <div class="tool-desc">Extract tables from PDF into Excel spreadsheets.</div>
     </a>
-    <a class="tool-card" data-key="c6" href="/?tool=pdf2png" onclick="return handleToolCardClick(event,this,'pdf2png')">
-      <button class="fav-btn" onclick="toggleFav(event,'c6')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c6" href="/#tool=pdf2png" onclick="return handleToolCardClick(event,this,'pdf2png')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c6\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c6\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-pulse">🖼️</span></div>
       <div class="tool-name">PDF to PNG</div>
-      <div class="tool-desc">Convert PDF pages to PNG images with transparency.</div>
+      <div class="tool-desc">Convert PDF pages to high-quality PNG images.</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c7" href="/?tool=img2pdf" onclick="return handleToolCardClick(event,this,'img2pdf')">
-      <button class="fav-btn" onclick="toggleFav(event,'c7')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c7" href="/#tool=img2pdf" onclick="return handleToolCardClick(event,this,'img2pdf')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c7\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c7\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-spin">🔄</span></div>
       <div class="tool-name">PNG to PDF</div>
       <div class="tool-desc">Convert PNG images to PDF documents instantly.</div>
     </a>
-    <a class="tool-card" data-key="c8" href="/?tool=pdf2text" onclick="return handleToolCardClick(event,this,'pdf2text')">
-      <button class="fav-btn" onclick="toggleFav(event,'c8')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c8" href="/#tool=pdf2text" onclick="return handleToolCardClick(event,this,'pdf2text')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c8\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c8\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-wobble">📋</span></div>
       <div class="tool-name">PDF to Text</div>
       <div class="tool-desc">Extract all text content from any PDF file.</div>
@@ -646,15 +711,15 @@ footer a:hover{color:var(--text);}
     <p>Pull editable, searchable text out of photos, screenshots and scanned PDFs using on-device optical character recognition — no signup, no upload.</p>
   </div>
   <div class="tool-grid">
-    <a class="tool-card" data-key="c9" href="/?tool=ocr" onclick="return handleToolCardClick(event,this,'ocr')">
-      <button class="fav-btn" onclick="toggleFav(event,'c9')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c9" href="/#tool=ocr" onclick="return handleToolCardClick(event,this,'ocr')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c9\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c9\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-shake">🔍</span></div>
       <div class="tool-name">Image to Text (OCR)</div>
-      <div class="tool-desc">Extract text from any image using AI recognition.</div>
+      <div class="tool-desc">Extract text from images using browser-based OCR technology.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c10" href="/?tool=scanocr" onclick="return handleToolCardClick(event,this,'scanocr')">
-      <button class="fav-btn" onclick="toggleFav(event,'c10')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c10" href="/#tool=scanocr" onclick="return handleToolCardClick(event,this,'scanocr')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c10\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c10\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-wobble">📱</span></div>
       <div class="tool-name">Scan PDF to Text</div>
       <div class="tool-desc">Make scanned PDFs searchable with OCR technology.</div>
@@ -667,55 +732,55 @@ footer a:hover{color:var(--text);}
     <p>Merge, split, compress, rotate, sign, and add text to any PDF — full editing control without installing desktop software.</p>
   </div>
   <div class="tool-grid">
-    <a class="tool-card" data-key="c11" href="/?tool=merge" onclick="return handleToolCardClick(event,this,'merge')">
-      <button class="fav-btn" onclick="toggleFav(event,'c11')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c11" href="/#tool=merge" onclick="return handleToolCardClick(event,this,'merge')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c11\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c11\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-bounce">📎</span></div>
       <div class="tool-name">Merge PDF</div>
       <div class="tool-desc">Combine multiple PDF files into one document.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c12" href="/?tool=split" onclick="return handleToolCardClick(event,this,'split')">
-      <button class="fav-btn" onclick="toggleFav(event,'c12')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c12" href="/#tool=split" onclick="return handleToolCardClick(event,this,'split')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c12\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c12\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-squeeze">✂️</span></div>
       <div class="tool-name">Split PDF</div>
       <div class="tool-desc">Split a PDF into multiple separate files.</div>
     </a>
-    <a class="tool-card" data-key="c13" href="/?tool=compress" onclick="return handleToolCardClick(event,this,'compress')">
-      <button class="fav-btn" onclick="toggleFav(event,'c13')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c13" href="/#tool=compress" onclick="return handleToolCardClick(event,this,'compress')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c13\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c13\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-squeeze">🗜️</span></div>
       <div class="tool-name">Compress PDF</div>
-      <div class="tool-desc">Reduce PDF file size without losing quality.</div>
+      <div class="tool-desc">Re-optimize a PDF to reduce its file size when possible.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c14" href="/?tool=rotate" onclick="return handleToolCardClick(event,this,'rotate')">
-      <button class="fav-btn" onclick="toggleFav(event,'c14')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c14" href="/#tool=rotate" onclick="return handleToolCardClick(event,this,'rotate')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c14\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c14\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-spin">🔃</span></div>
       <div class="tool-name">Rotate PDF</div>
       <div class="tool-desc">Rotate PDF pages to any angle. 90, 180, 270 degrees.</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c15" href="/?tool=deletepages" onclick="return handleToolCardClick(event,this,'deletepages')">
-      <button class="fav-btn" onclick="toggleFav(event,'c15')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c15" href="/#tool=deletepages" onclick="return handleToolCardClick(event,this,'deletepages')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c15\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c15\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-red"><span class="tool-icon anim-wobble">🗑️</span></div>
       <div class="tool-name">Delete PDF Pages</div>
       <div class="tool-desc">Remove unwanted pages from your PDF file.</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c16" href="/?tool=extractpages" onclick="return handleToolCardClick(event,this,'extractpages')">
-      <button class="fav-btn" onclick="toggleFav(event,'c16')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c16" href="/#tool=extractpages" onclick="return handleToolCardClick(event,this,'extractpages')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c16\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c16\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-bounce">📤</span></div>
       <div class="tool-name">Extract PDF Pages</div>
       <div class="tool-desc">Extract specific pages from a PDF document.</div>
     </a>
-    <a class="tool-card" data-key="c17" href="/?tool=sign" onclick="return handleToolCardClick(event,this,'sign')">
-      <button class="fav-btn" onclick="toggleFav(event,'c17')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c17" href="/#tool=sign" onclick="return handleToolCardClick(event,this,'sign')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c17\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c17\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-write">✍️</span></div>
       <div class="tool-name">Sign PDF</div>
       <div class="tool-desc">Draw, type or upload your signature and place it on any PDF page.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c17b" href="/?tool=addtext" onclick="return handleToolCardClick(event,this,'addtext')">
-      <button class="fav-btn" onclick="toggleFav(event,'c17b')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c17b" href="/#tool=addtext" onclick="return handleToolCardClick(event,this,'addtext')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c17b\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c17b\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-write">✏️</span></div>
       <div class="tool-name">Add Text to PDF</div>
       <div class="tool-desc">Type anywhere on a page — fill forms, add notes, annotate.</div>
@@ -742,27 +807,27 @@ footer a:hover{color:var(--text);}
     <p>Instantly generate QR codes, strong random passwords, and placeholder text for designs and prototypes — free, with no daily limits.</p>
   </div>
   <div class="tool-grid">
-    <a class="tool-card" data-key="c18" href="/?tool=qr" onclick="return handleToolCardClick(event,this,'qr')">
-      <button class="fav-btn" onclick="toggleFav(event,'c18')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c18" href="/#tool=qr" onclick="return handleToolCardClick(event,this,'qr')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c18\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c18\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📱</span></div>
       <div class="tool-name">QR Code Generator</div>
       <div class="tool-desc">Turn any URL or text into a QR code. Download as PNG instantly.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c19" href="/?tool=password" onclick="return handleToolCardClick(event,this,'password')">
-      <button class="fav-btn" onclick="toggleFav(event,'c19')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c19" href="/#tool=password" onclick="return handleToolCardClick(event,this,'password')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c19\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c19\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-lock">🔐</span></div>
       <div class="tool-name">Password Generator</div>
       <div class="tool-desc">Strong, secure passwords of any length. Symbols, numbers, uppercase.</div>
     </a>
-    <a class="tool-card" data-key="c20" href="/?tool=color" onclick="return handleToolCardClick(event,this,'color')">
-      <button class="fav-btn" onclick="toggleFav(event,'c20')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c20" href="/#tool=color" onclick="return handleToolCardClick(event,this,'color')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c20\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c20\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-hue">🎨</span></div>
       <div class="tool-name">Color Code Converter</div>
       <div class="tool-desc">Convert between HEX, RGB, and HSL color formats instantly.</div>
     </a>
-    <a class="tool-card" data-key="c21" href="/?tool=hash" onclick="return handleToolCardClick(event,this,'hash')">
-      <button class="fav-btn" onclick="toggleFav(event,'c21')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c21" href="/#tool=hash" onclick="return handleToolCardClick(event,this,'hash')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c21\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c21\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-float">🔑</span></div>
       <div class="tool-name">Lorem Ipsum Generator</div>
       <div class="tool-desc">Generate placeholder text for designs and prototypes.</div>
@@ -775,61 +840,61 @@ footer a:hover{color:var(--text);}
     <p>Accurate calculators for age, BMI, BMR, daily calories, tips, discounts, loans and water intake — real formulas, instant results.</p>
   </div>
   <div class="tool-grid">
-    <a class="tool-card" data-key="c22" href="/?tool=age" onclick="return handleToolCardClick(event,this,'age')">
-      <button class="fav-btn" onclick="toggleFav(event,'c22')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c22" href="/#tool=age" onclick="return handleToolCardClick(event,this,'age')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c22\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c22\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-pink"><span class="tool-icon anim-tick">🎂</span></div>
       <div class="tool-name">Age Calculator</div>
       <div class="tool-desc">Your exact age in years, months, days and hours.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c23" href="/?tool=bmi" onclick="return handleToolCardClick(event,this,'bmi')">
-      <button class="fav-btn" onclick="toggleFav(event,'c23')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c23" href="/#tool=bmi" onclick="return handleToolCardClick(event,this,'bmi')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c23\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c23\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-wobble">⚖️</span></div>
       <div class="tool-name">BMI Calculator</div>
       <div class="tool-desc">Body Mass Index with US Imperial and Metric support.</div>
     </a>
-    <a class="tool-card" data-key="c24" href="/?tool=tip" onclick="return handleToolCardClick(event,this,'tip')">
-      <button class="fav-btn" onclick="toggleFav(event,'c24')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c24" href="/#tool=tip" onclick="return handleToolCardClick(event,this,'tip')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c24\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c24\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-ping">🍽️</span></div>
       <div class="tool-name">Tip Calculator</div>
       <div class="tool-desc">Split the bill and calculate tips for any group size.</div>
     </a>
-    <a class="tool-card" data-key="c25" href="/?tool=discount" onclick="return handleToolCardClick(event,this,'discount')">
-      <button class="fav-btn" onclick="toggleFav(event,'c25')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c25" href="/#tool=discount" onclick="return handleToolCardClick(event,this,'discount')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c25\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c25\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-bounce">🏷️</span></div>
       <div class="tool-name">Discount Calculator</div>
       <div class="tool-desc">Final price after any percentage discount. Quick math.</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c26" href="/?tool=loan" onclick="return handleToolCardClick(event,this,'loan')">
-      <button class="fav-btn" onclick="toggleFav(event,'c26')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c26" href="/#tool=loan" onclick="return handleToolCardClick(event,this,'loan')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c26\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c26\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-count">🏦</span></div>
       <div class="tool-name">Loan Calculator</div>
       <div class="tool-desc">Monthly payment, total interest on any loan. US-style.</div>
     </a>
-    <a class="tool-card" data-key="c26b" href="/?tool=bmr" onclick="return handleToolCardClick(event,this,'bmr')">
-      <button class="fav-btn" onclick="toggleFav(event,'c26b')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c26b" href="/#tool=bmr" onclick="return handleToolCardClick(event,this,'bmr')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c26b\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c26b\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-pulse">🔥</span></div>
       <div class="tool-name">BMR Calculator</div>
       <div class="tool-desc">Your basal metabolic rate — calories burned at rest.</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c26c" href="/?tool=calorie" onclick="return handleToolCardClick(event,this,'calorie')">
-      <button class="fav-btn" onclick="toggleFav(event,'c26c')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c26c" href="/#tool=calorie" onclick="return handleToolCardClick(event,this,'calorie')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c26c\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c26c\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-red"><span class="tool-icon anim-shake">🍎</span></div>
       <div class="tool-name">Calorie Calculator</div>
       <div class="tool-desc">Daily calorie needs based on activity level (TDEE).</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c26d" href="/?tool=bodyfat" onclick="return handleToolCardClick(event,this,'bodyfat')">
-      <button class="fav-btn" onclick="toggleFav(event,'c26d')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c26d" href="/#tool=bodyfat" onclick="return handleToolCardClick(event,this,'bodyfat')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c26d\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c26d\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-wobble">📐</span></div>
       <div class="tool-name">Body Fat Calculator</div>
       <div class="tool-desc">Estimate body fat % using the US Navy tape method.</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c26e" href="/?tool=water" onclick="return handleToolCardClick(event,this,'water')">
-      <button class="fav-btn" onclick="toggleFav(event,'c26e')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c26e" href="/#tool=water" onclick="return handleToolCardClick(event,this,'water')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c26e\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c26e\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-float">💧</span></div>
       <div class="tool-name">Water Intake Calculator</div>
       <div class="tool-desc">Daily recommended water intake based on weight &amp; activity.</div>
@@ -843,28 +908,28 @@ footer a:hover{color:var(--text);}
     <p>Convert between units, currencies, text cases and color formats (HEX, RGB, HSL) in one click — built for quick, everyday conversions.</p>
   </div>
   <div class="tool-grid">
-    <a class="tool-card" data-key="c27" href="/?tool=unit" onclick="return handleToolCardClick(event,this,'unit')">
-      <button class="fav-btn" onclick="toggleFav(event,'c27')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c27" href="/#tool=unit" onclick="return handleToolCardClick(event,this,'unit')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c27\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c27\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-flip">📏</span></div>
       <div class="tool-name">Unit Converter</div>
       <div class="tool-desc">Length, weight, temperature, speed, volume — all units.</div>
     </a>
-    <a class="tool-card" data-key="c28" href="/?tool=currency" onclick="return handleToolCardClick(event,this,'currency')">
-      <button class="fav-btn" onclick="toggleFav(event,'c28')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c28" href="/#tool=currency" onclick="return handleToolCardClick(event,this,'currency')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c28\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c28\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-flip">💱</span></div>
       <div class="tool-name">Currency Converter</div>
-      <div class="tool-desc">Convert between 15 major world currencies instantly.</div>
+      <div class="tool-desc">Estimate conversions between 15 major world currencies.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
-    <a class="tool-card" data-key="c29" href="/?tool=case" onclick="return handleToolCardClick(event,this,'case')">
-      <button class="fav-btn" onclick="toggleFav(event,'c29')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c29" href="/#tool=case" onclick="return handleToolCardClick(event,this,'case')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c29\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c29\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-shake">🔤</span></div>
       <div class="tool-name">Text Case Converter</div>
       <div class="tool-desc">UPPER, lower, Title Case, camelCase in one click.</div>
       <span class="tool-badge">New</span>
     </a>
-    <a class="tool-card" data-key="c30" href="/?tool=wordcount" onclick="return handleToolCardClick(event,this,'wordcount')">
-      <button class="fav-btn" onclick="toggleFav(event,'c30')" aria-label="Favorite this tool"></button>
+    <a class="tool-card" data-key="c30" href="/#tool=wordcount" onclick="return handleToolCardClick(event,this,'wordcount')">
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c30\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c30\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📝</span></div>
       <div class="tool-name">Word Counter</div>
       <div class="tool-desc">Words, characters, sentences, and reading time — live.</div>
@@ -877,59 +942,59 @@ footer a:hover{color:var(--text);}
   <!-- AFFILIATE SECTION -->
   <div class="affiliate-section" id="recommended">
     <h2>⭐ Most Popular Right Now</h2>
-    <p>Trending tools used by thousands of people every day.</p>
+    <p>Popular choices for document, text and everyday utility tasks.</p>
     <div class="tool-grid">
-      <a class="tool-card" data-key="p1" href="/?tool=pdf2jpg" onclick="return handleToolCardClick(event,this,'pdf2jpg')">
-        <button class="fav-btn" onclick="toggleFav(event,'p1')" aria-label="Favorite this tool"></button>
+      <a class="tool-card" data-key="p1" href="/#tool=pdf2jpg" onclick="return handleToolCardClick(event,this,'pdf2jpg')">
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p1\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p1\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-spin">🖼️</span></div>
         <div class="tool-name">PDF to JPG</div>
         <div class="tool-desc">Convert PDF pages to high quality JPG images instantly.</div>
         <span class="tool-badge hot">Most Popular</span>
       </a>
-      <a class="tool-card" data-key="p2" href="/?tool=ocr" onclick="return handleToolCardClick(event,this,'ocr')">
-        <button class="fav-btn" onclick="toggleFav(event,'p2')" aria-label="Favorite this tool"></button>
+      <a class="tool-card" data-key="p2" href="/#tool=ocr" onclick="return handleToolCardClick(event,this,'ocr')">
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p2\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p2\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-shake">🔍</span></div>
         <div class="tool-name">Image to Text</div>
-        <div class="tool-desc">Extract text from any image using AI-powered OCR.</div>
+        <div class="tool-desc">Extract text from images using browser-based OCR.</div>
         <span class="tool-badge hot">Trending</span>
       </a>
-      <a class="tool-card" data-key="p3" href="/?tool=merge" onclick="return handleToolCardClick(event,this,'merge')">
-        <button class="fav-btn" onclick="toggleFav(event,'p3')" aria-label="Favorite this tool"></button>
+      <a class="tool-card" data-key="p3" href="/#tool=merge" onclick="return handleToolCardClick(event,this,'merge')">
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p3\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p3\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-bounce">📎</span></div>
         <div class="tool-name">Merge PDF</div>
         <div class="tool-desc">Combine multiple PDF files into one document for free.</div>
         <span class="tool-badge hot">Most Used</span>
       </a>
-      <a class="tool-card" data-key="p4" href="/?tool=qr" onclick="return handleToolCardClick(event,this,'qr')">
-        <button class="fav-btn" onclick="toggleFav(event,'p4')" aria-label="Favorite this tool"></button>
+      <a class="tool-card" data-key="p4" href="/#tool=qr" onclick="return handleToolCardClick(event,this,'qr')">
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p4\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p4\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📱</span></div>
         <div class="tool-name">QR Code Generator</div>
         <div class="tool-desc">Generate QR codes for any URL or text. Download as PNG.</div>
         <span class="tool-badge">Popular</span>
       </a>
-      <a class="tool-card" data-key="p5" href="/?tool=sign" onclick="return handleToolCardClick(event,this,'sign')">
-        <button class="fav-btn" onclick="toggleFav(event,'p5')" aria-label="Favorite this tool"></button>
+      <a class="tool-card" data-key="p5" href="/#tool=sign" onclick="return handleToolCardClick(event,this,'sign')">
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p5\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p5\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-write">✍️</span></div>
         <div class="tool-name">Sign PDF</div>
         <div class="tool-desc">Draw or type your signature and place it on any PDF.</div>
         <span class="tool-badge">New</span>
       </a>
-      <a class="tool-card" data-key="p6" href="/?tool=password" onclick="return handleToolCardClick(event,this,'password')">
-        <button class="fav-btn" onclick="toggleFav(event,'p6')" aria-label="Favorite this tool"></button>
+      <a class="tool-card" data-key="p6" href="/#tool=password" onclick="return handleToolCardClick(event,this,'password')">
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p6\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p6\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-lock">🔐</span></div>
         <div class="tool-name">Password Generator</div>
         <div class="tool-desc">Generate strong, secure passwords instantly. Customizable.</div>
         <span class="tool-badge">Popular</span>
       </a>
-      <a class="tool-card" data-key="p7" href="/?tool=age" onclick="return handleToolCardClick(event,this,'age')">
-        <button class="fav-btn" onclick="toggleFav(event,'p7')" aria-label="Favorite this tool"></button>
+      <a class="tool-card" data-key="p7" href="/#tool=age" onclick="return handleToolCardClick(event,this,'age')">
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p7\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p7\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-pink"><span class="tool-icon anim-tick">🎂</span></div>
         <div class="tool-name">Age Calculator</div>
         <div class="tool-desc">Find your exact age in years, months, days and hours.</div>
         <span class="tool-badge">Popular</span>
       </a>
-      <a class="tool-card" data-key="p8" href="/?tool=wordcount" onclick="return handleToolCardClick(event,this,'wordcount')">
-        <button class="fav-btn" onclick="toggleFav(event,'p8')" aria-label="Favorite this tool"></button>
+      <a class="tool-card" data-key="p8" href="/#tool=wordcount" onclick="return handleToolCardClick(event,this,'wordcount')">
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p8\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p8\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📝</span></div>
         <div class="tool-name">Word Counter</div>
         <div class="tool-desc">Count words, characters and reading time live as you type.</div>
@@ -939,6 +1004,26 @@ footer a:hover{color:var(--text);}
   </div>
 
 </div><!-- end .section -->
+
+
+<section class="info-section" aria-labelledby="about-tools-title">
+  <h2 id="about-tools-title">Useful tools without uploads, accounts or complicated steps</h2>
+  <p class="info-lead">Toolnova brings document utilities, OCR, calculators, converters and generators into one mobile-friendly page. File-based tools are designed to process data in your browser instead of sending documents to a Toolnova server.</p>
+  <div class="info-grid">
+    <article class="info-card"><div aria-hidden="true">🔒</div><h3>Browser-based processing</h3><p>PDFs, images and text are handled locally by the page whenever the selected tool supports client-side processing.</p></article>
+    <article class="info-card"><div aria-hidden="true">⚡</div><h3>No account required</h3><p>Open a tool, enter your information or choose a file, and get a result without creating a profile or starting a subscription.</p></article>
+    <article class="info-card"><div aria-hidden="true">📱</div><h3>Designed for mobile</h3><p>Responsive layouts, large touch targets and full-screen tool dialogs make common tasks easier on phones, tablets and computers.</p></article>
+  </div>
+  <div class="faq-list" aria-label="Frequently asked questions">
+    <details><summary>Are Toolnova tools free?</summary><p>Yes. The tools on this page can be used without a paid account. The site may display advertising to help support free access.</p></details>
+    <details><summary>Are my uploaded files stored?</summary><p>Toolnova's file tools are designed to process files in your browser. The page does not intentionally upload your selected documents to a Toolnova server. Third-party libraries may be downloaded to your browser so the tools can run.</p></details>
+    <details><summary>Do the calculators provide professional advice?</summary><p>No. Health and financial calculator results are estimates for general information. Verify important decisions with a qualified professional or official source.</p></details>
+    <details><summary>Why can a converted document look different?</summary><p>Complex layouts, uncommon fonts, scanned pages and protected files can affect conversion quality. Review downloaded files before relying on them.</p></details>
+    <details><summary>How can I report a problem?</summary><p>Use the Contact link in the footer and include the tool name, browser, device and a description of what happened. Do not send sensitive documents.</p></details>
+  </div>
+  <p class="trust-note"><strong>Important:</strong> Tool results are provided for general informational and utility purposes. Always review converted files and independently verify medical, financial, legal or safety-related results.</p>
+</section>
+
 </main><!-- end #main-content -->
 
 <!-- FOOTER -->
@@ -957,12 +1042,13 @@ footer a:hover{color:var(--text);}
     <a href="/faq.html">FAQ</a>
     <a href="/sitemap.html">Sitemap</a>
   </p>
-  <p>© 2026 toolnova.tools — All tools run in your browser. We never store your data.</p>
+  <p>© 2026 toolnova.tools — Free browser-based online tools.</p>
+  <p class="footer-disclosure">Toolnova may display advertising to support free access. Advertising does not change calculator results or file-processing output. Review our Privacy Policy and Cookie Policy for information about third-party services.</p>
 </footer>
 
 <!-- MODAL -->
-<div class="overlay" id="overlay" onclick="closeIfOutside(event)">
-  <div class="modal" id="modal-content"></div>
+<div class="overlay" id="overlay" onclick="closeIfOutside(event)" aria-hidden="true">
+  <div class="modal" id="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1"></div>
 </div>
 
 <script>
@@ -985,76 +1071,172 @@ async function ensureLibsForTool(key){
   if(key==='qr' && !window.QRCode){ await loadScript('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js'); }
 }
 
-// ── CRAWLABLE TOOL LINKS ──────────────────────────────────────────────────────
-// Tool cards now have real hrefs like /?tool=pdf2word instead of javascript:void(0),
-// so search engines and users with JS off/new-tab/middle-click get a real, working
-// link. For normal left-clicks we intercept, update the URL without a full reload,
-// and open the modal in place (keeps the fast SPA experience).
+// ── SHAREABLE TOOL LINKS ──────────────────────────────────────────────────────
+// Fragment links keep every tool shareable without creating dozens of duplicate
+// query-string pages in Search Console. Google treats the canonical page as the homepage.
+const TOOLNOVA_HOME_TITLE = 'Free Online PDF Tools, Calculators & Converters | Toolnova';
+
+function getToolKeyFromLocation(){
+  const hashMatch = location.hash.match(/^#tool=([a-zA-Z0-9]+)$/);
+  if(hashMatch) return hashMatch[1];
+  // Backward compatibility for old links such as /?tool=age.
+  const legacy = new URLSearchParams(location.search).get('tool');
+  return legacy || '';
+}
+
 function handleToolCardClick(event, el, key){
   addRipple(event, el);
-  if(event.metaKey || event.ctrlKey || event.shiftKey || event.button===1) return true; // let ctrl/cmd/middle-click open in new tab
+  if(event.metaKey || event.ctrlKey || event.shiftKey || event.button===1) return true;
   event.preventDefault();
-  const url = el.getAttribute('href');
-  if(window.history && history.pushState) history.pushState({tool:key}, '', url);
+  history.pushState({tool:key}, '', '/#tool=' + encodeURIComponent(key));
   openTool(key);
   return false;
 }
-window.addEventListener('popstate', function(){
-  const params = new URLSearchParams(location.search);
-  const key = params.get('tool');
-  if(key && TOOLS[key]) openTool(key); else closeTool();
-});
-window.addEventListener('DOMContentLoaded', function(){
-  const params = new URLSearchParams(location.search);
-  const key = params.get('tool');
-  if(key && TOOLS[key]) openTool(key);
-});
+
+function syncToolFromLocation(){
+  const key = getToolKeyFromLocation();
+  if(key && TOOLS[key]){
+    if(location.search.includes('tool=')) history.replaceState({tool:key}, '', '/#tool=' + encodeURIComponent(key));
+    openTool(key);
+  }else if(document.getElementById('overlay').classList.contains('active')){
+    closeTool(false);
+  }
+}
+window.addEventListener('popstate', syncToolFromLocation);
+window.addEventListener('hashchange', syncToolFromLocation);
+window.addEventListener('DOMContentLoaded', syncToolFromLocation, {once:true});
 
 // ── MODAL ENGINE ──────────────────────────────────────────────────────────────
+const TOOL_NOTICES = {
+  bmi:'Health result estimate only; not medical advice.',
+  bmr:'Health result estimate only; not medical advice.',
+  calorie:'Health result estimate only; not medical advice.',
+  bodyfat:'Health result estimate only; not medical advice.',
+  water:'Health result estimate only; not medical advice.',
+  loan:'Financial estimate only. Lender fees, taxes and terms can change the actual cost.',
+  currency:'Approximate static rates only. Confirm current rates with a bank or trusted market source.',
+  pdf2word:'Text-focused conversion. Complex layouts, fonts and scanned pages may not be preserved.',
+  word2pdf:'Text-focused conversion. Complex Word formatting may not be preserved.',
+  pdf2excel:'Extracts detected text rows to CSV for use in spreadsheet software; review the output carefully.'
+};
+
 async function openTool(key){
-  const tool=TOOLS[key];if(!tool)return;
-  document.getElementById('modal-content').classList.remove('fullscreen');
+  const tool=TOOLS[key]; if(!tool) return;
+  const modal=document.getElementById('modal-content');
+  const overlay=document.getElementById('overlay');
+  modal.classList.remove('fullscreen');
   const needsLibs = PDF_TOOL_KEYS.has(key) || key==='ocr' || key==='qr';
-  document.getElementById('modal-content').innerHTML=`
-    <button class="modal-fullscreen-btn" id="fs-btn" onclick="toggleModalFullscreen()" title="Full screen">⛶</button>
-    <button class="modal-close" onclick="closeTool()">✕</button>
-    <h2>${tool.title}</h2>
+  const notice = TOOL_NOTICES[key] ? `<div class="tool-notice">${TOOL_NOTICES[key]}</div>` : '';
+  modal.innerHTML=`
+    <button class="modal-fullscreen-btn" id="fs-btn" type="button" onclick="toggleModalFullscreen()" title="Full screen" aria-label="Open tool in full screen">⛶</button>
+    <button class="modal-close" type="button" onclick="closeTool()" aria-label="Close tool">✕</button>
+    <h2 id="modal-title">${tool.title}</h2>
     <div class="modal-sub">${tool.sub}</div>
     ${needsLibs ? '<div id="tool-loading" style="text-align:center;padding:32px 0;color:var(--muted);font-size:13px;">Loading tool…</div>' : tool.render()}
+    ${notice}
   `;
-  document.getElementById('overlay').classList.add('active');
+  overlay.classList.add('active');
+  overlay.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
+  document.title = tool.title.replace(/^[^A-Za-z0-9]+/, '') + ' | Toolnova';
+  modal.focus({preventScroll:true});
   if(needsLibs){
-    await ensureLibsForTool(key);
-    const loadingEl=document.getElementById('tool-loading');
-    if(loadingEl) loadingEl.outerHTML=tool.render();
+    try{
+      await ensureLibsForTool(key);
+      const loadingEl=document.getElementById('tool-loading');
+      if(loadingEl) loadingEl.outerHTML=tool.render();
+    }catch(err){
+      const loadingEl=document.getElementById('tool-loading');
+      if(loadingEl) loadingEl.innerHTML='<div class="result-box" style="color:#c0392b;">This tool could not load its browser library. Check your connection and try again.</div>';
+      console.error(err);
+    }
   }
-  if(tool.init)tool.init();
+  if(tool.init) tool.init();
 }
 function toggleModalFullscreen(){
   const modal=document.getElementById('modal-content');
   const btn=document.getElementById('fs-btn');
   const isFull=modal.classList.toggle('fullscreen');
-  if(btn) btn.textContent = isFull ? '⤡' : '⛶';
-  if(btn) btn.title = isFull ? 'Exit full screen' : 'Full screen';
+  if(btn){ btn.textContent = isFull ? '⤡' : '⛶'; btn.title = isFull ? 'Exit full screen' : 'Full screen'; }
 }
-function closeTool(){document.getElementById('overlay').classList.remove('active');document.body.style.overflow='';document.getElementById('modal-content').classList.remove('fullscreen');if(location.search.includes('tool=')&&history.pushState){history.pushState({},'','/');}}
-function closeIfOutside(e){if(e.target===document.getElementById('overlay'))closeTool();}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeTool();});
-
-// Auto-open a tool if arriving via a deep link like /?tool=age
-window.addEventListener('DOMContentLoaded',()=>{
-  const params=new URLSearchParams(window.location.search);
-  const t=params.get('tool');
-  if(t && TOOLS[t]){
-    setTimeout(()=>openTool(t),150);
+function closeTool(updateUrl=true){
+  const overlay=document.getElementById('overlay');
+  overlay.classList.remove('active');
+  overlay.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  document.getElementById('modal-content').classList.remove('fullscreen');
+  document.title=TOOLNOVA_HOME_TITLE;
+  if(updateUrl && (location.hash.startsWith('#tool=') || location.search.includes('tool='))){
+    history.pushState({},'',location.pathname || '/');
   }
-});
+  const search=document.getElementById('search-input');
+  if(search) search.focus({preventScroll:true});
+}
+function closeIfOutside(e){if(e.target===document.getElementById('overlay'))closeTool();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape' && document.getElementById('overlay').classList.contains('active')) closeTool();});
 
 // ── SEARCH ────────────────────────────────────────────────────────────────────
-function filterTools(q){
-  q=q.toLowerCase();
-  document.querySelectorAll('.tool-card').forEach(c=>{c.style.display=c.textContent.toLowerCase().includes(q)?'':'none';});
+const TOOL_SEARCH_ALIASES = {
+  pdf2word:'pdf to word pdf to doc pdf to docx editable word convert document pdf to docx pdf word converter pdf to editable word turn pdf into word save pdf as word convert pdf document to docx pdf to microsoft word pdf to word without losing formatting editable document converter free pdf to word online pdf to word pdf to word no signup pdf to word no watermark pdf convertor pdf convereter pdfconverter pdf tool pdf tools pdftoword pdf 2 word pdf converter document converter free pdf converter online pdf converter convert pdf online document conversion tools how to convert pdf to word how to convert pdf to word without losing formatting best free pdf converter free pdf tools without signup private pdf converter browser based pdf editor pdf converter without uploading files',
+  word2pdf:'word to pdf doc to pdf docx to pdf document to pdf docx to pdf doc to pdf word pdf converter microsoft word to pdf save word as pdf turn document into pdf document to pdf create pdf from word free word to pdf online word to pdf docx pdf converter word to pdf no signup wordtopdf pdf converter document converter free pdf converter online pdf converter convert pdf online document conversion tools',
+  pdf2jpg:'pdf to jpg pdf to jpeg pdf to image save pdf as picture pdf to jpeg pdf to image pdf image converter pdf pages to jpg save pdf as jpg extract pdf pages as images high quality pdf to jpg pdf to photo convert pdf page to image free pdf to jpg online pdf to jpg pdf jpg converter pdftojpg pdf converter document converter free pdf converter online pdf converter pdf convertor convert pdf online document conversion tools how to convert pdf to jpg',
+  img2pdf:'jpg to pdf jpeg to pdf png to pdf image to pdf photo to pdf pictures into pdf jpg to pdf jpeg to pdf png to pdf convert image to pdf convert jpg to pdf convert png to pdf images to pdf combine images into pdf multiple jpg to pdf multiple photos to pdf scan image to pdf create pdf from images free image to pdf converter online jpg to pdf jpgtopdf pngtopdf pdf converter document converter free pdf converter online pdf converter pdf convertor convert pdf online document conversion tools how to convert jpg to pdf how to convert png to pdf how to turn photos into one pdf',
+  pdf2excel:'pdf to excel pdf to xlsx pdf table csv spreadsheet extract rows pdf to xlsx pdf excel converter extract tables from pdf pdf table extractor pdf spreadsheet converter pdf to editable spreadsheet convert pdf table to excel pdf data extraction document to excel pdf to xls free pdf to excel online pdf to excel pdf table to spreadsheet pdftoexcel pdf converter document converter free pdf converter online pdf converter convert pdf online document conversion tools',
+  pdf2png:'pdf to png pdf page to image transparent image convert pdf to png pdf pages to png pdf image converter save pdf as png extract pdf as png high quality pdf to png pdf page to png pdf png converter convert document to png free pdf to png online pdf to png pdftopng pdf converter document converter free pdf converter online pdf converter pdf convertor convert pdf online document conversion tools',
+  pdf2text:'pdf to text pdf to txt extract text copy words from pdf pdf to txt convert pdf to text pdf text extractor copy text from pdf pdf document to text download pdf as txt read pdf text plain text from pdf convert digital pdf to text free pdf to text online pdf text extractor pdftotext pdf converter document converter free pdf converter online pdf converter pdf convertor convert pdf online document conversion tools how to extract text from pdf',
+  ocr:'image to text photo to text picture to text screenshot to text jpg to text png to text ocr copy words from image image to text converter ocr image to text jpg to text jpeg to text png to text extract text from image copy text from image recognize text from image image ocr online ocr free ocr photo ocr screenshot ocr ocr scanner scan text optical character recognition image recognition text extractor scan to text document scanner searchable pdf recognize text what is ocr how does ocr work how to extract text from an image how to copy text from screenshot how to convert photo to text ocr vs pdf text extraction best free ocr online private browser based ocr image to text without signup ocr accuracy tips how to improve ocr results',
+  scanocr:'scanned pdf to text pdf ocr searchable pdf scan document text ocr pdf pdf ocr scan pdf to text scanned document ocr make pdf searchable searchable pdf converter recognize text in pdf copy text from scanned pdf scanned pdf text extractor ocr scanned document pdf text recognition free pdf ocr online pdf ocr convert scanned pdf to editable text document scanner how to extract text from scanned pdf how to make scanned pdf searchable',
+  merge:'merge pdf combine pdf join pdf put pdfs together multiple pdf one file merge pdf online combine pdf files join pdf pdf merger pdf combiner merge multiple pdfs combine documents append pdf files put pdfs together multiple pdfs into one combine pdf pages free pdf merger online pdf merger merge pdfs without signup merge pdfs privately merge pdfs combine pdfs pdf editor modify pdf manage pdf pages pdf page tools pdf editing tools pdf organizer how to merge pdf files online how to combine multiple pdfs',
+  split:'split pdf separate pdf divide pdf extract range cut pdf pages split pdf online divide pdf pdf splitter break pdf into pages split pdf by page split pdf by page range separate pdf file save individual pdf pages divide large pdf free pdf splitter online pdf splitter split pdfs pdf editor modify pdf manage pdf pages pdf page tools pdf editing tools pdf organizer how to split a large pdf',
+  compress:'compress pdf reduce pdf size shrink pdf make pdf smaller optimize pdf email compress pdf online reduce pdf size pdf compressor reduce pdf file size compress pdf without losing quality optimize pdf small pdf file compress pdf for email compress document lower pdf size free pdf compressor online pdf compressor pdf size reducer compres pdf compress pdfs pdf compresser pdf editor modify pdf manage pdf pages pdf page tools pdf editing tools pdf organizer how to compress pdf without losing quality how to reduce pdf size for email',
+  rotate:'rotate pdf turn pdf page orientation 90 180 270 rotate pdf online pdf rotation tool rotate pdf 90 degrees rotate pdf 180 degrees rotate pdf 270 degrees fix pdf orientation rotate scanned pdf turn pdf clockwise turn pdf counterclockwise free pdf rotator online pdf rotator pdf editor modify pdf manage pdf pages pdf page tools pdf editing tools pdf organizer how to rotate pdf pages',
+  deletepages:'delete pdf pages remove page erase unwanted blank pages remove pdf pages pdf page remover delete unwanted pdf pages remove blank pages from pdf remove one page from pdf delete multiple pdf pages pdf page deletion edit pdf pages remove pages online free pdf page remover online pdf page remover pdf editor modify pdf manage pdf pages pdf page tools pdf editing tools pdf organizer how to delete pages from pdf',
+  extractpages:'extract pdf pages save selected pages copy page range extract pages from pdf save selected pdf pages pdf page extractor separate selected pages extract pdf page range copy pages from pdf create pdf from selected pages download individual pdf pages take pages out of pdf free pdf page extractor online pdf page extractor pdf editor modify pdf manage pdf pages pdf page tools pdf editing tools pdf organizer how to extract pages from pdf',
+  sign:'sign pdf signature electronic signature e sign draw signature type signature sign pdf online add signature to pdf electronic signature pdf e-sign pdf digital signature pdf pdf signature tool draw signature on pdf upload signature to pdf sign document online fill and sign pdf free pdf signer online pdf signer sign pdf without printing esign pdf editor modify pdf manage pdf pages pdf page tools pdf editing tools pdf organizer how to sign a pdf online how to sign pdf without printing',
+  addtext:'add text to pdf type on pdf write on pdf annotate fill form notes type on pdf write on pdf insert text into pdf add notes to pdf annotate pdf fill pdf online fill pdf form pdf text tool add label to pdf add information to pdf edit pdf online free pdf text editor online pdf text tool pdf editor modify pdf manage pdf pages pdf page tools pdf editing tools pdf organizer how to add text to pdf',
+  qr:'qr code generator qr maker qrcode url to qr link to qr create qr qr code maker create qr code make a qr code qrcode generator qr-code generator url to qr code link to qr code text to qr code website qr code custom qr code download qr code qr code png instant qr code qr maker free no signup qr generator developer tools design tools random generator how to create a qr code how qr codes work generate qr code',
+  password:'password generator random password strong secure password maker symbols random password generator strong password generator secure password generator password creator create strong password complex password custom password length password with symbols password with numbers uppercase password lowercase password random string generator no signup password generator password generater developer tools design tools random generator how to generate a strong password how long should a password be',
+  color:'color code converter hex rgb hsl hex to rgb rgb to hex css color hex converter rgb converter hsl converter hex to hsl hsl to hex rgb to hsl hsl to rgb convert color code web color converter html color code color value converter hex color code rgb color code hsl color code developer color tool developer tools design tools hex vs rgb vs hsl',
+  hash:'lorem ipsum dummy text placeholder text filler paragraph generator lorem ipsum generator lorem generator dummy text generator placeholder text generator sample text generator random text generator dummy content placeholder content lorem ipsum text generate lorem ipsum website placeholder text design placeholder text prototype text latin dummy text random paragraph generator free lorem ipsum developer tools design tools random generator what is lorem ipsum',
+  age:'age calculator birthday date of birth dob how old am i years months days exact age calculator online age calculator free age calculator birthday calculator date of birth calculator chronological age calculator age in years age in months age in days age in hours calculate age from birthday age difference calculator current age calculator birthday age finder age calculater health calculator financial calculator daily calculator how to calculate exact age',
+  bmi:'bmi calculator body mass index height weight healthy range metric imperial body mass index calculator calculate bmi free bmi calculator online bmi calculator bmi calculator metric bmi calculator imperial bmi calculator pounds and feet bmi calculator kilograms healthy weight calculator bmi chart adult bmi calculator height weight calculator body weight index bmi result bmi range bmi calculater health calculator financial calculator daily calculator how is bmi calculated what does bmi mean',
+  tip:'tip calculator gratuity restaurant bill split bill percent tip restaurant tip calculator gratuity calculator calculate tip bill tip calculator split bill calculator tip and split calculator 15 percent tip 18 percent tip 20 percent tip tip per person restaurant bill calculator group tip calculator free tip calculator online tip calculator how much should i tip health calculator financial calculator daily calculator',
+  discount:'discount calculator percent off sale price final price savings coupon percentage discount calculator sale price calculator calculate discount percent off calculator final price calculator price after discount savings calculator discount amount calculator retail discount calculator coupon discount calculator sale calculator original price calculator online discount calculator free discount calculator how much is percentage off health calculator financial calculator daily calculator how to calculate percentage discount',
+  loan:'loan calculator monthly payment interest principal repayment auto personal loan loan payment calculator monthly payment calculator interest calculator loan interest calculator personal loan calculator auto loan calculator monthly loan payment total loan interest loan repayment calculator borrow money calculator principal and interest calculator loan cost calculator free loan calculator online loan calculator payment schedule calculator health calculator financial calculator daily calculator how loan monthly payments work how loan interest is calculated',
+  bmr:'bmr calculator basal metabolic rate calories at rest metabolism basal metabolic rate calculator daily metabolism calculator calories burned at rest resting calorie calculator metabolic rate calculator daily energy calculator bmr by age bmr by weight bmr male bmr female free bmr calculator online bmr calculator minimum daily calories health calculator financial calculator daily calculator how to calculate bmr bmr vs tdee',
+  calorie:'calorie calculator tdee daily calories maintenance weight loss gain calorie needs calculator maintenance calorie calculator calories per day daily calorie needs weight loss calorie calculator weight gain calorie calculator calorie deficit calculator activity calorie calculator how many calories should i eat daily energy needs maintenance calories free calorie calculator online calorie calculator health calculator financial calculator daily calculator',
+  bodyfat:'body fat calculator body fat percentage navy tape waist neck composition body fat percentage calculator calculate body fat body fat estimator us navy body fat calculator tape measurement body fat body composition calculator body fat male body fat female body fat by waist body fat by neck healthy body fat percentage online body fat calculator free body fat calculator estimate body fat health calculator financial calculator daily calculator how to calculate body fat percentage',
+  water:'water intake calculator hydration daily water ounces liters drink daily water calculator how much water should i drink daily water requirement water intake by weight water intake by activity water intake in ounces water intake in liters recommended water per day daily hydration needs drinking water calculator free water calculator online hydration calculator water consumption calculator health calculator financial calculator daily calculator how much water should i drink daily',
+  unit:'unit converter measurement length weight temperature speed volume metric imperial inches cm pounds kg celsius fahrenheit online unit converter free unit converter convert units length converter distance converter weight converter mass converter temperature converter speed converter volume converter metric converter imperial converter metric to imperial imperial to metric inches to centimeters feet to meters miles to kilometers pounds to kilograms fahrenheit to celsius celsius to fahrenheit liters to gallons measurement calculator unit convertor money converter text converter quick converter how to convert metric to imperial unit conversion guide fahrenheit to celsius formula pounds to kilograms conversion',
+  currency:'currency converter money exchange usd eur gbp cad approximate rate forex money converter exchange rate calculator convert currency foreign currency converter international currency converter usd converter eur converter gbp converter cad converter aud converter usd to eur eur to usd usd to gbp usd to cad currency exchange calculator foreign exchange calculator online currency converter free currency converter currency convertor text converter quick converter how currency conversion works how to use a currency converter',
+  case:'text case converter uppercase lowercase title case camelcase capitalize uppercase converter lowercase converter title case converter sentence case converter camelcase converter camel case generator capitalize text convert text to uppercase convert text to lowercase convert text to title case change letter case capitalization tool text capitalization online case converter free text converter money converter quick converter how to change uppercase to lowercase title case vs sentence case',
+  wordcount:'word counter character counter sentence count reading time text length online word counter free word counter word count character count letter counter sentence counter paragraph counter reading time calculator essay word counter text length calculator count words online count characters word and character counter live word counter writing counter student word counter social media character counter wordcounter text counter how to count words and characters'
+};
+function normalizeSearch(value){
+  return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+}
+function filterTools(query){
+  const q=normalizeSearch(query);
+  let visible=0;
+  document.querySelectorAll('.tool-card').forEach(card=>{
+    const key=(new URL(card.getAttribute('href'), location.origin)).hash.replace('#tool=','');
+    const haystack=normalizeSearch(card.textContent+' '+(TOOL_SEARCH_ALIASES[key]||''));
+    const match=!q || q.split(' ').every(term=>haystack.includes(term));
+    card.hidden=!match;
+    if(match) visible++;
+  });
+  document.querySelectorAll('.tool-grid').forEach(grid=>{
+    const any=Array.from(grid.querySelectorAll('.tool-card')).some(card=>!card.hidden);
+    grid.hidden=!any;
+    const heading=grid.previousElementSibling;
+    if(heading && heading.classList.contains('section-desc-box')){
+      heading.hidden=!any;
+      const title=heading.previousElementSibling;
+      if(title && title.classList.contains('section-title')) title.hidden=!any;
+    }
+  });
+  const status=document.getElementById('search-status');
+  if(status) status.textContent=q ? (visible ? `${visible} matching tool${visible===1?'':'s'}` : 'No matching tools. Try PDF, OCR, calculator, converter or QR.') : '';
 }
 
 // ── TOOL DEFINITIONS ──────────────────────────────────────────────────────────
@@ -1795,6 +1977,7 @@ function addRipple(e,card){
 }
 // Cursor-driven tilt + glow — the card moves as the pointer moves over it
 window.addEventListener('DOMContentLoaded', function(){
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   document.querySelectorAll('.tool-card').forEach(card=>{
     card.style.transition = 'transform .15s ease-out, box-shadow .15s ease-out, border-color .25s';
     card.addEventListener('mousemove',e=>{
@@ -1815,6 +1998,7 @@ window.addEventListener('DOMContentLoaded', function(){
       card.style.zIndex='';
     });
   });
+  }
 
   // Scroll-reveal: sections and blog/footer blocks fade + rise into view as the user scrolls
   const revealTargets = document.querySelectorAll('.section-title, .tool-grid, .affiliate-section, footer, .hero-blog-link');
@@ -2839,8 +3023,8 @@ function toggleFav(e, key){
   let favs = [];
   try { favs = JSON.parse(localStorage.getItem('tn_favs') || '[]'); } catch(err) { favs = []; }
   const idx = favs.indexOf(key);
-  if (idx > -1) { favs.splice(idx, 1); btn.classList.remove('active'); }
-  else { favs.push(key); btn.classList.add('active'); }
+  if (idx > -1) { favs.splice(idx, 1); btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
+  else { favs.push(key); btn.classList.add('active'); btn.setAttribute('aria-pressed','true'); }
   try { localStorage.setItem('tn_favs', JSON.stringify(favs)); } catch(err) {}
 }
 (function initFavorites(){
@@ -2850,7 +3034,7 @@ function toggleFav(e, key){
     const card = document.querySelector('.tool-card[data-key="' + key + '"]');
     if (card) {
       const btn = card.querySelector('.fav-btn');
-      if (btn) btn.classList.add('active');
+      if (btn) { btn.classList.add('active'); btn.setAttribute('aria-pressed','true'); }
     }
   });
 })();

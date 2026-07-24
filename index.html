@@ -353,6 +353,7 @@ nav{display:flex;align-items:center;gap:20px;padding:14px 32px;background:var(--
   filter:brightness(1.05);
 }
 .cat-btn:active{transform:translateY(-1px) scale(1.02);}
+.cat-btn.active{box-shadow:0 0 0 3px var(--c2),0 8px 20px rgba(0,0,0,0.14);transform:translateY(-2px);}
 .tool-icon{font-size:28px;display:block;line-height:1;}
 .tool-name{font-weight:600;font-size:14px;margin-bottom:4px;color:var(--text);}
 .tool-desc{color:var(--muted);font-size:12px;line-height:1.5;}
@@ -597,6 +598,7 @@ footer a:hover{color:var(--text);}
     <a href="#generators" class="cat-btn" style="--c1:#CFE1FF;--c2:#1D4ED8;">🔧 Generators <span class="cat-count">4</span></a>
     <a href="#calculators" class="cat-btn" style="--c1:#CFF0D8;--c2:#166534;">🧮 Calculators <span class="cat-count">9</span></a>
     <a href="#converters" class="cat-btn" style="--c1:#C9F5EB;--c2:#115E59;">🔄 Converters <span class="cat-count">4</span></a>
+    <a href="#" id="fav-cat-btn" class="cat-btn" style="--c1:#FFE1EC;--c2:#C0175A;" onclick="return toggleFavoritesView(event)" aria-pressed="false">❤️ Favorites <span class="cat-count" id="fav-count">0</span></a>
   </div>
   <div class="nav-lang" id="google_translate_element"></div>
 </nav>
@@ -653,52 +655,52 @@ footer a:hover{color:var(--text);}
   </div>
   <div class="tool-grid">
     <a class="tool-card" data-key="c1" href="/#tool=pdf2word" onclick="return handleToolCardClick(event,this,'pdf2word')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c1\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c1\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c1')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c1')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-red"><span class="tool-icon anim-float">📄</span></div>
       <div class="tool-name">PDF to Word</div>
       <div class="tool-desc">Convert PDF files to editable Word documents instantly.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
     <a class="tool-card" data-key="c2" href="/#tool=word2pdf" onclick="return handleToolCardClick(event,this,'word2pdf')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c2\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c2\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c2')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c2')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-bounce">📝</span></div>
       <div class="tool-name">Word to PDF</div>
       <div class="tool-desc">Convert Word documents to PDF format. Fast and free.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
     <a class="tool-card" data-key="c3" href="/#tool=pdf2jpg" onclick="return handleToolCardClick(event,this,'pdf2jpg')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c3\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c3\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c3')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c3')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-spin">🖼️</span></div>
       <div class="tool-name">PDF to JPG</div>
       <div class="tool-desc">Convert PDF pages to high quality JPG images.</div>
     </a>
     <a class="tool-card" data-key="c4" href="/#tool=img2pdf" onclick="return handleToolCardClick(event,this,'img2pdf')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c4\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c4\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c4')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c4')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-flip">🔄</span></div>
       <div class="tool-name">JPG to PDF</div>
       <div class="tool-desc">Combine JPG images into a single PDF file.</div>
     </a>
     <a class="tool-card" data-key="c5" href="/#tool=pdf2excel" onclick="return handleToolCardClick(event,this,'pdf2excel')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c5\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c5\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c5')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c5')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-bounce">📊</span></div>
       <div class="tool-name">PDF to Excel</div>
       <div class="tool-desc">Extract tables from PDF into Excel spreadsheets.</div>
     </a>
     <a class="tool-card" data-key="c6" href="/#tool=pdf2png" onclick="return handleToolCardClick(event,this,'pdf2png')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c6\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c6\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c6')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c6')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-pulse">🖼️</span></div>
       <div class="tool-name">PDF to PNG</div>
       <div class="tool-desc">Convert PDF pages to high-quality PNG images.</div>
       <span class="tool-badge">New</span>
     </a>
     <a class="tool-card" data-key="c7" href="/#tool=img2pdf" onclick="return handleToolCardClick(event,this,'img2pdf')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c7\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c7\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c7')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c7')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-spin">🔄</span></div>
       <div class="tool-name">PNG to PDF</div>
       <div class="tool-desc">Convert PNG images to PDF documents instantly.</div>
     </a>
     <a class="tool-card" data-key="c8" href="/#tool=pdf2text" onclick="return handleToolCardClick(event,this,'pdf2text')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c8\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c8\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c8')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c8')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-wobble">📋</span></div>
       <div class="tool-name">PDF to Text</div>
       <div class="tool-desc">Extract all text content from any PDF file.</div>
@@ -712,14 +714,14 @@ footer a:hover{color:var(--text);}
   </div>
   <div class="tool-grid">
     <a class="tool-card" data-key="c9" href="/#tool=ocr" onclick="return handleToolCardClick(event,this,'ocr')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c9\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c9\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c9')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c9')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-shake">🔍</span></div>
       <div class="tool-name">Image to Text (OCR)</div>
       <div class="tool-desc">Extract text from images using browser-based OCR technology.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
     <a class="tool-card" data-key="c10" href="/#tool=scanocr" onclick="return handleToolCardClick(event,this,'scanocr')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c10\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c10\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c10')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c10')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-wobble">📱</span></div>
       <div class="tool-name">Scan PDF to Text</div>
       <div class="tool-desc">Make scanned PDFs searchable with OCR technology.</div>
@@ -733,54 +735,54 @@ footer a:hover{color:var(--text);}
   </div>
   <div class="tool-grid">
     <a class="tool-card" data-key="c11" href="/#tool=merge" onclick="return handleToolCardClick(event,this,'merge')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c11\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c11\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c11')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c11')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-bounce">📎</span></div>
       <div class="tool-name">Merge PDF</div>
       <div class="tool-desc">Combine multiple PDF files into one document.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
     <a class="tool-card" data-key="c12" href="/#tool=split" onclick="return handleToolCardClick(event,this,'split')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c12\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c12\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c12')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c12')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-squeeze">✂️</span></div>
       <div class="tool-name">Split PDF</div>
       <div class="tool-desc">Split a PDF into multiple separate files.</div>
     </a>
     <a class="tool-card" data-key="c13" href="/#tool=compress" onclick="return handleToolCardClick(event,this,'compress')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c13\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c13\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c13')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c13')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-squeeze">🗜️</span></div>
       <div class="tool-name">Compress PDF</div>
       <div class="tool-desc">Re-optimize a PDF to reduce its file size when possible.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
     <a class="tool-card" data-key="c14" href="/#tool=rotate" onclick="return handleToolCardClick(event,this,'rotate')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c14\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c14\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c14')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c14')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-spin">🔃</span></div>
       <div class="tool-name">Rotate PDF</div>
       <div class="tool-desc">Rotate PDF pages to any angle. 90, 180, 270 degrees.</div>
       <span class="tool-badge">New</span>
     </a>
     <a class="tool-card" data-key="c15" href="/#tool=deletepages" onclick="return handleToolCardClick(event,this,'deletepages')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c15\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c15\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c15')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c15')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-red"><span class="tool-icon anim-wobble">🗑️</span></div>
       <div class="tool-name">Delete PDF Pages</div>
       <div class="tool-desc">Remove unwanted pages from your PDF file.</div>
       <span class="tool-badge">New</span>
     </a>
     <a class="tool-card" data-key="c16" href="/#tool=extractpages" onclick="return handleToolCardClick(event,this,'extractpages')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c16\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c16\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c16')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c16')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-bounce">📤</span></div>
       <div class="tool-name">Extract PDF Pages</div>
       <div class="tool-desc">Extract specific pages from a PDF document.</div>
     </a>
     <a class="tool-card" data-key="c17" href="/#tool=sign" onclick="return handleToolCardClick(event,this,'sign')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c17\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c17\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c17')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c17')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-write">✍️</span></div>
       <div class="tool-name">Sign PDF</div>
       <div class="tool-desc">Draw, type or upload your signature and place it on any PDF page.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
     <a class="tool-card" data-key="c17b" href="/#tool=addtext" onclick="return handleToolCardClick(event,this,'addtext')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c17b\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c17b\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c17b')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c17b')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-write">✏️</span></div>
       <div class="tool-name">Add Text to PDF</div>
       <div class="tool-desc">Type anywhere on a page — fill forms, add notes, annotate.</div>
@@ -808,26 +810,26 @@ footer a:hover{color:var(--text);}
   </div>
   <div class="tool-grid">
     <a class="tool-card" data-key="c18" href="/#tool=qr" onclick="return handleToolCardClick(event,this,'qr')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c18\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c18\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c18')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c18')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📱</span></div>
       <div class="tool-name">QR Code Generator</div>
       <div class="tool-desc">Turn any URL or text into a QR code. Download as PNG instantly.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
     <a class="tool-card" data-key="c19" href="/#tool=password" onclick="return handleToolCardClick(event,this,'password')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c19\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c19\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c19')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c19')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-lock">🔐</span></div>
       <div class="tool-name">Password Generator</div>
       <div class="tool-desc">Strong, secure passwords of any length. Symbols, numbers, uppercase.</div>
     </a>
     <a class="tool-card" data-key="c20" href="/#tool=color" onclick="return handleToolCardClick(event,this,'color')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c20\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c20\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c20')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c20')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-hue">🎨</span></div>
       <div class="tool-name">Color Code Converter</div>
       <div class="tool-desc">Convert between HEX, RGB, and HSL color formats instantly.</div>
     </a>
     <a class="tool-card" data-key="c21" href="/#tool=hash" onclick="return handleToolCardClick(event,this,'hash')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c21\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c21\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c21')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c21')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-float">🔑</span></div>
       <div class="tool-name">Lorem Ipsum Generator</div>
       <div class="tool-desc">Generate placeholder text for designs and prototypes.</div>
@@ -841,60 +843,60 @@ footer a:hover{color:var(--text);}
   </div>
   <div class="tool-grid">
     <a class="tool-card" data-key="c22" href="/#tool=age" onclick="return handleToolCardClick(event,this,'age')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c22\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c22\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c22')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c22')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-pink"><span class="tool-icon anim-tick">🎂</span></div>
       <div class="tool-name">Age Calculator</div>
       <div class="tool-desc">Your exact age in years, months, days and hours.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
     <a class="tool-card" data-key="c23" href="/#tool=bmi" onclick="return handleToolCardClick(event,this,'bmi')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c23\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c23\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c23')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c23')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-wobble">⚖️</span></div>
       <div class="tool-name">BMI Calculator</div>
       <div class="tool-desc">Body Mass Index with US Imperial and Metric support.</div>
     </a>
     <a class="tool-card" data-key="c24" href="/#tool=tip" onclick="return handleToolCardClick(event,this,'tip')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c24\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c24\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c24')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c24')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-ping">🍽️</span></div>
       <div class="tool-name">Tip Calculator</div>
       <div class="tool-desc">Split the bill and calculate tips for any group size.</div>
     </a>
     <a class="tool-card" data-key="c25" href="/#tool=discount" onclick="return handleToolCardClick(event,this,'discount')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c25\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c25\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c25')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c25')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-bounce">🏷️</span></div>
       <div class="tool-name">Discount Calculator</div>
       <div class="tool-desc">Final price after any percentage discount. Quick math.</div>
       <span class="tool-badge">New</span>
     </a>
     <a class="tool-card" data-key="c26" href="/#tool=loan" onclick="return handleToolCardClick(event,this,'loan')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c26\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c26\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c26')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c26')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-count">🏦</span></div>
       <div class="tool-name">Loan Calculator</div>
       <div class="tool-desc">Monthly payment, total interest on any loan. US-style.</div>
     </a>
     <a class="tool-card" data-key="c26b" href="/#tool=bmr" onclick="return handleToolCardClick(event,this,'bmr')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c26b\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c26b\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c26b')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c26b')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-pulse">🔥</span></div>
       <div class="tool-name">BMR Calculator</div>
       <div class="tool-desc">Your basal metabolic rate — calories burned at rest.</div>
       <span class="tool-badge">New</span>
     </a>
     <a class="tool-card" data-key="c26c" href="/#tool=calorie" onclick="return handleToolCardClick(event,this,'calorie')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c26c\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c26c\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c26c')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c26c')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-red"><span class="tool-icon anim-shake">🍎</span></div>
       <div class="tool-name">Calorie Calculator</div>
       <div class="tool-desc">Daily calorie needs based on activity level (TDEE).</div>
       <span class="tool-badge">New</span>
     </a>
     <a class="tool-card" data-key="c26d" href="/#tool=bodyfat" onclick="return handleToolCardClick(event,this,'bodyfat')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c26d\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c26d\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c26d')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c26d')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-wobble">📐</span></div>
       <div class="tool-name">Body Fat Calculator</div>
       <div class="tool-desc">Estimate body fat % using the US Navy tape method.</div>
       <span class="tool-badge">New</span>
     </a>
     <a class="tool-card" data-key="c26e" href="/#tool=water" onclick="return handleToolCardClick(event,this,'water')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c26e\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c26e\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c26e')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c26e')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-float">💧</span></div>
       <div class="tool-name">Water Intake Calculator</div>
       <div class="tool-desc">Daily recommended water intake based on weight &amp; activity.</div>
@@ -909,27 +911,27 @@ footer a:hover{color:var(--text);}
   </div>
   <div class="tool-grid">
     <a class="tool-card" data-key="c27" href="/#tool=unit" onclick="return handleToolCardClick(event,this,'unit')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c27\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c27\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c27')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c27')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-gray"><span class="tool-icon anim-flip">📏</span></div>
       <div class="tool-name">Unit Converter</div>
       <div class="tool-desc">Length, weight, temperature, speed, volume — all units.</div>
     </a>
     <a class="tool-card" data-key="c28" href="/#tool=currency" onclick="return handleToolCardClick(event,this,'currency')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c28\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c28\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c28')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c28')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-teal"><span class="tool-icon anim-flip">💱</span></div>
       <div class="tool-name">Currency Converter</div>
       <div class="tool-desc">Estimate conversions between 15 major world currencies.</div>
       <span class="tool-badge hot">Hot</span>
     </a>
     <a class="tool-card" data-key="c29" href="/#tool=case" onclick="return handleToolCardClick(event,this,'case')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c29\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c29\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c29')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c29')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-purple"><span class="tool-icon anim-shake">🔤</span></div>
       <div class="tool-name">Text Case Converter</div>
       <div class="tool-desc">UPPER, lower, Title Case, camelCase in one click.</div>
       <span class="tool-badge">New</span>
     </a>
     <a class="tool-card" data-key="c30" href="/#tool=wordcount" onclick="return handleToolCardClick(event,this,'wordcount')">
-      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'c30\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'c30\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+      <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'c30')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'c30')}" aria-label="Favorite this tool" aria-pressed="false"></span>
       <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📝</span></div>
       <div class="tool-name">Word Counter</div>
       <div class="tool-desc">Words, characters, sentences, and reading time — live.</div>
@@ -945,56 +947,56 @@ footer a:hover{color:var(--text);}
     <p>Popular choices for document, text and everyday utility tasks.</p>
     <div class="tool-grid">
       <a class="tool-card" data-key="p1" href="/#tool=pdf2jpg" onclick="return handleToolCardClick(event,this,'pdf2jpg')">
-        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p1\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p1\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'p1')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'p1')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-spin">🖼️</span></div>
         <div class="tool-name">PDF to JPG</div>
         <div class="tool-desc">Convert PDF pages to high quality JPG images instantly.</div>
         <span class="tool-badge hot">Most Popular</span>
       </a>
       <a class="tool-card" data-key="p2" href="/#tool=ocr" onclick="return handleToolCardClick(event,this,'ocr')">
-        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p2\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p2\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'p2')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'p2')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-yellow"><span class="tool-icon anim-shake">🔍</span></div>
         <div class="tool-name">Image to Text</div>
         <div class="tool-desc">Extract text from images using browser-based OCR.</div>
         <span class="tool-badge hot">Trending</span>
       </a>
       <a class="tool-card" data-key="p3" href="/#tool=merge" onclick="return handleToolCardClick(event,this,'merge')">
-        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p3\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p3\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'p3')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'p3')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-bounce">📎</span></div>
         <div class="tool-name">Merge PDF</div>
         <div class="tool-desc">Combine multiple PDF files into one document for free.</div>
         <span class="tool-badge hot">Most Used</span>
       </a>
       <a class="tool-card" data-key="p4" href="/#tool=qr" onclick="return handleToolCardClick(event,this,'qr')">
-        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p4\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p4\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'p4')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'p4')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📱</span></div>
         <div class="tool-name">QR Code Generator</div>
         <div class="tool-desc">Generate QR codes for any URL or text. Download as PNG.</div>
         <span class="tool-badge">Popular</span>
       </a>
       <a class="tool-card" data-key="p5" href="/#tool=sign" onclick="return handleToolCardClick(event,this,'sign')">
-        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p5\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p5\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'p5')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'p5')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-green"><span class="tool-icon anim-write">✍️</span></div>
         <div class="tool-name">Sign PDF</div>
         <div class="tool-desc">Draw or type your signature and place it on any PDF.</div>
         <span class="tool-badge">New</span>
       </a>
       <a class="tool-card" data-key="p6" href="/#tool=password" onclick="return handleToolCardClick(event,this,'password')">
-        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p6\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p6\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'p6')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'p6')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-orange"><span class="tool-icon anim-lock">🔐</span></div>
         <div class="tool-name">Password Generator</div>
         <div class="tool-desc">Generate strong, secure passwords instantly. Customizable.</div>
         <span class="tool-badge">Popular</span>
       </a>
       <a class="tool-card" data-key="p7" href="/#tool=age" onclick="return handleToolCardClick(event,this,'age')">
-        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p7\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p7\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'p7')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'p7')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-pink"><span class="tool-icon anim-tick">🎂</span></div>
         <div class="tool-name">Age Calculator</div>
         <div class="tool-desc">Find your exact age in years, months, days and hours.</div>
         <span class="tool-badge">Popular</span>
       </a>
       <a class="tool-card" data-key="p8" href="/#tool=wordcount" onclick="return handleToolCardClick(event,this,'wordcount')">
-        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,\'p8\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){toggleFav(event,\'p8\')}" aria-label="Favorite this tool" aria-pressed="false"></span>
+        <span class="fav-btn" role="button" tabindex="0" onclick="toggleFav(event,'p8')" onkeydown="if(event.key==='Enter'||event.key===' '){toggleFav(event,'p8')}" aria-label="Favorite this tool" aria-pressed="false"></span>
         <div class="tool-icon-wrap ibg-blue"><span class="tool-icon anim-pulse">📝</span></div>
         <div class="tool-name">Word Counter</div>
         <div class="tool-desc">Count words, characters and reading time live as you type.</div>
@@ -1216,6 +1218,11 @@ function normalizeSearch(value){
   return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 }
 function filterTools(query){
+  const favBtn=document.getElementById('fav-cat-btn');
+  if(favBtn && favBtn.classList.contains('active')){
+    favBtn.classList.remove('active');
+    favBtn.setAttribute('aria-pressed','false');
+  }
   const q=normalizeSearch(query);
   let visible=0;
   document.querySelectorAll('.tool-card').forEach(card=>{
@@ -3016,6 +3023,13 @@ async function doPdfToExcel(){
 }
 
 // ── FAVORITES (heart button on tool cards, saved in localStorage) ─────────────
+function updateFavCount(){
+  let favs = [];
+  try { favs = JSON.parse(localStorage.getItem('tn_favs') || '[]'); } catch(err) { favs = []; }
+  const el = document.getElementById('fav-count');
+  if (el) el.textContent = String(favs.length);
+  return favs;
+}
 function toggleFav(e, key){
   e.stopPropagation();
   e.preventDefault();
@@ -3026,7 +3040,68 @@ function toggleFav(e, key){
   if (idx > -1) { favs.splice(idx, 1); btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
   else { favs.push(key); btn.classList.add('active'); btn.setAttribute('aria-pressed','true'); }
   try { localStorage.setItem('tn_favs', JSON.stringify(favs)); } catch(err) {}
+  updateFavCount();
+  // Favoriler görünümündeysek ve bir kart favoriden çıkarıldıysa, o an listeden gizle
+  const favBtn = document.getElementById('fav-cat-btn');
+  if (favBtn && favBtn.classList.contains('active')) {
+    applyFavoritesFilter();
+  }
 }
+function applyFavoritesFilter(){
+  const favs = updateFavCount();
+  const status = document.getElementById('search-status');
+  let visible = 0;
+  document.querySelectorAll('.tool-card').forEach(card=>{
+    const key = card.getAttribute('data-key');
+    const show = favs.includes(key);
+    card.hidden = !show;
+    if (show) visible++;
+  });
+  document.querySelectorAll('.tool-grid').forEach(grid=>{
+    const any = Array.from(grid.querySelectorAll('.tool-card')).some(c=>!c.hidden);
+    grid.hidden = !any;
+    const heading = grid.previousElementSibling;
+    if (heading && heading.classList.contains('section-desc-box')) {
+      heading.hidden = !any;
+      const title = heading.previousElementSibling;
+      if (title && title.classList.contains('section-title')) title.hidden = !any;
+    }
+  });
+  if (status) {
+    status.textContent = visible
+      ? `Showing ${visible} favorite tool${visible===1?'':'s'}`
+      : 'No favorites yet — tap the ♡ on any tool card to save it here.';
+  }
+}
+function exitFavoritesView(){
+  const btn = document.getElementById('fav-cat-btn');
+  if (!btn || !btn.classList.contains('active')) return;
+  btn.classList.remove('active');
+  btn.setAttribute('aria-pressed','false');
+  const search = document.getElementById('search-input');
+  filterTools(search ? search.value : '');
+}
+function toggleFavoritesView(e){
+  e.preventDefault();
+  const btn = document.getElementById('fav-cat-btn');
+  const isActive = btn.classList.contains('active');
+  if (isActive) {
+    exitFavoritesView();
+    return false;
+  }
+  const search = document.getElementById('search-input');
+  if (search) search.value = '';
+  btn.classList.add('active');
+  btn.setAttribute('aria-pressed','true');
+  applyFavoritesFilter();
+  btn.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+  return false;
+}
+// Diğer kategori butonlarından herhangi birine tıklanırsa favoriler görünümünden çık
+document.querySelector('.nav-cats').addEventListener('click', function(e){
+  const link = e.target.closest('.cat-btn');
+  if (link && link.id !== 'fav-cat-btn') exitFavoritesView();
+});
 (function initFavorites(){
   let favs = [];
   try { favs = JSON.parse(localStorage.getItem('tn_favs') || '[]'); } catch(err) { favs = []; }
@@ -3037,7 +3112,9 @@ function toggleFav(e, key){
       if (btn) { btn.classList.add('active'); btn.setAttribute('aria-pressed','true'); }
     }
   });
+  updateFavCount();
 })();
+
 </script>
 
 </body>

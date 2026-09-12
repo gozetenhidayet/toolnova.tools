@@ -4041,5 +4041,60 @@ window.addEventListener('DOMContentLoaded',function(){
     sections.forEach(s=>spy.observe(s));
   }
 });
-</script></body>
+</script>
+<!--
+  TSI Practice Prep — reciprocal sponsor/partner card.
+  z-index intentionally set to 190 (just under the tool modal's z-index:200) so that
+  when a user has a tool open, the modal naturally covers this card instead of it
+  floating on top of active tool controls in the corner.
+-->
+<style>
+.tsipp-card{position:fixed;right:16px;bottom:16px;z-index:190;width:236px;background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 16px 40px rgba(15,23,42,.16);padding:16px 16px 14px;text-align:left;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;box-sizing:border-box}
+.tsipp-card *{box-sizing:border-box}
+@media(max-width:900px){.tsipp-card{display:none}}
+.tsipp-top{display:flex;align-items:center;gap:9px;margin-bottom:2px}
+.tsipp-logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#4f46e5,#0ea5e9);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px;flex:0 0 auto}
+.tsipp-brand{font-size:13px;font-weight:900;color:#0f172a;line-height:1.2}
+.tsipp-brand span{display:block;font-size:9px;font-weight:800;color:#64748b;letter-spacing:.04em;text-transform:uppercase}
+.tsipp-headline{margin:11px 0 5px;font-size:15px;line-height:1.25;font-weight:900;background:linear-gradient(90deg,#4f46e5,#0284c7,#0f766e);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tsipp-desc{margin:0 0 12px;font-size:11.5px;line-height:1.55;color:#334155;font-weight:600}
+.tsipp-go{display:flex;align-items:center;justify-content:center;gap:5px;background:#0f172a;color:#fff!important;text-decoration:none!important;font-size:12px;font-weight:900;padding:10px 10px;border-radius:11px;width:100%}
+.tsipp-go:hover{background:#1e293b}
+.tsipp-close{position:absolute;top:7px;right:9px;border:0;background:none;color:#94a3b8;font-size:14px;font-weight:900;cursor:pointer;line-height:1;padding:4px}
+.tsipp-close:hover{color:#475569}
+.tsipp-tag{position:absolute;bottom:7px;right:12px;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:#cbd5e1;font-weight:700}
+</style>
+
+<div class="tsipp-card" id="tsippCard">
+  <button class="tsipp-close" id="tsippClose" type="button" aria-label="Hide this card">✕</button>
+  <div class="tsipp-top">
+    <div class="tsipp-logo">T</div>
+    <div class="tsipp-brand">TSI Practice Prep<span>tsipracticeprep.com</span></div>
+  </div>
+  <div class="tsipp-headline">Free Practice: TSI · SAT · ACT</div>
+  <p class="tsipp-desc">3,900+ real exam-style questions. Full practice tests, instant scoring, no sign-up needed.</p>
+  <a class="tsipp-go" href="https://tsipracticeprep.com/" target="_blank" rel="noopener noreferrer">Start Free Practice →</a>
+  <span class="tsipp-tag">Partner</span>
+</div>
+
+<script>
+(function(){
+  try{
+    if(localStorage.getItem('tsippWidgetDismissed')==='1'){
+      var c=document.getElementById('tsippCard');
+      if(c)c.style.display='none';
+    }
+  }catch(e){}
+  function ready(fn){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',fn); else fn(); }
+  ready(function(){
+    var closeBtn=document.getElementById('tsippClose');
+    if(closeBtn)closeBtn.addEventListener('click',function(){
+      var c=document.getElementById('tsippCard');
+      if(c)c.style.display='none';
+      try{localStorage.setItem('tsippWidgetDismissed','1');}catch(e){}
+    });
+  });
+})();
+</script>
+</body>
 </html>

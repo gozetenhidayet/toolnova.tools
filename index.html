@@ -1620,11 +1620,12 @@ async function ensureLibsForTool(key){
 const TOOLNOVA_HOME_TITLE = 'Free Online PDF Tools, Calculators & Converters | Toolnova';
 
 function getToolKeyFromLocation(){
-  const hashMatch = location.hash.match(/^#tool=([a-zA-Z0-9]+)$/);
-  if(hashMatch) return hashMatch[1];
-  // Backward compatibility for old links such as /?tool=age.
+  // Primary format: /?tool=X (crawlable, matches the real <a href> on every tool card).
   const legacy = new URLSearchParams(location.search).get('tool');
-  return legacy || '';
+  if(legacy) return legacy;
+  // Legacy fallback: old /#tool=X links (bookmarks, previously-indexed URLs) still open the right tool.
+  const hashMatch = location.hash.match(/^#tool=([a-zA-Z0-9]+)$/);
+  return hashMatch ? hashMatch[1] : '';
 }
 
 function safeHistory(method, state, url){
@@ -1635,7 +1636,7 @@ function handleToolCardClick(event, el, key){
   addRipple(event, el);
   if(event.metaKey || event.ctrlKey || event.shiftKey || event.button===1) return true;
   event.preventDefault();
-  safeHistory('pushState', {tool:key}, '/#tool=' + encodeURIComponent(key));
+  safeHistory('pushState', {tool:key}, '/?tool=' + encodeURIComponent(key));
   openTool(key);
   return false;
 }
@@ -1643,7 +1644,7 @@ function handleToolCardClick(event, el, key){
 function syncToolFromLocation(){
   const key = getToolKeyFromLocation();
   if(key && TOOLS[key]){
-    if(location.search.includes('tool=')) safeHistory('replaceState', {tool:key}, '/#tool=' + encodeURIComponent(key));
+    if(location.search.includes('tool=')) safeHistory('replaceState', {tool:key}, '/?tool=' + encodeURIComponent(key));
     openTool(key);
   }else if(document.getElementById('overlay').classList.contains('active')){
     closeTool(false);
@@ -1679,7 +1680,7 @@ function tnShellMarkup(key,tool,body,notice){
   </div>`
 }
 function tnSetStep(n){document.querySelectorAll('.tn-step').forEach((el,i)=>{const step=i+1;el.classList.toggle('active',step===n);el.classList.toggle('done',step<n)})}
-function tnOpenRelated(key){if(!TOOLS[key])return; const hash='#tool='+key; try{history.replaceState({},'',hash)}catch(e){} openTool(key)}
+function tnOpenRelated(key){if(!TOOLS[key])return; const url='/?tool='+key; try{history.replaceState({},'',url)}catch(e){} openTool(key)}
 function tnResetCurrentTool(){if(window.__tnCurrentToolKey)openTool(window.__tnCurrentToolKey)}
 function tnCurrentResultBox(){const stage=document.getElementById('tn-tool-stage');if(!stage)return null;const boxes=[...stage.querySelectorAll('.result-box')].filter(b=>!b.querySelector('.progress-wrap')&&!/error|could not|invalid/i.test(b.textContent));return boxes.at(-1)||null}
 function tnGetResultText(){const box=tnCurrentResultBox();if(!box)return '';const clone=box.cloneNode(true);clone.querySelectorAll('button,.tn-result-suite,.progress-wrap,script,style').forEach(x=>x.remove());return clone.innerText.replace(/\n{3,}/g,'\n\n').trim()}
@@ -1716,6 +1717,40 @@ const TOOL_NOTICES = {
   pdf2excel:'Creates a real .xlsx workbook from detected text rows. Complex tables and scanned PDFs may require OCR or manual cleanup.'
 };
 
+// ── DYNAMIC CANONICAL: point ?tool=X states at the matching dedicated static page ──
+// Each of these tools has its own real, content-rich page (e.g. /pdf-to-word.html).
+// When that tool is opened here via ?tool=X, the canonical tag switches to point at
+// that specific page instead of the homepage, so Google consolidates ranking signals
+// on the one authoritative URL per tool rather than splitting them across a generic
+// homepage canonical and a separate static page.
+const TN_TOOL_PAGE_SLUG = {
+  age:'age-calculator', bmi:'bmi-calculator', bmr:'bmr-calculator', bodyfat:'body-fat-calculator',
+  calorie:'calorie-calculator', water:'water-intake-calculator', tip:'tip-calculator',
+  discount:'discount-calculator', loan:'loan-calculator', unit:'unit-converter',
+  currency:'currency-converter', case:'text-case-converter', wordcount:'word-counter',
+  quiz:'general-knowledge-quiz', memory:'memory-card-game', merge:'merge-pdf', split:'split-pdf',
+  compress:'compress-pdf', rotate:'rotate-pdf', deletepages:'delete-pdf-pages',
+  extractpages:'extract-pdf-pages', sign:'sign-pdf', addtext:'add-text-to-pdf',
+  img2pdf:'image-to-pdf', pdf2jpg:'pdf-to-jpg', pdf2png:'pdf-to-png', pdf2text:'pdf-to-text',
+  ocr:'image-to-text', scanocr:'scan-pdf-to-text', pdf2word:'pdf-to-word', word2pdf:'word-to-pdf',
+  pdf2excel:'pdf-to-excel', qr:'qr-code-generator', password:'password-generator',
+  color:'color-code-converter', hash:'lorem-ipsum-generator', docscanner:'document-scanner',
+  mp3convert:'mp3-converter', audiotrim:'audio-trimmer', audiomerge:'audio-merger',
+  audiocompress:'audio-compressor', audiovolume:'volume-booster', audiofade:'audio-fade',
+  audiospeed:'audio-speed-changer', ringtone:'ringtone-maker', audiosplit:'audio-splitter',
+  removesilence:'remove-silence',
+};
+function tnUpdateCanonicalForTool(key){
+  const slug = TN_TOOL_PAGE_SLUG[key];
+  const link = document.querySelector('link[rel="canonical"]');
+  if(!link) return;
+  link.href = slug ? `https://toolnova.tools/${slug}.html` : 'https://toolnova.tools/';
+}
+function tnResetCanonical(){
+  const link = document.querySelector('link[rel="canonical"]');
+  if(link) link.href = 'https://toolnova.tools/';
+}
+
 async function openTool(key){
   const tool=TOOLS[key]; if(!tool) return;
   window.__tnCurrentToolKey=key;
@@ -1730,6 +1765,7 @@ async function openTool(key){
   modal.innerHTML=`<button class="modal-fullscreen-btn" id="fs-btn" type="button" onclick="toggleModalFullscreen()" title="Full screen" aria-label="Open tool in full screen">⛶</button><button class="modal-close" type="button" onclick="closeTool()" aria-label="Close tool">✕</button>${tnShellMarkup(key,tool,needsLibs?loading:tool.render(),notice)}`;
   overlay.classList.add('active'); overlay.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
   document.title = tnPlainTitle(tool.title) + ' | Toolnova'; modal.focus({preventScroll:true});
+  tnUpdateCanonicalForTool(key);
   if(needsLibs){
     try{await ensureLibsForTool(key);const loadingEl=document.getElementById('tool-loading');if(loadingEl)loadingEl.outerHTML=tool.render();}
     catch(err){const loadingEl=document.getElementById('tool-loading');if(loadingEl)loadingEl.innerHTML='<div class="result-box" style="color:#c0392b;">This tool could not load its browser library. Check your connection and try again.</div>';console.error(err)}
@@ -1752,6 +1788,7 @@ function closeTool(updateUrl=true){
   document.body.style.overflow='';
   document.getElementById('modal-content').classList.remove('fullscreen');
   document.title=TOOLNOVA_HOME_TITLE;
+  tnResetCanonical();
   if(updateUrl && (location.hash.startsWith('#tool=') || location.search.includes('tool='))){
     safeHistory('pushState', {}, location.pathname || '/');
   }

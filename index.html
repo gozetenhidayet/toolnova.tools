@@ -4969,5 +4969,52 @@ window.addEventListener('DOMContentLoaded',function(){
   });
 })();
 </script>
+
+<!-- Cookie consent banner — without this, the Consent Mode default of
+     analytics_storage:'denied' set earlier in <head> never gets updated to
+     'granted' for any visitor, so most GA4 reports that rely on user-level
+     tracking (Cohorts, Audiences, the 'Generate leads' template, etc.) will
+     keep showing 0 / No data even with real traffic. -->
+<style>
+#tn-cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:999998;max-width:520px;margin:0 auto;background:#fff;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 16px 40px rgba(15,23,42,.18);padding:18px 20px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+#tn-cookie-banner p{margin:0 0 12px;font-size:13.5px;line-height:1.5;color:#334155;}
+#tn-cookie-banner a{color:#4f63d2;text-decoration:underline;}
+.tn-cookie-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.tn-cookie-btn{flex:1;min-width:110px;padding:10px 14px;border-radius:10px;font-size:13.5px;font-weight:700;cursor:pointer;border:none;font-family:inherit;}
+.tn-cookie-accept{background:#4f63d2;color:#fff;}
+.tn-cookie-decline{background:#f0f2f8;color:#334155;}
+@media(max-width:480px){#tn-cookie-banner{left:10px;right:10px;bottom:10px;padding:16px;}}
+</style>
+<div id="tn-cookie-banner" style="display:none;" role="dialog" aria-label="Cookie consent">
+  <p>We use cookies for analytics and (once approved) ads to keep toolnova.tools free. See our <a href="/privacy-policy.html">Privacy Policy</a> for details.</p>
+  <div class="tn-cookie-actions">
+    <button type="button" class="tn-cookie-btn tn-cookie-decline" onclick="tnCookieChoice(false)">Decline</button>
+    <button type="button" class="tn-cookie-btn tn-cookie-accept" onclick="tnCookieChoice(true)">Accept</button>
+  </div>
+</div>
+<script>
+(function(){
+  function ready(fn){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',fn); else fn(); }
+  ready(function(){
+    var saved;
+    try{ saved = localStorage.getItem('tnCookieConsent'); }catch(e){}
+    if(saved === 'granted' && typeof gtag === 'function'){
+      gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});
+    } else if(!saved){
+      var b=document.getElementById('tn-cookie-banner');
+      if(b) b.style.display='block';
+    }
+  });
+})();
+function tnCookieChoice(accepted){
+  try{ localStorage.setItem('tnCookieConsent', accepted ? 'granted' : 'denied'); }catch(e){}
+  if(accepted && typeof gtag === 'function'){
+    gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});
+    if(typeof toolnovaLoadGA === 'function') toolnovaLoadGA();
+  }
+  var b=document.getElementById('tn-cookie-banner');
+  if(b) b.style.display='none';
+}
+</script>
 </body>
 </html>

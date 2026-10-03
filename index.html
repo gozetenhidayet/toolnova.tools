@@ -5020,6 +5020,12 @@ function tnCookieChoice(accepted){
   if(accepted && typeof gtag === 'function'){
     gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});
     if(typeof toolnovaLoadGA === 'function') toolnovaLoadGA();
+    // If GA had already auto-loaded earlier under denied consent (e.g. the 8s fallback fired
+    // before this person noticed the banner), send one fresh, properly-consented page_view now
+    // so this visit is actually counted instead of silently staying under-tracked.
+    if(window.__toolnovaGALoaded){
+      gtag('event','page_view',{page_location:location.href,page_title:document.title});
+    }
   }
   var b=document.getElementById('tn-cookie-banner');
   if(b) b.style.display='none';

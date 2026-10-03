@@ -1641,18 +1641,27 @@ function handleToolCardClick(event, el, key){
   return false;
 }
 
-function syncToolFromLocation(){
+function syncToolFromLocation(isFreshLoad){
   const key = getToolKeyFromLocation();
   if(key && TOOLS[key]){
+    // A static host (GitHub Pages) cannot serve different HTML per query string — a fresh
+    // request for /?tool=X returns byte-identical markup to the homepage. That's exactly
+    // the "duplicate content" problem search engines flag. So on a genuine fresh page load
+    // (not an in-page SPA navigation via pushState), redirect straight to the tool's real
+    // dedicated page, which has unique content and is the one canonical URL for that tool.
+    if(isFreshLoad && TN_TOOL_PAGE_SLUG[key]){
+      window.location.replace('https://toolnova.tools/' + TN_TOOL_PAGE_SLUG[key] + '.html');
+      return;
+    }
     if(location.search.includes('tool=')) safeHistory('replaceState', {tool:key}, '/?tool=' + encodeURIComponent(key));
     openTool(key);
   }else if(document.getElementById('overlay').classList.contains('active')){
     closeTool(false);
   }
 }
-window.addEventListener('popstate', syncToolFromLocation);
-window.addEventListener('hashchange', syncToolFromLocation);
-window.addEventListener('DOMContentLoaded', syncToolFromLocation, {once:true});
+window.addEventListener('popstate', function(){ syncToolFromLocation(false); });
+window.addEventListener('hashchange', function(){ syncToolFromLocation(false); });
+window.addEventListener('DOMContentLoaded', function(){ syncToolFromLocation(true); }, {once:true});
 
 
 const TN_WORKSPACE_META={

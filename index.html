@@ -4985,7 +4985,8 @@ window.addEventListener('DOMContentLoaded',function(){
      tracking (Cohorts, Audiences, the 'Generate leads' template, etc.) will
      keep showing 0 / No data even with real traffic. -->
 <style>
-#tn-cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:999998;max-width:520px;margin:0 auto;background:#fff;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 16px 40px rgba(15,23,42,.18);padding:18px 20px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+#tn-cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:999998;max-width:520px;margin:0 auto;background:#fff;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 16px 40px rgba(15,23,42,.18);padding:18px 20px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .15s ease;}
+#tn-cookie-banner.tn-cookie-visible{visibility:visible;opacity:1;pointer-events:auto;}
 #tn-cookie-banner p{margin:0 0 12px;font-size:13.5px;line-height:1.5;color:#334155;}
 #tn-cookie-banner a{color:#4f63d2;text-decoration:underline;}
 .tn-cookie-actions{display:flex;gap:10px;flex-wrap:wrap;}
@@ -4994,7 +4995,7 @@ window.addEventListener('DOMContentLoaded',function(){
 .tn-cookie-decline{background:#f0f2f8;color:#334155;}
 @media(max-width:480px){#tn-cookie-banner{left:10px;right:10px;bottom:10px;padding:16px;}}
 </style>
-<div id="tn-cookie-banner" style="display:none;" role="dialog" aria-label="Cookie consent">
+<div id="tn-cookie-banner" role="dialog" aria-label="Cookie consent">
   <p>We use cookies for analytics and (once approved) ads to keep toolnova.tools free. See our <a href="/privacy-policy.html">Privacy Policy</a> for details.</p>
   <div class="tn-cookie-actions">
     <button type="button" class="tn-cookie-btn tn-cookie-decline" onclick="tnCookieChoice(false)">Decline</button>
@@ -5011,7 +5012,7 @@ window.addEventListener('DOMContentLoaded',function(){
       gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});
     } else if(!saved){
       var b=document.getElementById('tn-cookie-banner');
-      if(b) b.style.display='block';
+      if(b) b.classList.add('tn-cookie-visible');
     }
   });
 })();
@@ -5028,7 +5029,7 @@ function tnCookieChoice(accepted){
     }
   }
   var b=document.getElementById('tn-cookie-banner');
-  if(b) b.style.display='none';
+  if(b) b.classList.remove('tn-cookie-visible');
 }
 </script>
 </body>

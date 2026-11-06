@@ -68,8 +68,8 @@ html.translated-ltr,html.translated-rtl{margin-top:0!important;}
 <script>
 (function(){
   function tnClampTop(){
-    document.documentElement.style.setProperty('top','0px','important');
-    if(document.body) document.body.style.setProperty('top','0px','important');
+    if(document.documentElement.style.getPropertyValue('top')!=='0px'||document.documentElement.style.getPropertyPriority('top')!=='important') document.documentElement.style.setProperty('top','0px','important');
+    if(document.body&&(document.body.style.getPropertyValue('top')!=='0px'||document.body.style.getPropertyPriority('top')!=='important')) document.body.style.setProperty('top','0px','important');
   }
   function tnStartObserver(){
     tnClampTop();

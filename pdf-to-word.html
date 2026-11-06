@@ -18,7 +18,7 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"Will complex formatting and images carry over perfectly?","acceptedAnswer":{"@type":"Answer","text":"Text content transfers reliably; complex layouts, embedded images, and precise formatting may need minor adjustment after conversion."}},
+    {"@type":"Question","name":"Will complex formatting and images carry over perfectly?","acceptedAnswer":{"@type":"Answer","text":"This converter extracts selectable text into a new DOCX. It does not preserve embedded images or recreate the original page layout. Review reading order and line breaks after conversion."}},
     {"@type":"Question","name":"What file format does it output?","acceptedAnswer":{"@type":"Answer","text":"A .doc file, compatible with Microsoft Word and Google Docs."}}
   ]
 }
@@ -84,12 +84,12 @@ footer a{color:var(--muted);margin:0 8px;text-decoration:none;}
   </div>
 
   <h2>FAQ</h2>
-  <details><summary>Will complex formatting and images carry over perfectly?</summary><p>Text content transfers reliably; complex layouts, embedded images, and precise formatting may need minor adjustment after conversion.</p></details>
+  <details><summary>Will complex formatting and images carry over perfectly?</summary><p>This converter extracts selectable text into a new DOCX. It does not preserve embedded images or recreate the original page layout. Review reading order and line breaks after conversion.</p></details>
   <details><summary>What file format does it output?</summary><p>A .doc file, compatible with Microsoft Word and Google Docs.</p></details>
 
   <h2>More free tools</h2>
   <p class="related"><a href="/">Browse all 36 tools →</a></p>
-</main>
+<section class="tn-practical-guide" aria-label="Practical guide"><h2>What the DOCX contains</h2><p>This tool reads the PDF’s selectable text and creates an editable Word document. It is a text extraction workflow, not a page-layout reconstruction service. A two-column newsletter, a table, or text positioned in separate boxes may arrive in an unexpected reading order. Images, charts, original fonts, and exact spacing are not copied into the DOCX.</p><h3>Check your source first</h3><p>Try selecting a sentence in your PDF viewer. If the page behaves like one picture, it likely needs OCR. A scanned PDF with an existing OCR layer may contain selectable text, but recognition errors in that layer will also appear in the extracted document.</p><h3>After conversion</h3><p>Compare a sample paragraph and any important names, dates, and numbers with the original. Rebuild headings, lists, and tables in Word as needed. For example, a three-column invoice may become separate text lines; do not assume that a price still belongs beside the correct item. Keep the source PDF available until the edited version has been checked.</p><p><a href="/?tool=scanocr">Use OCR for scanned PDFs</a> · <a href="/?tool=pdf2text">Extract plain text instead</a></p><p><small>Tool behavior reviewed November 6, 2026. <a href="/contact.html">Report an error or unsupported file</a>.</small></p></section></main>
 <footer>
   <p><a href="/">Home</a><a href="/blog/">Blog</a><a href="/contact.html">Contact</a></p>
   <p>© 2026 toolnova.tools</p>

@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Compress PDF — Free Online Tool | toolnova.tools</title>
-<meta name="description" content="Shrinks a PDF's file size by re-optimizing the images and internal structure — built for the classic 'file too large to email' problem.">
+<meta name="description" content="Optimize PDF structure locally and compare file sizes. Image resolution is unchanged, and a smaller result is not guaranteed.">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Compress PDF — Free Online Tool | toolnova.tools">
-<meta property="og:description" content="Shrinks a PDF's file size by re-optimizing the images and internal structure — built for the classic 'file too large to email' problem.">
+<meta property="og:description" content="Optimize PDF structure locally and compare file sizes. Image resolution is unchanged, and a smaller result is not guaranteed.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://toolnova.tools/compress-pdf.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%234f63d2'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial,sans-serif' font-weight='800' fill='white' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
@@ -18,8 +18,8 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"Will compression make my text blurry?","acceptedAnswer":{"@type":"Answer","text":"No — text in a PDF is vector data, not an image, so compression targets embedded images and structure without degrading text sharpness."}},
-    {"@type":"Question","name":"How much smaller will my file get?","acceptedAnswer":{"@type":"Answer","text":"It depends heavily on how image-heavy the original PDF is; text-only PDFs were already small and won't shrink much, while scanned/image-heavy PDFs often see the biggest reduction."}}
+    {"@type":"Question","name":"Will compression make my text blurry?","acceptedAnswer":{"@type":"Answer","text":"This tool does not resample images or rasterize text. A scanned page is itself an image; its resolution is left unchanged."}},
+    {"@type":"Question","name":"How much smaller will my file get?","acceptedAnswer":{"@type":"Answer","text":"Savings depend on PDF structure. Image-heavy scans may barely change because this tool does not downsample images. The original is retained if the rewrite would be larger."}}
   ]
 }
 </script>
@@ -60,7 +60,7 @@ footer a{color:var(--muted);margin:0 8px;text-decoration:none;}
   <div class="hero">
     <div class="icon">🗜️</div>
     <h1>Compress PDF</h1>
-    <p>Shrinks a PDF's file size by re-optimizing the images and internal structure — built for the classic 'file too large to email' problem.</p>
+    <p>Optimize PDF structure locally and compare file sizes. Image resolution is unchanged, and a smaller result is not guaranteed.</p>
     <a class="btn" href="/?tool=compress">Open Compress PDF →</a>
     <div class="features">
       <div>✓ 100% free</div>
@@ -73,8 +73,8 @@ footer a{color:var(--muted);margin:0 8px;text-decoration:none;}
   <div class="card">
     <ol>
       <li>Upload your PDF.</li>
-      <li>The tool re-optimizes embedded images and structure to reduce size.</li>
-      <li>Download the smaller file and compare it against the original.</li>
+      <li>The tool rewrites PDF structure without resampling images, then compares the result with your original.</li>
+      <li>Download the result. If rewriting does not reduce size, the original file is retained unchanged.</li>
     </ol>
   </div>
 
@@ -84,12 +84,12 @@ footer a{color:var(--muted);margin:0 8px;text-decoration:none;}
   </div>
 
   <h2>FAQ</h2>
-  <details><summary>Will compression make my text blurry?</summary><p>No — text in a PDF is vector data, not an image, so compression targets embedded images and structure without degrading text sharpness.</p></details>
-  <details><summary>How much smaller will my file get?</summary><p>It depends heavily on how image-heavy the original PDF is; text-only PDFs were already small and won't shrink much, while scanned/image-heavy PDFs often see the biggest reduction.</p></details>
+  <details><summary>Will compression make my text blurry?</summary><p>This tool does not resample images or rasterize text. A scanned page is itself an image; its resolution is left unchanged.</p></details>
+  <details><summary>How much smaller will my file get?</summary><p>Savings depend on PDF structure. Image-heavy scans may barely change because this tool does not downsample images. The original is retained if the rewrite would be larger.</p></details>
 
   <h2>More free tools</h2>
   <p class="related"><a href="/">Browse all 36 tools →</a></p>
-</main>
+<section class="tn-practical-guide" aria-label="Practical guide"><h2>Understand the result before downloading</h2><p>PDF size comes from several sources: images, fonts, page instructions, attachments, and internal objects. This tool rewrites the structure using object streams. It does not lower image resolution or JPEG quality. A large scan may therefore remain large even when the tool works correctly.</p><h3>A useful comparison</h3><p>If a 5 MB document becomes 4.5 MB, the saving is 0.5 MB, or 10%. If rewriting produces 5.2 MB, the tool keeps the original 5 MB file. “No reduction” is a valid outcome, not proof that the source contains no other optimization opportunities.</p><h3>When to choose another approach</h3><p>For scanned documents, export at a suitable resolution from the scanner or image editor before creating the PDF. For an email attachment limit, extracting only the necessary pages may help more than structural optimization. Keep your original and compare page count, readability, links, and form fields before sharing. Editing or rewriting a digitally signed PDF can invalidate its cryptographic signature; work from an unsigned source when changes are required.</p><p><a href="/?tool=extractpages">Extract selected pages</a> · <a href="/?tool=split">Split a PDF</a></p><p><small>Tool behavior reviewed November 6, 2026. <a href="/contact.html">Report an error or unsupported file</a>.</small></p></section></main>
 <footer>
   <p><a href="/">Home</a><a href="/blog/">Blog</a><a href="/contact.html">Contact</a></p>
   <p>© 2026 toolnova.tools</p>
